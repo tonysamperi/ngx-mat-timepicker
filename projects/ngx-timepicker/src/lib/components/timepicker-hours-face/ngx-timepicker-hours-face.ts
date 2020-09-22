@@ -34,7 +34,6 @@ export class NgxTimepickerHoursFace {
     }
 
     onTimeSelected(time: number): void {
-        console.info("TIME SELECTED", time);
         this.hourSelected.next(time);
     }
 }

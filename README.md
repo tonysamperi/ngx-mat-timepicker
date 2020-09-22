@@ -33,9 +33,13 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 Version for Angular 10 is in development
 
-## Demo
+**IMPORTANT**
 
-You can find the demo [here](https://tonysamperi.github.io/ngx-timepicker).
+Remember to include a Material Theme in your project, example:
+
+`@import "~@angular/material/prebuilt-themes/indigo-pink.css";`
+
+Refer to the [Angular Material](https://material.angular.io) website for theming options.
 
 ## Table of contents
 * [Getting started](#getting-started)
@@ -231,20 +235,17 @@ Selector: `[ngxTimepickerToggleIcon]`
 |------|-------------|
 | @Input()
   ngxTimepickerTheme: NgxTimepickerTheme |  Custom css properties which will override the defaults | 
-
-## Development
-
-### Prepare your environment
-
-Install local dev dependencies: `npm install` while current directory is this repo.
  
-### Development server
+### Demo
+<a href="https://tonysamperi.github.io/ngx-timepicker/">Demo</a>
 
-Run `npm start` to start a development server on a port 4200.
-
-Open `http//:localhost:4200` on your browser.
-
-## Tests
+### Contribute
+  Hell ya!!!
+  
+```terminal
+  $ npm install
+  $ npm run start  //run example
+```
 
 Run `npm test` to run tests once or `npm run test:watch` to continually run tests.
 
@@ -254,4 +255,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Thanks to
 
-Agranom for setting up the initial repo.
+Agranom for setting up the original repo.

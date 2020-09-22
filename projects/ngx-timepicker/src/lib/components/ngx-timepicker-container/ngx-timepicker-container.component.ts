@@ -146,14 +146,11 @@ export class NgxTimepickerContainerComponent implements OnInit, OnDestroy, NgxTi
     }
 
     onHourChange(hour: NgxTimepickerClockFace): void {
-        console.info("ON HOUR CHANGE", hour);
-
         this._timepickerSrv.hour = hour;
         this._onTimeChange();
     }
 
     onHourSelected(hour: number): void {
-        console.info("ON HOUR SELECTEWD", hour);
         if (!this.hoursOnly) {
             this.changeTimeUnit(NgxTimepickerUnits.MINUTE);
         }
