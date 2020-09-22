@@ -18,13 +18,13 @@ function concatTime(currentTime: string, nextTime: string): number {
 
 @Component({
     selector: "ngx-timepicker-time-control",
-    templateUrl: "./ngx-timepicker-time-control.component.html",
-    styleUrls: ["./ngx-timepicker-time-control.component.scss"],
+    templateUrl: "./ngx-timepicker-control.component.html",
+    styleUrls: ["./ngx-timepicker-control.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [NgxTimepickerParserPipe]
 })
 
-export class NgxTimepickerTimeControlComponent implements OnChanges {
+export class NgxTimepickerControlComponent implements OnChanges {
 
     @Input()
     set color(newValue: ThemePalette) {

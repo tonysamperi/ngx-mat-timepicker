@@ -1,70 +1,78 @@
-<div class="timepicker-backdrop-overlay" [overlay]="preventOverlayClick"
+<div class="timepicker-backdrop-overlay"
+     [overlay]="preventOverlayClick"
      [ngClass]="{'timepicker-backdrop-overlay--transparent': appendToInput}"></div>
 <div class="timepicker-overlay">
     <ngx-timepicker-content [appendToInput]="appendToInput"
-                                     [inputElement]="inputElement"
-                                     [ngxTimepickerTheme]="theme">
+                            [inputElement]="inputElement"
+                            [ngxTimepickerTheme]="theme">
         <div class="timepicker"
              [@timepicker]="animationState"
              (@timepicker.done)="animationDone($event)"
              [ngClass]="timepickerClass">
-            <mat-toolbar color="primary" class="timepicker__header" >
-                <ngx-timepicker-dial [format]="format" [hour]="(selectedHour | async)?.time"
-                                              [minute]="(selectedMinute | async)?.time"
-                                              [period]="selectedPeriod | async"
-                                              [activeTimeUnit]="activeTimeUnit"
-                                              [minTime]="minTime"
-                                              [maxTime]="maxTime"
-                                              [isEditable]="enableKeyboardInput"
-                                              [editableHintTmpl]="editableHintTmpl"
-                                              [minutesGap]="minutesGap"
-                                              [hoursOnly]="hoursOnly"
-                                              (periodChanged)="changePeriod($event)"
-                                              (timeUnitChanged)="changeTimeUnit($event)"
-                                              (hourChanged)="onHourChange($event)"
-                                              (minuteChanged)="onMinuteChange($event)"
+            <mat-toolbar [color]="color"
+                         class="timepicker__header">
+                <ngx-timepicker-dial [color]="color"
+                                     [format]="format"
+                                     [hour]="(selectedHour | async)?.time"
+                                     [minute]="(selectedMinute | async)?.time"
+                                     [period]="selectedPeriod | async"
+                                     [activeTimeUnit]="activeTimeUnit"
+                                     [minTime]="minTime"
+                                     [maxTime]="maxTime"
+                                     [isEditable]="enableKeyboardInput"
+                                     [editableHintTmpl]="editableHintTmpl"
+                                     [minutesGap]="minutesGap"
+                                     [hoursOnly]="hoursOnly"
+                                     (periodChanged)="changePeriod($event)"
+                                     (timeUnitChanged)="changeTimeUnit($event)"
+                                     (hourChanged)="onHourChange($event)"
+                                     (minuteChanged)="onMinuteChange($event)"
                 ></ngx-timepicker-dial>
             </mat-toolbar>
             <div class="timepicker__main-content">
-                <div class="timepicker__body" [ngSwitch]="activeTimeUnit">
+                <div class="timepicker__body"
+                     [ngSwitch]="activeTimeUnit">
                     <div *ngSwitchCase="timeUnit.HOUR">
                         <ngx-timepicker-24-hours-face *ngIf="format === 24;else ampmHours"
-                                                               (hourChange)="onHourChange($event)"
-                                                               [selectedHour]="selectedHour | async"
-                                                               [minTime]="minTime"
-                                                               [maxTime]="maxTime"
-                                                               [format]="format"
-                                                               (hourSelected)="onHourSelected($event)"></ngx-timepicker-24-hours-face>
+                                                      [color]="color"
+                                                      (hourChange)="onHourChange($event)"
+                                                      [selectedHour]="selectedHour | async"
+                                                      [minTime]="minTime"
+                                                      [maxTime]="maxTime"
+                                                      [format]="format"
+                                                      (hourSelected)="onHourSelected($event)"></ngx-timepicker-24-hours-face>
                         <ng-template #ampmHours>
                             <ngx-timepicker-12-hours-face
-                                (hourChange)="onHourChange($event)"
-                                [selectedHour]="selectedHour | async"
-                                [period]="selectedPeriod | async"
-                                [minTime]="minTime"
-                                [maxTime]="maxTime"
-                                (hourSelected)="onHourSelected($event)"></ngx-timepicker-12-hours-face>
+                                    [color]="color"
+                                    (hourChange)="onHourChange($event)"
+                                    [selectedHour]="selectedHour | async"
+                                    [period]="selectedPeriod | async"
+                                    [minTime]="minTime"
+                                    [maxTime]="maxTime"
+                                    (hourSelected)="onHourSelected($event)"></ngx-timepicker-12-hours-face>
                         </ng-template>
                     </div>
                     <ngx-timepicker-minutes-face *ngSwitchCase="timeUnit.MINUTE"
-                                                          [selectedMinute]="selectedMinute | async"
-                                                          [selectedHour]="(selectedHour | async)?.time"
-                                                          [minTime]="minTime"
-                                                          [maxTime]="maxTime"
-                                                          [format]="format"
-                                                          [period]="selectedPeriod | async"
-                                                          [minutesGap]="minutesGap"
-                                                          (minuteChange)="onMinuteChange($event)"></ngx-timepicker-minutes-face>
+                                                 [color]="color"
+                                                 [selectedMinute]="selectedMinute | async"
+                                                 [selectedHour]="(selectedHour | async)?.time"
+                                                 [minTime]="minTime"
+                                                 [maxTime]="maxTime"
+                                                 [format]="format"
+                                                 [period]="selectedPeriod | async"
+                                                 [minutesGap]="minutesGap"
+                                                 (minuteChange)="onMinuteChange($event)"></ngx-timepicker-minutes-face>
                 </div>
                 <div class="timepicker__actions">
                     <div (click)="close()">
                         <!--suppress HtmlUnknownAttribute -->
                         <ng-container
-                            *ngTemplateOutlet="cancelBtnTmpl ? cancelBtnTmpl : cancelBtnDefault"></ng-container>
+                                *ngTemplateOutlet="cancelBtnTmpl ? cancelBtnTmpl : cancelBtnDefault"></ng-container>
                     </div>
                     <div (click)="setTime()">
                         <!--suppress HtmlUnknownAttribute -->
                         <ng-container
-                            *ngTemplateOutlet="confirmBtnTmpl ? confirmBtnTmpl : confirmBtnDefault"></ng-container>
+                                *ngTemplateOutlet="confirmBtnTmpl ? confirmBtnTmpl : confirmBtnDefault"></ng-container>
                     </div>
                 </div>
             </div>
@@ -72,8 +80,12 @@
     </ngx-timepicker-content>
 </div>
 <ng-template #cancelBtnDefault>
-   <button mat-button color="primary">CANCEL</button>
+    <button mat-button
+            [color]="color">CANCEL
+    </button>
 </ng-template>
 <ng-template #confirmBtnDefault>
-   <button mat-button color="primary">OK</button>
+    <button mat-button
+            [color]="color">OK
+    </button>
 </ng-template>

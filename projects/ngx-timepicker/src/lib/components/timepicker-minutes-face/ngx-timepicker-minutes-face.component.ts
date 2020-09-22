@@ -1,17 +1,28 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
+import {ThemePalette} from "@angular/material/core";
 //
-import { NgxTimepickerClockFace } from "../../models/ngx-timepicker-clock-face.interface";
-import { NgxTimepickerUnits } from "../../models/ngx-timepicker-units.enum";
-import { NgxTimepickerPeriods } from "../../models/ngx-timepicker-periods.enum";
-import { NgxTimepickerUtils } from "../../utils/ngx-timepicker.utils";
+import {NgxTimepickerClockFace} from "../../models/ngx-timepicker-clock-face.interface";
+import {NgxTimepickerUnits} from "../../models/ngx-timepicker-units.enum";
+import {NgxTimepickerPeriods} from "../../models/ngx-timepicker-periods.enum";
+import {NgxTimepickerUtils} from "../../utils/ngx-timepicker.utils";
 //
-import { DateTime } from "luxon";
+import {DateTime} from "luxon";
 
 @Component({
     selector: "ngx-timepicker-minutes-face",
     templateUrl: "./ngx-timepicker-minutes-face.component.html"
 })
 export class NgxTimepickerMinutesFaceComponent implements OnChanges {
+
+    @Input()
+    set color(newValue: ThemePalette) {
+        this._color = newValue;
+    }
+
+    get color(): ThemePalette {
+        return this._color;
+    }
+
     @Input() format: number;
     @Input() maxTime: DateTime;
     @Input() minTime: DateTime;
@@ -25,6 +36,11 @@ export class NgxTimepickerMinutesFaceComponent implements OnChanges {
 
     @Input() selectedMinute: NgxTimepickerClockFace;
     timeUnit = NgxTimepickerUnits;
+
+    private _color: ThemePalette = "primary";
+
+    constructor() {
+    }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.period && changes.period.currentValue) {

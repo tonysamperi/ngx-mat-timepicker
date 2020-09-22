@@ -1,5 +1,5 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { NgxTimepickerTimeControlComponent } from './ngx-timepicker-time-control.component';
+import { NgxTimepickerControlComponent } from './ngx-timepicker-control.component';
 import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxTimepickerUnits } from '../../../models/ngx-timepicker-units.enum';
 import { NgxTimepickerParserPipe } from '../../../pipes/ngx-timepicker-parser.pipe';
@@ -7,9 +7,9 @@ import { DateTime } from 'luxon';
 import { NgxTimepickerModule } from '../../../ngx-timepicker.module';
 import { TimeFormatterPipe } from '../../../pipes/time-formatter.pipe';
 
-describe('NgxTimepickerTimeControlComponent', () => {
-    let fixture: ComponentFixture<NgxTimepickerTimeControlComponent>;
-    let component: NgxTimepickerTimeControlComponent;
+describe('NgxTimepickerControlComponent', () => {
+    let fixture: ComponentFixture<NgxTimepickerControlComponent>;
+    let component: NgxTimepickerControlComponent;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ describe('NgxTimepickerTimeControlComponent', () => {
             schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
 
-        fixture = TestBed.createComponent(NgxTimepickerTimeControlComponent);
+        fixture = TestBed.createComponent(NgxTimepickerControlComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

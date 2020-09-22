@@ -4,7 +4,7 @@ import { NgxTimepickerEventService } from "../../services/ngx-timepicker-event.s
 import { NgxTimepickerDirective } from "../../directives/ngx-timepicker.directive";
 import { NO_ERRORS_SCHEMA, Type } from "@angular/core";
 import { NgxTimepickerDomService } from "../../services/ngx-timepicker-dom.service";
-import { TimepickerConfig } from "../../models/timepicker-config.interface";
+import { NgxTimepickerConfig } from "../../models/ngx-timepicker-config.interface";
 import {
     NgxTimepickerContainerComponent
 } from "../ngx-timepicker-container/ngx-timepicker-container.component";
@@ -94,7 +94,7 @@ describe("NgxTimepickerComponent", () => {
         it(`should call appendTimepickerToBody with config and emit event on open call`, async(() => {
             let counter = 0;
             const spy = spyOn(domService, "appendTimepickerToBody");
-            const expectedConfig: TimepickerConfig = {
+            const expectedConfig: NgxTimepickerConfig = {
                 preventOverlayClick: false,
                 enableKeyboardInput: false,
                 editableHintTmpl: undefined,

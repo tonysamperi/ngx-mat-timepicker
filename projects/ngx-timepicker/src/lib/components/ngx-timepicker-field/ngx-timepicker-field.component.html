@@ -2,6 +2,7 @@
      [ngClass]="{'ngx-timepicker--disabled': disabled}">
     <ngx-timepicker-time-control
             class="ngx-timepicker__control--first"
+            [color]="color"
             [placeholder]="'HH'"
             [time]="(hour$ | async)?.time"
             [min]="minHour"
@@ -14,6 +15,7 @@
     <span class="ngx-timepicker__time-column ngx-timepicker__control--second">:</span>
     <ngx-timepicker-time-control
             class="ngx-timepicker__control--third"
+            [color]="color"
             [placeholder]="'MM'"
             [time]="(minute$ | async)?.time"
             [min]="0"
@@ -42,6 +44,7 @@
     </ngx-timepicker-toggle>
 </div>
 <ngx-timepicker
+        [color]="color"
         [min]="min"
         [max]="max"
         [theme]="clockTheme"

@@ -1,3 +1,6 @@
-<ngx-timepicker-face [selectedTime]="selectedHour" [faceTime]="hoursList" [format]="format"
-                              (timeChange)="hourChange.next($event)"
-                              (timeSelected)="onTimeSelected($event)"></ngx-timepicker-face>
+<ngx-timepicker-face [color]="color"
+                     [selectedTime]="selectedHour"
+                     [faceTime]="hoursList"
+                     [format]="format"
+                     (timeChange)="hourChange.next($event)"
+                     (timeSelected)="onTimeSelected($event)"></ngx-timepicker-face>

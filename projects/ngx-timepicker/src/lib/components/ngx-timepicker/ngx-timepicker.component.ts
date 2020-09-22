@@ -10,6 +10,7 @@ import {
 } from "../ngx-timepicker-container/ngx-timepicker-container.component";
 import {NgxTimepickerRef} from "../../models/timepicker-ref.interface";
 import {NgxTimepickerTheme} from "../../models/ngx-timepicker-theme.interface";
+import {ThemePalette} from "@angular/material/core";
 
 const ESCAPE = 27;
 
@@ -18,6 +19,15 @@ const ESCAPE = 27;
     template: "",
 })
 export class NgxTimepickerComponent implements NgxTimepickerRef {
+
+    @Input()
+    set color(newValue: ThemePalette) {
+        this._color = newValue;
+    }
+
+    get color(): ThemePalette {
+        return this._color;
+    }
 
     get disabled(): boolean {
         return this._timepickerInput && this._timepickerInput.disabled;
@@ -66,7 +76,6 @@ export class NgxTimepickerComponent implements NgxTimepickerRef {
     }
 
     @Input() appendToInput: boolean;
-
     @Input() cancelBtnTmpl: TemplateRef<Node>;
     @Output() closed = new EventEmitter<null>();
     @Input() confirmBtnTmpl: TemplateRef<Node>;
@@ -84,12 +93,11 @@ export class NgxTimepickerComponent implements NgxTimepickerRef {
     @Input() theme: NgxTimepickerTheme;
     @Output() timeChanged = new EventEmitter<string>();
     @Input() timepickerClass: string;
-
     @Output() timeSet = new EventEmitter<string>();
-
     timeUpdated = new Subject<string>();
-    private _format: number;
 
+    private _color: ThemePalette = "primary";
+    private _format: number;
     private _minutesGap: number;
     private _ngxTimepickerTheme: NgxTimepickerTheme;
     private _subsCtrl$ = new Subject();
@@ -125,7 +133,8 @@ export class NgxTimepickerComponent implements NgxTimepickerRef {
             hoursOnly: this.hoursOnly,
             theme: this.theme || this._ngxTimepickerTheme,
             timepickerClass: this.timepickerClass,
-            inputElement: this.inputElement
+            inputElement: this.inputElement,
+            color: this.color
         });
         this.opened.next();
         this._subscribeToEvents();

@@ -9,6 +9,7 @@ import {
     SimpleChanges
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ThemePalette} from "@angular/material/core";
 //
 import {NgxTimepickerComponent} from "../components/ngx-timepicker/ngx-timepicker.component";
 import {NgxTimepickerAdapter} from "../services/ngx-timepicker-adapter";
@@ -35,13 +36,6 @@ import {takeUntil} from "rxjs/operators";
     },
 })
 export class NgxTimepickerDirective implements ControlValueAccessor, OnDestroy, OnChanges {
-
-    private set _defaultTime(time: string) {
-        this._timepicker.defaultTime = NgxTimepickerAdapter.formatTime(time, {
-            locale: this._locale,
-            format: this.format
-        });
-    }
 
     get element(): any {
         return this._elementRef && this._elementRef.nativeElement;
@@ -131,9 +125,18 @@ export class NgxTimepickerDirective implements ControlValueAccessor, OnDestroy, 
         console.warn("Selected time doesn't match min or max value");
     }
 
-    @Input() disableClick: boolean;
+    private set _defaultTime(time: string) {
+        this._timepicker.defaultTime = NgxTimepickerAdapter.formatTime(time, {
+            locale: this._locale,
+            format: this.format
+        });
+    }
 
-    @Input() disabled: boolean;
+    @Input()
+    disableClick: boolean;
+
+    @Input()
+    disabled: boolean;
 
     private _format = 12;
     private _max: string | DateTime;

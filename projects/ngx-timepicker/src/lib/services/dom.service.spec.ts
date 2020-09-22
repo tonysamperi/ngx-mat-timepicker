@@ -1,7 +1,7 @@
 import { NgxTimepickerDomService } from './ngx-timepicker-dom.service';
 import { TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { TimepickerConfig } from '../models/timepicker-config.interface';
+import { NgxTimepickerConfig } from '../models/ngx-timepicker-config.interface';
 import {
     NgxTimepickerContainerComponent
 } from '../components/ngx-timepicker-container/ngx-timepicker-container.component';
@@ -34,7 +34,7 @@ describe('NgxTimepickerDomService', () => {
     describe('appendTimepickerToBody', () => {
 
         it('should append provided timepicker to body', () => {
-            service.appendTimepickerToBody(NgxTimepickerContainerComponent, {} as TimepickerConfig);
+            service.appendTimepickerToBody(NgxTimepickerContainerComponent, {} as NgxTimepickerConfig);
             const expected = document.getElementsByTagName('ngx-timepicker-container')[0];
 
             expect(document.body.lastChild).toEqual(expected);

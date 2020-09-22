@@ -25,6 +25,7 @@ import {NgxTimepickerUtils} from "../../utils/ngx-timepicker.utils";
 import {DateTime} from "luxon";
 import {Observable, Subject} from "rxjs";
 import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
+import {ThemePalette} from "@angular/material/core";
 
 @Component({
     selector: "ngx-timepicker-field",
@@ -42,6 +43,15 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
     encapsulation: ViewEncapsulation.None
 })
 export class NgxTimepickerFieldComponent implements OnInit, OnDestroy, ControlValueAccessor {
+
+    @Input()
+    set color(newValue: ThemePalette) {
+        this._color = newValue;
+    }
+
+    get color(): ThemePalette {
+        return this._color;
+    }
 
     get defaultTime(): string {
         return this._defaultTime;
@@ -133,6 +143,7 @@ export class NgxTimepickerFieldComponent implements OnInit, OnDestroy, ControlVa
     timeUnit = NgxTimepickerUnits;
     @Input() toggleIcon: TemplateRef<HTMLObjectElement>;
 
+    private _color: ThemePalette = "primary";
     private _defaultTime: string;
     private _format = 12;
     private _isDefaultTime: boolean;

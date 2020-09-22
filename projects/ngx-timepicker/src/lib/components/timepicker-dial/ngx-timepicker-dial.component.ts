@@ -9,14 +9,15 @@ import {
     SimpleChanges,
     TemplateRef
 } from "@angular/core";
+import {ThemePalette} from "@angular/material/core";
 //
-import { NgxTimepickerPeriods } from "../../models/ngx-timepicker-periods.enum";
-import { NgxTimepickerUnits } from "../../models/ngx-timepicker-units.enum";
-import { NgxTimepickerClockFace } from "../../models/ngx-timepicker-clock-face.interface";
-import { NGX_TIMEPICKER_LOCALE } from "../../tokens/time-locale.token";
-import { NgxTimepickerUtils } from "../../utils/ngx-timepicker.utils";
+import {NgxTimepickerPeriods} from "../../models/ngx-timepicker-periods.enum";
+import {NgxTimepickerUnits} from "../../models/ngx-timepicker-units.enum";
+import {NgxTimepickerClockFace} from "../../models/ngx-timepicker-clock-face.interface";
+import {NGX_TIMEPICKER_LOCALE} from "../../tokens/time-locale.token";
+import {NgxTimepickerUtils} from "../../utils/ngx-timepicker.utils";
 //
-import { DateTime, Info } from "luxon";
+import {DateTime, Info} from "luxon";
 
 @Component({
     selector: "ngx-timepicker-dial",
@@ -25,7 +26,17 @@ import { DateTime, Info } from "luxon";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxTimepickerDialComponent implements OnChanges {
+
     @Input() activeTimeUnit: NgxTimepickerUnits;
+
+    @Input()
+    set color(newValue: ThemePalette) {
+        this._color = newValue;
+    }
+
+    get color(): ThemePalette {
+        return this._color;
+    }
 
     @Input() editableHintTmpl: TemplateRef<Node>;
     @Input() format: number;
@@ -50,6 +61,8 @@ export class NgxTimepickerDialComponent implements OnChanges {
 
     timeUnit = NgxTimepickerUnits;
     @Output() timeUnitChanged = new EventEmitter<NgxTimepickerUnits>();
+
+    private _color: ThemePalette = "primary";
 
     constructor(@Inject(NGX_TIMEPICKER_LOCALE) private _locale: string) {
     }

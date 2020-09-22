@@ -1,7 +1,7 @@
 <div class="container">
     <form class="demo-form">
         <div>
-            <h2>Picker with 12h format</h2>
+            <h2>Picker with 12h format (default palette = primary)</h2>
             <mat-form-field>
                 <input matInput
                        name="selected_time"
@@ -12,7 +12,7 @@
             <ngx-timepicker #pickerA></ngx-timepicker>
         </div>
         <div>
-            <h2>Picker with 24h format</h2>
+            <h2>Picker with 24h format (using accent palette)</h2>
             <mat-form-field appearance="fill">
                 <input matInput
                        name="selected_time"
@@ -22,11 +22,13 @@
                        placeholder="12:00"
                        readonly />
             </mat-form-field>
-            <ngx-timepicker #pickerB></ngx-timepicker>
+            <ngx-timepicker color="accent"
+                            #pickerB></ngx-timepicker>
         </div>
         <div>
-            <h2>ngx-timepicker-field</h2>
-            <ngx-timepicker-field [defaultTime]="'11:11 AM'"></ngx-timepicker-field>
+            <h2>ngx-timepicker-field (using warn palette)</h2>
+            <ngx-timepicker-field color="warn"
+                                  [defaultTime]="'11:11 AM'"></ngx-timepicker-field>
         </div>
     </form>
 </div>

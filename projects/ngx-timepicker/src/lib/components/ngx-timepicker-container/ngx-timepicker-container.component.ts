@@ -1,5 +1,6 @@
 import {Component, HostListener, Inject, Input, OnDestroy, OnInit, TemplateRef} from "@angular/core";
 import {animate, AnimationEvent, style, transition, trigger} from "@angular/animations";
+import {ThemePalette} from "@angular/material/core";
 //
 import {NgxTimepickerClockFace} from "../../models/ngx-timepicker-clock-face.interface";
 import {NgxTimepickerPeriods} from "../../models/ngx-timepicker-periods.enum";
@@ -7,7 +8,7 @@ import {NgxTimepickerUnits} from "../../models/ngx-timepicker-units.enum";
 import {NgxTimepickerService} from "../../services/ngx-timepicker.service";
 import {NgxTimepickerAdapter} from "../../services/ngx-timepicker-adapter";
 import {NgxTimepickerRef} from "../../models/timepicker-ref.interface";
-import {TimepickerConfig} from "../../models/timepicker-config.interface";
+import {NgxTimepickerConfig} from "../../models/ngx-timepicker-config.interface";
 import {NgxTimepickerEventService} from "../../services/ngx-timepicker-event.service";
 import {NgxTimepickerTheme} from "../../models/ngx-timepicker-theme.interface";
 import {NGX_TIMEPICKER_LOCALE} from "../../tokens/time-locale.token";
@@ -39,7 +40,16 @@ export enum NgxTimepickerAnimationState {
     ],
     providers: [NgxTimepickerService]
 })
-export class NgxTimepickerContainerComponent implements OnInit, OnDestroy, TimepickerConfig {
+export class NgxTimepickerContainerComponent implements OnInit, OnDestroy, NgxTimepickerConfig {
+
+    @Input()
+    set color(newValue: ThemePalette) {
+        this._color = newValue;
+    }
+
+    get color(): ThemePalette {
+        return this._color;
+    }
 
     get defaultTime(): string {
         return this._defaultTime;
@@ -77,6 +87,7 @@ export class NgxTimepickerContainerComponent implements OnInit, OnDestroy, Timep
     timepickerClass: string;
     timeUnit = NgxTimepickerUnits;
 
+    private _color: ThemePalette = "primary";
     private _defaultTime: string;
     private _subsCtrl$ = new Subject();
 

@@ -6,7 +6,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 //
 import {NgxTimepickerComponent} from "./components/ngx-timepicker/ngx-timepicker.component";
-import {NgxTimepickerToggleComponent} from "./components/timepicker-toggle-button/ngx-timepicker-toggle.component";
+import {NgxTimepickerToggleComponent} from "./components/ngx-timepicker-toggle/ngx-timepicker-toggle.component";
 import {NgxTimepickerDirective} from "./directives/ngx-timepicker.directive";
 import {NgxTimepickerToggleIconDirective} from "./directives/ngx-timepicker-toggle-icon.directive";
 import {NgxTimepickerThemeDirective} from "./directives/ngx-timepicker-theme.directive";
@@ -29,10 +29,10 @@ import {TimeFormatterPipe} from "./pipes/time-formatter.pipe";
 import {OverlayDirective} from "./directives/overlay.directive";
 import {MinutesFormatterPipe} from "./pipes/minutes-formatter.pipe";
 import {NgxTimepickerAutofocusDirective} from "./directives/ngx-timepicker-autofocus.directive";
-import {NgxTimepickerFieldComponent} from "./components/timepicker-field/ngx-timepicker-field.component";
+import {NgxTimepickerFieldComponent} from "./components/ngx-timepicker-field/ngx-timepicker-field.component";
 import {
-    NgxTimepickerTimeControlComponent
-} from "./components/timepicker-field/timepicker-time-control/ngx-timepicker-time-control.component";
+    NgxTimepickerControlComponent
+} from "./components/ngx-timepicker-field/ngx-timepicker-control/ngx-timepicker-control.component";
 import {TimeLocalizerPipe} from "./pipes/time-localizer.pipe";
 import {NGX_TIMEPICKER_LOCALE} from "./tokens/time-locale.token";
 import {NgxTimepickerParserPipe} from "./pipes/ngx-timepicker-parser.pipe";
@@ -59,14 +59,7 @@ import {AppendToInputDirective} from "./directives/append-to-input.directive";
         NgxTimepickerToggleComponent,
         NgxTimepickerFieldComponent,
         NgxTimepickerDirective,
-        NgxTimepickerToggleIconDirective,
-        NgxTimepickerThemeDirective,
-        NgxTimepicker24HoursFaceComponent,
-        NgxTimepicker12HoursFaceComponent,
-        NgxTimepickerMinutesFaceComponent,
-        NgxTimepickerFaceComponent,
-        NgxTimepickerDialComponent,
-        NgxTimepickerDialControlComponent
+        NgxTimepickerToggleIconDirective
     ],
     declarations: [
         NgxTimepickerComponent,
@@ -86,7 +79,7 @@ import {AppendToInputDirective} from "./directives/append-to-input.directive";
         MinutesFormatterPipe,
         NgxTimepickerThemeDirective,
         NgxTimepickerFieldComponent,
-        NgxTimepickerTimeControlComponent,
+        NgxTimepickerControlComponent,
         TimeLocalizerPipe,
         NgxTimepickerParserPipe,
         ActiveHourPipe,

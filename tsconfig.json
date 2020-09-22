@@ -20,7 +20,7 @@
     ],
     "paths": {
       "ngx-timepicker": [
-        "projects/ngx-timepicker/src/public_api"
+        "projects/ngx-timepicker/src/public-api"
       ]
     }
   },

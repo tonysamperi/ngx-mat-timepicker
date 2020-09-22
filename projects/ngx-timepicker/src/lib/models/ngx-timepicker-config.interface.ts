@@ -1,11 +1,15 @@
-import { TemplateRef } from "@angular/core";
-import { DateTime } from "luxon";
-import { NgxTimepickerRef } from "./timepicker-ref.interface";
-import { NgxTimepickerTheme } from "./ngx-timepicker-theme.interface";
+import {TemplateRef} from "@angular/core";
+import {ThemePalette} from "@angular/material/core";
+//
+import {NgxTimepickerRef} from "./timepicker-ref.interface";
+import {NgxTimepickerTheme} from "./ngx-timepicker-theme.interface";
+//
+import {DateTime} from "luxon";
 
-export interface TimepickerConfig {
+export interface NgxTimepickerConfig {
     appendToInput: boolean;
     cancelBtnTmpl: TemplateRef<Node>;
+    color: ThemePalette;
     confirmBtnTmpl: TemplateRef<Node>;
     defaultTime: string;
     disableAnimation: boolean;
