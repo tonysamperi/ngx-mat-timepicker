@@ -1,0 +1,61 @@
+.ngx-timepicker-control {
+  position: relative;
+  display: flex;
+  width: 60px;
+  height: 30px;
+  padding: 0 5px;
+  box-sizing: border-box;
+
+  > .ngx-timepicker-control-fake-underline {
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transition: opacity 0.2s;
+  }
+
+  &--active {
+    > .ngx-timepicker-control-fake-underline {
+      opacity: 1;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding: 0 5px 0 0;
+    border: 0;
+    font-size: 1rem;
+    color: inherit;
+    outline: none;
+    text-align: center;
+
+    &:disabled {
+      background-color: transparent;
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    right: 2px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__arrow {
+    text-align: center;
+    opacity: 0.5;
+    height: 15px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    user-select: none;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
