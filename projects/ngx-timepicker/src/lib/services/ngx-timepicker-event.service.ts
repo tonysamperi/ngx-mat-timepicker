@@ -1,33 +1,37 @@
-import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import {Injectable} from "@angular/core";
+//
+import {Observable, Subject} from "rxjs";
+import {shareReplay} from "rxjs/operators";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
 export class NgxTimepickerEventService {
 
-    private backdropClickSubject: Subject<MouseEvent> = new Subject();
-    private keydownEventSubject: Subject<KeyboardEvent> = new Subject();
-
     get backdropClick(): Observable<MouseEvent> {
-        return this.backdropClickSubject.asObservable().pipe(shareReplay({bufferSize: 1, refCount: true}));
+        return this._backdropClick$.asObservable().pipe(shareReplay({bufferSize: 1, refCount: true}));
     }
 
     get keydownEvent(): Observable<KeyboardEvent> {
-        return this.keydownEventSubject.asObservable().pipe(shareReplay({bufferSize: 1, refCount: true}));
+        return this._keydownEvent$.asObservable().pipe(shareReplay({bufferSize: 1, refCount: true}));
+    }
+
+    private _backdropClick$: Subject<MouseEvent> = new Subject();
+    private _keydownEvent$: Subject<KeyboardEvent> = new Subject();
+
+    constructor() {
     }
 
     dispatchEvent(event: KeyboardEvent | MouseEvent): void {
         switch (event.type) {
-            case 'click':
-                this.backdropClickSubject.next(<MouseEvent>event);
+            case "click":
+                this._backdropClick$.next(event as MouseEvent);
                 break;
-            case 'keydown':
-                this.keydownEventSubject.next(<KeyboardEvent>event);
+            case "keydown":
+                this._keydownEvent$.next(event as KeyboardEvent);
                 break;
             default:
-                throw new Error('no such event type');
+                throw new Error("no such event type");
         }
     }
 
