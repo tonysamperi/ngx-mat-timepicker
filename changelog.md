@@ -5,3 +5,6 @@
 * General improvements: removed useless components and used components from @angular/material instead.
 * Solved theming issues, now it behaves correctly with any Material theme (prebuilt, or even custom! 😁)
 * Completed demo page 
+
+#9.0.2
+* Version bump to fix travis badge and changelog
