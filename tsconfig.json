@@ -19,8 +19,8 @@
       "dom"
     ],
     "paths": {
-      "ngx-timepicker": [
-        "projects/ngx-timepicker/src/public-api"
+      "ngx-mat-timepicker": [
+        "projects/ngx-mat-timepicker/src/public-api"
       ]
     }
   },

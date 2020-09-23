@@ -3,17 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-timepicker": {
+    "ngx-mat-timepicker": {
       "projectType": "library",
-      "root": "projects/ngx-timepicker",
-      "sourceRoot": "projects/ngx-timepicker/src",
+      "root": "projects/ngx-mat-timepicker",
+      "sourceRoot": "projects/ngx-mat-timepicker/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-timepicker/tsconfig.lib.json",
-            "project": "projects/ngx-timepicker/ng-package.json"
+            "tsConfig": "projects/ngx-mat-timepicker/tsconfig.lib.json",
+            "project": "projects/ngx-mat-timepicker/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -24,17 +24,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-timepicker/src/test.ts",
-            "tsConfig": "projects/ngx-timepicker/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-timepicker/karma.conf.js"
+            "main": "projects/ngx-mat-timepicker/src/test.ts",
+            "tsConfig": "projects/ngx-mat-timepicker/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mat-timepicker/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-timepicker/tsconfig.lib.json",
-              "projects/ngx-timepicker/tsconfig.spec.json"
+              "projects/ngx-mat-timepicker/tsconfig.lib.json",
+              "projects/ngx-mat-timepicker/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -43,32 +43,32 @@
         }
       }
     },
-    "ngx-timepicker-repo": {
+    "ngx-mat-timepicker-repo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/ngx-timepicker-repo",
-      "sourceRoot": "projects/ngx-timepicker-repo/src",
+      "root": "projects/ngx-mat-timepicker-repo",
+      "sourceRoot": "projects/ngx-mat-timepicker-repo/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-timepicker-repo",
-            "index": "projects/ngx-timepicker-repo/src/index.html",
-            "main": "projects/ngx-timepicker-repo/src/main.ts",
-            "polyfills": "projects/ngx-timepicker-repo/src/polyfills.ts",
-            "tsConfig": "projects/ngx-timepicker-repo/tsconfig.app.json",
+            "outputPath": "dist/ngx-mat-timepicker-repo",
+            "index": "projects/ngx-mat-timepicker-repo/src/index.html",
+            "main": "projects/ngx-mat-timepicker-repo/src/main.ts",
+            "polyfills": "projects/ngx-mat-timepicker-repo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-mat-timepicker-repo/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/ngx-timepicker-repo/src/favicon.ico",
-              "projects/ngx-timepicker-repo/src/assets"
+              "projects/ngx-mat-timepicker-repo/src/favicon.ico",
+              "projects/ngx-mat-timepicker-repo/src/assets"
             ],
             "styles": [
-              "projects/ngx-timepicker-repo/src/styles.scss"
+              "projects/ngx-mat-timepicker-repo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -76,8 +76,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/ngx-timepicker-repo/src/environments/environment.ts",
-                  "with": "projects/ngx-timepicker-repo/src/environments/environment.prod.ts"
+                  "replace": "projects/ngx-mat-timepicker-repo/src/environments/environment.ts",
+                  "with": "projects/ngx-mat-timepicker-repo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -106,33 +106,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-timepicker-repo:build"
+            "browserTarget": "ngx-mat-timepicker-repo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-timepicker-repo:build:production"
+              "browserTarget": "ngx-mat-timepicker-repo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-timepicker-repo:build"
+            "browserTarget": "ngx-mat-timepicker-repo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-timepicker-repo/src/test.ts",
-            "polyfills": "projects/ngx-timepicker-repo/src/polyfills.ts",
-            "tsConfig": "projects/ngx-timepicker-repo/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-timepicker-repo/karma.conf.js",
+            "main": "projects/ngx-mat-timepicker-repo/src/test.ts",
+            "polyfills": "projects/ngx-mat-timepicker-repo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-mat-timepicker-repo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mat-timepicker-repo/karma.conf.js",
             "assets": [
-              "projects/ngx-timepicker-repo/src/favicon.ico",
-              "projects/ngx-timepicker-repo/src/assets"
+              "projects/ngx-mat-timepicker-repo/src/favicon.ico",
+              "projects/ngx-mat-timepicker-repo/src/assets"
             ],
             "styles": [
-              "projects/ngx-timepicker-repo/src/styles.scss"
+              "projects/ngx-mat-timepicker-repo/src/styles.scss"
             ],
             "scripts": []
           }
@@ -141,9 +141,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-timepicker-repo/tsconfig.app.json",
-              "projects/ngx-timepicker-repo/tsconfig.spec.json",
-              "projects/ngx-timepicker-repo/e2e/tsconfig.json"
+              "projects/ngx-mat-timepicker-repo/tsconfig.app.json",
+              "projects/ngx-mat-timepicker-repo/tsconfig.spec.json",
+              "projects/ngx-mat-timepicker-repo/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -153,16 +153,16 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/ngx-timepicker-repo/e2e/protractor.conf.js",
-            "devServerTarget": "ngx-timepicker-repo:serve"
+            "protractorConfig": "projects/ngx-mat-timepicker-repo/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-mat-timepicker-repo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-timepicker-repo:serve:production"
+              "devServerTarget": "ngx-mat-timepicker-repo:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "ngx-timepicker"
+  "defaultProject": "ngx-mat-timepicker"
 }

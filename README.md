@@ -1,12 +1,12 @@
-# ngx-timepicker
+# ngx-mat-timepicker
 
-[![npm](https://img.shields.io/npm/v/ngx-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-timepicker) 
-[![npm](https://img.shields.io/npm/dm/ngx-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-timepicker) 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tonysamperi/ngx-timepicker/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/tonysamperi/ngx-timepicker.svg?branch=master)](https://travis-ci.org/tonysamperi/ngx-timepicker)
-[![Size](https://img.shields.io/bundlephobia/min/ngx-timepicker)](https://unpkg.com/ngx-timepicker@9.0.0/bundles/ngx-timepicker.umd.js)
+[![npm](https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker) 
+[![npm](https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker) 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tonysamperi/ngx-mat-timepicker/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/tonysamperi/ngx-mat-timepicker.svg?branch=master)](https://travis-ci.org/tonysamperi/ngx-mat-timepicker)
+[![Size](https://img.shields.io/bundlephobia/min/ngx-mat-timepicker)](https://unpkg.com/ngx-mat-timepicker@9.0.0/bundles/ngx-mat-timepicker.umd.js)
 
-A simple time picker component using Angular Material.
+A simple time picker module using Angular Material: it provides an Android style dialog for time selection and a handy input for time selection in Material style.
 
 ### Why this project?
 The original was nice, but for some reason it didn't adapt your Material theme.
@@ -24,17 +24,15 @@ Also a few components were unnecessary and not in material style, so I got rid o
 * Used material buttons for dialog actions (CANCEL/OK)
 * Added leading zero for the hours in the dialog header (as in Android timepicker)
 * More consistent naming
-* Removed useless exports from NgxTimepickerModule
+* Removed useless exports from NgxMatTimepickerModule
 
 ### Compatibility
 
-- Angular 9+
-- Material 9+
+* Angular 9+ + Material 9+
 
 Version for Angular 10 is in development
 
 **IMPORTANT**
-
 Remember to include a Material Theme in your project, example:
 
 `@import "~@angular/material/prebuilt-themes/indigo-pink.css";`
@@ -45,12 +43,12 @@ Refer to the [Angular Material](https://material.angular.io) website for theming
 * [Getting started](#getting-started)
 * [Internationalization](#internationalization)
 * [Documentation](#documentation)
-    * [NgxTimepicker](#ngxtimepicker)
-    * [NgxTimepickerComponent](#ngxTimepickercomponent)
-    * [NgxTimepickerFieldComponent](#ngxtimepickerfieldcomponent)
-    * [NgxTimepickerToggleComponent](#ngxTimepickertogglecomponent)
-    * [NgxTimepickerToggleIconDirective](#ngxTimepickertoggleicondirective)
-    * [NgxTimepickerThemeDirective (deprecated)](#ngxTimepickerthemedirective)
+    * [NgxMatTimepicker](#ngxMatTimepicker)
+    * [NgxMatTimepickerComponent](#ngxMatTimepickercomponent)
+    * [NgxMatTimepickerFieldComponent](#ngxMatTimepickerfieldcomponent)
+    * [NgxMatTimepickerToggleComponent](#ngxMatTimepickertogglecomponent)
+    * [NgxMatTimepickerToggleIconDirective](#ngxMatTimepickertoggleicondirective)
+    * [NgxMatTimepickerThemeDirective (deprecated)](#ngxMatTimepickerthemedirective)
 * [Development](#development)
 * [Tests](#tests)
 * [License](#license)
@@ -59,22 +57,22 @@ Refer to the [Angular Material](https://material.angular.io) website for theming
 
 Install timepicker through npm:
 ```bash
-npm i --save ngx-timepicker
+npm i --save luxon ngx-mat-timepicker
 ```
 Next import the timepicker module into your app's module:
 ```typescript
 import {NgModule} from '@angular/core';
-import {NgxTimepickerModule} from 'ngx-timepicker';
+import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 
 @NgModule({
-  imports: [NgxTimepickerModule]
+  imports: [NgxMatTimepickerModule]
 })
 export class MyModule {}
 ```
 Finally connect the timepicker to an input via a template property:
 ```angular2html
-<input [ngxTimepicker]="picker">
-<ngx-timepicker #picker></ngx-timepicker>
+<input [ngxMatTimepicker]="picker">
+<ngx-mat-timepicker #picker></ngx-mat-timepicker>
 ```
 The timepicker opens once you click on the input
 
@@ -84,10 +82,10 @@ Timepicker supports locales in format `BCP 47`. It has `en-US` locale by default
 To override default locale:
 ```typescript
 import {NgModule} from '@angular/core';
-import {NgxTimepickerModule} from 'ngx-timepicker';
+import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 
 @NgModule({
-  imports: [NgxTimepickerModule.setLocale('en-GB')]
+  imports: [NgxMatTimepickerModule.setLocale('en-GB')]
 })
 export class MyModule {}
 ```
@@ -96,20 +94,20 @@ export class MyModule {}
 
 #### API reference for Angular Material Timepicker
 ```typescript
-import {NgxTimepickerModule} from 'ngx-timepicker';
+import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 ```
-#### NgxTimepicker
+#### NgxMatTimepicker
 
 Directive responsible for managing the timepicker popup and setting value to input
 
-Selector: `ngxTimepicker`
+Selector: `ngxMatTimepicker`
 
 **Properties**
 
 | Name | Description |
 |------|-------------|
 | @Input()
-  ngxTimepicker: NgxTimepickerComponent | The timepicker that this input is associated with. |
+  ngxMatTimepicker: NgxMatTimepickerComponent | The timepicker that this input is associated with. |
 | @Input()
   color: ThemePalette | The material palette to use. | 
 | @Input()
@@ -126,11 +124,11 @@ Selector: `ngxTimepicker`
   disableClick: boolean | Set `true` to disable opening timepicker by clicking on the input |
 
   
-#### NgxTimepickerComponent
+#### NgxMatTimepickerComponent
 
 Component responsible for visualisation the timepicker
 
-Selector: `ngx-timepicker`
+Selector: `ngx-mat-timepicker`
 
 **Properties**
 
@@ -158,7 +156,7 @@ Selector: `ngx-timepicker`
 | @Input()
   hoursOnly: boolean | Set `true` to prevent switching to minutes automatically once hour is selected. Uses `false` by default |
 | @Input()
-  theme: NgxTimepickerTheme |  Custom css properties which will override the defaults |
+  theme: NgxMatTimepickerTheme |  Custom css properties which will override the defaults |
 | @Input()
   timepickerClass: string |  To provide a custom css class for the timepicker |
 | @Output()
@@ -172,11 +170,11 @@ Selector: `ngx-timepicker`
 | @Output()
   timeChanged: EventEmitter\<string\> | Emits once time was changed. |
   
-#### NgxTimepickerFieldComponent
+#### NgxMatTimepickerFieldComponent
 
 The timepicker as a control.
 
-Selector: `ngx-timepicker-field`
+Selector: `ngx-mat-timepicker-field`
 
 **Properties**
 
@@ -184,13 +182,15 @@ Selector: `ngx-timepicker-field`
 | Name | Description |
 |------|-------------|
 | @Input()
-  disabled: boolean |  Whether the timepicker is disabled| 
+  disabled: boolean |  Whether the timepicker is disabled |
+| @Input()
+  floatLabel: 'never' or 'always' or 'auto' |  Whether the labels of the fields should float, default to never  | 
 | @Input()
   toggleIcon: TemplateRef\<HTMLObjectElement\> | Provide custom `svg` icon for toggle button |
 | @Input()
   buttonAlign: 'right' or 'left' | Positioning toggle button (`right` by default) |
 | @Input()
-  clockTheme: NgxTimepickerTheme | Custom css properties which will override timepicker clock |
+  clockTheme: NgxMatTimepickerTheme | Custom css properties which will override timepicker clock |
 | @Input()
   controlOnly: boolean | Hide or display toggle button with the timepicker clock |
 | @Input()
@@ -207,11 +207,11 @@ Selector: `ngx-timepicker-field`
   timeChanged: EventEmitter\<string\> | Emit a new time once it is changed. |
 
   
-#### NgxTimepickerToggleComponent
+#### NgxMatTimepickerToggleComponent
 
 Component responsible for opening the timepicker.
 
-Selector: `ngx-timepicker-toggle`
+Selector: `ngx-mat-timepicker-toggle`
 
 **Properties**
 
@@ -219,25 +219,25 @@ Selector: `ngx-timepicker-toggle`
 | Name | Description |
 |------|-------------|
 | @Input()
-  for: NgxTimepickerComponent |  Timepicker instance that the button will toggle | 
+  for: NgxMatTimepickerComponent |  Timepicker instance that the button will toggle | 
 | @Input()
   disabled: boolean | Whether the toggle button is disabled |
   
-#### NgxTimepickerToggleIconDirective
+#### NgxMatTimepickerToggleIconDirective
 
-Can be used to override the icon of a `NgxTimepickerToggleComponent`.
+Can be used to override the icon of a `NgxMatTimepickerToggleComponent`.
 
-Selector: `[ngxTimepickerToggleIcon]`
+Selector: `[ngxMatTimepickerToggleIcon]`
 
 **Properties**
 
 | Name | Description |
 |------|-------------|
 | @Input()
-  ngxTimepickerTheme: NgxTimepickerTheme |  Custom css properties which will override the defaults | 
+  ngxMatTimepickerTheme: NgxMatTimepickerTheme |  Custom css properties which will override the defaults | 
  
 ### Demo
-<a href="https://tonysamperi.github.io/ngx-timepicker/">Demo</a>
+<a href="https://tonysamperi.github.io/ngx-mat-timepicker/">Demo</a>
 
 ### Contribute
   Hell ya!!!

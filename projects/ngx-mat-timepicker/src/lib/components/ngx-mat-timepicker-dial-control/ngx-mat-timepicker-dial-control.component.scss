@@ -1,0 +1,19 @@
+
+.timepicker-dial__control {
+  border: none;
+  background-color: transparent;
+  font-size: 50px;
+  width: 60px;
+  padding: 0;
+  border-radius: 3px;
+  text-align: center;
+  color: inherit; // Forces color inheritance because input may have user agent style
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}

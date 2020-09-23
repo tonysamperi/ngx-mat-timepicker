@@ -1,0 +1,153 @@
+@import "../scss/responsive";
+@import "../scss/themes";
+
+:host {
+  display: block;
+  padding-top: 56px;
+}
+
+.ngx-mtp-header {
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > img.ngx-mtp-ng-logo {
+      display: inline-block;
+      margin-right: 16px;
+      height: 26px;
+    }
+
+    > .ngx-mtp-header-title {
+      font-size: 22px;
+    }
+
+    .ngx-mtp-github-logo {
+      display: inline-block;
+      height: 26px;
+      vertical-align: middle;
+    }
+
+  }
+}
+
+.ngx-mtp-top {
+  width: 100%;
+  min-height: 20px;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 60px;
+
+  > h1.ngx-mtp-main-title {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 56px;
+    margin: 15px 5px;
+  }
+}
+
+.ngx-mtp-generic-section {
+  width: 100%;
+  min-height: 20px;
+  background-color: #E2E2E2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ngx-mtp-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+
+}
+
+.demo-form {
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    box-sizing: border-box;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-above(xs) {
+      width: calc(50% - 16px);
+    }
+
+    @include respond-below(sm) {
+      width: calc(100% - 16px);
+    }
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+// Terminal
+
+.terminal {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 6px;
+  padding-top: 45px;
+  margin-top: 8px;
+  overflow: hidden;
+  background-color: rgb(15, 15, 16);
+  @include respond-below(sm) {
+    width: 100%;
+  }
+}
+
+.terminal::before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #3a3a3a;
+  color: #c2c3c4;
+  width: 100%;
+  font-size: 34px;
+  line-height: 26px;
+  text-indent: 6px;
+  text-align: left;
+  height: 34px;
+}
+
+.terminal {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  color: white;
+  padding: 0 1rem 1rem;
+  margin: 0;
+  text-align: left;
+  padding-top: 44px;
+}
+
+.terminal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

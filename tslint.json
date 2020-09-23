@@ -32,13 +32,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngxTimepicker",
+      "ngxMatTimepicker",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ngx-timepicker",
+      "ngx-mat-timepicker",
       "kebab-case"
     ],
     "eofline": true,
@@ -250,13 +250,13 @@
       {
         "type": "type",
         "format": "PascalCase",
-        "prefix": "NgxTimepicker"
+        "prefix": "NgxMatTimepicker"
       },
       // abstract classes must have the prefix "Abstract". The following part of the name must be valid PascalCase
       {
         "type": "class",
         "modifiers": "export",
-        "prefix": "NgxTimepicker"
+        "prefix": "NgxMatTimepicker"
       },
       // enum members must be in camelCase. Without this config, enumMember would inherit UPPER_CASE from public static const property
       {

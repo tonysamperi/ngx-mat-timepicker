@@ -1,0 +1,43 @@
+
+.timepicker-period {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__btn {
+    opacity: 0.5;
+    padding: 1px 3px;
+    border: 0;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    user-select: none;
+    outline: none;
+    border-radius: 3px;
+    transition: background-color 0.5s;
+    color: inherit; // force color inheritance to bypass user agent style
+
+    &.active {
+      opacity: 1;
+    }
+
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.07);
+    }
+  }
+
+  &__warning {
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, .55);
+    position: absolute;
+    width: 200px;
+    left: -20px;
+    top: 40px;
+
+    & > p {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,26 +1,35 @@
 {
-  "name": "ngx-timepicker",
-  "version": "9.0.0",
+  "name": "ngx-mat-timepicker",
+  "version": "9.0.1",
   "license": "MIT",
-  "description": "ngx-timepicker is an Angular material extension for time pickers!",
-  "homepage": "https://tonysamperi.github.io/ngx-timepicker",
+  "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
+  "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tonysamperi/ngx-timepicker"
+    "url": "https://github.com/tonysamperi/ngx-mat-timepicker"
   },
   "bugs": {
-    "url": "https://github.com/tonysamperi/ngx-timepicker/issues"
+    "url": "https://github.com/tonysamperi/ngx-mat-timepicker/issues"
   },
   "author": {
     "name": "Tony Samperi",
     "email": "github@tonysamperi.it"
   },
+  "keywords": [
+    "Angular 9+",
+    "Material timepicker",
+    "Timepicker",
+    "Android timepicker",
+    "Mobile timepicker",
+    "Time picker"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
-    "build": "ng build --prod",
-    "build:demo": "ng build ngx-timepicker-repo",
+    "build": "ng build --prod && gulp postBuild",
+    "build:demo": "ng build ngx-mat-timepicker-repo",
+    "pack": "gulp pack",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -51,6 +60,7 @@
     "@types/luxon": "~1.25.0",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "gulp": "~4.0.2",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
