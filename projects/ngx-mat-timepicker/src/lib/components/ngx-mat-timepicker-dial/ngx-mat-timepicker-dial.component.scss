@@ -38,14 +38,3 @@
 
 }
 
-@media (max-device-width: 1023px) and (orientation: landscape) {
-    .timepicker-dial {
-        &__container {
-            flex-direction: column;
-        }
-
-        &__period {
-            margin-left: 0;
-        }
-    }
-}

@@ -15,3 +15,6 @@
 * Fixed arrows appearance in ngx-mat-timepicker-field
 * Removed strict tipe checking on Input "format" allowing to pass in the form `format="24` instead of `[format]="24"`
 * Improved demo
+
+#9.0.4
+* Improved UI for screens up to 360px

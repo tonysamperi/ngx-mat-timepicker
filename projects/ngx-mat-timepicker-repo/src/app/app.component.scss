@@ -29,12 +29,30 @@
       font-size: 22px;
     }
 
+    .ngx-mtp-github-link-desktop {
+      @include respond-below(sm) {
+        display: none;
+      }
+    }
+
+    .ngx-mtp-github-link-mobile {
+      display: none;
+      @include respond-below(sm) {
+        display: inline;
+      }
+    }
+
     .ngx-mtp-github-logo {
       display: inline-block;
       height: 26px;
       vertical-align: middle;
     }
 
+  }
+
+  @include respond-below(sm) {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -50,7 +68,7 @@
   &:before {
     content: "";
     position: absolute;
-    background-image: url(/assets/angular-white-transparent.svg);
+    background-image: url(../assets/angular-white-transparent.svg);
     background-size: contain;
     bottom: 0;
     right: 150px;
@@ -106,6 +124,7 @@
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 
   > * {
     box-sizing: border-box;
@@ -127,6 +146,14 @@
   h2 {
     margin-bottom: 0;
   }
+}
+
+footer {
+  text-align: center;
+  //background-color: #1c1428;
+  padding: 25px 0;
+  //color: #9479b9;
+  width: 100%;
 }
 
 // Terminal

@@ -15,6 +15,36 @@ body {
     box-sizing: border-box;
   }
 
+  a {
+    &.mat-color-primary {
+      color: mat-color($candy-app-primary);
+      -webkit-text-decoration: none;
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 2px solid rgba(mat-color($candy-app-primary), 0.25);
+      -webkit-transition: border-bottom-color 0.15s ease-in-out;
+      transition: border-bottom-color 0.15s ease-in-out;
+
+      &:hover {
+        border-bottom: 2px solid rgba(mat-color($candy-app-primary), 1);
+      }
+    }
+
+    &.mat-color-accent {
+      color: mat-color($candy-app-accent);
+      -webkit-text-decoration: none;
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 2px solid rgba(mat-color($candy-app-accent), 0.25);
+      -webkit-transition: border-bottom-color 0.15s ease-in-out;
+      transition: border-bottom-color 0.15s ease-in-out;
+
+      &:hover {
+        border-bottom: 2px solid rgba(mat-color($candy-app-accent), 1);
+      }
+    }
+  }
+
   .material-icons {
     font-family: "Material Icons";
     font-weight: normal;
@@ -65,7 +95,7 @@ body {
     padding: 16px;
   }
 
-  .ngx-mtp-top {
+  .ngx-mtp-top, footer {
     background-color: mat-color($candy-app-primary);
     color: mat-color($candy-app-primary, default-contrast);
   }
@@ -107,6 +137,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid #DDDDDD;
   }
 
   // Include the default theme styles.
@@ -115,15 +146,36 @@ body {
   &.dark-theme {
     @include angular-material-theme($dark-theme);
 
+    a {
+      &.mat-color-primary {
+        color: mat-color($dark-primary);
+        border-bottom: 2px solid rgba(mat-color($dark-primary), 0.25);
+
+        &:hover {
+          border-bottom: 2px solid rgba(mat-color($dark-primary), 1);
+        }
+      }
+
+      &.mat-color-accent {
+        color: mat-color($dark-accent);
+        border-bottom: 2px solid rgba(mat-color($dark-accent), 0.25);
+
+        &:hover {
+          border-bottom: 2px solid rgba(mat-color($dark-accent), 1);
+        }
+      }
+    }
+
     .ngx-mtp-box-bordered {
       border-color: mat-color($dark-primary);
     }
 
     .ngx-mtp-generic-section {
       background-color: #222;
+      border-bottom: 1px solid #000;
     }
 
-    .ngx-mtp-top {
+    .ngx-mtp-top, footer {
       background-color: mat-color($dark-primary);
       color: mat-color($dark-primary, default-contrast);
     }

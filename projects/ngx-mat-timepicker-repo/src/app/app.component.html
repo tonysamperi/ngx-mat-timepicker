@@ -10,7 +10,7 @@
         <span class="ngx-mtp-header-title">ngx-mat-timepicker</span>
     </div>
     <div>
-        <button mat-button
+        <button mat-icon-button
                 [matMenuTriggerFor]="themeMenu">
             <mat-icon>format_color_fill</mat-icon>
         </button>
@@ -54,10 +54,18 @@
             </button>
         </mat-menu>
         <a mat-button
+           class="ngx-mtp-github-link-desktop"
            [href]="githubLink">
             <img src="assets/github-circle-white-transparent.svg"
                  class="ngx-mtp-github-logo"
                  alt="" /> Github
+        </a>
+        <a mat-icon-button
+           class="ngx-mtp-github-link-mobile"
+           [href]="githubLink">
+            <img src="assets/github-circle-white-transparent.svg"
+                 class="ngx-mtp-github-logo"
+                 alt="" />
         </a>
     </div>
 </mat-toolbar>
@@ -122,6 +130,9 @@
                                [ngxMatTimepicker]="pickerA"
                                placeholder="4:00 PM"
                                readonly />
+                        <mat-icon matSuffix
+                                  (click)="pickerA.open()">watch_later
+                        </mat-icon>
                     </mat-form-field>
                     <ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
                 </div>
@@ -134,6 +145,10 @@
            [ngxMatTimepicker]="pickerA"
            placeholder="4:00 PM"
            readonly /&gt;
+    &lt;mat-icon matSuffix
+              (click)="pickerA.open()"&gt;
+        watch_later
+    &lt;/mat-icon&gt;
 &lt;/mat-form-field&gt;
 &lt;ngx-mat-timepicker #pickerA>&lt;/ngx-mat-timepicker&gt;
                     </code>
@@ -153,6 +168,10 @@
                                [ngxMatTimepicker]="pickerB"
                                placeholder="16:00"
                                readonly />
+                        <mat-icon matSuffix
+                                  (click)="pickerB.open()">
+                            watch_later
+                        </mat-icon>
                     </mat-form-field>
                     <ngx-mat-timepicker color="accent"
                                         #pickerB></ngx-mat-timepicker>
@@ -167,6 +186,10 @@
            [ngxMatTimepicker]="pickerB"
            placeholder="16:00"
            readonly /&gt;
+    &lt;mat-icon matSuffix
+              (click)="pickerB.open()"&gt;
+        watch_later
+    &lt;/mat-icon&gt;
 &lt;/mat-form-field&gt;
 &lt;ngx-mat-timepicker color="accent"
                     #pickerB>&lt;/ngx-mat-timepicker&gt;
@@ -205,6 +228,9 @@
                                [ngxMatTimepicker]="pickerC"
                                placeholder="12:00"
                                readonly />
+                        <mat-icon matSuffix
+                                  (click)="pickerC.open()">watch_later
+                        </mat-icon>
                     </mat-form-field>
                     <button mat-raised-button
                             class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
@@ -218,7 +244,7 @@
                                             #pickerC></ngx-mat-timepicker>
                     </div>
                 </div>
-                <pre>
+                <pre class="language-markup">
                     <code>
 &lt;mat-form-field *ngIf="showInput"&gt;
     &lt;input matInput
@@ -228,9 +254,12 @@
     [ngxMatTimepicker]="pickerC"
     placeholder="12:00"
     readonly /&gt;
+    &lt;mat-icon matSuffix
+              (click)="pickerC.open()"&gt;
+        watch_later
+    &lt;/mat-icon&gt;
 &lt;/mat-form-field&gt;
 &lt;button mat-raised-button
-        class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
         (click)="showInput = !showInput"
         color="primary"&gt;
                         {{showInput ? "Destroy" : "Restore"}} input
@@ -246,3 +275,43 @@
         </div>
     </form>
 </div>
+<div class="ngx-mtp-generic-section">
+    <svg fill="none"
+         height="50"
+         stroke="currentColor"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="2"
+         viewBox="0 0 24 24"
+         width="50"
+         xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <h2 class="mat-h2">
+        Free and open source
+    </h2>
+</div>
+<div class="ngx-mtp-generic-section">
+    <svg fill="none"
+         height="50"
+         stroke="currentColor"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="2"
+         viewBox="0 0 24 24"
+         width="50"
+         xmlns="http://www.w3.org/2000/svg">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+    <h2 class="mat-h2">
+        Ready to start?
+    </h2>
+    <p>Go to the <a class="mat-color-primary" href="http://github.com/tonysamperi/ngx-mat-timepicker">docs</a>!</p>
+</div>
+<footer>
+    <p>Created with ♥ by <a class="mat-color-accent" href="tonysamperi.github.io"
+                            target="_blank">Tony
+        Samperi</a>
+    </p>
+    <p>© 2020 MIT License</p>
+</footer>

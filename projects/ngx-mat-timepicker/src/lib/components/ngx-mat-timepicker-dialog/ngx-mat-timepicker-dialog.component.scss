@@ -4,6 +4,7 @@ div.ngx-mat-timepicker-dialog {
 
     .mat-dialog-content {
       padding: 0;
+      max-height: 85vh;
 
       mat-toolbar.timepicker-header {
         display: flex;

@@ -5,7 +5,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 20px;
   box-sizing: border-box;
   background-color: rgba(200, 200, 200, 0.5) !important;
 
@@ -44,14 +43,12 @@
 
     > span {
       font-size: 16px;
-      //color: $clock-face-time-inactive-color;
     }
   }
 
   &--inner {
     > span {
       font-size: 14px;
-      //color: $clock-face-inner-time-inactive-color;
     }
   }
 }
@@ -97,17 +94,14 @@
 
 @media (max-device-width: 1023px) and (orientation: landscape) {
   .clock-face {
-    width: 225px;
-    height: 225px;
-    padding: 5px;
+    width: 250px;
+    height: 250px;
   }
-  .clock-face__number {
-    &--outer {
-      height: calc(225px / 2 - 5px);
-    }
-  }
+}
 
-  .clock-face__clock-hand_minute:before {
-    top: 0;
+@media screen and (max-width: 360px) {
+  .clock-face {
+    width: 250px;
+    height: 250px;
   }
 }
