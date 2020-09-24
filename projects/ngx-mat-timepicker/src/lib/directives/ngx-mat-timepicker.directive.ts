@@ -47,7 +47,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
 
     @Input()
     set format(value: number) {
-        this._format = value === 24 ? 24 : 12;
+        this._format = +value === 24 ? 24 : 12;
         const isDynamicallyChanged = value && (this._previousFormat && this._previousFormat !== this._format);
 
         if (isDynamicallyChanged) {
@@ -157,6 +157,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     ngOnDestroy() {
+        this._unregisterTimepicker();
         this._subsCtrl$.next();
         this._subsCtrl$.complete();
     }
@@ -198,24 +199,30 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     private _onChange: (value: any) => void = () => {
-    }
+    };
 
     private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
         if (picker) {
             this._timepicker = picker;
             this._timepicker.registerInput(this);
             this._timepicker.timeSet
-                .pipe(takeUntil(this._subsCtrl$))
-                .subscribe((time: string) => {
-                    this.value = time;
-                    this._onChange(this.value);
-                    this.onTouched();
-                    this._defaultTime = this._value;
-                });
+            .pipe(takeUntil(this._subsCtrl$))
+            .subscribe((time: string) => {
+                this.value = time;
+                this._onChange(this.value);
+                this.onTouched();
+                this._defaultTime = this._value;
+            });
         }
         else {
             throw new Error("NgxMatTimepickerComponent is not defined." +
                 " Please make sure you passed the timepicker to ngxMatTimepicker directive");
+        }
+    }
+
+    private _unregisterTimepicker(): void {
+        if (this._timepicker) {
+            this._timepicker.unregisterInput();
         }
     }
 

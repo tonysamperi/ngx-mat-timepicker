@@ -8,3 +8,10 @@
 
 #9.0.2
 * Version bump to fix travis badge and changelog
+
+#9.0.3
+* Resolved an annoying behaviour when using *ngIf on ngx-mat-timepicker directive (but not on the component). 
+* Improved period select appearance in ngx-mat-timepicker-field
+* Fixed arrows appearance in ngx-mat-timepicker-field
+* Removed strict tipe checking on Input "format" allowing to pass in the form `format="24` instead of `[format]="24"`
+* Improved demo

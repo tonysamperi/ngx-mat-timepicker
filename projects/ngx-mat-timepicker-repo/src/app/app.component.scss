@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
 
@@ -43,6 +44,27 @@
   text-align: center;
   overflow: hidden;
   padding-top: 60px;
+  padding-bottom: 20px;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background-image: url(/assets/angular-white-transparent.svg);
+    background-size: contain;
+    bottom: 0;
+    right: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;
+    width: 200px;
+    height: 200px;
+
+    @include respond-below(sm) {
+      right: calc(50% - 100px);
+      opacity: 0.1;
+    }
+  }
 
   > h1.ngx-mtp-main-title {
     font-size: 56px;
@@ -50,16 +72,17 @@
     line-height: 56px;
     margin: 15px 5px;
   }
-}
 
-.ngx-mtp-generic-section {
-  width: 100%;
-  min-height: 20px;
-  background-color: #E2E2E2;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .ngx-mtp-badges {
+    > img {
+      display: inline-block;
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 .ngx-mtp-container {
@@ -90,7 +113,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     @include respond-above(xs) {
       width: calc(50% - 16px);
@@ -125,6 +148,7 @@
 .terminal::before {
   content: "\2022 \2022 \2022";
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   background: #3a3a3a;

@@ -148,6 +148,10 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         this._timepickerInput = input;
     }
 
+    unregisterInput(): void {
+        this._timepickerInput = void 0;
+    }
+
     updateTime(time: string): void {
         this.timeUpdated.next(time);
     }

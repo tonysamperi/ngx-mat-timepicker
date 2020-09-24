@@ -1,0 +1,20 @@
+<mat-card class="code-viewer">
+    <div class="code-viewer-header">
+        <span>{{showCode ? "Source" : "Example"}}</span>
+        <button mat-icon-button
+                (click)="showCode = !showCode"
+                matTooltip="{{showCode ? 'Hide' : 'Show'}} source"
+                title="{{showCode ? 'Hide' : 'Show'}} source">
+            <mat-icon>code</mat-icon>
+        </button>
+    </div>
+    <div class="code-viewer-pane">
+        <div class="code-viewer-example"
+             [class.hide]="showCode">
+            <ng-content select=".example"></ng-content>
+        </div>
+        <div [class.hide]="!showCode">
+            <ng-content select="pre"></ng-content>
+        </div>
+    </div>
+</mat-card>

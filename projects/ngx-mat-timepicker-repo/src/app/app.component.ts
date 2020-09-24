@@ -12,8 +12,10 @@ interface Theme {
 })
 export class NgxMatTimepickerAppComponent {
 
+    githubLink: string = "https://github.com/tonysamperi/ngx-mat-timepicker";
     selectedTheme: Theme;
-    selectedTime: any;
+    selectedTime: string;
+    showInput: boolean = !0;
     themes: Theme[] = [
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}

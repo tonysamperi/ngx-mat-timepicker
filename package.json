@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "license": "MIT",
   "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
   "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",
@@ -70,6 +70,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "~5.4.0",
     "node-sass-tilde-importer": "~1.0.2",
+    "prismjs": "^1.21.0",
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
     "tsickle": ">=0.29.0",

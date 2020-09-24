@@ -1,10 +1,12 @@
 import {ModuleWithProviders, NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {A11yModule} from "@angular/cdk/a11y";
 // MATERIAL
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -46,11 +48,11 @@ import {
 } from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
 import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
 import {AppendToInputDirective} from "./directives/append-to-input.directive";
-import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
     imports: [
         CommonModule,
+        A11yModule,
         FormsModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -65,7 +67,7 @@ import {MatIconModule} from "@angular/material/icon";
         NgxMatTimepickerToggleComponent,
         NgxMatTimepickerFieldComponent,
         NgxMatTimepickerDirective,
-        NgxMatTimepickerToggleIconDirective,
+        NgxMatTimepickerToggleIconDirective
     ],
     declarations: [
         NgxMatTimepickerDialogComponent,

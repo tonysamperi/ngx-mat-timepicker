@@ -11,7 +11,9 @@
 <div mat-dialog-content>
     <ngx-mat-timepicker-content [appendToInput]="data.appendToInput"
                                 [inputElement]="data.inputElement"
-                                [ngxMatTimepickerTheme]="data.theme">
+                                [ngxMatTimepickerTheme]="data.theme"
+                                cdkTrapFocus
+                                cdkTrapFocusAutoCapture>
         <div class="timepicker"
              [ngClass]="data.timepickerClass">
             <mat-toolbar [color]="color"

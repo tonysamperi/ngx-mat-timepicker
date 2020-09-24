@@ -1,9 +1,13 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, OnDestroy, Input, Output, ElementRef, AfterViewInit} from "@angular/core";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+
+function retainSelection() {
+    this.selectionStart = this.selectionEnd;
+}
 
 @Component({
     selector: "ngx-mat-timepicker-dial-control",
@@ -11,7 +15,7 @@ import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
     styleUrls: ["ngx-mat-timepicker-dial-control.component.scss"],
     providers: [NgxMatTimepickerParserPipe]
 })
-export class NgxMatTimepickerDialControlComponent {
+export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDestroy {
 
     private get _selectedTime(): NgxMatTimepickerClockFace {
         if (!!this.time) {
@@ -23,7 +27,7 @@ export class NgxMatTimepickerDialControlComponent {
     disabled: boolean;
 
     @Output()
-    focused = new EventEmitter<null>();
+    focused = new EventEmitter<void>();
 
     @Input()
     isActive: boolean;
@@ -52,9 +56,9 @@ export class NgxMatTimepickerDialControlComponent {
     timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
 
     @Output()
-    unfocused = new EventEmitter<null>();
+    unfocused = new EventEmitter<void>();
 
-    constructor(private _timeParserPipe: NgxMatTimepickerParserPipe) {
+    constructor(private _elRef: ElementRef, private _timeParserPipe: NgxMatTimepickerParserPipe) {
     }
 
     changeTimeByKeyboard(e: any): void {
@@ -63,6 +67,14 @@ export class NgxMatTimepickerDialControlComponent {
         if (isTimeDisabledToChange(this.time, char, this.timeList)) {
             e.preventDefault();
         }
+    }
+
+    ngAfterViewInit(): void {
+        this._elRef.nativeElement.querySelector("input").addEventListener("select", retainSelection, false);
+    }
+
+    ngOnDestroy(): void {
+        this._elRef.nativeElement.querySelector("input").removeEventListener("select", retainSelection);
     }
 
     onKeydown(e: any): void {

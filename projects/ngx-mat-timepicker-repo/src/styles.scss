@@ -11,6 +11,10 @@ body {
   margin: 0;
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
 
+  * {
+    box-sizing: border-box;
+  }
+
   .material-icons {
     font-family: "Material Icons";
     font-weight: normal;
@@ -33,6 +37,34 @@ body {
     margin-left: 8px;
   }
 
+  .ngx-mtp-d-inline-block {
+    display: inline-block;
+  }
+
+  .ngx-mtp-d-none {
+    display: none;
+  }
+
+  .ngx-mtp-d-flex {
+    display: flex;
+  }
+
+  .ngx-mtp-flex-column {
+    flex-direction: column;
+  }
+
+  .ngx-mtp-align-center {
+    align-items: center;
+  }
+
+  .ngx-mtp-justify-center {
+    justify-content: center;
+  }
+
+  .ngx-mtp-padding {
+    padding: 16px;
+  }
+
   .ngx-mtp-top {
     background-color: mat-color($candy-app-primary);
     color: mat-color($candy-app-primary, default-contrast);
@@ -50,11 +82,46 @@ body {
     color: mat-color($candy-app-warn);
   }
 
+  .ngx-mtp-margin-top {
+    margin-top: 8px;
+  }
+
+  .ngx-mtp-margin-bottom {
+    margin-bottom: 8px;
+  }
+
+  .ngx-mtp-box-bordered {
+    text-align: center;
+    min-height: 20px;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 2px dashed mat-color($candy-app-primary);
+  }
+
+  .ngx-mtp-generic-section {
+    width: 100%;
+    min-height: 20px;
+    background-color: #F0F0F0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   // Include the default theme styles.
   @include angular-material-theme($candy-app-theme);
 
   &.dark-theme {
     @include angular-material-theme($dark-theme);
+
+    .ngx-mtp-box-bordered {
+      border-color: mat-color($dark-primary);
+    }
+
+    .ngx-mtp-generic-section {
+      background-color: #222;
+    }
 
     .ngx-mtp-top {
       background-color: mat-color($dark-primary);
