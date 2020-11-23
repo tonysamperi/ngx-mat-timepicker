@@ -10,18 +10,21 @@ function logEnd(msg) {
 
 const gulp = require("gulp"),
     path = require("path"),
+    rename = require("gulp-rename"),
     exec = require("child_process").exec
 ;
 
 const libName = "ngx-mat-timepicker";
 const rootFolder = path.join(__dirname);
-const srcFolder = path.join(rootFolder, `projects/${libName}/src/lib`);
+const projectFolder = path.join(rootFolder, `projects/${libName}`);
 const distFolder = path.join(rootFolder, `dist/${libName}`);
 
 const taskNames = {
     postBuild: "postBuild",
+    postBuildAlt: "postBuild:alt",
     copyMDs: "copyMDs",
-    pack: "pack"
+    pack: "pack",
+    swapPackage: "swapPackage"
 };
 
 gulp.task(taskNames.copyMDs, (cb) => {
@@ -32,6 +35,20 @@ gulp.task(taskNames.copyMDs, (cb) => {
     ])
     .pipe(gulp.dest(distFolder));
     logEnd(taskNames.copyMDs);
+    cb();
+});
+
+
+gulp.task(taskNames.swapPackage, (cb) => {
+    logStart(taskNames.swapPackage);
+    gulp.src([
+        path.join(projectFolder, "package-alt.json")
+    ])
+    .pipe(rename((pathInfo) => {
+        pathInfo.basename = pathInfo.basename.replace("-alt", "")
+    }))
+    .pipe(gulp.dest(distFolder));
+    logEnd(taskNames.swapPackage);
     cb();
 });
 
@@ -46,8 +63,14 @@ gulp.task(taskNames.pack, function (cb) {
     });
 });
 
-//MAIN
+// MAIN
 gulp.task(taskNames.postBuild, gulp.series(taskNames.copyMDs, function (cb, err) {
     logEnd(taskNames.postBuild);
+    cb(err);
+}));
+
+// ALT
+gulp.task(taskNames.postBuildAlt, gulp.series(taskNames.copyMDs, taskNames.swapPackage, function (cb, err) {
+    logEnd(taskNames.postBuildAlt);
     cb(err);
 }));
