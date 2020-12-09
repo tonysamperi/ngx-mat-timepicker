@@ -2,7 +2,7 @@ import {NgxMatTimepickerFormat} from "../models/ngx-mat-timepicker-format.enum";
 import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerOptions} from "../models/ngx-mat-timepicker-options.interface";
 //
-import {DateTime, LocaleOptions, NumberingSystem} from "luxon";
+import {DateTime, LocaleOptions, NumberingSystem} from "ts-luxon";
 
 // @dynamic
 export class NgxMatTimepickerAdapter {
@@ -40,8 +40,7 @@ export class NgxMatTimepickerAdapter {
         if (format !== 24) {
             return parsedTime.toLocaleString({
                 ...DateTime.TIME_SIMPLE,
-                hour12: format !== 24,
-                numberingSystem: NgxMatTimepickerAdapter.defaultNumberingSistem
+                hour12: format !== 24
             }).replace(/\u200E/g, "");
         }
 

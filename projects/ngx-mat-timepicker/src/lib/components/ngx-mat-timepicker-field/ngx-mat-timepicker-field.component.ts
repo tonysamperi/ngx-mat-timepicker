@@ -24,7 +24,7 @@ import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 import {Observable, Subject} from "rxjs";
 import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
 

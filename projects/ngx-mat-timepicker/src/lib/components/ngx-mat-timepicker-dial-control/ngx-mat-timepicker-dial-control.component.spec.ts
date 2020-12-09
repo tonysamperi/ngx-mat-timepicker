@@ -5,7 +5,7 @@ import { NgxMatTimepickerUnits } from '../../models/ngx-mat-timepicker-units.enu
 import { NgxMatTimepickerTimeLocalizerPipe } from '../../pipes/ngx-mat-timepicker-time-localizer.pipe';
 import { NgxMatTimepickerParserPipe } from '../../pipes/ngx-mat-timepicker-parser.pipe';
 import { NGX_MAT_TIMEPICKER_LOCALE } from '../../tokens/ngx-mat-timepicker-time-locale.token';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 
 describe('NgxMatTimepickerDialControlComponent', () => {

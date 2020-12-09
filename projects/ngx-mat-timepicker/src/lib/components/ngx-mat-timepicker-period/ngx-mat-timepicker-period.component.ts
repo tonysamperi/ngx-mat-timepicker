@@ -1,25 +1,25 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { animate, sequence, style, transition, trigger } from '@angular/animations';
+import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {animate, sequence, style, transition, trigger} from "@angular/animations";
 //
-import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { NgxMatTimepickerUnits } from '../../models/ngx-mat-timepicker-units.enum';
-import { NgxMatTimepickerClockFace } from '../../models/ngx-mat-timepicker-clock-face.interface';
-import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
+import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
+import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
+import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
-import { DateTime } from 'luxon';
+import {DateTime} from "ts-luxon";
 
 @Component({
-    selector: 'ngx-mat-timepicker-period',
-    templateUrl: 'ngx-mat-timepicker-period.component.html',
-    styleUrls: ['ngx-mat-timepicker-period.component.scss'],
+    selector: "ngx-mat-timepicker-period",
+    templateUrl: "ngx-mat-timepicker-period.component.html",
+    styleUrls: ["ngx-mat-timepicker-period.component.scss"],
     animations: [
-        trigger('scaleInOut', [
-            transition(':enter', [
-                style({transform: 'scale(0)'}),
-                animate('.2s', style({transform: 'scale(1)'})),
+        trigger("scaleInOut", [
+            transition(":enter", [
+                style({transform: "scale(0)"}),
+                animate(".2s", style({transform: "scale(1)"})),
                 sequence([
-                    animate('3s', style({opacity: 1})),
-                    animate('.3s', style({opacity: 0}))
+                    animate("3s", style({opacity: 1})),
+                    animate(".3s", style({opacity: 0}))
                 ])
             ])
         ])
@@ -75,7 +75,7 @@ export class NgxMatTimepickerPeriodComponent {
                     period
                 });
             default:
-                throw new Error('no such NgxMatTimepickerUnits');
+                throw new Error("no such NgxMatTimepickerUnits");
         }
     }
 }

@@ -1,6 +1,6 @@
 import { NgxMatTimepickerPeriods } from "./ngx-mat-timepicker-periods.enum";
 //
-import { DateTime } from "luxon";
+import { DateTime } from "ts-luxon";
 
 export interface NgxMatTimepickerDisabledConfig {
     format: number;

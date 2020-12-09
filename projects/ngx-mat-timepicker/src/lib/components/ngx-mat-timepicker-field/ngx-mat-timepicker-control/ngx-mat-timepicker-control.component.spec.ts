@@ -3,7 +3,7 @@ import { NgxMatTimepickerControlComponent } from './ngx-mat-timepicker-control.c
 import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxMatTimepickerUnits } from '../../../models/ngx-mat-timepicker-units.enum';
 import { NgxMatTimepickerParserPipe } from '../../../pipes/ngx-mat-timepicker-parser.pipe';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerModule } from '../../../ngx-mat-timepicker.module';
 import { NgxMatTimepickerTimeFormatterPipe } from '../../../pipes/ngx-mat-timepicker-time-formatter.pipe';
 

@@ -4,7 +4,7 @@ import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {By} from "@angular/platform-browser";
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerModule} from "../ngx-mat-timepicker.module";
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 
 @Component({
     template: `

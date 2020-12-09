@@ -1,6 +1,6 @@
 import { NgxMatTimepickerAdapter } from './ngx-mat-timepicker-adapter';
 import { NgxMatTimepickerPeriods } from '../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 
 
 describe('NgxMatTimepickerAdapter', () => {

@@ -3,7 +3,7 @@ import { NgxMatTimepickerClockFace } from '../models/ngx-mat-timepicker-clock-fa
 import { NgxMatTimepickerService } from './ngx-mat-timepicker.service';
 import { NgxMatTimepickerPeriods } from '../models/ngx-mat-timepicker-periods.enum';
 import { NgxMatTimepickerAdapter } from './ngx-mat-timepicker-adapter';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 
 describe('NgxMatTimepickerService', () => {
     const DEFAULT_HOUR: NgxMatTimepickerClockFace = {

@@ -17,7 +17,7 @@ import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-f
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
-import {DateTime, Info} from "luxon";
+import {DateTime, Info} from "ts-luxon";
 
 @Component({
     selector: "ngx-mat-timepicker-dial",

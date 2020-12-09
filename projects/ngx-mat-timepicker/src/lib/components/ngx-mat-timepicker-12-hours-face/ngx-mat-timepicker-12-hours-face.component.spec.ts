@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxMatTimepicker12HoursFaceComponent } from './ngx-mat-timepicker-12-hours-face.component';
 import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 
 describe('NgxMatTimepicker12HoursFaceComponent', () => {

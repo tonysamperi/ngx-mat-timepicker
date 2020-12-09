@@ -6,7 +6,7 @@ import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum"
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 
 @Component({
     selector: "ngx-mat-timepicker-minutes-face",

@@ -7,7 +7,7 @@ import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.dir
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
 import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 //
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 import {merge, Subject} from "rxjs";
 import {filter, takeUntil} from "rxjs/operators";
 import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";

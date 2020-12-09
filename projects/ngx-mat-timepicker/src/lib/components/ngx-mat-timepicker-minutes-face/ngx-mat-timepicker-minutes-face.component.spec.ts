@@ -3,7 +3,7 @@ import { NgxMatTimepickerMinutesFaceComponent } from './ngx-mat-timepicker-minut
 import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 
 describe('NgxMatTimepickerMinutesFaceComponent', () => {
     let fixture: ComponentFixture<NgxMatTimepickerMinutesFaceComponent>;

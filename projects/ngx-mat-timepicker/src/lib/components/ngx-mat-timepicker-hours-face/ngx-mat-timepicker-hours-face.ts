@@ -4,7 +4,7 @@ import {ThemePalette} from "@angular/material/core";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 
 
 export class NgxMatTimepickerHoursFace {

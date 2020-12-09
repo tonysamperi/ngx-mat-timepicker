@@ -5,7 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
 import { NgxMatTimepickerClockFace } from '../../models/ngx-mat-timepicker-clock-face.interface';
 import { NGX_MAT_TIMEPICKER_LOCALE } from '../../tokens/ngx-mat-timepicker-time-locale.token';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerAdapter } from '../../services/ngx-mat-timepicker-adapter';
 import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 

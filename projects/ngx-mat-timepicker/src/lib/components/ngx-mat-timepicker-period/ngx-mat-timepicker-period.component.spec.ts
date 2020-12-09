@@ -3,7 +3,7 @@ import { NgxMatTimepickerPeriodComponent } from './ngx-mat-timepicker-period.com
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgxMatTimepickerUnits } from '../../models/ngx-mat-timepicker-units.enum';
 import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 
 describe('NgxMatTimepickerPeriodComponent', () => {

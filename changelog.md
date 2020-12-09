@@ -22,3 +22,9 @@
 #9.0.5
 * Fixed issue with `build --prod`
 * Refactored horrible things in ngx-mat-timepicker-append-to-input.directive
+
+#9.1.0 (deprecated)
+* Now using ts-luxon instead of luxon, for best compatibility
+
+#9.1.1
+* Fixed peer dependencies

@@ -1,6 +1,6 @@
 import { NgxMatTimepickerTimeLocalizerPipe } from './ngx-mat-timepicker-time-localizer.pipe';
 import { NgxMatTimepickerUnits } from '../models/ngx-mat-timepicker-units.enum';
-import { DateTime } from 'luxon';
+import { DateTime } from "ts-luxon";
 
 describe('NgxMatTimepickerTimeLocalizerPipe', () => {
     const defaultLocale = 'en-US';

@@ -3,7 +3,7 @@ import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerFormat} from "../models/ngx-mat-timepicker-format.enum";
 import {NgxMatTimepickerDisabledConfig} from "../models/ngx-mat-timepicker-disabled-config.interface";
 //
-import {DateTime} from "luxon";
+import {DateTime} from "ts-luxon";
 
 // @dynamic
 export class NgxMatTimepickerUtils {

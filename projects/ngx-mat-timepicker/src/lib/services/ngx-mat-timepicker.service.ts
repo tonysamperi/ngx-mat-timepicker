@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { NgxMatTimepickerClockFace } from "../models/ngx-mat-timepicker-clock-face.interface";
-import { BehaviorSubject, Observable } from "rxjs";
-import { NgxMatTimepickerPeriods } from "../models/ngx-mat-timepicker-periods.enum";
-import { NgxMatTimepickerAdapter } from "./ngx-mat-timepicker-adapter";
-import { DateTime } from "luxon";
+import {Injectable} from "@angular/core";
+import {NgxMatTimepickerClockFace} from "../models/ngx-mat-timepicker-clock-face.interface";
+import {BehaviorSubject, Observable} from "rxjs";
+import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum";
+import {NgxMatTimepickerAdapter} from "./ngx-mat-timepicker-adapter";
+import {DateTime} from "ts-luxon";
 
 const DEFAULT_HOUR: NgxMatTimepickerClockFace = {
     time: 12,
@@ -84,7 +84,8 @@ export class NgxMatTimepickerService {
     private _setDefaultTime(time: string, format: number) {
         const defaultTime = NgxMatTimepickerAdapter.parseTime(time, {format}).toJSDate();
 
-        if (DateTime.fromJSDate(defaultTime).isValid) {
+        // Check on null, because invalid date will be null
+        if (DateTime.fromJSDate(defaultTime) !== null) {
             const period = time.substr(time.length - 2).toUpperCase();
             const hour = defaultTime.getHours();
 
@@ -92,7 +93,8 @@ export class NgxMatTimepickerService {
             this.minute = {...DEFAULT_MINUTE, time: defaultTime.getMinutes()};
             this.period = period as NgxMatTimepickerPeriods;
 
-        } else {
+        }
+        else {
             this._resetTime();
         }
     }
