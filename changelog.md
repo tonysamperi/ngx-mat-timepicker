@@ -18,3 +18,7 @@
 
 #9.0.4
 * Improved UI for screens up to 360px
+
+#9.0.5
+* Fixed issue with `build --prod`
+* Refactored horrible things in ngx-mat-timepicker-append-to-input.directive

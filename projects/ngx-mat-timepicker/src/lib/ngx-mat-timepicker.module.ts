@@ -10,7 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
-// MAT-TIMEPICKER
+// NGX-MAT-TIMEPICKER
 import {NgxMatTimepickerComponent} from "./components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerToggleComponent} from "./components/ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
 import {NgxMatTimepickerDirective} from "./directives/ngx-mat-timepicker.directive";
@@ -47,7 +47,7 @@ import {
     NgxMatTimepickerContentComponent
 } from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
 import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
-import {AppendToInputDirective} from "./directives/append-to-input.directive";
+import {NgxMatTimepickerAppendToInputDirective} from "./directives/ngx-mat-timepicker-append-to-input.directive";
 
 @NgModule({
     imports: [
@@ -73,7 +73,7 @@ import {AppendToInputDirective} from "./directives/append-to-input.directive";
         NgxMatTimepickerDialogComponent,
         NgxMatTimepickerActiveHourPipe,
         NgxMatTimepickerActiveMinutePipe,
-        AppendToInputDirective,
+        NgxMatTimepickerAppendToInputDirective,
         NgxMatTimepickerComponent,
         NgxMatTimepicker24HoursFaceComponent,
         NgxMatTimepicker12HoursFaceComponent,

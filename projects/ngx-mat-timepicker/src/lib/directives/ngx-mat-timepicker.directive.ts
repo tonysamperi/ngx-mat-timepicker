@@ -9,7 +9,6 @@ import {
     SimpleChanges
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
@@ -31,7 +30,6 @@ import {takeUntil} from "rxjs/operators";
     // tslint:disable-next-line:no-host-metadata-property
     host: {
         "[disabled]": "disabled",
-        // "(change)": "updateValue($event.target.value)",
         "(blur)": "onTouched()",
     },
 })
@@ -185,7 +183,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         this.disabled = isDisabled;
     }
 
-    @HostListener("change")
+    @HostListener("change", ["$event"])
     updateValue(value: string) {
         this.value = value;
         this._onChange(value);
@@ -199,7 +197,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     private _onChange: (value: any) => void = () => {
-    };
+    }
 
     private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
         if (picker) {

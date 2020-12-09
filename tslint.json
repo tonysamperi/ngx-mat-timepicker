@@ -196,7 +196,7 @@
           "const"
         ],
         "format": "UPPER_CASE",
-        "prefix": "NGX_TIMEPICKER_"
+        "prefix": "NGX_MAT_TIMEPICKER_"
       },
       // require exported constant variables that are initialized with functions to be camelCase
       {

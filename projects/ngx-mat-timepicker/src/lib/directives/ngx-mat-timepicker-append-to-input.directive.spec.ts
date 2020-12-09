@@ -1,9 +1,9 @@
-import { AppendToInputDirective } from './append-to-input.directive';
+import { NgxMatTimepickerAppendToInputDirective } from './ngx-mat-timepicker-append-to-input.directive';
 import { TestBed } from '@angular/core/testing';
 import { ElementRef, Renderer2 } from '@angular/core';
 
 describe('AppendToInputDirective', () => {
-    let directive: AppendToInputDirective;
+    let directive: NgxMatTimepickerAppendToInputDirective;
     let renderer: Renderer2;
     const elementRef: ElementRef<HTMLElement> = {
         nativeElement: {
@@ -23,7 +23,7 @@ describe('AppendToInputDirective', () => {
         });
 
         renderer = TestBed.get(Renderer2);
-        directive = new AppendToInputDirective(elementRef, renderer);
+        directive = new NgxMatTimepickerAppendToInputDirective(elementRef, renderer);
     });
 
     describe('Initial Init', () => {
@@ -31,7 +31,7 @@ describe('AppendToInputDirective', () => {
         it(`should render element on 'top' direction`, () => {
             const spy = spyOn(renderer, 'setStyle');
             Object.defineProperty(window, 'innerHeight', {value: 200});
-            directive.inputElement = {
+            directive.ngxMatTimepickerAppendToInput = {
                 getBoundingClientRect: () => {
                     return {
                         left: 10,
@@ -47,7 +47,7 @@ describe('AppendToInputDirective', () => {
         it(`should render element on 'center' direction`, () => {
             const spy = spyOn(renderer, 'setStyle');
             Object.defineProperty(window, 'innerHeight', {value: 200});
-            directive.inputElement = {
+            directive.ngxMatTimepickerAppendToInput = {
                 getBoundingClientRect: () => {
                     return {
                         left: 10,
@@ -63,7 +63,7 @@ describe('AppendToInputDirective', () => {
         it(`should render element on 'bottom' direction`, () => {
             const spy = spyOn(renderer, 'setStyle');
             Object.defineProperty(window, 'innerHeight', {value: 800});
-            directive.inputElement = {
+            directive.ngxMatTimepickerAppendToInput = {
                 getBoundingClientRect: () => {
                     return {
                         left: 10,
@@ -79,7 +79,7 @@ describe('AppendToInputDirective', () => {
         it('should set css on ngAfterViewInit', () => {
             const spy = spyOn(renderer, 'setStyle');
             Object.defineProperty(window, 'innerHeight', {value: 800});
-            directive.inputElement = {
+            directive.ngxMatTimepickerAppendToInput = {
                 getBoundingClientRect: () => {
                     return {
                         left: 10,
