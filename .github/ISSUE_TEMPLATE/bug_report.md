@@ -23,8 +23,10 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
 
-** Version
- - Version [e.g. 9.0.0]
+** Versions
+ - ngx-mat-timepicker version [e.g. 9.0.0]
+ - @angular/core version [e.g. 10.2.3]
+ - @angular/material version [e.g. 10.2.7]
 
 **Additional context (optional)**
 Add any other context about the problem here.
