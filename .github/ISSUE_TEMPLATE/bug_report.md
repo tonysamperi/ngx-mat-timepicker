@@ -27,6 +27,7 @@ If applicable, add screenshots to help explain your problem.
  - ngx-mat-timepicker version [e.g. 9.0.0]
  - @angular/core version [e.g. 10.2.3]
  - @angular/material version [e.g. 10.2.7]
+ - typescript version [es. 3.9.2]
 
 **Additional context (optional)**
 Add any other context about the problem here.
