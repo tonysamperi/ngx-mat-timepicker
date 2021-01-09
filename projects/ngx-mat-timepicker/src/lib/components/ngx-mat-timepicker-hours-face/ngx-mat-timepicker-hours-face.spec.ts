@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import {Component} from "@angular/core";
-import {NgxMatTimepickerHoursFace} from "./ngx-mat-timepicker-hours-face";
+import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-face.directive";
 
 @Component({
     template: "<h1>Test</h1>"
 })
-class Test12HoursComponent extends NgxMatTimepickerHoursFace {
+class Test12HoursComponent extends NgxMatTimepickerHoursFaceDirective {
     constructor() {
         super(12);
     }
@@ -14,7 +14,7 @@ class Test12HoursComponent extends NgxMatTimepickerHoursFace {
 @Component({
     template: "<h1>Test</h1>"
 })
-class Test24HoursComponent extends NgxMatTimepickerHoursFace {
+class Test24HoursComponent extends NgxMatTimepickerHoursFaceDirective {
     constructor() {
         super(24);
     }

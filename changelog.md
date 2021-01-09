@@ -28,3 +28,6 @@
 
 #9.1.1
 * Fixed peer dependencies
+
+#10.0.0
+* Upgrade for Angular 10

@@ -48,6 +48,7 @@ import {
 } from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
 import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
 import {NgxMatTimepickerAppendToInputDirective} from "./directives/ngx-mat-timepicker-append-to-input.directive";
+import {NgxMatTimepickerHoursFaceDirective} from "./components/ngx-mat-timepicker-hours-face/ngx-mat-timepicker-hours-face.directive";
 
 @NgModule({
     imports: [
@@ -70,6 +71,9 @@ import {NgxMatTimepickerAppendToInputDirective} from "./directives/ngx-mat-timep
         NgxMatTimepickerToggleIconDirective
     ],
     declarations: [
+        // Not really used, but needed to use it as abstract class
+        NgxMatTimepickerHoursFaceDirective,
+        //
         NgxMatTimepickerDialogComponent,
         NgxMatTimepickerActiveHourPipe,
         NgxMatTimepickerActiveMinutePipe,
