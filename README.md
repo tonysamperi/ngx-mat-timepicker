@@ -9,8 +9,9 @@
 A simple time picker module using Angular Material: it provides an Android style dialog for time selection and a handy input for time selection in Material style.
 
 ### Why this project?
-The original was nice, but for some reason it didn't adapt your Material theme.
-This project **automatically adapts** to your theme, even if a custom one.
+The original was nice, but for some reason it didn't adapt to your Material theme.
+So an extra config was necessary to have a nice integration in your app.
+This project **automatically adapts** to your Material theme, even if a custom one (so, for example, if you have a dark theme, you'll have a dark dialog!).
 By default it will use the primary color.
 You can choose the color scheme among the three **ThemePalette** items, natively provided by Material: `primary`, `accent`, `warn`.
 
@@ -30,7 +31,7 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 * Angular 9+ + Material 9+
 
-Version for Angular 10 is in development
+Version for Angular 11 is in development
 
 **IMPORTANT**
 Remember to include a Material Theme in your project, example:
