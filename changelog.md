@@ -31,3 +31,6 @@
 
 #10.0.0
 * Upgrade for Angular 10
+
+#11.0.1
+* Upgrade for Angular 11
