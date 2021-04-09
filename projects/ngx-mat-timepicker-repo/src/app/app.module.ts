@@ -40,7 +40,7 @@ import {CodeViewerComponent} from "./code-viewer/code-viewer.component";
         MatToolbarModule,
         MatTooltipModule,
         //
-        NgxMatTimepickerModule.setLocale("it-IT")
+        NgxMatTimepickerModule.setLocale("it-IT"),
     ],
     providers: [],
     bootstrap: [NgxMatTimepickerAppComponent]

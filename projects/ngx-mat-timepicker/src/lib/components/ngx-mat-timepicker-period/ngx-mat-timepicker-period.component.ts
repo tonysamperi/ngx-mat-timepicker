@@ -27,35 +27,28 @@ import {DateTime} from "ts-luxon";
 })
 export class NgxMatTimepickerPeriodComponent {
 
-    timePeriod = NgxMatTimepickerPeriods;
-    isPeriodAvailable = true;
-
-    @Input() selectedPeriod: NgxMatTimepickerPeriods;
-    @Input() format: number;
     @Input() activeTimeUnit: NgxMatTimepickerUnits;
+    @Input() format: number;
     @Input() hours: NgxMatTimepickerClockFace[];
-    @Input() minutes: NgxMatTimepickerClockFace[];
-    @Input() minTime: DateTime;
+    isPeriodAvailable = true;
     @Input() maxTime: DateTime;
-    @Input() selectedHour: number | string;
     @Input() meridiems: string[];
-
+    @Input() minTime: DateTime;
+    @Input() minutes: NgxMatTimepickerClockFace[];
     @Output() periodChanged = new EventEmitter<NgxMatTimepickerPeriods>();
+    @Input() selectedHour: number | string;
+    @Input() selectedPeriod: NgxMatTimepickerPeriods;
+    timePeriod = NgxMatTimepickerPeriods;
+
+    animationDone(): void {
+        this.isPeriodAvailable = true;
+    }
 
     changePeriod(period: NgxMatTimepickerPeriods): void {
         this.isPeriodAvailable = this._isSwitchPeriodAvailable(period);
         if (this.isPeriodAvailable) {
             this.periodChanged.next(period);
         }
-    }
-
-    animationDone(): void {
-        this.isPeriodAvailable = true;
-    }
-
-    private _isSwitchPeriodAvailable(period: NgxMatTimepickerPeriods): boolean {
-        const time = this._getDisabledTimeByPeriod(period);
-        return !time.every(t => t.disabled);
     }
 
     private _getDisabledTimeByPeriod(period: NgxMatTimepickerPeriods): NgxMatTimepickerClockFace[] {
@@ -77,5 +70,11 @@ export class NgxMatTimepickerPeriodComponent {
             default:
                 throw new Error("no such NgxMatTimepickerUnits");
         }
+    }
+
+    private _isSwitchPeriodAvailable(period: NgxMatTimepickerPeriods): boolean {
+        const time = this._getDisabledTimeByPeriod(period);
+
+        return !time.every(t => t.disabled);
     }
 }
