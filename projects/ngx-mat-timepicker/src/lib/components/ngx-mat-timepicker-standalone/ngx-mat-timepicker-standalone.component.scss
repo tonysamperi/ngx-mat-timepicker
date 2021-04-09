@@ -1,0 +1,30 @@
+ngx-mat-timepicker-standalone {
+  display: block;
+  border-radius: 4px;
+  padding: 8px;
+
+  ngx-mat-timepicker-content {
+    display: block;
+
+    mat-toolbar.timepicker-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock-face {
+      margin: 16px;
+    }
+  }
+
+  .ngx-mat-timepicker-standalone-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+

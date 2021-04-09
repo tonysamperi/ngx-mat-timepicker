@@ -29,9 +29,8 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 ### Compatibility
 
-* Angular 9+ + Material 9+
+* v9 < Angular/Material < v12
 
-Version for Angular 11 is in development
 
 **IMPORTANT**
 Remember to include a Material Theme in your project, example:
@@ -58,7 +57,7 @@ Refer to the [Angular Material](https://material.angular.io) website for theming
 
 Install timepicker through npm:
 ```bash
-npm i --save luxon ngx-mat-timepicker
+npm i --save ngx-mat-timepicker
 ```
 Next import the timepicker module into your app's module:
 ```typescript

@@ -1,9 +1,9 @@
-<div [ngxMatTimepickerAppendToInput]="inputElement" *ngIf="appendToInput;else timepickerModal">
-    <ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
+<div *ngIf="appendToInput;else timepickerModal">
+	<ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
 </div>
 <ng-template #timepickerModal>
-    <ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
+	<ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
 </ng-template>
 <ng-template #timepickerOutlet>
-    <ng-content></ng-content>
+	<ng-content></ng-content>
 </ng-template>
