@@ -40,7 +40,11 @@
 #11.0.1
 * Upgrade for Angular 11
 
-#11.0.1
+#11.0.2
 * Fix appendToInput option
 * Fix #11 demo page + readme
 * Moved ts-luxon in dependencies
+
+#11.0.3
+* Fixed focus issue
+* Improved focus trap when appendToInput
