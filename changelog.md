@@ -36,3 +36,6 @@
 * Fix appendToInput option
 * Fix #11 demo page + readme
 * Moved ts-luxon in dependencies
+
+#10.0.2
+* Removed console
