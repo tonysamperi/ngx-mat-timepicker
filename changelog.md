@@ -48,3 +48,6 @@
 #11.0.3
 * Fixed focus issue
 * Improved focus trap when appendToInput
+
+#11.0.4
+* Removed console

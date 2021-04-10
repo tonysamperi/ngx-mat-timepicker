@@ -1,6 +1,6 @@
 {
   "name": "ngx-time-picker",
-  "version": "11.0.2",
+  "version": "11.0.4",
   "license": "MIT",
   "description": "ngx-timepicker is an Angular material 9+ extension to add time pickers!",
   "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",

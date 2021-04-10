@@ -150,8 +150,6 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     constructor(private _elementRef: ElementRef,
                 @Optional() @Inject(MatFormField) private _matFormField: MatFormField,
                 @Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
-
-        console.info("MAT FORM FIELD?", _matFormField);
     }
 
     ngOnChanges(changes: SimpleChanges) {
