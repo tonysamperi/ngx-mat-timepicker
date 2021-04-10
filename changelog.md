@@ -32,5 +32,15 @@
 #10.0.0
 * Upgrade for Angular 10
 
+#10.0.1
+* Fix appendToInput option
+* Fix #11 demo page + readme
+* Moved ts-luxon in dependencies
+
 #11.0.1
 * Upgrade for Angular 11
+
+#11.0.1
+* Fix appendToInput option
+* Fix #11 demo page + readme
+* Moved ts-luxon in dependencies
