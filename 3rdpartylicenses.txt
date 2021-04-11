@@ -394,6 +394,15 @@ Apache-2.0
  
 
 
+smp-core-utils
+SEE LICENCE IN LICENCE
+/* Copyright (C) 2021 Antonino Samperi - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by Antonino Samperi <tonysamperi@gmail.com>, April 2021
+ */
+
+
 ts-luxon
 MIT
 MIT License
