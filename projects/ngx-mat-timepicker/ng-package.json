@@ -5,6 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
   "whitelistedNonPeerDependencies": [
+    "smp-core-utils",
     "ts-luxon"
   ]
 }

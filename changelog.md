@@ -39,3 +39,6 @@
 
 #10.0.2
 * Removed console
+
+#10.0.3
+* Fixed #9: missing dependency
