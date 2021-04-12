@@ -37,6 +37,12 @@
 * Fix #11 demo page + readme
 * Moved ts-luxon in dependencies
 
+#10.0.2
+* Removed console
+
+10.0.3
+* Fixed #9: missing dependency
+
 #11.0.1
 * Upgrade for Angular 11
 
@@ -51,3 +57,6 @@
 
 #11.0.4
 * Removed console
+
+#11.0.5
+* Fixed #9: missing dependency

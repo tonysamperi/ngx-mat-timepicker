@@ -1,6 +1,6 @@
 {
   "name": "ngx-time-picker",
-  "version": "11.0.4",
+  "version": "11.0.5",
   "license": "MIT",
   "description": "ngx-timepicker is an Angular material 9+ extension to add time pickers!",
   "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",
@@ -23,6 +23,10 @@
     "Mobile timepicker",
     "Time picker"
   ],
+  "dependencies": {
+    "smp-core-utils": "~11.0.0",
+    "ts-luxon": "~2.0.3"
+  },
   "peerDependencies": {
     "@angular/animations": "~11.2.4",
     "@angular/cdk": "~11.2.3",
