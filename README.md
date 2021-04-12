@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker) 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tonysamperi/ngx-mat-timepicker/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/tonysamperi/ngx-mat-timepicker.svg?branch=master)](https://travis-ci.com/tonysamperi/ngx-mat-timepicker)
-[![Size](https://img.shields.io/bundlephobia/min/ngx-mat-timepicker)](https://unpkg.com/ngx-mat-timepicker@9.0.0/bundles/ngx-mat-timepicker.umd.js)
+[![Size](https://img.shields.io/bundlephobia/min/ngx-mat-timepicker)](https://unpkg.com/ngx-mat-timepicker@latest/bundles/ngx-mat-timepicker.umd.js)
 
 A simple time picker module using Angular Material: it provides an Android style dialog for time selection and a handy input for time selection in Material style.
 
