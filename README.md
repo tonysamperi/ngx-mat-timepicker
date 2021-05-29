@@ -240,7 +240,9 @@ Selector: `[ngxMatTimepickerToggleIcon]`
 <a href="https://tonysamperi.github.io/ngx-mat-timepicker/">Demo</a>
 
 ### Contribute
-  Hell ya!!!
+  Bug reports and pull requests are welcome.
+  **Please don't open feature requests (That includes issues going "Angular v145477896 is out", especially if v145477896 was out a few days ago. I manage the updates as soon as I can), because I have no time bandwidth to handle them.**
+   Such issues will be deleted immediately.
   
 ```terminal
   $ npm install
