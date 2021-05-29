@@ -1,8 +1,8 @@
 export interface NgxMaxTimepickerFaceTheme {
-    clockFaceTimeActiveColor?: string;
-    clockFaceTimeInactiveColor?: string;
-    clockFaceInnerTimeInactiveColor?: string;
-    clockFaceTimeDisabledColor?: string;
     clockFaceBackgroundColor?: string;
+    clockFaceInnerTimeInactiveColor?: string;
+    clockFaceTimeActiveColor?: string;
+    clockFaceTimeDisabledColor?: string;
+    clockFaceTimeInactiveColor?: string;
     clockHandColor?: string;
 }
