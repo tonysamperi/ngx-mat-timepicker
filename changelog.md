@@ -28,3 +28,7 @@
 
 #9.1.1
 * Fixed peer dependencies
+
+#9.1.2
+* Fixed "appendToInput"
+* Moved ts-luxon to dependencies

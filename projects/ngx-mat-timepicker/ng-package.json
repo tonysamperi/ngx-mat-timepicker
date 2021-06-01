@@ -3,5 +3,8 @@
   "dest": "../../dist/ngx-mat-timepicker",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "ts-luxon"
+  ]
 }

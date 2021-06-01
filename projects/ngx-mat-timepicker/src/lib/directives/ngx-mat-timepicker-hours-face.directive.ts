@@ -1,13 +1,13 @@
 import {EventEmitter, Input, Output} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
-import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
-import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import {NgxMatTimepickerClockFace} from "../models/ngx-mat-timepicker-clock-face.interface";
+import {NgxMatTimepickerUtils} from "../utils/ngx-mat-timepicker.utils";
 //
 import {DateTime} from "ts-luxon";
 
 
-export class NgxMatTimepickerHoursFace {
+export class NgxMatTimepickerHoursFaceDirective {
 
     @Input()
     set color(newValue: ThemePalette) {

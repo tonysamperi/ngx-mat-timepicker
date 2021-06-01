@@ -111,8 +111,7 @@
     </h2>
     <div class="terminal">
         <ul>
-            <li>npm i @popperjs/core</li>
-            <li>npm i ngx-popperjs</li>
+            <li>npm i ngx-mat-timepicker</li>
         </ul>
     </div>
 </div>
@@ -269,6 +268,43 @@
     &lt;ngx-mat-timepicker color="accent"
                         #pickerC&gt;&lt;/ngx-mat-timepicker&gt;
 &lt;/div&gt;
+                    </code>
+                </pre>
+            </code-viewer>
+        </div>
+        <div>
+            <h2>Append to input</h2>
+            <p>using appendToInput</p>
+            <code-viewer>
+                <div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+                    <mat-form-field>
+                        <input matInput
+                               name="selected_time"
+                               [format]="24"
+                               [(ngModel)]="selectedTime"
+                               [ngxMatTimepicker]="pickerD"
+                               placeholder="12:00"
+                               readonly />
+                        <mat-icon matSuffix
+                                  (click)="pickerD.open()">watch_later
+                        </mat-icon>
+                    </mat-form-field>
+                    <button mat-raised-button
+                            class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+                            (click)="pickerD.open()"
+                            color="primary">
+                        Open picker
+                    </button>
+                    <div class="ngx-mtp-box-bordered">
+                        <small>ngx-mat-timepicker is here</small>
+                        <ngx-mat-timepicker color="accent"
+                                            appendToInput="true"
+                                            #pickerD></ngx-mat-timepicker>
+                    </div>
+                </div>
+                <pre class="language-markup">
+                    <code>
+
                     </code>
                 </pre>
             </code-viewer>
