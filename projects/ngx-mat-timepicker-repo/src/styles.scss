@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "./scss/themes";
 
 @font-face {
@@ -17,30 +18,30 @@ body {
 
   a {
     &.mat-color-primary {
-      color: mat-color($candy-app-primary);
+      color: mat.get-color-from-palette($candy-app-primary);
       -webkit-text-decoration: none;
       text-decoration: none;
       padding-bottom: 1px;
-      border-bottom: 2px solid rgba(mat-color($candy-app-primary), 0.25);
+      border-bottom: 2px solid rgba(mat.get-color-from-palette($candy-app-primary), 0.25);
       -webkit-transition: border-bottom-color 0.15s ease-in-out;
       transition: border-bottom-color 0.15s ease-in-out;
 
       &:hover {
-        border-bottom: 2px solid rgba(mat-color($candy-app-primary), 1);
+        border-bottom: 2px solid rgba(mat.get-color-from-palette($candy-app-primary), 1);
       }
     }
 
     &.mat-color-accent {
-      color: mat-color($candy-app-accent);
+      color: mat.get-color-from-palette($candy-app-accent);
       -webkit-text-decoration: none;
       text-decoration: none;
       padding-bottom: 1px;
-      border-bottom: 2px solid rgba(mat-color($candy-app-accent), 0.25);
+      border-bottom: 2px solid rgba(mat.get-color-from-palette($candy-app-accent), 0.25);
       -webkit-transition: border-bottom-color 0.15s ease-in-out;
       transition: border-bottom-color 0.15s ease-in-out;
 
       &:hover {
-        border-bottom: 2px solid rgba(mat-color($candy-app-accent), 1);
+        border-bottom: 2px solid rgba(mat.get-color-from-palette($candy-app-accent), 1);
       }
     }
   }
@@ -96,20 +97,20 @@ body {
   }
 
   .ngx-mtp-top, footer {
-    background-color: mat-color($candy-app-primary);
-    color: mat-color($candy-app-primary, default-contrast);
+    background-color: mat.get-color-from-palette($candy-app-primary);
+    color: mat.get-color-from-palette($candy-app-primary, default-contrast);
   }
 
   .mat-color-primary {
-    color: mat-color($candy-app-primary);
+    color: mat.get-color-from-palette($candy-app-primary);
   }
 
   .mat-color-accent {
-    color: mat-color($candy-app-accent);
+    color: mat.get-color-from-palette($candy-app-accent);
   }
 
   .mat-color-warn {
-    color: mat-color($candy-app-warn);
+    color: mat.get-color-from-palette($candy-app-warn);
   }
 
   .ngx-mtp-margin-top {
@@ -126,7 +127,7 @@ body {
     border-radius: 10px;
     padding: 8px;
     width: 100%;
-    border: 2px dashed mat-color($candy-app-primary);
+    border: 2px dashed mat.get-color-from-palette($candy-app-primary);
   }
 
   .ngx-mtp-generic-section {
@@ -141,33 +142,33 @@ body {
   }
 
   // Include the default theme styles.
-  @include angular-material-theme($candy-app-theme);
+  @include mat.all-component-themes($candy-app-theme);
 
   &.dark-theme {
-    @include angular-material-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
 
     a {
       &.mat-color-primary {
-        color: mat-color($dark-primary);
-        border-bottom: 2px solid rgba(mat-color($dark-primary), 0.25);
+        color: mat.get-color-from-palette($dark-primary);
+        border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 0.25);
 
         &:hover {
-          border-bottom: 2px solid rgba(mat-color($dark-primary), 1);
+          border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 1);
         }
       }
 
       &.mat-color-accent {
-        color: mat-color($dark-accent);
-        border-bottom: 2px solid rgba(mat-color($dark-accent), 0.25);
+        color: mat.get-color-from-palette($dark-accent);
+        border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-accent), 0.25);
 
         &:hover {
-          border-bottom: 2px solid rgba(mat-color($dark-accent), 1);
+          border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-accent), 1);
         }
       }
     }
 
     .ngx-mtp-box-bordered {
-      border-color: mat-color($dark-primary);
+      border-color: mat.get-color-from-palette($dark-primary);
     }
 
     .ngx-mtp-generic-section {
@@ -176,20 +177,20 @@ body {
     }
 
     .ngx-mtp-top, footer {
-      background-color: mat-color($dark-primary);
-      color: mat-color($dark-primary, default-contrast);
+      background-color: mat.get-color-from-palette($dark-primary);
+      color: mat.get-color-from-palette($dark-primary, default-contrast);
     }
 
     .mat-color-primary {
-      color: mat-color($dark-primary);
+      color: mat.get-color-from-palette($dark-primary);
     }
 
     .mat-color-accent {
-      color: mat-color($dark-accent);
+      color: mat.get-color-from-palette($dark-accent);
     }
 
     .mat-color-warn {
-      color: mat-color($dark-warn);
+      color: mat.get-color-from-palette($dark-warn);
     }
   }
 }
