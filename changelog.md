@@ -63,3 +63,7 @@
 
 #11.0.6
 * Improved appearance of standalone timepicker
+
+#12.0.0
+* Upgrade for Angular 12
+* Improved appearance (yes, again) of standalone timepicker
