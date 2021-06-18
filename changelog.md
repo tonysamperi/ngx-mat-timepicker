@@ -60,3 +60,6 @@
 
 #11.0.5
 * Fixed #9: missing dependency
+
+#11.0.6
+* Improved appearance of standalone timepicker
