@@ -28,9 +28,9 @@
             [preventTyping]="isTimeRangeSet"
             (timeChanged)="changeMinute($event)"></ngx-mat-timepicker-time-control>
     <mat-form-field class="period-select ngx-mat-timepicker__control--forth"
+                    *ngIf="format !== 24"
                     [color]="color">
         <mat-select [disabled]="disabled || isChangePeriodDisabled"
-                    *ngIf="format !== 24"
                     (selectionChange)="changePeriod($event)"
                     [ngModel]="period">
             <mat-option *ngFor="let option of periods"

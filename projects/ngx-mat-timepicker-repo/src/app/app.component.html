@@ -201,13 +201,23 @@
             <p>using <span class="mat-color-warn">warn</span> palette</p>
             <code-viewer>
                 <div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+                    <p><strong>format = 12</strong></p>
                     <ngx-mat-timepicker-field color="warn"
-                                              [defaultTime]="'11:11 AM'"></ngx-mat-timepicker-field>
+                                              [format]="12"
+                                              [defaultTime]="'11:11 PM'"></ngx-mat-timepicker-field>
+                    <p><strong>format = 24</strong></p>
+                    <ngx-mat-timepicker-field color="warn"
+                                              [format]="24"
+                                              [defaultTime]="'23:11'"></ngx-mat-timepicker-field>
                 </div>
                 <pre class="language-markup">
                     <code>
 &lt;ngx-mat-timepicker-field color="warn"
-                          [defaultTime]="'11:11 AM'">&lt;/ngx-mat-timepicker-field&gt;
+                          [format]="12"
+                          [defaultTime]="'11:11 PM'"&gt;&lt;/ngx-mat-timepicker-field&gt;
+ &lt;ngx-mat-timepicker-field color="warn"
+                           [format]="24"
+                           [defaultTime]="'23:11'"&gt;&lt;/ngx-mat-timepicker-field&gt;
                     </code>
                 </pre>
             </code-viewer>

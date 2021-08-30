@@ -67,3 +67,7 @@
 #12.0.0
 * Upgrade for Angular 12
 * Improved appearance (yes, again) of standalone timepicker
+
+#12.1.0
+* Fixed format 12h breaking on ngx-mat-timepicker-field
+* Allowing all angular minor vrs above 12.0.5
