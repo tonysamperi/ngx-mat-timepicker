@@ -21,6 +21,7 @@ export class NgxMatTimepickerToggleComponent {
 
     @ContentChild(NgxMatTimepickerToggleIconDirective, {static: true}) customIcon: NgxMatTimepickerToggleIconDirective;
 
+    // tslint:disable-next-line:no-input-rename
     @Input("for") timepicker: NgxMatTimepickerComponent;
 
     private _disabled: boolean;

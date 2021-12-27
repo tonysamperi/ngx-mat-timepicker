@@ -46,7 +46,7 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
 
     protected _color: ThemePalette = "primary";
     protected _defaultTime: string;
-    protected _subsCtrl$ = new Subject();
+    protected _subsCtrl$: Subject<void> = new Subject<void>();
 
     constructor(protected _timepickerSrv: NgxMatTimepickerService,
                 protected _eventSrv: NgxMatTimepickerEventService,

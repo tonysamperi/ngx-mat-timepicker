@@ -71,3 +71,7 @@
 #12.1.0
 * Fixed format 12h breaking on ngx-mat-timepicker-field
 * Allowing all angular minor vrs above 12.0.5
+
+#13.0.0
+* Switched to yarn (dev only)
+* Update for Angular 13! 🎉

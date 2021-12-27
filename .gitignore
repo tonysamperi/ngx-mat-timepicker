@@ -8,6 +8,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# angular cache
+.angular
+
 # dependencies
 /node_modules
 

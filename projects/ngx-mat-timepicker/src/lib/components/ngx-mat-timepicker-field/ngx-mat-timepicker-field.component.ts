@@ -163,7 +163,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _min: string | DateTime;
     private _previousFormat: number;
     private _selectedHour: number;
-    private _subsCtrl$ = new Subject();
+    private _subsCtrl$: Subject<void> = new Subject<void>();
 
     constructor(private _timepickerService: NgxMatTimepickerService,
                 @Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
@@ -266,7 +266,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
 
     private _initTime(time): void {
         const isDefaultTimeAvailable = NgxMatTimepickerAdapter
-        .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, "minutes", null, this.format);
+            .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, "minutes", null, this.format);
         if (!isDefaultTimeAvailable) {
             if (this.min) {
                 this._updateTime(NgxMatTimepickerAdapter.fromDateTimeToString(this.min as DateTime, this.format));
@@ -292,7 +292,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     private _onChange: (value: string) => void = () => {
-    }
+    };
 
     private _resetTime(): void {
         this._timepickerService.hour = {angle: 0, time: null};

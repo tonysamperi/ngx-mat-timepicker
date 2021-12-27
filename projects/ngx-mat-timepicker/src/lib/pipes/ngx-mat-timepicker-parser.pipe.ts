@@ -15,7 +15,7 @@ export class NgxMatTimepickerParserPipe implements PipeTransform {
     private readonly _numberingSystem: NumberingSystem;
 
     constructor(@Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
-        this._numberingSystem = DateTime.local().setLocale(this._locale).resolvedLocaleOpts().numberingSystem as NumberingSystem;
+        this._numberingSystem = DateTime.local().setLocale(this._locale).resolvedLocaleOptions().numberingSystem as NumberingSystem;
     }
 
     transform(time: string | number, timeUnit = NgxMatTimepickerUnits.HOUR): string {
