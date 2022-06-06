@@ -163,6 +163,6 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-mat-timepicker"
+    }
+  }
 }
