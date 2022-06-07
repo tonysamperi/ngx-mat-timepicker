@@ -80,14 +80,32 @@
                   "with": "projects/ngx-mat-timepicker-repo/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
+              "optimization": true,
               "namedChunks": false,
-              "extractLicenses": true,
               "vendorChunk": false,
+              "extractLicenses": true,
               "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "20kb"
+                }
+              ]
+            },
+            "dev": {
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "optimization": false,
+              "namedChunks": false,
+              "vendorChunk": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -109,10 +127,14 @@
             "browserTarget": "ngx-mat-timepicker-repo:build"
           },
           "configurations": {
+            "dev": {
+              "browserTarget": "ngx-mat-timepicker-repo:build:dev"
+            },
             "production": {
               "browserTarget": "ngx-mat-timepicker-repo:build:production"
             }
-          }
+          },
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
