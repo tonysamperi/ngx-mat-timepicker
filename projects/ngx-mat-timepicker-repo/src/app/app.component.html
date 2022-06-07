@@ -1,5 +1,5 @@
 <ng-template #fakeRadioButton>
-    <mat-icon> radio_button_unchecked</mat-icon>
+    <mat-icon>radio_button_unchecked</mat-icon>
 </ng-template>
 <mat-toolbar class="ngx-mtp-header mat-elevation-z6"
              color="primary">
@@ -314,7 +314,24 @@
                 </div>
                 <pre class="language-markup">
                     <code>
-
+&lt;mat-form-field&gt;
+    &lt;input matInput
+    [format]="24"
+    [(ngModel)]="selectedTime"
+    [ngxMatTimepicker]="pickerD"
+    placeholder="12:00"
+    readonly /&gt;
+    &lt;mat-icon matSuffix
+              (click)="pickerD.open()"&gt;
+        watch_later
+    &lt;/mat-icon&gt;
+&lt;/mat-form-field&gt;
+&lt;div class="ngx-mtp-box-bordered"&gt;
+    &lt;small&gt;ngx-mat-timepicker is here&lt;/small&gt;
+     &gt;ngx-mat-timepicker color="accent"
+                         appendToInput="true"
+                         #pickerD&gt;&lt;/ngx-mat-timepicker&gt;
+&lt;/div&gt;
                     </code>
                 </pre>
             </code-viewer>

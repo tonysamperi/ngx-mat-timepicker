@@ -7,7 +7,8 @@ import {
     Input,
     OnChanges,
     OnDestroy,
-    SimpleChanges, Optional
+    SimpleChanges,
+    Optional
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 //
@@ -33,8 +34,8 @@ import {MatFormField} from "@angular/material/form-field";
     // tslint:disable-next-line:no-host-metadata-property
     host: {
         "[disabled]": "disabled",
-        "(blur)": "onTouched()",
-    },
+        "(blur)": "onTouched()"
+    }
 })
 export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestroy, OnChanges {
 
@@ -133,7 +134,6 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         });
     }
 
-    // TODO: IMPROVE DETECTING (INJECT) MAT-FORM-FIELD IF PRESENT
     @HostBinding("attr.cdkOverlayOrigin") cdkOverlayOrigin: CdkOverlayOrigin =
         new CdkOverlayOrigin(this._matFormField ? this._matFormField.getConnectedOverlayOrigin() : this._elementRef);
     @Input() disableClick: boolean;
@@ -173,7 +173,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     onTouched = () => {
-    }
+    };
 
     registerOnChange(fn: (value: any) => void): void {
         this._onChange = fn;
@@ -201,7 +201,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     private _onChange: (value: any) => void = () => {
-    }
+    };
 
     private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
         if (picker) {

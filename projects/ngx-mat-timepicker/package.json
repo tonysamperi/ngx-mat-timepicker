@@ -24,7 +24,6 @@
     "Time picker"
   ],
   "dependencies": {
-    "smp-core-utils": "^13.0.0",
     "ts-luxon": "^3.0.1"
   },
   "peerDependencies": {

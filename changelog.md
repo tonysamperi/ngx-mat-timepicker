@@ -75,3 +75,7 @@
 #13.0.0
 * Switched to yarn (dev only)
 * Update for Angular 13! 🎉
+
+13.1.0
+* Removed smp-core-utils
+* Added coerceBooleanProperty for appendToInput
