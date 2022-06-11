@@ -1,9 +1,9 @@
-import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, Inject, ViewEncapsulation} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 //
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
+import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 
@@ -21,9 +21,9 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
                 protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
-                @Inject(NGX_MAT_TIMEPICKER_LOCALE) locale: string) {
+                timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
 
-        super(timepickerSrv, eventSrv, locale, data);
+        super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
     close(): void {

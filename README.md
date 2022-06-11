@@ -129,6 +129,12 @@ Selector: `ngxMatTimepicker`
 | @Input()
   disableClick: boolean | Set `true` to disable opening timepicker by clicking on the input |
 
+#### NgxMatTimepickerLocaleService (⭐NEW FROM v 13.2.0!!!⭐)
+
+This service allows to **change the locale anytime**.
+You can inject this in your component or extend and provide your version, in order to provide your current locale to all the pickers!
+At this time is **semi-static**, which means you can't change the locale for pickers that are already opened.
+But **new pickers will always get the updated locale**.
   
 #### NgxMatTimepickerComponent
 
@@ -137,7 +143,6 @@ Component responsible for visualisation the timepicker
 Selector: `ngx-mat-timepicker`
 
 **Properties**
-
 
 | Name | Description |
 |------|-------------|
@@ -184,7 +189,6 @@ Selector: `ngx-mat-timepicker-field`
 
 **Properties**
 
-
 | Name | Description |
 |------|-------------|
 | @Input()
@@ -220,7 +224,6 @@ Component responsible for opening the timepicker.
 Selector: `ngx-mat-timepicker-toggle`
 
 **Properties**
-
 
 | Name | Description |
 |------|-------------|

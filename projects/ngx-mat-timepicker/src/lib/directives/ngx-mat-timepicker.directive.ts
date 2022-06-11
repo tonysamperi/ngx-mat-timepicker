@@ -14,7 +14,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../tokens/ngx-mat-timepicker-time-locale.token";
+import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 //
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
@@ -134,6 +134,10 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         });
     }
 
+    private get _locale(): string {
+        return this._timepickerLocaleSrv.locale;
+    }
+
     @HostBinding("attr.cdkOverlayOrigin") cdkOverlayOrigin: CdkOverlayOrigin =
         new CdkOverlayOrigin(this._matFormField ? this._matFormField.getConnectedOverlayOrigin() : this._elementRef);
     @Input() disableClick: boolean;
@@ -148,8 +152,8 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _value: string = "";
 
     constructor(private _elementRef: ElementRef,
-                @Optional() @Inject(MatFormField) private _matFormField: MatFormField,
-                @Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
+                private _timepickerLocaleSrv: NgxMatTimepickerLocaleService,
+                @Optional() @Inject(MatFormField) private _matFormField: MatFormField) {
     }
 
     ngOnChanges(changes: SimpleChanges) {

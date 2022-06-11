@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Input,
     OnDestroy,
     OnInit,
@@ -15,13 +14,13 @@ import {MatSelectChange} from "@angular/material/select";
 import {ThemePalette} from "@angular/material/core";
 import {FloatLabelType} from "@angular/material/form-field";
 //
+import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
 import {DateTime} from "ts-luxon";
@@ -119,6 +118,10 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._min = value;
     }
 
+    private get _locale(): string {
+        return this._timepickerLocaleSrv.locale;
+    }
+
     @Input()
     cancelBtnTmpl: TemplateRef<Node>;
 
@@ -166,7 +169,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _subsCtrl$: Subject<void> = new Subject<void>();
 
     constructor(private _timepickerService: NgxMatTimepickerService,
-                @Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
+                private _timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
     }
 
     changeHour(hour: number): void {
