@@ -76,6 +76,9 @@
 * Switched to yarn (dev only)
 * Update for Angular 13! 🎉
 
-13.1.0
+#13.1.0
 * Removed smp-core-utils
 * Added coerceBooleanProperty for appendToInput
+
+#13.2.0
+* Dynamic locale implemented (fixes #2)

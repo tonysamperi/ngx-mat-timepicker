@@ -14,10 +14,11 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltipModule} from "@angular/material/tooltip";
 //
-import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {NgxMatTimepickerModule, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerAppComponent} from "./app.component";
 import {CodeViewerComponent} from "./code-viewer/code-viewer.component";
+import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
 
 @NgModule({
     declarations: [
@@ -40,9 +41,11 @@ import {CodeViewerComponent} from "./code-viewer/code-viewer.component";
         MatToolbarModule,
         MatTooltipModule,
         //
-        NgxMatTimepickerModule.setLocale("it-IT"),
+        NgxMatTimepickerModule
     ],
-    providers: [],
+    providers: [
+        {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
+    ],
     bootstrap: [NgxMatTimepickerAppComponent]
 })
 export class NgxMatTimepickerAppModule {
