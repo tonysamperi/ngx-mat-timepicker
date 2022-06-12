@@ -36,7 +36,7 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 ### Compatibility
 
-* v9 < Angular/Material < v14
+* v9 < Angular/Material < v15
 
 **IMPORTANT**
 Remember to include a Material Theme in your project, example:
