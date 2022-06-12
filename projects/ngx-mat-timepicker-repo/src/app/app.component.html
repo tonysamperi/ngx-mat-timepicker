@@ -123,7 +123,8 @@
 			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">
 				<span class="locale"
 					  [class.active]="myLocales[locale] === currentLocale"
-					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator" *ngIf="!last"> | </span>
+					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"
+																			*ngIf="!last"> | </span>
 			</ng-container>
 		</p>
 		<button mat-raised-button
@@ -305,26 +306,19 @@
 				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
 					<mat-form-field>
 						<input matInput
-							   name="selected_time"
+							   name="selected_time_d"
 							   [format]="24"
 							   [(ngModel)]="selectedTime"
 							   [ngxMatTimepicker]="pickerD"
-							   placeholder="12:00"
+							   placeholder="23:59"
 							   readonly />
 						<mat-icon matSuffix
 								  (click)="pickerD.open()">watch_later
 						</mat-icon>
 					</mat-form-field>
-					<button mat-raised-button
-							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
-							(click)="pickerD.open()"
-							color="primary">
-						Open picker
-					</button>
 					<div class="ngx-mtp-box-bordered">
 						<small>ngx-mat-timepicker is here</small>
 						<ngx-mat-timepicker color="accent"
-											appendToInput="true"
                                             #pickerD></ngx-mat-timepicker>
 					</div>
 				</div>
@@ -344,10 +338,63 @@
 &lt;/mat-form-field&gt;
 &lt;div class="ngx-mtp-box-bordered"&gt;
     &lt;small&gt;ngx-mat-timepicker is here&lt;/small&gt;
-     &gt;ngx-mat-timepicker color="accent"
+     &lt;ngx-mat-timepicker color="accent"
                          appendToInput="true"
                          #pickerD&gt;&lt;/ngx-mat-timepicker&gt;
 &lt;/div&gt;
+                    </code>
+                </pre>
+			</code-viewer>
+		</div>
+		<div>
+			<h2>Open programmatically</h2>
+			<p>use external button to open the picker</p>
+			<code-viewer>
+				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+					<mat-form-field>
+						<input matInput
+							   name="selected_time_e"
+							   [format]="24"
+							   [(ngModel)]="selectedTime"
+							   [ngxMatTimepicker]="pickerE"
+							   placeholder="12:00"
+							   readonly />
+						<mat-icon matSuffix
+								  (click)="pickerE.open()">watch_later
+						</mat-icon>
+					</mat-form-field>
+					<button mat-raised-button
+							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+							(click)="pickerE.open()"
+							color="primary">
+						Open picker
+					</button>
+					<ngx-mat-timepicker color="accent"
+										appendToInput="true"
+                                        #pickerE></ngx-mat-timepicker>
+				</div>
+				<pre class="language-markup">
+                    <code>
+&lt;mat-form-field&gt;
+    &lt;input matInput
+    [format]="24"
+    [(ngModel)]="selectedTime"
+    [ngxMatTimepicker]="pickerE"
+    placeholder="12:00"
+    readonly /&gt;
+    &lt;mat-icon matSuffix
+              (click)="pickerE.open()"&gt;
+        watch_later
+    &lt;/mat-icon&gt;
+&lt;/mat-form-field&gt;
+&lt;button mat-raised-button
+		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+		(click)="pickerE.open()"
+		color="primary"&gt;
+    Open picker
+&lt;/button&gt;
+ &lt;ngx-mat-timepicker color="accent"
+					 #pickerE&gt;&lt;/ngx-mat-timepicker&gt;
                     </code>
                 </pre>
 			</code-viewer>
@@ -386,13 +433,13 @@
 		Ready to start?
 	</h2>
 	<p>Go to the <a class="mat-color-primary"
-					href="http://github.com/tonysamperi/ngx-mat-timepicker">docs</a>!</p>
+					[href]="githubLink">docs</a>!</p>
 </div>
 <footer>
 	<p>Created with ♥ by <a class="mat-color-accent"
-							href="tonysamperi.github.io"
+							href="https://tonysamperi.github.io"
 							target="_blank">Tony
 		Samperi</a>
 	</p>
-	<p>© 2020 MIT License</p>
+	<p>© <span>{{year}}</span> MIT License</p>
 </footer>

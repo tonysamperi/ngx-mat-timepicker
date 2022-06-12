@@ -35,6 +35,7 @@ export class NgxMatTimepickerAppComponent {
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}
     ];
+    year: number = new Date().getFullYear();
 
     private _nextLocale: number = 0;
 
