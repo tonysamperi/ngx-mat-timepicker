@@ -1,3 +1,6 @@
+#14.0.0
+* Update for Angular 14! 🎉
+
 #13.2.1
 * Version bump (inverted changelog)
 
