@@ -1,6 +1,9 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 //
 import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {map} from "rxjs";
+//
+import {ajax, AjaxResponse} from "rxjs/ajax";
 
 // tslint:disable-next-line:naming-convention
 interface Theme {
@@ -8,19 +11,22 @@ interface Theme {
     value: string;
 }
 
+const pkgName = "ngx-mat-timepicker";
+
 @Component({
     // tslint:disable-next-line:component-selector
     selector: "app-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"]
 })
-export class NgxMatTimepickerAppComponent {
+export class NgxMatTimepickerAppComponent implements OnInit {
 
     get currentLocale() {
         return this._localeOverrideSrv.locale;
     }
 
-    githubLink: string = "https://github.com/tonysamperi/ngx-mat-timepicker";
+    githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
+    latestVersion: string = "";
     myLocaleKeys: string[];
     myLocales: Record<"en" | "it" | "es" | "fr", string> = {
         en: "en-GB",
@@ -28,6 +34,7 @@ export class NgxMatTimepickerAppComponent {
         es: "es-ES",
         fr: "fr-FR"
     };
+    npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
     selectedTheme: Theme;
     selectedTime: string;
     showInput: boolean = !0;
@@ -40,8 +47,18 @@ export class NgxMatTimepickerAppComponent {
     private _nextLocale: number = 0;
 
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
+    }
+
+    ngOnInit(): void {
         this.myLocaleKeys = Object.keys(this.myLocales);
         this.selectedTheme = this.themes[0];
+        ajax.get(`https://unpkg.com/${pkgName}@latest/package.json`)
+            .pipe(map((raw: AjaxResponse<any>) => {
+                return raw.response?.version;
+            }))
+            .subscribe((version: string) => {
+                this.latestVersion = version;
+            });
     }
 
     updateLocale(localeKey?: string): void {
