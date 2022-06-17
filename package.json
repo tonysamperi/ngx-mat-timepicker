@@ -29,7 +29,7 @@
     "start": "ng serve",
     "test": "ng test",
     "build": "ng build ngx-mat-timepicker --configuration=production && gulp postBuild",
-    "build:demo": "ng build ngx-mat-timepicker-repo --configuration=production --baseHref=",
+    "build:demo": "ng build ngx-mat-timepicker-repo --configuration=production --base-href=",
     "publish": "npm publish ./dist/ngx-mat-timepicker",
     "lint": "ng lint",
     "e2e": "ng e2e"
