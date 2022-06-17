@@ -1,3 +1,6 @@
+#14.0.1
+* Fixed peer deps (fixes [#32](https://github.com/tonysamperi/ngx-mat-timepicker/issues/32))
+
 #14.0.0
 * Update for Angular 14! 🎉
 
