@@ -1,17 +1,30 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: BUGS ONLY!
+about: DO NOT OPEN TO ASK FOR NEXT VERSION!
 title: "[BUG] - Summary of the problem here"
 labels: ''
 assignees: ''
 
 ---
 
+**NOTE**
+
+**REQUESTS WILL BE IMMEDIATELY DELETED, you cannot do feature requests such as "Update to Angular xx"**
+I deal with updates with my own schedule, don't need a reminder. 
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
 **To Reproduce**
 Possibly create a stackblitz reproducing the bug, or a zip with basic sources for a reproduction
+
+OR
+
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
