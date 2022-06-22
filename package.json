@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "13.2.1",
+  "version": "13.2.2",
   "license": "MIT",
   "private": true,
   "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
@@ -31,7 +31,7 @@
     "build": "ng build --configuration=production && gulp postBuild",
     "build:alt": "ng build --configuration=production && gulp postBuild:alt",
     "build:demo": "ng build --configuration=production --baseHref= ngx-mat-timepicker-repo",
-    "publish": "npm publish ./dist/ngx-mat-timepicker",
+    "publish": "npm publish ./dist/ngx-mat-timepicker --tag latest-ng13",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

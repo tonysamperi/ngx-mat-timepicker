@@ -1,3 +1,6 @@
+#13.2.2
+* Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
+
 #13.2.1
 * Version bump (inverted changelog)
 
