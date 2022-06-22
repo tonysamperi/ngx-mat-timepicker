@@ -44,7 +44,7 @@ import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
         NgxMatTimepickerModule
     ],
     providers: [
-        {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
+        // {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
     ],
     bootstrap: [NgxMatTimepickerAppComponent]
 })
