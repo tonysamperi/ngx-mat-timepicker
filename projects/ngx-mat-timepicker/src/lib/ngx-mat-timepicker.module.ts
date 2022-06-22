@@ -109,6 +109,9 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         NgxMatTimepickerContentComponent,
         NgxMatTimepickerTimeFormatterPipe,
         NgxMatTimepickerTimeLocalizerPipe
+    ],
+    providers: [
+        NgxMatTimepickerLocaleService
     ]
 })
 export class NgxMatTimepickerModule {

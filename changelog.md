@@ -1,3 +1,6 @@
+#14.0.2
+* Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
+
 #14.0.1
 * Fixed peer deps (fixes [#32](https://github.com/tonysamperi/ngx-mat-timepicker/issues/32))
 
