@@ -7,6 +7,12 @@
 #14.0.0
 * Update for Angular 14! 🎉
 
+#13.2.3
+* Patching accidentally build without refreshing deps (fixes [#35](https://github.com/tonysamperi/ngx-mat-timepicker/issues/35))
+
+#13.2.2 (deprecated)
+* Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
+
 #13.2.1
 * Version bump (inverted changelog)
 
