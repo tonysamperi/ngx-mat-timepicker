@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "12.1.0",
+  "version": "12.1.1",
   "license": "MIT",
   "private": true,
   "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
@@ -28,9 +28,9 @@
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
-    "build": "ng build --prod && gulp postBuild",
-    "build:alt": "ng build --prod && gulp postBuild:alt",
-    "build:demo": "ng build --prod --baseHref= ngx-mat-timepicker-repo",
+    "build": "ng build --configuration=production",
+    "postbuild": "gulp postBuild",
+    "build:demo": "ng build --configuration=production --baseHref= ngx-mat-timepicker-repo",
     "pack": "gulp pack",
     "publish": "npm publish ./dist/ngx-mat-timepicker",
     "lint": "ng lint",
@@ -47,13 +47,12 @@
     "@angular/platform-browser": "^12.0.5",
     "@angular/platform-browser-dynamic": "^12.0.5",
     "rxjs": "^6.6.7",
-    "smp-core-utils": "11.0.0",
     "ts-luxon": "^2.0.3",
     "tslib": "^2.3.0",
     "zone.js": "^0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1002.0",
+    "@angular-devkit/build-angular": "^12.0.5",
     "@angular-devkit/build-ng-packagr": "^0.1002.0",
     "@angular/cli": "^12.0.5",
     "@angular/compiler-cli": "^12.0.5",
@@ -63,7 +62,7 @@
     "@types/node": "^12.12.70",
     "codelyzer": "^5.2.2",
     "gulp": "^4.0.2",
-    "gulp-rename": "^2.0.0",
+    "gulp-bump": "^3.2.0",
     "jasmine-core": "^2.99.1",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^4.1.0",
@@ -71,14 +70,13 @@
     "karma-coverage-istanbul-reporter": "^2.0.1",
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "ng-packagr": "^5.4.0",
+    "ng-packagr": "^12.0.5",
     "node-sass-tilde-importer": "^1.0.2",
     "prismjs": "^1.21.0",
     "protractor": "^7.0.0",
     "ts-node": "^7.0.0",
-    "tsickle": ">=0.29.0",
     "tslint": "^6.1.3",
     "tslint-consistent-codestyle": "^1.16.0",
-    "typescript": "^4.2.4"
+    "typescript": "~4.2.4"
   }
 }

@@ -2,7 +2,6 @@ import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef, ViewCo
 import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
-import {SmpDomService} from "smp-core-utils";
 //
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
@@ -151,8 +150,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         private _vcr: ViewContainerRef,
         private _eventService: NgxMatTimepickerEventService,
         private _dialog: MatDialog,
-        private _overlay: Overlay,
-        private _domService: SmpDomService) {
+        private _overlay: Overlay) {
     }
 
     close(): void {
