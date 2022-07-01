@@ -63,3 +63,9 @@
 
 #11.0.6
 * Improved appearance of standalone timepicker
+
+#11.0.7
+* Removed useless dependency
+
+#11.1.0
+* Version bump to deprecate 11.0.x

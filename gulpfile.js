@@ -10,7 +10,6 @@ function logEnd(msg) {
 
 const gulp = require("gulp"),
     path = require("path"),
-    rename = require("gulp-rename"),
     exec = require("child_process").exec
 ;
 
@@ -21,7 +20,6 @@ const distFolder = path.join(rootFolder, `dist/${libName}`);
 
 const taskNames = {
     postBuild: "postBuild",
-    postBuildAlt: "postBuild:alt",
     copyMDs: "copyMDs",
     pack: "pack",
     swapPackage: "swapPackage"
@@ -69,8 +67,3 @@ gulp.task(taskNames.postBuild, gulp.series(taskNames.copyMDs, function (cb, err)
     cb(err);
 }));
 
-// ALT
-gulp.task(taskNames.postBuildAlt, gulp.series(taskNames.copyMDs, taskNames.swapPackage, function (cb, err) {
-    logEnd(taskNames.postBuildAlt);
-    cb(err);
-}));
