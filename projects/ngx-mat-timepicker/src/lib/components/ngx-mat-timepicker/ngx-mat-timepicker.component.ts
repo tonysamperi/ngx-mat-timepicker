@@ -217,6 +217,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
      */
     registerInput(input: NgxMatTimepickerDirective): void {
         if (this._timepickerInput) {
+            console.warn("Input for this timepicker was already set", input.element);
             throw Error("A Timepicker can only be associated with a single input.");
         }
         this._timepickerInput = input;

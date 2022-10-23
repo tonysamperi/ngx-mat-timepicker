@@ -1,3 +1,6 @@
+#14.0.3
+* Fixed ngx-mat-timepicker-toggle appearance (closes [#41](https://github.com/tonysamperi/ngx-mat-timepicker/issues/41))
+
 #14.0.2
 * Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
 
