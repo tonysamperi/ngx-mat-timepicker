@@ -1,3 +1,6 @@
+#13.2.4
+* Fixed ngx-mat-timepicker-toggle appearance (closes [#41](https://github.com/tonysamperi/ngx-mat-timepicker/issues/41))
+
 #13.2.3
 * Patching accidentally build without refreshing deps (fixes [#35](https://github.com/tonysamperi/ngx-mat-timepicker/issues/35))
 

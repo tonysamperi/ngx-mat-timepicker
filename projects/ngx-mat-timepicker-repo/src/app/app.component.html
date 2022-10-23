@@ -76,8 +76,12 @@
 	</h1>
 	<p>an Angular material 9+ extension to add time pickers!</p>
 	<div class="ngx-mtp-badges">
-		<img src="https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square"
-			 alt="" />
+		<a [href]="npmLink"
+		   target="_blank">
+			<img src="https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square"
+				 [title]="latestVersion"
+				 [alt]="latestVersion" />
+		</a>
 		<img src="https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square"
 			 alt="" />
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"
@@ -352,6 +356,62 @@
                 </pre>
 			</code-viewer>
 		</div>
+		<div>
+			<h2>ngx-mat-timepicker-toggle</h2>
+			<p>use component in material stile (instead of using mat-icon + matSuffix)</p>
+			<code-viewer>
+				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+					<mat-form-field class="ngx-mtp-margin-bottom">
+						<mat-label>Choose a date</mat-label>
+						<input matInput
+							   [matDatepicker]="datePicker" />
+						<mat-hint>MM/DD/YYYY</mat-hint>
+						<mat-datepicker-toggle matSuffix
+											   [for]="datePicker"></mat-datepicker-toggle>
+						<mat-datepicker #datePicker></mat-datepicker>
+					</mat-form-field>
+					<mat-form-field>
+						<input matInput
+							   name="selected_time_f"
+							   [format]="24"
+							   [(ngModel)]="selectedTime"
+							   [ngxMatTimepicker]="pickerF"
+							   placeholder="12:00"
+							   readonly />
+						<ngx-mat-timepicker-toggle matSuffix></ngx-mat-timepicker-toggle>
+					</mat-form-field>
+					<button mat-raised-button
+							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+							(click)="pickerF.open()"
+							color="primary">
+						Open picker
+					</button>
+					<ngx-mat-timepicker color="accent"
+                                        #pickerF></ngx-mat-timepicker>
+				</div>
+				<pre class="language-markup">
+                    <code>
+&lt;mat-form-field&gt;
+    &lt;input matInput
+    [format]="24"
+    [(ngModel)]="selectedTime"
+    [ngxMatTimepicker]="pickerF"
+    placeholder="12:00"
+    readonly /&gt;
+    &lt;ngx-mat-timepicker-toggle&gt;&lt;/ngx-mat-timepicker-toggle&gt;
+&lt;/mat-form-field&gt;
+&lt;button mat-raised-button
+		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+		(click)="pickerF.open()"
+		color="primary"&gt;
+    Open picker
+&lt;/button&gt;
+ &lt;ngx-mat-timepicker color="accent"
+					 #pickerF&gt;&lt;/ngx-mat-timepicker&gt;
+                    </code>
+                </pre>
+			</code-viewer>
+		</div>
 	</form>
 </div>
 <div class="ngx-mtp-generic-section">
@@ -390,9 +450,9 @@
 </div>
 <footer>
 	<p>Created with ♥ by <a class="mat-color-accent"
-							href="tonysamperi.github.io"
+							href="https://tonysamperi.github.io"
 							target="_blank">Tony
 		Samperi</a>
 	</p>
-	<p>© 2020 MIT License</p>
+	<p>© <span>{{year}}</span> MIT License</p>
 </footer>
