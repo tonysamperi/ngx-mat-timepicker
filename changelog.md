@@ -1,31 +1,5 @@
-#14.0.2
-* Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
-
-#14.0.1
-* Fixed peer deps (fixes [#32](https://github.com/tonysamperi/ngx-mat-timepicker/issues/32))
-
-#14.0.0
-* Update for Angular 14! 🎉
-
-#13.2.3
-* Patching accidentally build without refreshing deps (fixes [#35](https://github.com/tonysamperi/ngx-mat-timepicker/issues/35))
-
-#13.2.2 (deprecated)
-* Making NgxMatTimepickerModule.setLocale optional again (closes [#34](https://github.com/tonysamperi/ngx-mat-timepicker/issues/34))
-
-#13.2.1
-* Version bump (inverted changelog)
-
-#13.2.0
-* Dynamic locale implemented (fixes #2)
-
-#13.1.0
-* Removed smp-core-utils
-* Added coerceBooleanProperty for appendToInput
-
-#13.0.0
-* Switched to yarn (dev only)
-* Update for Angular 13! 🎉
+#12.1.2
+* Fixed ngx-mat-timepicker-toggle appearance (closes [#41](https://github.com/tonysamperi/ngx-mat-timepicker/issues/41))
 
 #12.1.1
 * Removed unused dependency
