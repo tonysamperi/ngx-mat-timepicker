@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Input, Optional, Output} from "@angular/core";
+import {Directive, EventEmitter, Input, Output} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";

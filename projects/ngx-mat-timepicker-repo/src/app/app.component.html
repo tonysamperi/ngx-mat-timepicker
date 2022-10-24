@@ -121,22 +121,22 @@
 	</div>
 </div>
 <div class="ngx-mtp-container">
-<!--	<div class="ngx-mtp-locales">-->
-<!--		<p>Dynamic locale (v >= 13.2.0)</p>-->
-<!--		<p>-->
-<!--			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">-->
-<!--				<span class="locale"-->
-<!--					  [class.active]="myLocales[locale] === currentLocale"-->
-<!--					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"-->
-<!--																			*ngIf="!last"> | </span>-->
-<!--			</ng-container>-->
-<!--		</p>-->
-<!--		<button mat-raised-button-->
-<!--				color="primary"-->
-<!--				(click)="updateLocale()">-->
-<!--			Next locale-->
-<!--		</button>-->
-<!--	</div>-->
+	<div class="ngx-mtp-locales">
+		<p>Dynamic locale (v >= 12.3.0)</p>
+		<p>
+			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">
+				<span class="locale"
+					  [class.active]="myLocales[locale] === currentLocale"
+					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"
+																			*ngIf="!last"> | </span>
+			</ng-container>
+		</p>
+		<button mat-raised-button
+				color="primary"
+				(click)="updateLocale()">
+			Next locale
+		</button>
+	</div>
 	<form class="demo-form">
 		<div>
 			<h2>Picker with 12h format</h2>

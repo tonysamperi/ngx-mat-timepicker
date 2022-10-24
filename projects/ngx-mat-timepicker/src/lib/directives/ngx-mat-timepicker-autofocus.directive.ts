@@ -18,12 +18,12 @@ export class NgxMatTimepickerAutofocusDirective implements OnChanges, OnDestroy 
     ngOnChanges() {
         if (this.isFocusActive) {
             // To avoid ExpressionChangedAfterItHasBeenCheckedError;
-            setTimeout(() => this._element.nativeElement.focus({preventScroll: true}));
+            setTimeout(() => this._element.nativeElement.focus({ preventScroll: true }));
         }
     }
 
     ngOnDestroy() {
         // To avoid ExpressionChangedAfterItHasBeenCheckedError;
-        setTimeout(() => this._activeElement.focus({preventScroll: true}));
+        setTimeout(() => this._activeElement.focus({ preventScroll: true }));
     }
 }

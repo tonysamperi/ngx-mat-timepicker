@@ -1,3 +1,6 @@
+#12.2.0
+* Dynamic locale implemented (fixes #2)
+
 #12.1.2
 * Fixed ngx-mat-timepicker-toggle appearance (closes [#41](https://github.com/tonysamperi/ngx-mat-timepicker/issues/41))
 

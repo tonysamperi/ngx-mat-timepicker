@@ -9,4 +9,8 @@ export class NgxMatTimepickerContentComponent {
     @Input() appendToInput: boolean;
     @Input() inputElement: any;
 
+    constructor() {
+        console.info("NgxMatTimepickerContentComponent constructed!");
+    }
+
 }

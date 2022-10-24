@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 //
-// import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 import {map} from "rxjs/operators";
 //
 import {ajax, AjaxResponse} from "rxjs/ajax";
@@ -22,8 +22,7 @@ const pkgName = "ngx-mat-timepicker";
 export class NgxMatTimepickerAppComponent implements OnInit {
 
     get currentLocale() {
-        // return this._localeOverrideSrv.locale;
-        return "";
+        return this._localeOverrideSrv.locale;
     }
 
     githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
@@ -47,9 +46,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
 
     private _nextLocale: number = 0;
 
-    constructor(
-        // private _localeOverrideSrv: NgxMatTimepickerLocaleService
-    ) {
+    constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
     }
 
     ngOnInit(): void {
@@ -68,9 +65,9 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         if (localeKey) {
             this._nextLocale = this.myLocaleKeys.indexOf(localeKey) - 1;
         }
-        // this._localeOverrideSrv.updateLocale(
-        //     this.myLocales[this.myLocaleKeys[++this._nextLocale]]
-        // );
+        this._localeOverrideSrv.updateLocale(
+            this.myLocales[this.myLocaleKeys[++this._nextLocale]]
+        );
         (this._nextLocale >= this.myLocaleKeys.length - 1) && (this._nextLocale = -1);
     }
 

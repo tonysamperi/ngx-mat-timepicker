@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Input,
     OnChanges,
     Output,
@@ -14,7 +13,7 @@ import {ThemePalette} from "@angular/material/core";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
+import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
 import {DateTime, Info} from "ts-luxon";
@@ -36,6 +35,19 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
 
     get color(): ThemePalette {
         return this._color;
+    }
+
+    get hourString() {
+        return `${this.hour}`;
+    }
+
+
+    get minuteString() {
+        return `${this.minute}`;
+    }
+
+    private get _locale(): string {
+        return this._localeSrv.locale;
     }
 
     @Input() editableHintTmpl: TemplateRef<Node>;
@@ -64,7 +76,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
 
     private _color: ThemePalette = "primary";
 
-    constructor(@Inject(NGX_MAT_TIMEPICKER_LOCALE) private _locale: string) {
+    constructor(private _localeSrv: NgxMatTimepickerLocaleService) {
     }
 
     changeHour(hour: NgxMatTimepickerClockFace): void {

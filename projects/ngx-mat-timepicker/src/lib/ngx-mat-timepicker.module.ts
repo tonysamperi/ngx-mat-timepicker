@@ -18,7 +18,13 @@ import {NgxMatTimepickerDirective} from "./directives/ngx-mat-timepicker.directi
 import {NgxMatTimepickerToggleIconDirective} from "./directives/ngx-mat-timepicker-toggle-icon.directive";
 import {NgxMatTimepickerThemeDirective} from "./directives/ngx-mat-timepicker-theme.directive";
 import {NgxMatTimepickerBaseDirective} from "./directives/ngx-mat-timepicker-base.directive";
+import {NgxMatTimepickerHoursFaceDirective} from "./components/ngx-mat-timepicker-hours-face/ngx-mat-timepicker-hours-face.directive";
 // COMPONENTS
+import {
+    NgxMatTimepickerContentComponent
+} from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
+import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
+import {NgxMatTimepickerStandaloneComponent} from "./components/ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
 import {NgxMatTimepickerComponent} from "./components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerToggleComponent} from "./components/ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
 import {
@@ -43,18 +49,14 @@ import {NgxMatTimepickerFieldComponent} from "./components/ngx-mat-timepicker-fi
 import {
     NgxMatTimepickerControlComponent
 } from "./components/ngx-mat-timepicker-field/ngx-mat-timepicker-control/ngx-mat-timepicker-control.component";
+// PIPES + SERVICES + TOKENS
+import {NgxMatTimepickerLocaleService} from "./services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerTimeLocalizerPipe} from "./pipes/ngx-mat-timepicker-time-localizer.pipe";
+import {NGX_MAT_TIMEPICKER_CONFIG} from "./tokens/ngx-mat-timepicker-config.token";
 import {NGX_MAT_TIMEPICKER_LOCALE} from "./tokens/ngx-mat-timepicker-time-locale.token";
 import {NgxMatTimepickerParserPipe} from "./pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerActiveHourPipe} from "./pipes/ngx-mat-timepicker-active-hour.pipe";
 import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-active-minute.pipe";
-import {
-    NgxMatTimepickerContentComponent
-} from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
-import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
-import {NgxMatTimepickerHoursFaceDirective} from "./components/ngx-mat-timepicker-hours-face/ngx-mat-timepicker-hours-face.directive";
-import {NgxMatTimepickerStandaloneComponent} from "./components/ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
-import {NGX_MAT_TIMEPICKER_CONFIG} from "./tokens/ngx-mat-timepicker-config.token";
 
 @NgModule({
     imports: [
@@ -108,6 +110,9 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "./tokens/ngx-mat-timepicker-config.toke
         NgxMatTimepickerTimeFormatterPipe,
         NgxMatTimepickerTimeLocalizerPipe
     ],
+    providers: [
+        NgxMatTimepickerLocaleService
+    ],
     entryComponents: [
         NgxMatTimepickerDialogComponent,
         NgxMatTimepickerStandaloneComponent
@@ -121,6 +126,7 @@ export class NgxMatTimepickerModule {
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: locale},
                 {provide: NGX_MAT_TIMEPICKER_CONFIG, useValue: undefined},
+                NgxMatTimepickerLocaleService
             ]
         };
     }

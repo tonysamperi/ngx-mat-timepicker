@@ -1,10 +1,10 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
 //
+import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
 
 @Component({
@@ -22,9 +22,9 @@ export class NgxMatTimepickerStandaloneComponent extends NgxMatTimepickerBaseDir
     constructor(@Inject(NGX_MAT_TIMEPICKER_CONFIG) public data: NgxMatTimepickerConfig,
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
-                @Inject(NGX_MAT_TIMEPICKER_LOCALE) locale: string) {
+                timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
 
-        super(timepickerSrv, eventSrv, locale, data);
+        super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
     close(): void {

@@ -2,13 +2,13 @@ import {Directive, HostListener, Inject, Input, OnDestroy, OnInit, Optional} fro
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerEventService} from "../services/ngx-mat-timepicker-event.service";
+import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 //
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum";
-import {NGX_MAT_TIMEPICKER_LOCALE} from "../tokens/ngx-mat-timepicker-time-locale.token";
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../tokens/ngx-mat-timepicker-config.token";
 //
 import {Observable, Subject} from "rxjs";
@@ -38,6 +38,10 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
         this._setDefaultTime(time);
     }
 
+    private get _locale(): string {
+        return this._timepickerLocaleSrv.locale;
+    }
+
     activeTimeUnit: NgxMatTimepickerUnits = NgxMatTimepickerUnits.HOUR;
     selectedHour: Observable<NgxMatTimepickerClockFace>;
     selectedMinute: Observable<NgxMatTimepickerClockFace>;
@@ -46,11 +50,11 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
 
     protected _color: ThemePalette = "primary";
     protected _defaultTime: string;
-    protected _subsCtrl$ = new Subject();
+    protected _subsCtrl$: Subject<void> = new Subject<void>();
 
     constructor(protected _timepickerSrv: NgxMatTimepickerService,
                 protected _eventSrv: NgxMatTimepickerEventService,
-                @Inject(NGX_MAT_TIMEPICKER_LOCALE) protected _locale: string,
+                protected _timepickerLocaleSrv: NgxMatTimepickerLocaleService,
                 @Inject(NGX_MAT_TIMEPICKER_CONFIG) @Optional() public data) {
 
         this.color = data.color;

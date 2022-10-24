@@ -170,7 +170,6 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
     }
 
-
     trackByTime(_item_, time: NgxMatTimepickerClockFace): string | number {
         return time.time;
     }
