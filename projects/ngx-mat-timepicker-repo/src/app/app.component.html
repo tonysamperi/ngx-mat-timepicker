@@ -459,6 +459,61 @@
                 </pre>
 			</code-viewer>
 		</div>
+		<div>
+			<h2>Min and Max validation</h2>
+			<p>add config to have min and/or max hour</p>
+			<code-viewer>
+				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+					<mat-form-field>
+						<input matInput
+							   name="selected_time_g"
+							   [format]="24"
+							   [max]="maxTime"
+							   [min]="minTime"
+							   [(ngModel)]="selectedTime"
+							   [ngxMatTimepicker]="pickerG"
+							   placeholder="12:00"
+							   readonly />
+						<ngx-mat-timepicker-toggle matSuffix></ngx-mat-timepicker-toggle>
+					</mat-form-field>
+					<button mat-raised-button
+							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+							(click)="pickerG.open()"
+							color="primary">
+						Open picker
+					</button>
+					<button mat-raised-button
+							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+							(click)="selectedTime = '12:00'"
+							color="primary">
+						Invalidate
+					</button>
+					<ngx-mat-timepicker color="accent"
+                                        #pickerG></ngx-mat-timepicker>
+				</div>
+				<pre class="language-markup">
+                    <code>
+&lt;mat-form-field&gt;
+    &lt;input matInput
+    [format]="24"
+    [(ngModel)]="selectedTime"
+    [ngxMatTimepicker]="pickerF"
+    placeholder="12:00"
+    readonly /&gt;
+    &lt;ngx-mat-timepicker-toggle&gt;&lt;/ngx-mat-timepicker-toggle&gt;
+&lt;/mat-form-field&gt;
+&lt;button mat-raised-button
+		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+		(click)="pickerF.open()"
+		color="primary"&gt;
+    Open picker
+&lt;/button&gt;
+ &lt;ngx-mat-timepicker color="accent"
+					 #pickerF&gt;&lt;/ngx-mat-timepicker&gt;
+                    </code>
+                </pre>
+			</code-viewer>
+		</div>
 	</form>
 </div>
 <div class="ngx-mtp-generic-section">
