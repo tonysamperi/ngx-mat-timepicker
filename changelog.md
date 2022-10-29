@@ -1,3 +1,6 @@
+#14.0.5
+* Fix dial numbers not disabled when out of min or max range (closes [#42](https://github.com/tonysamperi/ngx-mat-timepicker/issues/42))
+
 #14.0.4
 * Fix dial numbers not disabled when out of min or max range
 
