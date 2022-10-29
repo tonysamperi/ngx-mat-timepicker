@@ -1,3 +1,9 @@
+#13.2.5
+* Fix dial numbers not disabled when out of min or max range
+* Fix wrong type in NgxMatTimepickerDialComponent (expected number, but got string)
+* Fix wrong type in NgxMatTimepickerConfig (number => 12 | 24)
+* Fix dial numbers not disabled when out of min or max range (closes [#42](https://github.com/tonysamperi/ngx-mat-timepicker/issues/42))
+
 #13.2.4
 * Fixed ngx-mat-timepicker-toggle appearance (closes [#41](https://github.com/tonysamperi/ngx-mat-timepicker/issues/41))
 

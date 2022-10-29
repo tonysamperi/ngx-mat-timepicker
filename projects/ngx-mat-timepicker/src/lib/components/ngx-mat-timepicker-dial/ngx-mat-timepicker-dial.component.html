@@ -2,7 +2,7 @@
     <div class="timepicker-dial__container">
         <div class="timepicker-dial__time">
             <ngx-mat-timepicker-dial-control [timeList]="hours"
-                                         [time]="hour"
+                                         [time]="hourString"
                                          [timeUnit]="timeUnit.HOUR"
                                          [isActive]="activeTimeUnit === timeUnit.HOUR"
                                          [isEditable]="isEditable"
@@ -14,7 +14,7 @@
             </ngx-mat-timepicker-dial-control>
             <span>:</span>
             <ngx-mat-timepicker-dial-control [timeList]="minutes"
-                                         [time]="minute"
+                                         [time]="minuteString"
                                          [timeUnit]="timeUnit.MINUTE"
                                          [isActive]="activeTimeUnit === timeUnit.MINUTE"
                                          [isEditable]="isEditable"

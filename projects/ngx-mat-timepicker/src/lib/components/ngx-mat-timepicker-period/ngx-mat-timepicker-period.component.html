@@ -1,4 +1,6 @@
-<div class="timepicker-period">
+<div class="timepicker-period"
+     cdkOverlayOrigin
+     #eventPanelOrigin="cdkOverlayOrigin">
     <button class="timepicker-dial__item timepicker-period__btn"
             [ngClass]="{'active': selectedPeriod === timePeriod.AM}"
             (click)="changePeriod(timePeriod.AM)"
@@ -7,10 +9,18 @@
             [ngClass]="{'active': selectedPeriod === timePeriod.PM}"
             (click)="changePeriod(timePeriod.PM)"
             type="button">{{meridiems[1]}}</button>
+</div>
+<ng-template
+        cdkConnectedOverlay
+        cdkConnectedOverlayPanelClass="todo-remove-pointer-events-if-necessary"
+        [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
+        [cdkConnectedOverlayPositionStrategy]="overlayPositionStrategy"
+        [cdkConnectedOverlayOrigin]="eventPanelOrigin"
+        [cdkConnectedOverlayOpen]="!isPeriodAvailable">
     <div class="timepicker-period__warning"
+         *ngIf="!isPeriodAvailable"
          [@scaleInOut]
-         (@scaleInOut.done)="animationDone()"
-         *ngIf="!isPeriodAvailable">
+         (@scaleInOut.done)="animationDone()">
         <p>Current time would be invalid in this period.</p>
     </div>
-</div>
+</ng-template>

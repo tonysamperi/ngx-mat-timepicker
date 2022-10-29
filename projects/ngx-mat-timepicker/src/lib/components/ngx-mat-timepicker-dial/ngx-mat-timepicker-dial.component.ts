@@ -37,6 +37,14 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
         return this._color;
     }
 
+    get hourString(): string {
+        return `${this.hourString}`;
+    }
+
+    get minuteString(): string {
+        return `${this.minute}`;
+    }
+
     private get _locale(): string {
         return this._localeSrv.locale;
     }
