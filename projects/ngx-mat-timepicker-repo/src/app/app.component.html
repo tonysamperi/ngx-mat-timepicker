@@ -467,7 +467,7 @@
 					<mat-form-field>
 						<input matInput
 							   name="selected_time_g"
-							   [format]="24"
+							   [format]="12"
 							   [max]="maxTime"
 							   [min]="minTime"
 							   [(ngModel)]="selectedTime"
@@ -494,22 +494,31 @@
 				<pre class="language-markup">
                     <code>
 &lt;mat-form-field&gt;
-    &lt;input matInput
-    [format]="24"
-    [(ngModel)]="selectedTime"
-    [ngxMatTimepicker]="pickerF"
-    placeholder="12:00"
-    readonly /&gt;
-    &lt;ngx-mat-timepicker-toggle&gt;&lt;/ngx-mat-timepicker-toggle&gt;
+	&lt;input matInput
+		   name="selected_time_g"
+		   [format]="12"
+		   [max]="maxTime"
+		   [min]="minTime"
+		   [(ngModel)]="selectedTime"
+		   [ngxMatTimepicker]="pickerG"
+		   placeholder="12:00"
+		   readonly /&gt;
+	&lt;ngx-mat-timepicker-toggle matSuffix&gt;&lt;/ngx-mat-timepicker-toggle&gt;
 &lt;/mat-form-field&gt;
 &lt;button mat-raised-button
 		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
-		(click)="pickerF.open()"
+		(click)="pickerG.open()"
 		color="primary"&gt;
-    Open picker
+	Open picker
 &lt;/button&gt;
- &lt;ngx-mat-timepicker color="accent"
-					 #pickerF&gt;&lt;/ngx-mat-timepicker&gt;
+&lt;button mat-raised-button
+		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+		(click)="selectedTime = '12:00'"
+		color="primary"&gt;
+	Invalidate
+&lt;/button&gt;
+&lt;ngx-mat-timepicker color="accent"
+			  #pickerG&gt;&lt;/ngx-mat-timepicker&gt;
                     </code>
                 </pre>
 			</code-viewer>

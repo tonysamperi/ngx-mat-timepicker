@@ -1,5 +1,10 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {animate, sequence, style, transition, trigger} from "@angular/animations";
+import {
+    FlexibleConnectedPositionStrategy,
+    Overlay,
+    ScrollStrategy
+} from "@angular/cdk/overlay";
 //
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
@@ -35,10 +40,15 @@ export class NgxMatTimepickerPeriodComponent {
     @Input() meridiems: string[];
     @Input() minTime: DateTime;
     @Input() minutes: NgxMatTimepickerClockFace[];
+    overlayPositionStrategy: FlexibleConnectedPositionStrategy;
+    overlayScrollStrategy: ScrollStrategy = this._overlay.scrollStrategies.reposition();
     @Output() periodChanged = new EventEmitter<NgxMatTimepickerPeriods>();
     @Input() selectedHour: number | string;
     @Input() selectedPeriod: NgxMatTimepickerPeriods;
     timePeriod = NgxMatTimepickerPeriods;
+
+    constructor(protected _overlay: Overlay) {
+    }
 
     animationDone(): void {
         this.isPeriodAvailable = true;

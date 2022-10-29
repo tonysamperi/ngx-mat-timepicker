@@ -16,7 +16,7 @@ export interface NgxMatTimepickerConfig {
     disabled: boolean;
     editableHintTmpl: TemplateRef<Node>;
     enableKeyboardInput: boolean;
-    format: number;
+    format: 12 | 24;
     hoursOnly: boolean;
     inputElement: any;
     maxTime: DateTime;
