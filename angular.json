@@ -27,9 +27,12 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-mat-timepicker/src/test.ts",
             "tsConfig": "projects/ngx-mat-timepicker/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-mat-timepicker/karma.conf.js"
+            "karmaConfig": "projects/ngx-mat-timepicker/karma.conf.js",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
         "lint": {
@@ -63,9 +66,11 @@
             "outputPath": "dist/ngx-mat-timepicker-repo",
             "index": "projects/ngx-mat-timepicker-repo/src/index.html",
             "main": "projects/ngx-mat-timepicker-repo/src/main.ts",
-            "polyfills": "projects/ngx-mat-timepicker-repo/src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "projects/ngx-mat-timepicker-repo/tsconfig.app.json",
-            "aot": true,
+            "inlineStyleLanguage": "scss",
             "assets": [
               "projects/ngx-mat-timepicker-repo/src/favicon.ico",
               "projects/ngx-mat-timepicker-repo/src/assets"
@@ -77,67 +82,42 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "projects/ngx-mat-timepicker-repo/src/environments/environment.ts",
-                  "with": "projects/ngx-mat-timepicker-repo/src/environments/environment.prod.ts"
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all",
-              "sourceMap": false,
-              "optimization": true,
-              "namedChunks": false,
-              "vendorChunk": false,
-              "extractLicenses": true,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "20kb"
-                }
-              ]
+              "outputHashing": "all"
             },
-            "dev": {
+            "development": {
               "buildOptimizer": false,
-              "sourceMap": true,
               "optimization": false,
-              "namedChunks": false,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "20kb"
-                }
-              ]
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "ngx-mat-timepicker-repo:build"
-          },
           "configurations": {
-            "dev": {
-              "browserTarget": "ngx-mat-timepicker-repo:build:dev"
+            "development": {
+              "browserTarget": "ngx-mat-timepicker-repo:build:development"
             },
             "production": {
               "browserTarget": "ngx-mat-timepicker-repo:build:production"
             }
           },
-          "defaultConfiguration": "dev"
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -148,10 +128,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-mat-timepicker-repo/src/test.ts",
-            "polyfills": "projects/ngx-mat-timepicker-repo/src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "projects/ngx-mat-timepicker-repo/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-mat-timepicker-repo/karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "projects/ngx-mat-timepicker-repo/src/favicon.ico",
               "projects/ngx-mat-timepicker-repo/src/assets"
