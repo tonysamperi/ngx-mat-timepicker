@@ -142,7 +142,7 @@ describe('NgxMatTimepickerControlComponent', () => {
 
 
     describe('changeTime', () => {
-        let defaultEvent;
+        let defaultEvent: Partial<Event>;
 
         beforeEach(() => {
             defaultEvent = {type: 'keypress', stopPropagation: () => null};
@@ -194,8 +194,8 @@ describe('NgxMatTimepickerControlComponent', () => {
     });
 
     describe('onKeydown', () => {
-        let defaultEvent;
-        let counter;
+        let defaultEvent: Partial<Event>;
+        let counter: number;
         beforeEach(() => {
             counter = 0;
             defaultEvent = {preventDefault: () => counter++, type: 'keydown', stopPropagation: () => null};
