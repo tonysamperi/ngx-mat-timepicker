@@ -1,3 +1,6 @@
+#13.2.6 
+* Fix wrong variable ref causing stack overflow
+
 #13.2.5
 * Fix dial numbers not disabled when out of min or max range
 * Fix wrong type in NgxMatTimepickerDialComponent (expected number, but got string)
