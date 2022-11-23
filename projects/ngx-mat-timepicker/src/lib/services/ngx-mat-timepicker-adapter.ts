@@ -60,31 +60,37 @@ export class NgxMatTimepickerAdapter {
         }).toFormat(timeFormat);
     }
 
-    static isBetween(time: DateTime, before: DateTime, after: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
+    static isBetween(time: DateTime, before: DateTime, after: DateTime, unit: "hours" | "minutes" = "minutes"): boolean | undefined {
         if (unit === "hours") {
             return this.isSameOrBefore(time, after, unit) && this.isSameOrAfter(time, before, unit);
         }
         if (unit === "minutes") {
             return this.isSameOrBefore(time, after) && this.isSameOrAfter(time, before);
         }
+
+        return undefined;
     }
 
-    static isSameOrAfter(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
+    static isSameOrAfter(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean | undefined {
         if (unit === "hours") {
             return time.hour >= compareWith.hour;
         }
         if (unit === "minutes") {
             return time.hasSame(compareWith, unit) || time.valueOf() > compareWith.valueOf();
         }
+
+        return undefined;
     }
 
-    static isSameOrBefore(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
+    static isSameOrBefore(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean | undefined {
         if (unit === "hours") {
             return time.hour <= compareWith.hour;
         }
         if (unit === "minutes") {
             return time.hasSame(compareWith, unit) || time.valueOf() <= compareWith.valueOf();
         }
+
+        return undefined;
     }
 
     static isTimeAvailable(time: string,
@@ -92,9 +98,9 @@ export class NgxMatTimepickerAdapter {
                            max?: DateTime,
                            granularity?: "hours" | "minutes",
                            minutesGap?: number | null,
-                           format?: number): boolean {
+                           format?: number): boolean | undefined {
         if (!time) {
-            return;
+            return undefined;
         }
 
         const convertedTime = this.parseTime(time, {format});

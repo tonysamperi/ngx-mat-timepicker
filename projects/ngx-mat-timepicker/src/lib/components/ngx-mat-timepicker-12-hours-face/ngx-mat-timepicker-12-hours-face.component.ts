@@ -20,7 +20,7 @@ export class NgxMatTimepicker12HoursFaceComponent extends NgxMatTimepickerHoursF
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.period && changes.period.currentValue) {
+        if (changes['period'] && changes['period'].currentValue) {
             this.hoursList = NgxMatTimepickerUtils.disableHours(this.hoursList, {
                 min: this.minTime,
                 max: this.maxTime,

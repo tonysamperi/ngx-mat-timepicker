@@ -14,7 +14,30 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 
-let config;
+let config: undefined | {
+    timepickerBaseRef: NgxMatTimepickerComponent,
+} & Pick<
+    NgxMatTimepickerComponent,
+    'time'
+    | 'defaultTime'
+    | 'maxTime'
+    | 'minTime'
+    | 'format'
+    | 'minutesGap'
+    | 'disableAnimation'
+    | 'cancelBtnTmpl'
+    | 'confirmBtnTmpl'
+    | 'editableHintTmpl'
+    | 'disabled'
+    | 'enableKeyboardInput'
+    | 'preventOverlayClick'
+    | 'appendToInput'
+    | 'hoursOnly'
+    | 'theme'
+    | 'timepickerClass'
+    | 'inputElement'
+    | 'color'
+>;
 
 @Component({
     selector: "ngx-mat-timepicker",

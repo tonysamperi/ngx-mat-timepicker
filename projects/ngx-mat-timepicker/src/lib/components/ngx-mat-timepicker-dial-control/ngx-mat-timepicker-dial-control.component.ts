@@ -5,7 +5,7 @@ import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum"
 import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 
-function retainSelection() {
+function retainSelection(this: HTMLInputElement) {
     this.selectionStart = this.selectionEnd;
 }
 
@@ -17,10 +17,12 @@ function retainSelection() {
 })
 export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDestroy {
 
-    private get _selectedTime(): NgxMatTimepickerClockFace {
+    private get _selectedTime(): NgxMatTimepickerClockFace | undefined {
         if (!!this.time) {
             return this.timeList.find(t => t.time === +this.time);
         }
+
+        return undefined;
     }
 
     @Input()
@@ -128,7 +130,7 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
 
 }
 
-function isTimeDisabledToChange(currentTime: string, nextTime: string, timeList: NgxMatTimepickerClockFace[]): boolean {
+function isTimeDisabledToChange(currentTime: string, nextTime: string, timeList: NgxMatTimepickerClockFace[]): boolean | undefined {
     const isNumber = /\d/.test(nextTime);
 
     if (isNumber) {
@@ -136,6 +138,8 @@ function isTimeDisabledToChange(currentTime: string, nextTime: string, timeList:
 
         return isTimeUnavailable(time, timeList);
     }
+
+    return undefined;
 }
 
 function isTimeUnavailable(time: string, timeList: NgxMatTimepickerClockFace[]): boolean {

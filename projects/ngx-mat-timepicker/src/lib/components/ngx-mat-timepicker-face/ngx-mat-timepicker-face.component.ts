@@ -90,8 +90,8 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     unit: NgxMatTimepickerUnits;
 
     private _isStarted: boolean;
-    private _touchEndHandler: () => any;
-    private _touchStartHandler: () => any;
+    private _touchEndHandler: (e: any) => any;
+    private _touchStartHandler: (e: any) => any;
 
     ngAfterViewInit() {
         this._setClockHandPosition();
@@ -99,8 +99,8 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        const faceTimeChanges = changes.faceTime;
-        const selectedTimeChanges = changes.selectedTime;
+        const faceTimeChanges = changes['faceTime'];
+        const selectedTimeChanges = changes['selectedTime'];
 
         if ((faceTimeChanges && faceTimeChanges.currentValue)
             && (selectedTimeChanges && selectedTimeChanges.currentValue)) {
@@ -171,7 +171,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
 
-    trackByTime(_item_, time: NgxMatTimepickerClockFace): string | number {
+    trackByTime(_item_: any, time: NgxMatTimepickerClockFace): string | number {
         return time.time;
     }
 

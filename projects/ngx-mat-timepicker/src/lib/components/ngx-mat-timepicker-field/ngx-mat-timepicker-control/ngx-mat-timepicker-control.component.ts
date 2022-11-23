@@ -7,7 +7,7 @@ import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-pars
 import {NgxMatTimepickerClockFace} from "../../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUtils} from "../../../utils/ngx-mat-timepicker.utils";
 
-function concatTime(currentTime: string, nextTime: string): number {
+function concatTime(currentTime: string, nextTime: string): number | undefined {
     const isNumber = /\d/.test(nextTime);
 
     if (isNumber) {
@@ -15,6 +15,8 @@ function concatTime(currentTime: string, nextTime: string): number {
 
         return +time;
     }
+
+    return undefined;
 }
 
 @Component({
@@ -115,7 +117,7 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.timeList && this.time != null) {
+        if (changes['timeList'] && this.time != null) {
             if (this._isSelectedTimeDisabled(this.time)) {
                 this._setAvailableTime();
             }
@@ -160,7 +162,7 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
         this.time = +this._timeParser.transform(value, this.timeUnit);
     }
 
-    private _changeTimeIfValid(value: number | undefined) {
+    private _changeTimeIfValid(value: number | undefined): void {
         if (!isNaN(value)) {
             this.time = value;
 
@@ -193,6 +195,8 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
                 return time.time;
             }
         }
+
+        return undefined;
     }
 
     private _getPrevAvailableTime(index: number): number | undefined {
@@ -202,6 +206,8 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
                 return time.time;
             }
         }
+
+        return undefined;
     }
 
     private _isSelectedTimeDisabled(time: number): boolean {

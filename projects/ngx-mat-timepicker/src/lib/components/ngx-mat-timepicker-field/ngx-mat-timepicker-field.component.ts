@@ -267,7 +267,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this.timeChanged.emit(localTime);
     }
 
-    private _initTime(time): void {
+    private _initTime(time: string): void {
         const isDefaultTimeAvailable = NgxMatTimepickerAdapter
             .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, "minutes", null, this.format);
         if (!isDefaultTimeAvailable) {
@@ -285,7 +285,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._updateTime(time);
     }
 
-    private _isPeriodDisabled(period): boolean {
+    private _isPeriodDisabled(period: NgxMatTimepickerPeriods): boolean {
         return NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(12), {
             min: this.min as DateTime,
             max: this.max as DateTime,

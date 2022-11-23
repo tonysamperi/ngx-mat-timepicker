@@ -17,7 +17,7 @@ import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-ev
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: NgxMatTimepickerConfig,
+    constructor(@Inject(MAT_DIALOG_DATA) public override data: NgxMatTimepickerConfig,
                 protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
@@ -26,7 +26,7 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
         super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
-    close(): void {
+    override close(): void {
         this._dialogRef.close();
     }
 
