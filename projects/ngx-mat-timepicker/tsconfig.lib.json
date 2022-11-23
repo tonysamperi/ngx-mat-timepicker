@@ -3,18 +3,9 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
     "declaration": true,
-    "sourceMap": false,
-    "removeComments": true,
-    "types": [],
-    "lib": [
-      "dom",
-      "es2018"
-    ]
-  },
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "enableResourceInlining": true
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": []
   },
   "exclude": [
     "src/test.ts",
