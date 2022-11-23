@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import {FloatLabelType} from "@angular/material/legacy-form-field";
 //
 import {NgxMatTimepickerUnits} from "../../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-parser.pipe";

@@ -20,7 +20,7 @@ import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
-import {MatFormField} from "@angular/material/form-field";
+import {MatLegacyFormField as MatFormField} from "@angular/material/legacy-form-field";
 
 @Directive({
     selector: "[ngxMatTimepicker]",

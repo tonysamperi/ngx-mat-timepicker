@@ -148,10 +148,10 @@ body {
 	}
 
 	// Include the default theme styles.
-	@include mat.all-component-themes($candy-app-theme);
+	@include mat.all-legacy-component-themes($candy-app-theme);
 
 	&.dark-theme {
-		@include mat.all-component-themes($dark-theme);
+		@include mat.all-legacy-component-themes($dark-theme);
 
 		a {
 			&.mat-color-primary {

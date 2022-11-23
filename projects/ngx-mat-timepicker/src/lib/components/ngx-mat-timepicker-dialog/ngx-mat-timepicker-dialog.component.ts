@@ -1,5 +1,5 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 //
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";

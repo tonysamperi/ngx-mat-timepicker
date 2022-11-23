@@ -10,9 +10,9 @@ import {
     ViewEncapsulation
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {MatSelectChange} from "@angular/material/select";
+import {MatLegacySelectChange as MatSelectChange} from "@angular/material/legacy-select";
 import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import {FloatLabelType} from "@angular/material/legacy-form-field";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";

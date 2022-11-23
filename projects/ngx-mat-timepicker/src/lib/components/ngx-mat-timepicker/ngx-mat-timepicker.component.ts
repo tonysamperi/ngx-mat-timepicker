@@ -1,7 +1,7 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from "@angular/core";
 import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
