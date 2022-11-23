@@ -104,7 +104,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
         if ((faceTimeChanges && faceTimeChanges.currentValue)
             && (selectedTimeChanges && selectedTimeChanges.currentValue)) {
-            /* Set time according to passed an input value */
+            /* Set time according to pass an input value */
             this.selectedTime = this.faceTime.find(time => time.time === this.selectedTime.time);
         }
         if (selectedTimeChanges && selectedTimeChanges.currentValue) {

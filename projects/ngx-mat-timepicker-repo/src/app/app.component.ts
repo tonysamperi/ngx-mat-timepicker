@@ -43,6 +43,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
     selectedTheme: Theme;
     selectedTime: string;
+    selectedTimeWithRange: string;
     showInput: boolean = !0;
     themes: Theme[] = [
         {value: "", description: "Light"},

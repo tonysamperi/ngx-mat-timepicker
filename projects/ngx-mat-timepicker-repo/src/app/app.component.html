@@ -154,6 +154,10 @@
 								  (click)="pickerA.open()">watch_later
 						</mat-icon>
 					</mat-form-field>
+					<button mat-raised-button
+							color="primary"
+							(click)="selectedTime = undefined">clear
+					</button>
 					<ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
 				</div>
 				<pre class="language-markup">
@@ -470,7 +474,7 @@
 							   [format]="12"
 							   [max]="maxTime"
 							   [min]="minTime"
-							   [(ngModel)]="selectedTime"
+							   [(ngModel)]="selectedTimeWithRange"
 							   [ngxMatTimepicker]="pickerG"
 							   placeholder="12:00"
 							   readonly />
@@ -484,7 +488,7 @@
 					</button>
 					<button mat-raised-button
 							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
-							(click)="selectedTime = '12:00'"
+							(click)="selectedTimeWithRange = '12:00'"
 							color="primary">
 						Invalidate
 					</button>
