@@ -27,14 +27,14 @@
     "ts-luxon": "^3.0.1"
   },
   "peerDependencies": {
-    "@angular/animations": "^14.0.1",
-    "@angular/cdk": "^14.0.1",
-    "@angular/common": "^14.0.1",
-    "@angular/compiler": "^14.0.1",
-    "@angular/core": "^14.0.1",
-    "@angular/forms": "^14.0.1",
-    "@angular/material": "^14.0.1",
-    "@angular/platform-browser": "^14.0.1"
+    "@angular/animations": "^15.0.0",
+    "@angular/cdk": "^15.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/compiler": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/forms": "^15.0.0",
+    "@angular/material": "^15.0.0",
+    "@angular/platform-browser": "^15.0.0"
   },
   "engines": {
     "node": ">=14.20.0"

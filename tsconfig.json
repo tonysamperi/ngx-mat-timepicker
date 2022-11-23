@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "es2022",
     "module": "es2020",
     "lib": [
       "es2020",
@@ -25,7 +25,8 @@
       "ngx-mat-timepicker": [
         "projects/ngx-mat-timepicker/src/public-api"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
