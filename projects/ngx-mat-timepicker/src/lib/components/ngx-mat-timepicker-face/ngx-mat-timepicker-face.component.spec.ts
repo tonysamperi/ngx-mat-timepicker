@@ -1,4 +1,5 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {Subscription} from "rxjs";
 import {NgxMatTimepickerFaceComponent} from "./ngx-mat-timepicker-face.component";
 import {ElementRef, NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
@@ -14,8 +15,10 @@ import {NgxMatTimepickerActiveMinutePipe} from "../../pipes/ngx-mat-timepicker-a
 describe("NgxMatTimepickerFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerFaceComponent>;
     let component: NgxMatTimepickerFaceComponent;
+    let subscription: Subscription;
 
     beforeEach(() => {
+        subscription = new Subscription();
         fixture = TestBed.configureTestingModule({
             declarations: [
                 NgxMatTimepickerFaceComponent,
@@ -31,6 +34,10 @@ describe("NgxMatTimepickerFaceComponent", () => {
         }).createComponent(NgxMatTimepickerFaceComponent);
 
         component = fixture.componentInstance;
+    });
+
+    afterEach(() => {
+        subscription.unsubscribe();
     });
 
     it("trackByTime should return time", () => {
@@ -123,7 +130,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             }
         };
         let updatedTime: NgxMatTimepickerClockFace = {time: 1, angle: 20};
-        component.timeChange.subscribe(time => updatedTime = time);
+        subscription.add(component.timeChange.subscribe(time => updatedTime = time));
         component.ngOnChanges(changes);
         tick();
         expect(updatedTime).toEqual({time: 12, angle: 30, disabled: false});
@@ -141,7 +148,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             }
         };
         let updatedTime: NgxMatTimepickerClockFace = {time: 1, angle: 20};
-        component.timeChange.subscribe(time => updatedTime = time);
+        subscription.add(component.timeChange.subscribe(time => updatedTime = time));
         component.ngOnChanges(changes);
         tick();
         expect(updatedTime).toEqual({time: 1, angle: 20});
@@ -196,7 +203,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
         it("should do nothing onMouseUp", fakeAsync(() => {
             let counter = 0;
 
-            component.timeChange.subscribe(() => counter++);
+            subscription.add(component.timeChange.subscribe(() => counter++));
             component.onMouseup(mouseClickEvent);
             component.selectTime(mouseMoveEvent);
             tick();
@@ -208,7 +215,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             const mouseCords: MouseEventInit = {clientX: 706, clientY: 20};
 
             component.faceTime = hourFaceTime;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
             expect(selectedTime.angle > 0 && selectedTime.angle <= 90).toBeTruthy();
@@ -219,7 +226,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             const mouseCords: MouseEventInit = {clientX: 703, clientY: 581};
 
             component.faceTime = hourFaceTime;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
             expect(selectedTime.angle > 90 && selectedTime.angle <= 180).toBeTruthy();
@@ -230,7 +237,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             const mouseCords: MouseEventInit = {clientX: 2, clientY: 500};
 
             component.faceTime = hourFaceTime;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
             expect(selectedTime.angle > 180 && selectedTime.angle <= 270).toBeTruthy();
@@ -241,7 +248,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             const mouseCords: MouseEventInit = {clientX: 20, clientY: 20};
 
             component.faceTime = hourFaceTime;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
             expect(selectedTime.angle > 270 && selectedTime.angle <= 360).toBeTruthy();
@@ -253,7 +260,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
 
             component.faceTime = hourFaceTime;
             component.format = 24;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
 
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
@@ -267,7 +274,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
 
             component.faceTime = minutesFaceTime;
             component.unit = NgxMatTimepickerUnits.MINUTE;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
 
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
@@ -280,20 +287,20 @@ describe("NgxMatTimepickerFaceComponent", () => {
 
             hourFaceTime.forEach(h => h.disabled = true);
             component.faceTime = hourFaceTime;
-            component.timeChange.subscribe((time) => selectedTime = time);
+            subscription.add(component.timeChange.subscribe((time) => selectedTime = time));
 
             component.selectTime(new MouseEvent("mousemove", mouseCords));
             tick();
             expect(selectedTime).toEqual({time: 1, angle: 5});
         }));
 
-        it("should emit selected time once user stop interaction with clock face", async(() => {
+        it("should emit selected time once user stop interaction with clock face", waitForAsync(() => {
             const mouseCords: MouseEventInit = {clientX: 20, clientY: 20};
 
             component.faceTime = minutesFaceTime;
             component.unit = NgxMatTimepickerUnits.MINUTE;
 
-            component.timeSelected.subscribe((time) => expect(time).toBe(55));
+            subscription.add(component.timeSelected.subscribe((time) => expect(time).toBe(55)));
             component.onMouseup(mouseClickEvent);
             component.selectTime(new MouseEvent("click", mouseCords));
         }));

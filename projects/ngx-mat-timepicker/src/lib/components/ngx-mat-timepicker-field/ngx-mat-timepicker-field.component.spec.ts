@@ -1,4 +1,5 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { MatSelectChange } from '@angular/material/select';
 
 import { NgxMatTimepickerFieldComponent } from './ngx-mat-timepicker-field.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -12,24 +13,23 @@ import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
 describe('NgxMatTimepickerFieldComponent', () => {
     let component: NgxMatTimepickerFieldComponent;
     let fixture: ComponentFixture<NgxMatTimepickerFieldComponent>;
-    let timer;
+    let timer: string;
 
-    beforeEach(async(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [NgxMatTimepickerFieldComponent],
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: 'en-US'},
             ],
             schemas: [NO_ERRORS_SCHEMA]
-        })
-            .compileComponents();
-    }));
+        });
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(NgxMatTimepickerFieldComponent);
         component = fixture.componentInstance;
 
-        component.registerOnChange(function (time: number) {
+        component.registerOnChange(function (time: string) {
             timer = time;
         });
         fixture.detectChanges();
@@ -138,7 +138,7 @@ describe('NgxMatTimepickerFieldComponent', () => {
             component.max = max;
             component.minutesList = minutes;
             component.isTimeRangeSet = true;
-            component.changePeriod(period);
+            component.changePeriod({ value: period } as MatSelectChange);
 
             tick();
             expect(spy).toHaveBeenCalledTimes(0);
@@ -250,7 +250,7 @@ describe('NgxMatTimepickerFieldComponent', () => {
     it('should change period end emit timeChanged event', fakeAsync(() => {
         const expected = '12:00 PM';
         component.timeChanged.subscribe(time => expect(time).toBe(expected));
-        component.changePeriod(NgxMatTimepickerPeriods.PM);
+        component.changePeriod({ value: NgxMatTimepickerPeriods.PM } as MatSelectChange);
 
         tick();
         expect(component.period).toEqual(NgxMatTimepickerPeriods.PM);
@@ -263,7 +263,7 @@ describe('NgxMatTimepickerFieldComponent', () => {
         });
     });
 
-    it('should update time and emit timeChanged event when timeSet called', async(() => {
+    it('should update time and emit timeChanged event when timeSet called', waitForAsync(() => {
         let time: string | null = null;
         const timeMock = '2:5 am';
         const expectedTime = '2:05 am';
