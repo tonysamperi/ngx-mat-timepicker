@@ -6,13 +6,12 @@ import {DateTime} from "ts-luxon";
 import {map} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
 
-// tslint:disable-next-line:naming-convention
-interface Theme {
+interface NgxMatTimepickerTheme {
     description: string;
     value: string;
 }
 
-type LocaleKey = "en" | "it" | "es" | "fr";
+type NgxMatTimepickerLocaleKey = "en" | "it" | "es" | "fr";
 
 const pkgName = "ngx-mat-timepicker";
 
@@ -35,19 +34,19 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         minute: 0
     });
     minTime: DateTime = this.maxTime.set({hour: 14});
-    myLocaleKeys: LocaleKey[];
-    myLocales: Record<LocaleKey, string> = {
+    myLocaleKeys: NgxMatTimepickerLocaleKey[];
+    myLocales: Record<NgxMatTimepickerLocaleKey, string> = {
         en: "en-GB",
         it: "it-IT",
         es: "es-ES",
         fr: "fr-FR"
     };
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
-    selectedTheme: Theme;
+    selectedTheme: NgxMatTimepickerTheme;
     selectedTime: string;
     selectedTimeWithRange: string;
     showInput: boolean = !0;
-    themes: Theme[] = [
+    themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}
     ];
@@ -58,8 +57,13 @@ export class NgxMatTimepickerAppComponent implements OnInit {
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
     }
 
+
+    isCurrentLocale(localeKey: NgxMatTimepickerLocaleKey): boolean {
+        return this.myLocales[localeKey] === this.currentLocale;
+    }
+
     ngOnInit(): void {
-        this.myLocaleKeys = Object.keys(this.myLocales) as LocaleKey[];
+        this.myLocaleKeys = Object.keys(this.myLocales) as NgxMatTimepickerLocaleKey[];
         this.selectedTheme = this.themes[0];
         ajax.get(`https://unpkg.com/${pkgName}@latest/package.json`)
             .pipe(map((raw: AjaxResponse<any>) => {
@@ -70,14 +74,11 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             });
     }
 
-    isCurrentLocale(localeKey: LocaleKey): boolean {
-        return this.myLocales[localeKey] === this.currentLocale;
-    }
     onTimeSet($event: string): void {
         console.info("TIME UPDATED", $event);
     }
 
-    updateLocale(localeKey?: LocaleKey): void {
+    updateLocale(localeKey?: NgxMatTimepickerLocaleKey): void {
         if (localeKey) {
             this._nextLocale = this.myLocaleKeys.indexOf(localeKey) - 1;
         }
@@ -87,7 +88,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         (this._nextLocale >= this.myLocaleKeys.length - 1) && (this._nextLocale = -1);
     }
 
-    updateTheme(theme: Theme): void {
+    updateTheme(theme: NgxMatTimepickerTheme): void {
         this.selectedTheme = theme;
         document.body.classList.toggle("dark-theme", !!theme.value);
     }
