@@ -9,7 +9,7 @@ import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum";
-import { NgxMatTimepickerConfig } from "../models/ngx-mat-timepicker-config.interface";
+import {NgxMatTimepickerConfig} from "../models/ngx-mat-timepicker-config.interface";
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../tokens/ngx-mat-timepicker-config.token";
 //
 import {Observable, Subject} from "rxjs";
