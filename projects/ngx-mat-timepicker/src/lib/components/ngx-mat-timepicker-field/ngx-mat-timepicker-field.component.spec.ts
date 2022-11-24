@@ -15,16 +15,15 @@ describe('NgxMatTimepickerFieldComponent', () => {
     let fixture: ComponentFixture<NgxMatTimepickerFieldComponent>;
     let timer: string;
 
-    beforeEach(async(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [NgxMatTimepickerFieldComponent],
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: 'en-US'},
             ],
             schemas: [NO_ERRORS_SCHEMA]
-        })
-            .compileComponents();
-    }));
+        });
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(NgxMatTimepickerFieldComponent);

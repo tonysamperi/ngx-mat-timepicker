@@ -23,7 +23,7 @@ describe('NgxMatTimepickerControlComponent', () => {
                 NgxMatTimepickerTimeFormatterPipe
             ],
             schemas: [NO_ERRORS_SCHEMA]
-        }).compileComponents();
+        });
 
         fixture = TestBed.createComponent(NgxMatTimepickerControlComponent);
         component = fixture.componentInstance;
