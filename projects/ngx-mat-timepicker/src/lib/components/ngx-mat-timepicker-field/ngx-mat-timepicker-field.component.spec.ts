@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { MatSelectChange } from '@angular/material/select';
 
 import { NgxMatTimepickerFieldComponent } from './ngx-mat-timepicker-field.component';
@@ -263,7 +263,7 @@ describe('NgxMatTimepickerFieldComponent', () => {
         });
     });
 
-    it('should update time and emit timeChanged event when timeSet called', async(() => {
+    it('should update time and emit timeChanged event when timeSet called', waitForAsync(() => {
         let time: string | null = null;
         const timeMock = '2:5 am';
         const expectedTime = '2:05 am';

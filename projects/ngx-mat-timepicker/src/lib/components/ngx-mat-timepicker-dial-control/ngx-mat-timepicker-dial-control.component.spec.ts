@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
 import {NgxMatTimepickerDialControlComponent} from "./ngx-mat-timepicker-dial-control.component";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
@@ -29,7 +29,7 @@ describe("NgxMatTimepickerDialControlComponent", () => {
         component = fixture.componentInstance;
     });
 
-    it("should set current time to previous time, change time unit and emit focus event", async(() => {
+    it("should set current time to previous time, change time unit and emit focus event", waitForAsync(() => {
         let counter = 0;
         component.timeUnitChanged.subscribe(unit => expect(unit).toBe(NgxMatTimepickerUnits.MINUTE));
         component.focused.subscribe(() => expect(++counter).toBe(1));
