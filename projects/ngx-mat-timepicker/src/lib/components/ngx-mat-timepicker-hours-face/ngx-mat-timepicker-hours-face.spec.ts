@@ -1,23 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-face.directive";
 
 @Component({
-    template: "<h1>Test</h1>"
+    template: `<div ngxMatTimepickerHoursFace [format]="12">`
 })
-class Test12HoursComponent extends NgxMatTimepickerHoursFaceDirective {
-    constructor() {
-        super(12);
-    }
+class Test12HoursComponent {
+    @ViewChild(NgxMatTimepickerHoursFaceDirective)
+    directive: NgxMatTimepickerHoursFaceDirective;
 }
 
 @Component({
-    template: "<h1>Test</h1>"
+    template: `<div ngxMatTimepickerHoursFace [format]="24">`
 })
-class Test24HoursComponent extends NgxMatTimepickerHoursFaceDirective {
-    constructor() {
-        super(24);
-    }
+class Test24HoursComponent {
+    @ViewChild(NgxMatTimepickerHoursFaceDirective)
+    directive: NgxMatTimepickerHoursFaceDirective;
 }
 
 describe("NgxMatTimepickerHoursFace", () => {
@@ -27,7 +25,7 @@ describe("NgxMatTimepickerHoursFace", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [Test12HoursComponent, Test24HoursComponent],
+            declarations: [NgxMatTimepickerHoursFaceDirective, Test12HoursComponent, Test24HoursComponent],
         }).createComponent(Test12HoursComponent);
 
         component12 = fixture.componentInstance;
@@ -35,24 +33,24 @@ describe("NgxMatTimepickerHoursFace", () => {
     });
 
     it("should generate array with 12 items", () => {
-        expect(component12.hoursList.length).toBe(12);
+        expect(component12.directive.hoursList.length).toBe(12);
     });
 
     it("should generate array with 24 items", () => {
-        expect(component24.hoursList.length).toBe(24);
+        expect(component24.directive.hoursList.length).toBe(24);
     });
 
     it("should emit selected hour (12hr format)", async(() => {
         const time = 10;
 
-        component12.hourSelected.subscribe(hour => expect(hour).toBe(time));
-        component12.onTimeSelected(time);
+        component12.directive.hourSelected.subscribe(hour => expect(hour).toBe(time));
+        component12.directive.onTimeSelected(time);
     }));
 
     it("should emit selected hour (24hr format)", async(() => {
         const time = 15;
 
-        component24.hourSelected.subscribe(hour => expect(hour).toBe(time));
-        component24.onTimeSelected(time);
+        component24.directive.hourSelected.subscribe(hour => expect(hour).toBe(time));
+        component24.directive.onTimeSelected(time);
     }));
 });
