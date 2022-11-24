@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { Subscription } from 'rxjs';
 import { NgxMatTimepickerClockFace } from '../models/ngx-mat-timepicker-clock-face.interface';
 import { NgxMatTimepickerService } from './ngx-mat-timepicker.service';
 import { NgxMatTimepickerPeriods } from '../models/ngx-mat-timepicker-periods.enum';
@@ -19,16 +20,18 @@ describe('NgxMatTimepickerService', () => {
     let selectedHour: NgxMatTimepickerClockFace;
     let selectedMinute: NgxMatTimepickerClockFace;
     let selectedPeriod: NgxMatTimepickerPeriods;
+    let subscription: Subscription;
 
     beforeEach(() => {
+        subscription = new Subscription();
         TestBed.configureTestingModule({
             providers: [NgxMatTimepickerService]
         });
 
-        timepickerService = TestBed.get(NgxMatTimepickerService);
-        timepickerService.selectedHour.subscribe(hour => selectedHour = hour);
-        timepickerService.selectedMinute.subscribe(minute => selectedMinute = minute);
-        timepickerService.selectedPeriod.subscribe(period => selectedPeriod = period);
+        timepickerService = TestBed.inject(NgxMatTimepickerService);
+        subscription.add(timepickerService.selectedHour.subscribe(hour => selectedHour = hour));
+        subscription.add(timepickerService.selectedMinute.subscribe(minute => selectedMinute = minute));
+        subscription.add(timepickerService.selectedPeriod.subscribe(period => selectedPeriod = period));
     });
 
     it('should set default hour on startup', () => {

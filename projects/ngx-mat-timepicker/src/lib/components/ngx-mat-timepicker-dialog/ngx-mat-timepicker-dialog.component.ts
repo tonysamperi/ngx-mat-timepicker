@@ -1,5 +1,5 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 //
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
@@ -17,7 +17,7 @@ import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-ev
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: NgxMatTimepickerConfig,
+    constructor(@Inject(MAT_DIALOG_DATA) public override data: NgxMatTimepickerConfig,
                 protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
@@ -26,7 +26,7 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
         super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
-    close(): void {
+    override close(): void {
         this._dialogRef.close();
     }
 

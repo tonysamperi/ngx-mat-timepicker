@@ -1,7 +1,7 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from "@angular/core";
 import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
@@ -14,7 +14,30 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 
-let config;
+let config: undefined | {
+    timepickerBaseRef: NgxMatTimepickerComponent,
+} & Pick<
+    NgxMatTimepickerComponent,
+    'time'
+    | 'defaultTime'
+    | 'maxTime'
+    | 'minTime'
+    | 'format'
+    | 'minutesGap'
+    | 'disableAnimation'
+    | 'cancelBtnTmpl'
+    | 'confirmBtnTmpl'
+    | 'editableHintTmpl'
+    | 'disabled'
+    | 'enableKeyboardInput'
+    | 'preventOverlayClick'
+    | 'appendToInput'
+    | 'hoursOnly'
+    | 'theme'
+    | 'timepickerClass'
+    | 'inputElement'
+    | 'color'
+>;
 
 @Component({
     selector: "ngx-mat-timepicker",

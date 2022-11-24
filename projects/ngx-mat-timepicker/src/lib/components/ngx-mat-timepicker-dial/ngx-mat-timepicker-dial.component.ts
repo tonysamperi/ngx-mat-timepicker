@@ -37,6 +37,15 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
         return this._color;
     }
 
+    get hourString() {
+        return `${this.hour}`;
+    }
+
+
+    get minuteString() {
+        return `${this.minute}`;
+    }
+
     private get _locale(): string {
         return this._localeSrv.locale;
     }
@@ -91,8 +100,8 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        const periodChanged = changes.period && changes.period.currentValue;
-        if (periodChanged || changes.format && changes.format.currentValue) {
+        const periodChanged = changes['period'] && changes['period'].currentValue;
+        if (periodChanged || changes['format'] && changes['format'].currentValue) {
             const hours = NgxMatTimepickerUtils.getHours(this.format);
 
             this.hours = NgxMatTimepickerUtils.disableHours(hours, {
@@ -102,7 +111,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
                 period: this.period
             });
         }
-        if (periodChanged || changes.hour && changes.hour.currentValue) {
+        if (periodChanged || changes['hour'] && changes['hour'].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
 
             this.minutes = NgxMatTimepickerUtils.disableMinutes(minutes, +this.hour, {

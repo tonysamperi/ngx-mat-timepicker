@@ -27,7 +27,7 @@ export class NgxMatTimepickerToggleComponent {
 
     private _disabled: boolean;
 
-    open(event): void {
+    open(event: MouseEvent): void {
         if (this.timepicker) {
             this.timepicker.open();
             event.stopPropagation();

@@ -1,3 +1,4 @@
+import { OverlayModule } from '@angular/cdk/overlay';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxMatTimepickerPeriodComponent } from './ngx-mat-timepicker-period.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -14,6 +15,7 @@ describe('NgxMatTimepickerPeriodComponent', () => {
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
             declarations: [NgxMatTimepickerPeriodComponent],
+            imports: [OverlayModule],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepickerPeriodComponent);
 
@@ -70,7 +72,7 @@ describe('NgxMatTimepickerPeriodComponent', () => {
         component.selectedPeriod = NgxMatTimepickerPeriods.AM;
         try {
             component.changePeriod(NgxMatTimepickerPeriods.PM);
-        } catch (e) {
+        } catch (e: any) {
             expect(e.message).toBe('no such NgxMatTimepickerUnits');
         }
 

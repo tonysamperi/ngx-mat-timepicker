@@ -43,7 +43,7 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should throw Error if NgxMatTimepickerComponent is not defined", () => {
         spyOnProperty(directive, "timepicker", "set").and.callThrough();
-        expect(() => directive.timepicker = null).toThrowError("NgxMatTimepickerComponent is not defined." +
+        expect((): any => directive.timepicker = null).toThrowError("NgxMatTimepickerComponent is not defined." +
             " Please make sure you passed the timepicker to ngxMatTimepicker directive");
     });
 
@@ -90,8 +90,8 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should return min time in DateTime type if pass string", () => {
         directive.min = "11:00 pm";
-        expect(directive.min["hour"]).toBe(23);
-        expect(directive.min["minute"]).toBe(0);
+        expect((directive.min as unknown as DateTime)["hour"]).toBe(23);
+        expect((directive.min as unknown as DateTime)["minute"]).toBe(0);
     });
 
     it("should return min time in DateTime type if pass DateTime", () => {
@@ -102,8 +102,8 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should return max time in DateTime type if pass string", () => {
         directive.max = "11:00 pm";
-        expect(directive.max["hour"]).toBe(23);
-        expect(directive.max["minute"]).toBe(0);
+        expect((directive.max as unknown as DateTime)["hour"]).toBe(23);
+        expect((directive.max as unknown as DateTime)["minute"]).toBe(0);
     });
 
     it("should return max time in DateTime type if pass DateTime", () => {
@@ -195,7 +195,7 @@ describe("NgxMatTimepickerDirective", () => {
         const spy = spyOn(timepickerComponent, "open");
         directive.timepicker = timepickerComponent;
 
-        directive.onClick({stopPropagation: () => null});
+        directive.onClick({stopPropagation: () => null} as MouseEvent);
         expect(spy).toHaveBeenCalled();
     });
 
@@ -204,7 +204,7 @@ describe("NgxMatTimepickerDirective", () => {
         directive.timepicker = timepickerComponent;
         directive.disableClick = true;
 
-        directive.onClick({stopPropagation: () => null});
+        directive.onClick({stopPropagation: () => null} as MouseEvent);
         expect(spy).toHaveBeenCalledTimes(0);
     });
 

@@ -51,7 +51,8 @@
                     class="mat-elevation-z0"
                     [disableRipple]="time.time % minutesGap !== 0"
                     [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
-                    [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}">
+                    [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+                    [disabled]="time.disabled">
                 {{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}
             </button>
         </div>

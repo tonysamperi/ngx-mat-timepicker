@@ -92,7 +92,7 @@ describe('NgxMatTimepickerAdapter', () => {
             const max = NgxMatTimepickerAdapter.parseTime('11:50 pm', {locale});
             try {
                 NgxMatTimepickerAdapter.isTimeAvailable('11:43 pm', min, max, 'minutes', minutesGap);
-            } catch (e) {
+            } catch (e: any) {
                 expect(e.message).toBe(`Your minutes - 43 doesn\'t match your minutesGap - ${minutesGap}`);
             }
         });
@@ -128,14 +128,14 @@ describe('NgxMatTimepickerAdapter', () => {
             const expected = '١١:١١ ص';
             const actual = '11:11 am';
 
-            expect(NgxMatTimepickerAdapter.toLocaleTimeString(actual, {locale: 'ar-AE'})).toBe(expected);
+            expect(NgxMatTimepickerAdapter.toLocaleTimeString(actual, {locale: 'ar-AE', numberingSystem: 'arab'})).toBe(expected);
         });
 
         it('should convert provided time (en-US) to provided locale (ar-AE) in 24-hours format', () => {
             const expected = '٢١:١١';
             const actual = '21:11';
 
-            expect(NgxMatTimepickerAdapter.toLocaleTimeString(actual, {locale: 'ar-AE', format: 24})).toBe(expected);
+            expect(NgxMatTimepickerAdapter.toLocaleTimeString(actual, {locale: 'ar-AE', numberingSystem: 'arab', format: 24})).toBe(expected);
         });
     });
 
@@ -157,7 +157,7 @@ describe('NgxMatTimepickerAdapter', () => {
 
         it(`should convert time from 'arab' numbering system to 'latn' and return as string`, () => {
             const expected = '11:11 am';
-            const dateTime = DateTime.fromObject({hour: 11, minute: 11, numberingSystem: 'arab', locale: 'ar-AE'});
+            const dateTime = DateTime.fromObject({hour: 11, minute: 11 }, { numberingSystem: 'arab', locale: 'ar-AE'});
 
             expect(NgxMatTimepickerAdapter.fromDateTimeToString(dateTime, 12).toLowerCase()).toBe(expected);
         });

@@ -29,16 +29,17 @@ export class NgxMatTimepickerUtils {
         if (config.min || config.max) {
 
             const hour = NgxMatTimepickerAdapter.formatHour(selectedHour, config.format, config.period);
+            let currentTime = DateTime.fromObject({
+                hour,
+                minute: 0
+            });
 
             return minutes.map(value => {
-                const currentTime = DateTime.fromObject({
-                    hour,
-                    minute: value.time
-                }).toFormat(NgxMatTimepickerFormat.TWELVE);
+                currentTime = currentTime.set({minute: value.time});
 
                 return {
                     ...value,
-                    disabled: !NgxMatTimepickerAdapter.isTimeAvailable(currentTime, config.min, config.max, "minutes")
+                    disabled: !NgxMatTimepickerAdapter.isTimeAvailable(currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "minutes")
                 };
             });
         }

@@ -10,9 +10,9 @@ import {
     ViewEncapsulation
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {MatSelectChange} from "@angular/material/select";
+import {MatLegacySelectChange as MatSelectChange} from "@angular/material/legacy-select";
 import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import {LegacyFloatLabelType as FloatLabelType} from "@angular/material/legacy-form-field";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
@@ -267,7 +267,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this.timeChanged.emit(localTime);
     }
 
-    private _initTime(time): void {
+    private _initTime(time: string): void {
         const isDefaultTimeAvailable = NgxMatTimepickerAdapter
             .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, "minutes", null, this.format);
         if (!isDefaultTimeAvailable) {
@@ -285,7 +285,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._updateTime(time);
     }
 
-    private _isPeriodDisabled(period): boolean {
+    private _isPeriodDisabled(period: NgxMatTimepickerPeriods): boolean {
         return NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(12), {
             min: this.min as DateTime,
             max: this.max as DateTime,
