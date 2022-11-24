@@ -1,3 +1,4 @@
+
 # ngx-mat-timepicker
 
 [![npm](https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker) 
@@ -272,5 +273,7 @@ Jetbrains is now supporting this library with an open-source license, which will
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ### Thanks to
+
+[LayZeeDK](https://github.com/LayZeeDK) - For his great work on the unit tests and upgrades for v15
 
 Agranom for setting up the original repo.
