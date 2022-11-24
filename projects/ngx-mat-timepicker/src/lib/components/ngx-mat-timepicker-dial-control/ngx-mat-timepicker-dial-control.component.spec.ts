@@ -170,7 +170,7 @@ describe("NgxMatTimepickerDialControlComponent", () => {
             component.minutesGap = 6;
 
             component.onKeydown({...event, keyCode: arrowDown});
-            expect(component.time).toBe("5");
+            expect(component.time).toBe("05");
         });
     });
 
