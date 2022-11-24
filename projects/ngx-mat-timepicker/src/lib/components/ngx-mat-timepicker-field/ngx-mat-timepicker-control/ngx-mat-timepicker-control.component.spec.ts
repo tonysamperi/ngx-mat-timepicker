@@ -1,4 +1,5 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatTimepickerControlComponent } from './ngx-mat-timepicker-control.component';
 import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxMatTimepickerUnits } from '../../../models/ngx-mat-timepicker-units.enum';
@@ -13,7 +14,10 @@ describe('NgxMatTimepickerControlComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [NgxMatTimepickerModule.setLocale('ar-AE')],
+            imports: [
+                NgxMatTimepickerModule.setLocale('ar-AE'),
+                NoopAnimationsModule
+            ],
             providers: [
                 NgxMatTimepickerParserPipe,
                 NgxMatTimepickerTimeFormatterPipe
