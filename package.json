@@ -69,7 +69,6 @@
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^15.0.0",
-    "node-sass-tilde-importer": "^1.0.2",
     "prismjs": "^1.29.0",
     "protractor": "^7.0.0",
     "ts-node": "~10.8.0",

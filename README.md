@@ -37,12 +37,22 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 ### Compatibility
 
-* v9 < Angular/Material < v15
+* v9 < Angular/Material < v16
 
 **IMPORTANT**
 Remember to include a Material Theme in your project, example:
 
-`@import "~@angular/material/prebuilt-themes/indigo-pink.css";`
+```scss
+@use "@angular/material/prebuilt-themes/indigo-pink.css";
+```
+
+Additionally, version 15.0 requires the `mat.all-legacy-component-typographies` or `mat.legacy-typography-hierarchy` mixin because we use the legacy Angular Material components for now.
+
+```scss
+@use "@angular/material" as mat;
+
+@include mat.all-legacy-component-typographies();
+```
 
 Refer to the [Angular Material](https://material.angular.io) website for theming options.
 
@@ -77,7 +87,7 @@ import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 export class MyModule {}
 ```
 Finally connect the timepicker to an input via a template property:
-```angular2html
+```html
 <input [ngxMatTimepicker]="picker">
 <ngx-mat-timepicker #picker></ngx-mat-timepicker>
 ```
