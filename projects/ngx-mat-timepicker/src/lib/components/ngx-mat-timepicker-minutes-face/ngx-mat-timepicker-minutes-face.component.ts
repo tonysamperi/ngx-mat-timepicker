@@ -43,7 +43,7 @@ export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.period && changes.period.currentValue) {
+        if (changes['period'] && changes['period'].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
             this.minutesList = NgxMatTimepickerUtils.disableMinutes(minutes, this.selectedHour, {
                 min: this.minTime,

@@ -12,6 +12,8 @@ interface Theme {
     value: string;
 }
 
+type LocaleKey = "en" | "it" | "es" | "fr";
+
 const pkgName = "ngx-mat-timepicker";
 
 @Component({
@@ -33,8 +35,8 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         minute: 0
     });
     minTime: DateTime = this.maxTime.set({hour: 14});
-    myLocaleKeys: string[];
-    myLocales: Record<"en" | "it" | "es" | "fr", string> = {
+    myLocaleKeys: LocaleKey[];
+    myLocales: Record<LocaleKey, string> = {
         en: "en-GB",
         it: "it-IT",
         es: "es-ES",
@@ -57,7 +59,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.myLocaleKeys = Object.keys(this.myLocales);
+        this.myLocaleKeys = Object.keys(this.myLocales) as LocaleKey[];
         this.selectedTheme = this.themes[0];
         ajax.get(`https://unpkg.com/${pkgName}@latest/package.json`)
             .pipe(map((raw: AjaxResponse<any>) => {
@@ -68,11 +70,14 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             });
     }
 
+    isCurrentLocale(localeKey: LocaleKey): boolean {
+        return this.myLocales[localeKey] === this.currentLocale;
+    }
     onTimeSet($event: string): void {
         console.info("TIME UPDATED", $event);
     }
 
-    updateLocale(localeKey?: string): void {
+    updateLocale(localeKey?: LocaleKey): void {
         if (localeKey) {
             this._nextLocale = this.myLocaleKeys.indexOf(localeKey) - 1;
         }

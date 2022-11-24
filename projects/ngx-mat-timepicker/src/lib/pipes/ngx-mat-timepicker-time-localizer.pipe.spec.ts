@@ -53,10 +53,10 @@ describe('NgxMatTimepickerTimeLocalizerPipe', () => {
     });
 
     it('should throw an error when unexpected NgxMatTimepickerUnits is provided', () => {
-        const timeUnit = undefined;
+        const timeUnit: any = undefined;
         try {
             pipe.transform(1, timeUnit);
-        } catch (e) {
+        } catch (e: any) {
             expect(e instanceof Error).toBeTruthy();
             expect(e.message).toBe(`There is no Time Unit with type ${timeUnit}`);
         }
@@ -67,7 +67,7 @@ describe('NgxMatTimepickerTimeLocalizerPipe', () => {
 
         try {
             pipe.transform(time, NgxMatTimepickerUnits.HOUR);
-        } catch (e) {
+        } catch (e: any) {
             expect(e instanceof Error).toBeTruthy();
             expect(e.message).toBe(`Cannot format provided time - ${time} to locale - ${defaultLocale}`);
         }

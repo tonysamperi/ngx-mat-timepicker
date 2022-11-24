@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NgxMatTimepickerContentComponent } from './ngx-mat-timepicker-content.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

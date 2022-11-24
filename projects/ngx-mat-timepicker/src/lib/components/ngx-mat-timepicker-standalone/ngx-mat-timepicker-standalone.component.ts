@@ -19,7 +19,7 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.
 })
 export class NgxMatTimepickerStandaloneComponent extends NgxMatTimepickerBaseDirective {
 
-    constructor(@Inject(NGX_MAT_TIMEPICKER_CONFIG) public data: NgxMatTimepickerConfig,
+    constructor(@Inject(NGX_MAT_TIMEPICKER_CONFIG) public override data: NgxMatTimepickerConfig,
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
                 timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
@@ -27,7 +27,7 @@ export class NgxMatTimepickerStandaloneComponent extends NgxMatTimepickerBaseDir
         super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
-    close(): void {
+    override close(): void {
         this.data.timepickerBaseRef.close();
     }
 }

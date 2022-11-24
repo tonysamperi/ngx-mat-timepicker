@@ -50,7 +50,7 @@ describe("NgxMatTimepickerParserPipe", () => {
 
         try {
             pipe.transform(time);
-        } catch (e) {
+        } catch (e: any) {
             expect(e instanceof Error).toBeTruthy();
             expect(e.message).toBe(`Cannot parse time - ${time}`);
         }

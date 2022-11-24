@@ -1,6 +1,5 @@
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { MatSelectChange } from '@angular/material/select';
-
+import { MatLegacySelectChange as MatSelectChange } from '@angular/material/legacy-select';
 import { NgxMatTimepickerFieldComponent } from './ngx-mat-timepicker-field.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';

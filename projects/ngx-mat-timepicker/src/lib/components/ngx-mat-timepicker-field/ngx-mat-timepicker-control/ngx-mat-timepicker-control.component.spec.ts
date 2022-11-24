@@ -1,10 +1,10 @@
+import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerControlComponent } from './ngx-mat-timepicker-control.component';
-import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
 import { NgxMatTimepickerUnits } from '../../../models/ngx-mat-timepicker-units.enum';
 import { NgxMatTimepickerParserPipe } from '../../../pipes/ngx-mat-timepicker-parser.pipe';
-import { DateTime } from "ts-luxon";
 import { NgxMatTimepickerModule } from '../../../ngx-mat-timepicker.module';
 import { NgxMatTimepickerTimeFormatterPipe } from '../../../pipes/ngx-mat-timepicker-time-formatter.pipe';
 
@@ -142,7 +142,7 @@ describe('NgxMatTimepickerControlComponent', () => {
 
 
     describe('changeTime', () => {
-        let defaultEvent;
+        let defaultEvent: Partial<Event>;
 
         beforeEach(() => {
             defaultEvent = {type: 'keypress', stopPropagation: () => null};
@@ -194,8 +194,8 @@ describe('NgxMatTimepickerControlComponent', () => {
     });
 
     describe('onKeydown', () => {
-        let defaultEvent;
-        let counter;
+        let defaultEvent: Partial<Event>;
+        let counter: number;
         beforeEach(() => {
             counter = 0;
             defaultEvent = {preventDefault: () => counter++, type: 'keydown', stopPropagation: () => null};

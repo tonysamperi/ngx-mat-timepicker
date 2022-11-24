@@ -20,7 +20,7 @@ import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
-import {MatFormField} from "@angular/material/form-field";
+import {MatLegacyFormField as MatFormField} from "@angular/material/legacy-form-field";
 
 @Directive({
     selector: "[ngxMatTimepicker]",
@@ -157,8 +157,8 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.value && changes.value.currentValue) {
-            this._defaultTime = changes.value.currentValue;
+        if (changes['value'] && changes['value'].currentValue) {
+            this._defaultTime = changes['value'].currentValue;
         }
     }
 
@@ -169,7 +169,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     @HostListener("click", ["$event"])
-    onClick(event) {
+    onClick(event: MouseEvent) {
         if (!this.disableClick) {
             this._timepicker.open();
             event.stopPropagation();

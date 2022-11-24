@@ -126,7 +126,7 @@
 		<p>
 			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">
 				<span class="locale"
-					  [class.active]="myLocales[locale] === currentLocale"
+					  [class.active]="isCurrentLocale(locale)"
 					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"
 																			*ngIf="!last"> | </span>
 			</ng-container>

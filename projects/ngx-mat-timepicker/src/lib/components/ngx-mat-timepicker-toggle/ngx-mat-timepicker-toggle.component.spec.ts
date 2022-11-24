@@ -36,14 +36,14 @@ describe("NgxMatTimepickerToggleComponent", () => {
     it("should call open method for timepicker", () => {
         const spy = spyOn(timepicker, "open");
         component.timepicker = timepicker;
-        component.open({stopPropagation: () => null});
+        component.open({stopPropagation: () => null} as MouseEvent);
 
         expect(spy).toHaveBeenCalled();
     });
 
     it("should not call open method for timepicker if no timepicker provided", () => {
         const spy = spyOn(timepicker, "open");
-        component.open({stopPropagation: () => null});
+        component.open({stopPropagation: () => null} as MouseEvent);
 
         expect(spy).toHaveBeenCalledTimes(0);
     });
