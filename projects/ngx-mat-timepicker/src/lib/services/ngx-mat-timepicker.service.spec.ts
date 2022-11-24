@@ -25,7 +25,7 @@ describe('NgxMatTimepickerService', () => {
             providers: [NgxMatTimepickerService]
         });
 
-        timepickerService = TestBed.get(NgxMatTimepickerService);
+        timepickerService = TestBed.inject(NgxMatTimepickerService);
         timepickerService.selectedHour.subscribe(hour => selectedHour = hour);
         timepickerService.selectedMinute.subscribe(minute => selectedMinute = minute);
         timepickerService.selectedPeriod.subscribe(period => selectedPeriod = period);

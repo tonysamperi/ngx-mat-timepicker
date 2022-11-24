@@ -7,7 +7,7 @@ describe("NgxMatTimepickerService", () => {
         TestBed.configureTestingModule({
             providers: [NgxMatTimepickerEventService]
         });
-        eventService = TestBed.get(NgxMatTimepickerEventService);
+        eventService = TestBed.inject(NgxMatTimepickerEventService);
     });
 
 
