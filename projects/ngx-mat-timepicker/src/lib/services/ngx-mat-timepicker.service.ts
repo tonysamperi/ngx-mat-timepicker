@@ -84,8 +84,7 @@ export class NgxMatTimepickerService {
     private _setDefaultTime(time: string, format: number) {
         const defaultTime = NgxMatTimepickerAdapter.parseTime(time, {format}).toJSDate();
 
-        // Check on null, because invalid date will be null
-        if (DateTime.fromJSDate(defaultTime) !== null) {
+        if (DateTime.fromJSDate(defaultTime).isValid) {
             const period = time.substr(time.length - 2).toUpperCase();
             const hour = defaultTime.getHours();
 

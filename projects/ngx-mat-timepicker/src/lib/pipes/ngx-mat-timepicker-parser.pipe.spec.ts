@@ -1,10 +1,11 @@
 import { NgxMatTimepickerParserPipe } from "./ngx-mat-timepicker-parser.pipe";
 import { NgxMatTimepickerUnits } from "../models/ngx-mat-timepicker-units.enum";
+import { NgxMatTimepickerLocaleService } from "../services/ngx-mat-timepicker-locale.service";
 import { DateTime } from "ts-luxon";
 
 describe("NgxMatTimepickerParserPipe", () => {
     const locale = "ar-AE";
-    const pipe = new NgxMatTimepickerParserPipe(locale);
+    const pipe = new NgxMatTimepickerParserPipe(new NgxMatTimepickerLocaleService(locale));
 
     it("should create an instance", () => {
         expect(pipe).toBeTruthy();
@@ -28,7 +29,7 @@ describe("NgxMatTimepickerParserPipe", () => {
         const unparsedHours = Array(24).fill(0).map((v, i) => v + i);
 
         unparsedHours.forEach(hour => {
-            const unparsedHour = DateTime.fromObject({hour, numberingSystem: "arab"}).toFormat("H");
+            const unparsedHour = DateTime.fromObject({hour}, {numberingSystem: "arab"}).toFormat("H");
 
             expect(pipe.transform(unparsedHour, NgxMatTimepickerUnits.HOUR)).toBe(hour);
         });
@@ -38,7 +39,7 @@ describe("NgxMatTimepickerParserPipe", () => {
         const unparsedMinutes = Array(59).fill(0).map((v, i) => v + i);
 
         unparsedMinutes.forEach(minute => {
-            const unparsedMinute = DateTime.fromObject({minute, numberingSystem: "arab"}).toFormat("m");
+            const unparsedMinute = DateTime.fromObject({minute}, {numberingSystem: "arab"}).toFormat("m");
 
             expect(pipe.transform(unparsedMinute, NgxMatTimepickerUnits.MINUTE)).toBe(minute);
         });

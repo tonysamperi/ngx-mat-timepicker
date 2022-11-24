@@ -127,14 +127,24 @@ export class NgxMatTimepickerAdapter {
         const hourCycle = format === 24 ? "h23" : "h12";
         const timeMask = (format === 24) ? NgxMatTimepickerFormat.TWENTY_FOUR_SHORT : NgxMatTimepickerFormat.TWELVE_SHORT;
 
-        return DateTime.fromFormat(time, timeMask).setLocale(locale).toLocaleString({
+        return DateTime.fromFormat(time, timeMask).reconfigure({
+            locale,
+            numberingSystem: opts.numberingSystem,
+            defaultToEN: opts.defaultToEN,
+            outputCalendar: opts.outputCalendar
+        }).toLocaleString({
             ...DateTime.TIME_SIMPLE,
             hourCycle
         });
     }
 
     private static _getLocaleOptionsByTime(time: string, opts: NgxMatTimepickerOptions): LocaleOptions {
-        const {numberingSystem, locale} = DateTime.local().setLocale(opts.locale).resolvedLocaleOptions();
+        const {numberingSystem, locale} = DateTime.local().reconfigure({
+            locale: opts.locale,
+            numberingSystem: opts.numberingSystem,
+            outputCalendar: opts.outputCalendar,
+            defaultToEN: opts.defaultToEN
+        }).resolvedLocaleOptions();
         const localeConfig: LocaleOptions = {
             numberingSystem: numberingSystem as NumberingSystem,
             locale

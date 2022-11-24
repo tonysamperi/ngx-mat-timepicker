@@ -1,58 +1,74 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import {Component} from "@angular/core";
+import {TestBed, waitForAsync} from "@angular/core/testing";
+import {Component, Input, ViewChild} from "@angular/core";
+import {Subscription} from "rxjs";
 import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-face.directive";
 
 @Component({
-    template: "<h1>Test</h1>"
+    template: `<div ngxMatTimepickerHoursFace [format]="format">`
 })
-class Test12HoursComponent extends NgxMatTimepickerHoursFaceDirective {
-    constructor() {
-        super(12);
-    }
+class TestHostComponent {
+    @Input()
+    format: 12 | 24 = 24;
+
+    @ViewChild(NgxMatTimepickerHoursFaceDirective)
+    directive: NgxMatTimepickerHoursFaceDirective;
 }
 
-@Component({
-    template: "<h1>Test</h1>"
-})
-class Test24HoursComponent extends NgxMatTimepickerHoursFaceDirective {
-    constructor() {
-        super(24);
-    }
-}
 
 describe("NgxMatTimepickerHoursFace", () => {
-    let fixture: ComponentFixture<Test12HoursComponent>;
-    let component12: Test12HoursComponent;
-    let component24: Test24HoursComponent;
+    function setup(options: {format: 12 | 24}) {
+        TestBed.configureTestingModule({
+            declarations: [
+                NgxMatTimepickerHoursFaceDirective,
+                TestHostComponent
+            ]
+        });
+        const fixture = TestBed.createComponent(TestHostComponent);
+        const component = fixture.componentInstance;
+        component.format = options.format;
+        fixture.detectChanges();
+        const directive = component.directive;
+
+        return {
+            directive,
+        }
+    }
+
+    let subscription: Subscription;
 
     beforeEach(() => {
-        fixture = TestBed.configureTestingModule({
-            declarations: [Test12HoursComponent, Test24HoursComponent],
-        }).createComponent(Test12HoursComponent);
+        subscription = new Subscription();
+    });
 
-        component12 = fixture.componentInstance;
-        component24 = TestBed.createComponent(Test24HoursComponent).componentInstance;
+    afterEach(() => {
+        subscription.unsubscribe();
     });
 
     it("should generate array with 12 items", () => {
-        expect(component12.hoursList.length).toBe(12);
+        const {directive} = setup({ format: 12 });
+
+        expect(directive.hoursList.length).toBe(12);
     });
 
     it("should generate array with 24 items", () => {
-        expect(component24.hoursList.length).toBe(24);
+        const {directive} = setup({ format: 24 });
+
+        expect(directive.hoursList.length).toBe(24);
     });
 
-    it("should emit selected hour (12hr format)", async(() => {
+    it("should emit selected hour (12hr format)", waitForAsync(() => {
+        const {directive} = setup({ format: 12 });
         const time = 10;
 
-        component12.hourSelected.subscribe(hour => expect(hour).toBe(time));
-        component12.onTimeSelected(time);
+        subscription.add(directive.hourSelected.subscribe(hour => expect(hour).toBe(time)));
+        directive.onTimeSelected(time);
     }));
 
-    it("should emit selected hour (24hr format)", async(() => {
+    it("should emit selected hour (24hr format)", waitForAsync(() => {
+        const {directive} = setup({ format: 24 });
         const time = 15;
 
-        component24.hourSelected.subscribe(hour => expect(hour).toBe(time));
-        component24.onTimeSelected(time);
+        subscription.add(directive.hourSelected.subscribe(hour => expect(hour).toBe(time)));
+        directive.onTimeSelected(time);
     }));
 });
