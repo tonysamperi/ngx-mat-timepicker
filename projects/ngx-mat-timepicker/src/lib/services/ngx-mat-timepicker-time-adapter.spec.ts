@@ -157,7 +157,7 @@ describe('NgxMatTimepickerAdapter', () => {
 
         it(`should convert time from 'arab' numbering system to 'latn' and return as string`, () => {
             const expected = '11:11 am';
-            const dateTime = DateTime.fromObject({hour: 11, minute: 11, numberingSystem: 'arab', locale: 'ar-AE'});
+            const dateTime = DateTime.fromObject({hour: 11, minute: 11 }, { numberingSystem: 'arab', locale: 'ar-AE'});
 
             expect(NgxMatTimepickerAdapter.fromDateTimeToString(dateTime, 12).toLowerCase()).toBe(expected);
         });
