@@ -1,3 +1,12 @@
+#15.0.0
+* Update for Angular 15
+* Use legacy Angular Material components
+
+BREAKING CHANGES
+* Require Angular Material 15
+* Require Node.js >=14.20.0
+* Require the `mat.all-legacy-component-typographies` mixin
+
 #14.0.5
 * Fix dial numbers not disabled when out of min or max range (closes [#42](https://github.com/tonysamperi/ngx-mat-timepicker/issues/42))
 
