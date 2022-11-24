@@ -158,7 +158,8 @@
 							color="primary"
 							(click)="selectedTime = undefined">clear
 					</button>
-					<ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
+					<ngx-mat-timepicker #pickerA
+										(timeSet)="onTimeSet($event)"></ngx-mat-timepicker>
 				</div>
 				<pre class="language-markup">
                     <code>

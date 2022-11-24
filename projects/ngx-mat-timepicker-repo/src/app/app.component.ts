@@ -68,6 +68,10 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             });
     }
 
+    onTimeSet($event: string): void {
+        console.info("TIME UPDATED", $event);
+    }
+
     updateLocale(localeKey?: string): void {
         if (localeKey) {
             this._nextLocale = this.myLocaleKeys.indexOf(localeKey) - 1;
