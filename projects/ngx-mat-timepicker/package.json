@@ -24,7 +24,8 @@
     "Time picker"
   ],
   "dependencies": {
-    "ts-luxon": "^3.0.1"
+    "ts-luxon": "^3.0.1",
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@angular/animations": "^15.0.0",
