@@ -78,7 +78,10 @@
             "styles": [
               "projects/ngx-mat-timepicker-repo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "prismjs"
+            ]
           },
           "configurations": {
             "production": {
