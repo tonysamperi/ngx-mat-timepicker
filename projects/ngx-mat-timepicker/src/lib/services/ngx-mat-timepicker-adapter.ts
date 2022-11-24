@@ -134,7 +134,12 @@ export class NgxMatTimepickerAdapter {
     }
 
     private static _getLocaleOptionsByTime(time: string, opts: NgxMatTimepickerOptions): LocaleOptions {
-        const {numberingSystem, locale} = DateTime.local().setLocale(opts.locale).resolvedLocaleOptions();
+        const {numberingSystem, locale} = DateTime.local().reconfigure({
+            locale: opts.locale,
+            numberingSystem: opts.numberingSystem,
+            outputCalendar: opts.outputCalendar,
+            defaultToEN: opts.defaultToEN
+        }).resolvedLocaleOptions();
         const localeConfig: LocaleOptions = {
             numberingSystem: numberingSystem as NumberingSystem,
             locale
