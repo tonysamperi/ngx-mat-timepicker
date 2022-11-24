@@ -46,12 +46,14 @@ Remember to include a Material Theme in your project, example:
 @use "@angular/material/prebuilt-themes/indigo-pink.css";
 ```
 
-Additionally, version 15.0 requires the `mat.all-legacy-component-typographies` or `mat.legacy-typography-hierarchy` mixin because we use the legacy Angular Material components for now.
+Version 15.0 requires the `mat.all-legacy-component-typographies` or `mat.legacy-typography-hierarchy` mixin because we use the legacy Angular Material components for now. We also require the `mat.all-legacy-component-themes` mixin but don't support the `mat.all-component-themes` mixin yet. Both the `mat.legacy-core` and `mat.core` mixins are supported.
 
 ```scss
 @use "@angular/material" as mat;
 
 @include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+@include mat.all-legacy-component-themes($my-theme);
 ```
 
 Refer to the [Angular Material](https://material.angular.io) website for theming options.
