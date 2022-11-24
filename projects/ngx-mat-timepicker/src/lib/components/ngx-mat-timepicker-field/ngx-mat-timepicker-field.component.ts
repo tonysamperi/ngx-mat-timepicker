@@ -12,7 +12,7 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {MatLegacySelectChange as MatSelectChange} from "@angular/material/legacy-select";
 import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/legacy-form-field";
+import {LegacyFloatLabelType as FloatLabelType} from "@angular/material/legacy-form-field";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
