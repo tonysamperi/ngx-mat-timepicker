@@ -10,7 +10,7 @@ import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.dir
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
 import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
-import {provideNgxMatTimepickerOptions} from "../../tokens/ngx-mat-timepicker-config.token";
+import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
 //
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
@@ -31,7 +31,11 @@ let config: NgxMatTimepickerConfig;
 			<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>
 		</ng-template>`,
     providers: [
-        provideNgxMatTimepickerOptions(config)
+        {
+            provide: NGX_MAT_TIMEPICKER_CONFIG, useFactory() {
+                return config;
+            }
+        }
     ]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
@@ -166,6 +170,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     }
 
     open(): void {
+        // Set data to be injected
         config = {
             timepickerBaseRef: this,
             time: this.time,
