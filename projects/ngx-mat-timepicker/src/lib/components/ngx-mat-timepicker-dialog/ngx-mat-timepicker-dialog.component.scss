@@ -1,8 +1,8 @@
 div.ngx-mat-timepicker-dialog {
-  > mat-dialog-container.mat-dialog-container {
+  > mat-dialog-container {
     padding-top: 0;
 
-    .mat-dialog-content {
+    [mat-dialog-content] {
       padding: 0;
       max-height: 85vh;
 

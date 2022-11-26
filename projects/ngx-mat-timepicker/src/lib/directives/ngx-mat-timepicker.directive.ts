@@ -11,6 +11,8 @@ import {
     Optional
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {CdkOverlayOrigin} from "@angular/cdk/overlay";
+import {MatFormField} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
@@ -19,8 +21,6 @@ import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-loca
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import {CdkOverlayOrigin} from "@angular/cdk/overlay";
-import {MatLegacyFormField as MatFormField} from "@angular/material/legacy-form-field";
 
 @Directive({
     selector: "[ngxMatTimepicker]",
@@ -43,7 +43,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         return this._elementRef && this._elementRef.nativeElement;
     }
 
-    get format(): number {
+    get format(): 12 | 24 {
         return this._format;
     }
 
@@ -143,7 +143,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     @Input() disableClick: boolean;
     @Input() disabled: boolean;
 
-    private _format = 12;
+    private _format: 12 | 24 = 12;
     private _max: string | DateTime;
     private _min: string | DateTime;
     private _previousFormat: number;
@@ -157,8 +157,10 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['value'] && changes['value'].currentValue) {
-            this._defaultTime = changes['value'].currentValue;
+        // tslint:disable-next-line:no-string-literal
+        const vChanges = changes["value"];
+        if (vChanges && vChanges.currentValue) {
+            this._defaultTime = vChanges.currentValue;
         }
     }
 
@@ -177,7 +179,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     onTouched = () => {
-    };
+    }
 
     registerOnChange(fn: (value: any) => void): void {
         this._onChange = fn;
@@ -205,7 +207,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     private _onChange: (value: any) => void = () => {
-    };
+    }
 
     private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
         if (picker) {

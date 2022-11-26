@@ -16,11 +16,16 @@
     height: 100%;
   }
 
-  [mat-mini-fab] {
+  [mat-raised-button] {
     box-shadow: none;
+    border-radius: 50%;
+    width: 40px;
+    max-width: 40px;
+    min-width: 40px;
+    height: 40px;
   }
 
-  [mat-mini-fab]:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+  [mat-raised-button]:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
     background: transparent;
   }
 }

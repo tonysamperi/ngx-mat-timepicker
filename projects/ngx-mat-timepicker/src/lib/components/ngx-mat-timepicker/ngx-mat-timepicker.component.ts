@@ -1,43 +1,21 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from "@angular/core";
 import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
-import {MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
 //
+import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
 import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
-import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
+import {provideNgxMatTimepickerOptions} from "../../tokens/ngx-mat-timepicker-config.token";
 //
 import {DateTime} from "ts-luxon";
 import {Subject} from "rxjs";
 
-let config: undefined | {
-    timepickerBaseRef: NgxMatTimepickerComponent,
-} & Pick<
-    NgxMatTimepickerComponent,
-    'time'
-    | 'defaultTime'
-    | 'maxTime'
-    | 'minTime'
-    | 'format'
-    | 'minutesGap'
-    | 'disableAnimation'
-    | 'cancelBtnTmpl'
-    | 'confirmBtnTmpl'
-    | 'editableHintTmpl'
-    | 'disabled'
-    | 'enableKeyboardInput'
-    | 'preventOverlayClick'
-    | 'appendToInput'
-    | 'hoursOnly'
-    | 'theme'
-    | 'timepickerClass'
-    | 'inputElement'
-    | 'color'
->;
+let config: NgxMatTimepickerConfig;
 
 @Component({
     selector: "ngx-mat-timepicker",
@@ -53,11 +31,7 @@ let config: undefined | {
 			<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>
 		</ng-template>`,
     providers: [
-        {
-            provide: NGX_MAT_TIMEPICKER_CONFIG, useFactory() {
-                return config;
-            }
-        }
+        provideNgxMatTimepickerOptions(config)
     ]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
@@ -82,7 +56,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         return this._timepickerInput && this._timepickerInput.disabled;
     }
 
-    get format(): number {
+    get format(): 12 | 24 {
         return this._timepickerInput ? this._timepickerInput.format : this._format;
     }
 
@@ -169,7 +143,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _appendToInput: boolean = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
-    private _format: number;
+    private _format: 12 | 24;
     private _minutesGap: number;
     private _ngxMatTimepickerTheme: NgxMatTimepickerTheme;
     private _overlayRef: OverlayRef;

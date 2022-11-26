@@ -11,7 +11,7 @@
            [placeholder]="placeholder"
            [disabled]="disabled"
            (keydown)="onKeydown($event)"
-           (keypress)="changeTime($event)"
+           (beforeinput)="changeTime($event)"
            (focus)="onFocus()"
            (blur)="onBlur()" />
     <div class="arrows-wrap"

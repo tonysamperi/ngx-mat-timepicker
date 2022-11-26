@@ -116,7 +116,7 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     setTime(): void {
-        this.data.timepickerBaseRef.timeSet.next(this._timepickerSrv.getFullTime(this.data.format));
+        this.data.timepickerBaseRef.timeSet.emit(this._timepickerSrv.getFullTime(this.data.format));
         this.close();
     }
 

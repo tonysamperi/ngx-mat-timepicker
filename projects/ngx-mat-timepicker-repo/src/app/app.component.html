@@ -230,6 +230,8 @@
 					<p><strong>format = 12</strong></p>
 					<ngx-mat-timepicker-field color="warn"
 											  [format]="12"
+											  [max]="maxTime"
+											  [min]="minTime"
 											  [defaultTime]="'11:11 PM'"></ngx-mat-timepicker-field>
 					<p><strong>format = 24</strong></p>
 					<ngx-mat-timepicker-field color="warn"
@@ -417,10 +419,10 @@
 						<mat-label>Choose a date</mat-label>
 						<input matInput
 							   [matDatepicker]="datePicker" />
-						<mat-hint>MM/DD/YYYY</mat-hint>
 						<mat-datepicker-toggle matSuffix
 											   [for]="datePicker"></mat-datepicker-toggle>
 						<mat-datepicker #datePicker></mat-datepicker>
+						<mat-hint>MM/DD/YYYY</mat-hint>
 					</mat-form-field>
 					<mat-form-field>
 						<input matInput

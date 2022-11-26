@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
-import {LegacyFloatLabelType as FloatLabelType} from "@angular/material/legacy-form-field";
+import {FloatLabelType} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerUnits} from "../../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-parser.pipe";
@@ -65,16 +65,16 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
     @Input() timeUnit: NgxMatTimepickerUnits;
 
     private _color: ThemePalette = "primary";
-    private _floatLabel: FloatLabelType = "never";
+    private _floatLabel: FloatLabelType = "auto";
     private _previousTime: number;
 
     constructor(private _timeParser: NgxMatTimepickerParserPipe) {
     }
 
-    changeTime(event: any): void {
+    changeTime(event: InputEvent): void {
         event.stopPropagation();
-
-        const char = String.fromCharCode(event.keyCode);
+        console.info("CHANGE TIME FIRED InputEvent", event.data);
+        const char = event.data;
         const time = concatTime(String(this.time), char);
 
         this._changeTimeIfValid(time);
@@ -117,7 +117,8 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['timeList'] && this.time != null) {
+        // tslint:disable-next-line:no-string-literal
+        if (changes["timeList"] && this.time != null) {
             if (this._isSelectedTimeDisabled(this.time)) {
                 this._setAvailableTime();
             }

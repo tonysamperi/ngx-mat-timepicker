@@ -1,21 +1,21 @@
-import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { DateTime } from "ts-luxon";
-import { NgxMatTimepickerControlComponent } from './ngx-mat-timepicker-control.component';
-import { NgxMatTimepickerUnits } from '../../../models/ngx-mat-timepicker-units.enum';
-import { NgxMatTimepickerParserPipe } from '../../../pipes/ngx-mat-timepicker-parser.pipe';
-import { NgxMatTimepickerModule } from '../../../ngx-mat-timepicker.module';
-import { NgxMatTimepickerTimeFormatterPipe } from '../../../pipes/ngx-mat-timepicker-time-formatter.pipe';
+import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {DateTime} from "ts-luxon";
+import {NgxMatTimepickerControlComponent} from "./ngx-mat-timepicker-control.component";
+import {NgxMatTimepickerUnits} from "../../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-parser.pipe";
+import {NgxMatTimepickerModule} from "../../../ngx-mat-timepicker.module";
+import {NgxMatTimepickerTimeFormatterPipe} from "../../../pipes/ngx-mat-timepicker-time-formatter.pipe";
 
-describe('NgxMatTimepickerControlComponent', () => {
+describe("NgxMatTimepickerControlComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerControlComponent>;
     let component: NgxMatTimepickerControlComponent;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                NgxMatTimepickerModule.setLocale('ar-AE'),
+                NgxMatTimepickerModule.setLocale("ar-AE"),
                 NoopAnimationsModule
             ],
             providers: [
@@ -30,38 +30,38 @@ describe('NgxMatTimepickerControlComponent', () => {
         fixture.detectChanges();
     });
 
-    describe('increase', () => {
+    describe("increase", () => {
 
         beforeEach(() => {
             component.timeList = [
                 {time: 1, angle: 0, disabled: false},
                 {time: 2, angle: 0, disabled: false},
-                {time: 3, angle: 0, disabled: true},
+                {time: 3, angle: 0, disabled: true}
             ];
             component.min = 1;
             component.max = 12;
             component.disabled = false;
         });
 
-        it('should increase time', waitForAsync(() => {
+        it("should increase time", waitForAsync(() => {
             component.time = 1;
             component.timeChanged.subscribe(t => expect(t).toBe(2));
 
             component.increase();
         }));
 
-        it('should set time to min when increase time', waitForAsync(() => {
+        it("should set time to min when increase time", waitForAsync(() => {
             component.time = 12;
             component.timeChanged.subscribe(t => expect(t).toBe(1));
 
             component.increase();
         }));
 
-        it('should change time to the nearest available next time', waitForAsync(() => {
+        it("should change time to the nearest available next time", waitForAsync(() => {
             component.timeList = [
                 {time: 1, angle: 0},
                 {time: 2, angle: 0, disabled: true},
-                {time: 3, angle: 0},
+                {time: 3, angle: 0}
             ];
             component.time = 1;
             component.timeChanged.subscribe((t) => expect(t).toBe(3));
@@ -69,7 +69,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             component.increase();
         }));
 
-        it('should not change time when all next time is disabled', waitForAsync(() => {
+        it("should not change time when all next time is disabled", waitForAsync(() => {
             let counter = 0;
             component.time = 2;
             component.timeChanged.subscribe(() => counter++);
@@ -80,46 +80,46 @@ describe('NgxMatTimepickerControlComponent', () => {
         }));
     });
 
-    describe('decrease', () => {
+    describe("decrease", () => {
 
         beforeEach(() => {
             component.timeList = [
                 {time: 1, angle: 0, disabled: false},
                 {time: 2, angle: 0, disabled: true},
-                {time: 3, angle: 0, disabled: false},
+                {time: 3, angle: 0, disabled: false}
             ];
             component.min = 1;
             component.max = 3;
             component.disabled = false;
         });
 
-        it('should decrease time', waitForAsync(() => {
+        it("should decrease time", waitForAsync(() => {
             component.time = 2;
             component.timeChanged.subscribe(t => expect(t).toBe(1));
 
             component.decrease();
         }));
 
-        it('should set time to max when decrease time', waitForAsync(() => {
+        it("should set time to max when decrease time", waitForAsync(() => {
             component.time = 1;
             component.timeChanged.subscribe(t => expect(t).toBe(3));
 
             component.decrease();
         }));
 
-        it('should time to nearest available previous time', waitForAsync(() => {
+        it("should time to nearest available previous time", waitForAsync(() => {
             component.time = 3;
             component.timeChanged.subscribe((t) => expect(t).toBe(1));
 
             component.decrease();
         }));
 
-        it('should not change time when all previous time is disabled', waitForAsync(() => {
+        it("should not change time when all previous time is disabled", waitForAsync(() => {
             let counter = 0;
             component.timeList = [
                 {time: 1, angle: 0, disabled: true},
                 {time: 2, angle: 0, disabled: true},
-                {time: 3, angle: 0},
+                {time: 3, angle: 0}
             ];
             component.time = 3;
             component.timeChanged.subscribe(() => counter++);
@@ -128,7 +128,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             expect(counter).toBe(0);
         }));
 
-        it('should not call increase or decrease if disabled true', () => {
+        it("should not call increase or decrease if disabled true", () => {
             component.time = 1;
             component.disabled = true;
 
@@ -141,14 +141,14 @@ describe('NgxMatTimepickerControlComponent', () => {
     });
 
 
-    describe('changeTime', () => {
+    describe("changeTime", () => {
         let defaultEvent: Partial<Event>;
 
         beforeEach(() => {
-            defaultEvent = {type: 'keypress', stopPropagation: () => null};
+            defaultEvent = {type: "keypress", stopPropagation: () => null};
         });
 
-        it('should set time to 14 when event fires with keycode 52', waitForAsync(() => {
+        it("should set time to 14 when event fires with keycode 52", waitForAsync(() => {
             const event = {...defaultEvent, keyCode: 52}; // 4
             const expectedTime = 14;
 
@@ -161,7 +161,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             expect(component.time).toBe(expectedTime);
         }));
 
-        it('should set time to 4 when provided value more than max', () => {
+        it("should set time to 4 when provided value more than max", () => {
             const event = {...defaultEvent, keyCode: 52}; // 4
             component.time = 4;
             component.min = 1;
@@ -172,7 +172,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             expect(component.time).toBe(4);
         });
 
-        it('should set time to 22 when provided value less than min', () => {
+        it("should set time to 22 when provided value less than min", () => {
             const event = {...defaultEvent, keyCode: 48}; // 0
             component.time = 1;
             component.min = 22;
@@ -182,7 +182,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             expect(component.time).toBe(22);
         });
 
-        it('should not change time if value is NaN', () => {
+        it("should not change time if value is NaN", () => {
             const event = {...defaultEvent, keyCode: 83}; // s
             component.time = 1;
             component.min = 1;
@@ -193,33 +193,33 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
     });
 
-    describe('onKeydown', () => {
+    describe("onKeydown", () => {
         let defaultEvent: Partial<Event>;
         let counter: number;
         beforeEach(() => {
             counter = 0;
-            defaultEvent = {preventDefault: () => counter++, type: 'keydown', stopPropagation: () => null};
+            defaultEvent = {preventDefault: () => counter++, type: "keydown", stopPropagation: () => null};
             component.timeList = [
                 {time: 1, angle: 0},
-                {time: 2, angle: 0},
+                {time: 2, angle: 0}
             ];
         });
 
-        it('should increase time by 1 when key down arrow up', waitForAsync(() => {
-            const event = {...defaultEvent, key: 'ArrowUp'};
+        it("should increase time by 1 when key down arrow up", waitForAsync(() => {
+            const event = {...defaultEvent, key: "ArrowUp"};
             component.time = 1;
             component.timeChanged.subscribe(time => expect(time).toBe(2));
             component.onKeydown(event);
         }));
 
-        it('should decrease time by 1 when key down arrow down', waitForAsync(() => {
-            const event: KeyboardEvent = {...defaultEvent, key: 'ArrowDown'} as KeyboardEvent;
+        it("should decrease time by 1 when key down arrow down", waitForAsync(() => {
+            const event: KeyboardEvent = {...defaultEvent, key: "ArrowDown"} as KeyboardEvent;
             component.time = 2;
             component.timeChanged.subscribe(time => expect(time).toBe(1));
             component.onKeydown(event);
         }));
 
-        it('should call preventDefault and not change time', () => {
+        it("should call preventDefault and not change time", () => {
             const event = {...defaultEvent, keyCode: 70};
             component.time = 1;
 
@@ -229,7 +229,7 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
 
         it(`should call preventDefault when preventTyping is true and event.key is not 'Tab' and not change time`, () => {
-            const event = {...defaultEvent, key: 'ArrowLeft'};
+            const event = {...defaultEvent, key: "ArrowLeft"};
             component.time = 1;
             component.preventTyping = true;
 
@@ -239,7 +239,7 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
 
         it(`should not call preventDefault when preventTyping is true and event.key is 'Tab'`, () => {
-            const event = {...defaultEvent, key: 'Tab'};
+            const event = {...defaultEvent, key: "Tab"};
             component.preventTyping = true;
 
             component.onKeydown(event);
@@ -247,7 +247,7 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
 
         it(`should not call preventDefault when preventTyping is false and event.key is not 'Tab'`, () => {
-            const event = {...defaultEvent, key: 'ArrowLeft'};
+            const event = {...defaultEvent, key: "ArrowLeft"};
             component.preventTyping = false;
 
             component.onKeydown(event);
@@ -256,7 +256,7 @@ describe('NgxMatTimepickerControlComponent', () => {
     });
 
 
-    describe('ngOnChanges', () => {
+    describe("ngOnChanges", () => {
         let changes: SimpleChanges;
 
         beforeEach(() => {
@@ -265,17 +265,17 @@ describe('NgxMatTimepickerControlComponent', () => {
                     currentValue: [],
                     firstChange: true,
                     isFirstChange: () => true,
-                    previousValue: undefined,
+                    previousValue: undefined
                 }
             };
         });
 
-        it('should set time to 1 and emit it when current time is disabled', waitForAsync(() => {
+        it("should set time to 1 and emit it when current time is disabled", waitForAsync(() => {
             component.time = 2;
             component.timeList = [
                 {time: 1, angle: 0, disabled: false},
                 {time: 2, angle: 0, disabled: true},
-                {time: 3, angle: 0, disabled: false},
+                {time: 3, angle: 0, disabled: false}
             ];
             component.timeChanged.subscribe(time => expect(time).toBe(1));
             component.ngOnChanges(changes);
@@ -283,12 +283,12 @@ describe('NgxMatTimepickerControlComponent', () => {
             expect(component.time).toBe(1);
         }));
 
-        it('should not change and emit time when current time is not disabled', fakeAsync(() => {
+        it("should not change and emit time when current time is not disabled", fakeAsync(() => {
             let counter = 0;
             component.timeList = [
                 {time: 1, angle: 0, disabled: false},
                 {time: 2, angle: 0, disabled: false},
-                {time: 3, angle: 0, disabled: false},
+                {time: 3, angle: 0, disabled: false}
             ];
             component.time = 2;
             component.timeChanged.subscribe(() => counter++);
@@ -300,10 +300,10 @@ describe('NgxMatTimepickerControlComponent', () => {
         }));
     });
 
-    describe('onModelChange', () => {
+    describe("onModelChange", () => {
 
-        it('should parse value and set it to time property', () => {
-            const unparsedTime = DateTime.fromObject({minute: 10}, {numberingSystem: 'arab'}).toFormat('m');
+        it("should parse value and set it to time property", () => {
+            const unparsedTime = DateTime.fromObject({minute: 10}, {numberingSystem: "arab"}).toFormat("m");
             component.time = 5;
             component.timeUnit = NgxMatTimepickerUnits.MINUTE;
 
@@ -314,9 +314,9 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
     });
 
-    describe('onFocus', () => {
+    describe("onFocus", () => {
 
-        it('should change focus flag to true and set previousTime when focus event fires', () => {
+        it("should change focus flag to true and set previousTime when focus event fires", () => {
             component.isFocused = false;
             component.onFocus();
 
@@ -324,16 +324,16 @@ describe('NgxMatTimepickerControlComponent', () => {
         });
     });
 
-    describe('onBlur', () => {
+    describe("onBlur", () => {
 
-        it('should change focus flag to false when blur event fires', () => {
+        it("should change focus flag to false when blur event fires", () => {
             component.isFocused = true;
 
             component.onBlur();
             expect(component.isFocused).toBeFalsy();
         });
 
-        it('should emit time when blur event fires and time was changed', waitForAsync(() => {
+        it("should emit time when blur event fires and time was changed", waitForAsync(() => {
             const expectedTime = 10;
             component.time = expectedTime;
 
@@ -342,7 +342,7 @@ describe('NgxMatTimepickerControlComponent', () => {
             component.onBlur();
         }));
 
-        it('should not emit time when blur event fires and time was not changed', fakeAsync(() => {
+        it("should not emit time when blur event fires and time was not changed", fakeAsync(() => {
             let counter = 0;
             component.time = 10;
 

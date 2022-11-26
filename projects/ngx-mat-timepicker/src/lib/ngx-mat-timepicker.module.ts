@@ -5,12 +5,12 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {A11yModule} from "@angular/cdk/a11y";
 // MATERIAL
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
-import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
-import {MatLegacyDialogModule as MatDialogModule} from "@angular/material/legacy-dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
-import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
 // NGX-MAT-TIMEPICKER
 // DIRECTIVES
@@ -18,15 +18,23 @@ import {NgxMatTimepickerDirective} from "./directives/ngx-mat-timepicker.directi
 import {NgxMatTimepickerToggleIconDirective} from "./directives/ngx-mat-timepicker-toggle-icon.directive";
 import {NgxMatTimepickerThemeDirective} from "./directives/ngx-mat-timepicker-theme.directive";
 import {NgxMatTimepickerBaseDirective} from "./directives/ngx-mat-timepicker-base.directive";
-import {NgxMatTimepickerHoursFaceDirective} from "./components/ngx-mat-timepicker-hours-face/ngx-mat-timepicker-hours-face.directive";
+import {
+    NgxMatTimepickerHoursFaceDirective
+} from "./components/ngx-mat-timepicker-hours-face/ngx-mat-timepicker-hours-face.directive";
 // COMPONENTS
 import {
     NgxMatTimepickerContentComponent
 } from "./components/ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
-import {NgxMatTimepickerDialogComponent} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
-import {NgxMatTimepickerStandaloneComponent} from "./components/ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
+import {
+    NgxMatTimepickerDialogComponent
+} from "./components/ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
+import {
+    NgxMatTimepickerStandaloneComponent
+} from "./components/ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
 import {NgxMatTimepickerComponent} from "./components/ngx-mat-timepicker/ngx-mat-timepicker.component";
-import {NgxMatTimepickerToggleComponent} from "./components/ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
+import {
+    NgxMatTimepickerToggleComponent
+} from "./components/ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
 import {
     NgxMatTimepicker24HoursFaceComponent
 } from "./components/ngx-mat-timepicker-24-hours-face/ngx-mat-timepicker-24-hours-face.component";
@@ -41,7 +49,9 @@ import {NgxMatTimepickerDialComponent} from "./components/ngx-mat-timepicker-dia
 import {
     NgxMatTimepickerDialControlComponent
 } from "./components/ngx-mat-timepicker-dial-control/ngx-mat-timepicker-dial-control.component";
-import {NgxMatTimepickerPeriodComponent} from "./components/ngx-mat-timepicker-period/ngx-mat-timepicker-period.component";
+import {
+    NgxMatTimepickerPeriodComponent
+} from "./components/ngx-mat-timepicker-period/ngx-mat-timepicker-period.component";
 import {NgxMatTimepickerTimeFormatterPipe} from "./pipes/ngx-mat-timepicker-time-formatter.pipe";
 import {NgxMatTimepickerMinutesFormatterPipe} from "./pipes/ngx-mat-timepicker-minutes-formatter.pipe";
 import {NgxMatTimepickerAutofocusDirective} from "./directives/ngx-mat-timepicker-autofocus.directive";

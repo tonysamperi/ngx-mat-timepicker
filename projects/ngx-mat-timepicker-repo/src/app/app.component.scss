@@ -1,5 +1,5 @@
 @import "../scss/responsive";
-@import "../scss/themes";
+@import "../scss/core";
 
 :host {
 	display: block;
@@ -30,6 +30,8 @@
 		}
 
 		.ngx-mtp-github-link-desktop {
+			color: inherit;
+
 			@include respond-below(sm) {
 				display: none;
 			}

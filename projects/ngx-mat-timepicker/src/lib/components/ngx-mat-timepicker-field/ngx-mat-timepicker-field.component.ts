@@ -10,9 +10,9 @@ import {
     ViewEncapsulation
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {MatLegacySelectChange as MatSelectChange} from "@angular/material/legacy-select";
+import {MatSelectChange} from "@angular/material/select";
 import {ThemePalette} from "@angular/material/core";
-import {LegacyFloatLabelType as FloatLabelType} from "@angular/material/legacy-form-field";
+import {FloatLabelType} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
@@ -158,7 +158,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
 
     private _color: ThemePalette = "primary";
     private _defaultTime: string;
-    private _floatLabel: FloatLabelType = "never";
+    private _floatLabel: FloatLabelType = "auto";
     private _format = 12;
     private _isDefaultTime: boolean;
     private _isFirstTimeChange: boolean = true;
@@ -295,7 +295,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     private _onChange: (value: string) => void = () => {
-    };
+    }
 
     private _resetTime(): void {
         this._timepickerService.hour = {angle: 0, time: null};

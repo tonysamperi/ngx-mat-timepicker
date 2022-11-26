@@ -2,16 +2,9 @@
   width: 60px;
   min-width: 60px;
 
-  input {
-    text-align: center;
-  }
-
   .arrows-wrap {
-    position: absolute;
-    right: 0;
-    bottom: -8px;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    z-index: 1;
 
     > .arrow {
       text-align: center;

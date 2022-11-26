@@ -1,6 +1,8 @@
+<!-- DEFAULT TEMPLATES - START -->
 <ng-template #hourButton
              let-time>
     <button mat-mini-fab
+            default-color="undefined"
             class="mat-elevation-z0"
             [color]="(time.time | activeHour: selectedTime?.time : isClockFaceDisabled) ? color : undefined"
             [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
@@ -8,6 +10,23 @@
         {{time.time | timeLocalizer: timeUnit.HOUR}}
     </button>
 </ng-template>
+<ng-template #minutesFace>
+    <div class="clock-face__container">
+        <div class="clock-face__number clock-face__number--outer"
+             [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
+             *ngFor="let time of faceTime; trackBy: trackByTime">
+            <button mat-raised-button
+                    class="mat-elevation-z0"
+                    [disableRipple]="time.time % minutesGap !== 0"
+                    [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
+                    [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+                    [disabled]="time.disabled">
+                {{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}
+            </button>
+        </div>
+    </div>
+</ng-template>
+<!-- DEFAULT TEMPLATES - END -->
 <div class="clock-face"
      #clockFace>
     <div *ngIf="unit !== timeUnit.MINUTE;else minutesFace"
@@ -42,19 +61,3 @@
     <mat-toolbar class="clock-face__center"
                  [color]="color"></mat-toolbar>
 </div>
-<ng-template #minutesFace>
-    <div class="clock-face__container">
-        <div class="clock-face__number clock-face__number--outer"
-             [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
-             *ngFor="let time of faceTime; trackBy: trackByTime">
-            <button mat-mini-fab
-                    class="mat-elevation-z0"
-                    [disableRipple]="time.time % minutesGap !== 0"
-                    [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
-                    [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
-                    [disabled]="time.disabled">
-                {{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}
-            </button>
-        </div>
-    </div>
-</ng-template>

@@ -1,13 +1,11 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 //
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
-
-//
 
 @Component({
     selector: "ngx-mat-timepicker-dialog",

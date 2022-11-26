@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
-@import "./scss/theme-colors";
-@import "./scss/themes";
+@import "scss/themes";
+@import "scss/core";
 
 @font-face {
 	font-family: "Material Icons";
@@ -17,6 +17,7 @@ $accent-color-dark: mat.get-color-from-palette($dark-accent);
 body {
 	margin: 0;
 	font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+	font-size: 14px;
 
 	* {
 		box-sizing: border-box;
@@ -148,11 +149,11 @@ body {
 	}
 
 	// Include the default theme styles.
-	@include mat.all-legacy-component-themes($candy-app-theme);
+	@include mat.all-component-themes($candy-app-theme);
 	// @include mat.all-component-themes($candy-app-theme); // doesn't work yet
 
 	&.dark-theme {
-		@include mat.all-legacy-component-themes($dark-theme);
+		@include mat.all-component-themes($dark-theme);
 		// @include mat.all-component-themes($dark-theme); // doesn't work yet
 
 		a {
