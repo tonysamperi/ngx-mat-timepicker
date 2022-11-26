@@ -5,7 +5,7 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {A11yModule} from "@angular/cdk/a11y";
 // MATERIAL
-import {MatButtonModule} from "@angular/material/button";
+import {MAT_FAB_DEFAULT_OPTIONS, MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
@@ -121,7 +121,10 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         NgxMatTimepickerTimeLocalizerPipe
     ],
     providers: [
-        NgxMatTimepickerLocaleService
+        NgxMatTimepickerLocaleService,
+        {
+            provide: MAT_FAB_DEFAULT_OPTIONS, useValue: {color: "void"}
+        }
     ]
 })
 export class NgxMatTimepickerModule {

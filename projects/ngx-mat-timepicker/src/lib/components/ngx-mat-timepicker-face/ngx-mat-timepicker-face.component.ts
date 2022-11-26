@@ -10,7 +10,8 @@ import {
     OnDestroy,
     Output,
     SimpleChanges,
-    ViewChild
+    ViewChild,
+    ViewEncapsulation
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
@@ -52,7 +53,8 @@ const CLOCK_HAND_STYLES = {
     selector: "ngx-mat-timepicker-face",
     templateUrl: "./ngx-mat-timepicker-face.component.html",
     styleUrls: ["./ngx-mat-timepicker-face.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, OnDestroy {
 

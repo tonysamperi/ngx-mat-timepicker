@@ -2,7 +2,7 @@
 <ng-template #hourButton
              let-time>
     <button mat-mini-fab
-            default-color="undefined"
+            disableRipple
             class="mat-elevation-z0"
             [color]="(time.time | activeHour: selectedTime?.time : isClockFaceDisabled) ? color : undefined"
             [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
@@ -15,9 +15,9 @@
         <div class="clock-face__number clock-face__number--outer"
              [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
              *ngFor="let time of faceTime; trackBy: trackByTime">
-            <button mat-raised-button
+            <button mat-mini-fab
+                    disableRipple
                     class="mat-elevation-z0"
-                    [disableRipple]="time.time % minutesGap !== 0"
                     [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
                     [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
                     [disabled]="time.disabled">

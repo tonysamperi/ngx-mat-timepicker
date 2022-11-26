@@ -71,8 +71,8 @@ body {
 	}
 
 	mat-icon.mat-icon.ngx-mtp-theme-example {
-		margin-right: 0;
-		margin-left: 8px;
+		margin-right: 8px;
+		margin-left: 0;
 	}
 
 	.ngx-mtp-d-inline-block {
@@ -153,7 +153,7 @@ body {
 	// @include mat.all-component-themes($candy-app-theme); // doesn't work yet
 
 	&.dark-theme {
-		@include mat.all-component-themes($dark-theme);
+		@include mat.all-component-colors($dark-theme);
 		// @include mat.all-component-themes($dark-theme); // doesn't work yet
 
 		a {

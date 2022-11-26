@@ -44,12 +44,6 @@
 			}
 		}
 
-		.ngx-mtp-github-logo {
-			display: inline-block;
-			height: 26px;
-			vertical-align: middle;
-		}
-
 	}
 
 	@include respond-below(sm) {
@@ -158,6 +152,12 @@ footer {
 	padding: 25px 0;
 	//color: #9479b9;
 	width: 100%;
+}
+
+.ngx-mtp-github-logo {
+	display: inline-block;
+	height: 26px;
+	vertical-align: middle;
 }
 
 // Terminal
