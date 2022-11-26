@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -34,8 +35,11 @@
         "projects/ngx-mat-timepicker/src/public-api"
       ]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
   },
+  "include": [
+    "projects/ngx-mat-timepicker-repo/src/typewriter.d.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

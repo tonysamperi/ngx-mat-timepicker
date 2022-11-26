@@ -45,8 +45,10 @@
     "@angular/platform-browser": "^15.0.1",
     "@angular/platform-browser-dynamic": "^15.0.1",
     "rxjs": "^7.4.0",
+    "t-writer.js": "^1.0.4",
     "ts-luxon": "^4.0.1",
     "tslib": "^2.4.1",
+    "typewriter-effect": "^2.19.0",
     "zone.js": "^0.12.0"
   },
   "devDependencies": {

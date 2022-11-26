@@ -2,8 +2,9 @@ import {Component, OnInit} from "@angular/core";
 //
 import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
+import TypeWriter from "typewriter-effect/dist/core.js";
 import {DateTime} from "ts-luxon";
-import {map} from "rxjs";
+import {catchError, map, of, switchMap, timer} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
 
 interface NgxMatTimepickerTheme {
@@ -33,6 +34,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         hour: 16,
         minute: 0
     });
+    messages: string[] = [];
     minTime: DateTime = this.maxTime.set({hour: 14});
     myLocaleKeys: NgxMatTimepickerLocaleKey[];
     myLocales: Record<NgxMatTimepickerLocaleKey, string> = {
@@ -69,8 +71,31 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             .pipe(map((raw: AjaxResponse<any>) => {
                 return raw.response?.version;
             }))
-            .subscribe((version: string) => {
-                this.latestVersion = version;
+            .subscribe({
+                next: (version: string) => {
+                    this.latestVersion = version;
+                }
+            });
+
+        ajax.get(`./assets/messages.json`)
+            .pipe(
+                switchMap((resp: AjaxResponse<any>) => {
+                    this.messages = resp.response.messages;
+
+                    return timer(150);
+                }),
+                catchError(() => of([]))
+            )
+            .subscribe({
+                next: () => {
+                    this.messages.forEach((m: string, i: number) => {
+                        new TypeWriter(`[mtp-messages] li:nth-child(${i+1})`, {
+                            strings: [m],
+                            autoStart: true,
+                            loop: true
+                        });
+                    });
+                }
             });
     }
 
