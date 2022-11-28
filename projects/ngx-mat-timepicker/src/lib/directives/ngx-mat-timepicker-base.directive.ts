@@ -1,4 +1,4 @@
-import {Directive, HostListener, Inject, Input, OnDestroy, OnInit, Optional} from "@angular/core";
+import {Directive, HostListener, Inject, Input, OnDestroy, OnInit} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerEventService} from "../services/ngx-mat-timepicker-event.service";
@@ -56,7 +56,7 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     constructor(protected _timepickerSrv: NgxMatTimepickerService,
                 protected _eventSrv: NgxMatTimepickerEventService,
                 protected _timepickerLocaleSrv: NgxMatTimepickerLocaleService,
-                @Inject(NGX_MAT_TIMEPICKER_CONFIG) @Optional() public data: NgxMatTimepickerConfig | null) {
+                @Inject(NGX_MAT_TIMEPICKER_CONFIG) public data: NgxMatTimepickerConfig) {
 
         this.color = data.color;
         this.defaultTime = data.defaultTime;

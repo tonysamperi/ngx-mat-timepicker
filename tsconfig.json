@@ -37,9 +37,6 @@
     },
     "useDefineForClassFields": false,
   },
-  "include": [
-    "projects/ngx-mat-timepicker-repo/src/typewriter.d.ts"
-  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
