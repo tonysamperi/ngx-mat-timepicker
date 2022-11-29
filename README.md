@@ -1,13 +1,6 @@
-
-
 # ngx-mat-timepicker
 
-[![npm](https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker)   
-[![npm](https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square)](https://www.npmjs.com/package/ngx-mat-timepicker)   
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tonysamperi/ngx-mat-timepicker/blob/master/LICENSE)  
-[![Build Status](https://travis-ci.com/tonysamperi/ngx-mat-timepicker.svg?branch=master)](https://travis-ci.com/tonysamperi/ngx-mat-timepicker)  
-[![Size](https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker)](https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker)  
-[![Rate this package](https://badges.openbase.com/js/rating/ngx-mat-timepicker.svg?token=imNtfVxrKTW3J1VSOlxCqRcyvTG7POhNoOkaljG1DeA=)](https://openbase.com/js/ngx-mat-timepicker?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![npm][badge-npm-version]][url-npm] [![npm][badge-npm-downloads]][url-npm] [![MIT licensed][badge-licence]][url-licence] [![Build state][badge-build-state]][url-ci-state] [![Size][badge-bundle]][url-bundle] [![Rate this package][badge-openbase]][url-openbase]
 
 A simple time picker module using Angular Material: it provides an Android style dialog for time selection and a handy input for time selection in Material style.
 
@@ -259,7 +252,8 @@ Bug reports and pull requests are welcome.
 Such issues will be deleted immediately.
 
 ```terminal  
- $ npm install $ npm run start  //run example```  
+ $ npm install $ npm run start  //run example
+```  
   
 Run `npm test` to run tests once or `npm run test:watch` to continually run tests.  
   
@@ -275,6 +269,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
 ### Thanks to  
   
-[LayZeeDK](https://github.com/LayZeeDK) - For his great work on the unit tests and upgrades for v15  
+[LayZeeDK](https://github.com/LayZeeDK) - For his great work on the unit tests and upgrades for v15 "legacy"
   
 Agranom for setting up the original repo.
+
+[badge-build-state]: https://travis-ci.com/tonysamperi/ngx-mat-timepicker.svg?branch=master
+[badge-bundle]: https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker
+[badge-licence]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[badge-npm-downloads]: https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square
+[badge-npm-version]: https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square
+[badge-openbase]: https://badges.openbase.com/js/rating/ngx-mat-timepicker.svg?token=imNtfVxrKTW3J1VSOlxCqRcyvTG7POhNoOkaljG1DeA=
+[initial-author]: https://github.com/TonySamperi
+[url-bundle]: https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker
+[url-ci-state]: https://travis-ci.com/tonysamperi/ngx-mat-timepicker
+[url-licence]: https://github.com/tonysamperi/ngx-mat-timepicker/blob/master/LICENSE
+[url-npm]: https://www.npmjs.com/package/ngx-mat-timepicker
+[url-openbase]: https://openbase.com/js/ngx-mat-timepicker
