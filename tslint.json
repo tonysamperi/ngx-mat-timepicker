@@ -55,7 +55,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      150
+      160
     ],
     "no-debugger": true,
     "no-console": [

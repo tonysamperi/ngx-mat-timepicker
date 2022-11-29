@@ -13,7 +13,7 @@ import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
 //
 import {DateTime} from "ts-luxon";
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 let config: NgxMatTimepickerConfig;
 
@@ -142,12 +142,12 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     @Output() timeChanged = new EventEmitter<string>();
     @Input() timepickerClass: string;
     @Output() timeSet = new EventEmitter<string>();
-    timeUpdated = new Subject<string>(); // used in the dialog, check if a better approach can be used
+    timeUpdated = new BehaviorSubject<string>(void 0); // used in the dialog, check if a better approach can be used
 
     private _appendToInput: boolean = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
-    private _format: 12 | 24;
+    private _format: 12 | 24 = 12;
     private _minutesGap: number;
     private _ngxMatTimepickerTheme: NgxMatTimepickerTheme;
     private _overlayRef: OverlayRef;

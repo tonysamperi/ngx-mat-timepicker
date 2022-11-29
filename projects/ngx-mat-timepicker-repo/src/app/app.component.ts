@@ -1,18 +1,23 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 //
-import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {NgxMatTimepickerComponent, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
-import TypeWriter from "typewriter-effect/dist/core.js";
-import {DateTime} from "ts-luxon";
 import {catchError, map, of, switchMap, timer} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
+import TypeWriter from "typewriter-effect/dist/core.js";
+import {DateTime} from "ts-luxon";
 
 interface NgxMatTimepickerTheme {
     description: string;
     value: string;
 }
 
-type NgxMatTimepickerLocaleKey = "en" | "it" | "es" | "fr";
+enum NgxMatTimepickerLocaleKey {
+    en = "en",
+    it = "it",
+    es = "es",
+    fr = "fr"
+}
 
 const pkgName = "ngx-mat-timepicker";
 
@@ -24,8 +29,12 @@ const pkgName = "ngx-mat-timepicker";
 })
 export class NgxMatTimepickerAppComponent implements OnInit {
 
-    get currentLocale() {
-        return this._localeOverrideSrv.locale;
+    get currentLocale(): NgxMatTimepickerLocaleKey {
+        return this._localeOverrideSrv.locale as NgxMatTimepickerLocaleKey;
+    }
+
+    get currentLocaleKey(): string {
+        return this.myLocalesReversed[this.currentLocale];
     }
 
     githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
@@ -37,31 +46,30 @@ export class NgxMatTimepickerAppComponent implements OnInit {
     messages: string[] = [];
     minTime: DateTime = this.maxTime.set({hour: 14});
     myLocaleKeys: NgxMatTimepickerLocaleKey[];
-    myLocales: Record<NgxMatTimepickerLocaleKey, string> = {
+    myLocales: Record<keyof typeof NgxMatTimepickerLocaleKey, string> = {
         en: "en-GB",
         it: "it-IT",
         es: "es-ES",
         fr: "fr-FR"
     };
+    myLocalesReversed: Record<string, keyof typeof NgxMatTimepickerLocaleKey> = Object.fromEntries(Object.entries(this.myLocales).map(a => a.reverse()));
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
+    @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
     selectedTime: string;
+    selectedTimeFreeInput: string;
     selectedTimeWithRange: string;
     showInput: boolean = !0;
     themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}
     ];
+    timeRegex: RegExp = /([0-9]|1\d):[0-5]\d (AM|PM)/;
     year: number = new Date().getFullYear();
 
     private _nextLocale: number = 0;
 
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
-    }
-
-
-    isCurrentLocale(localeKey: NgxMatTimepickerLocaleKey): boolean {
-        return this.myLocales[localeKey] === this.currentLocale;
     }
 
     ngOnInit(): void {
@@ -89,7 +97,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.messages.forEach((m: string, i: number) => {
-                        new TypeWriter(`[mtp-messages] li:nth-child(${i+1})`, {
+                        new TypeWriter(`[mtp-messages] li:nth-child(${i + 1})`, {
                             strings: [m],
                             autoStart: true,
                             loop: true
@@ -101,6 +109,11 @@ export class NgxMatTimepickerAppComponent implements OnInit {
 
     onTimeSet($event: string): void {
         console.info("TIME UPDATED", $event);
+    }
+
+    selectedTimeFreeInputChanged($event: string): void {
+        console.info("TIME CHANGED");
+        this.pickerFreeInput.updateTime($event);
     }
 
     updateLocale(localeKey?: NgxMatTimepickerLocaleKey): void {
@@ -116,6 +129,11 @@ export class NgxMatTimepickerAppComponent implements OnInit {
     updateTheme(theme: NgxMatTimepickerTheme): void {
         this.selectedTheme = theme;
         document.body.classList.toggle("dark-theme", !!theme.value);
+    }
+
+    updateTime($event: string, targetProp: string): void {
+        console.info("TIME SET", $event);
+        (this as any)[targetProp] = $event;
     }
 
 }
