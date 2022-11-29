@@ -1,13 +1,13 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 //
-import {NgxMatTimepickerComponent, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
-import {of, timer, map, catchError, switchMap} from "rxjs";
-import {ajax, AjaxResponse} from "rxjs/ajax";
 import {DateTime} from "ts-luxon";
-import TypeWriter from "typewriter-effect/dist/core.js";
+import {map} from "rxjs";
+import {ajax, AjaxResponse} from "rxjs/ajax";
 
-interface NgxMatTimepickerTheme {
+// tslint:disable-next-line:naming-convention
+interface Theme {
     description: string;
     value: string;
 }
@@ -32,7 +32,6 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         hour: 16,
         minute: 0
     });
-    messages: string[] = [];
     minTime: DateTime = this.maxTime.set({hour: 14});
     myLocaleKeys: string[];
     myLocales: Record<"en" | "it" | "es" | "fr", string> = {
@@ -42,17 +41,15 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         fr: "fr-FR"
     };
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
-    @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
-    selectedTheme: NgxMatTimepickerTheme;
+    selectedTheme: Theme;
     selectedTime: string;
     selectedTimeFreeInput: string;
     selectedTimeWithRange: string;
     showInput: boolean = !0;
-    themes: NgxMatTimepickerTheme[] = [
+    themes: Theme[] = [
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}
     ];
-    timeRegex: RegExp = /([0-9]|1\d):[0-5]\d (AM|PM)/;
     year: number = new Date().getFullYear();
 
     private _nextLocale: number = 0;
@@ -67,6 +64,10 @@ export class NgxMatTimepickerAppComponent implements OnInit {
             .pipe(map((raw: AjaxResponse<any>) => {
                 return raw.response?.version;
             }))
+<<<<<<< Updated upstream
+            .subscribe((version: string) => {
+                this.latestVersion = version;
+=======
             .subscribe({
                 next: (version: string) => {
                     this.latestVersion = version;
@@ -92,16 +93,12 @@ export class NgxMatTimepickerAppComponent implements OnInit {
                         });
                     });
                 }
+>>>>>>> Stashed changes
             });
     }
 
     onTimeSet($event: string): void {
         console.info("TIME UPDATED", $event);
-    }
-
-    selectedTimeFreeInputChanged($event: string): void {
-        console.info("TIME CHANGED");
-        this.pickerFreeInput.updateTime($event);
     }
 
     updateLocale(localeKey?: string): void {
@@ -114,7 +111,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         (this._nextLocale >= this.myLocaleKeys.length - 1) && (this._nextLocale = -1);
     }
 
-    updateTheme(theme: NgxMatTimepickerTheme): void {
+    updateTheme(theme: Theme): void {
         this.selectedTheme = theme;
         document.body.classList.toggle("dark-theme", !!theme.value);
     }

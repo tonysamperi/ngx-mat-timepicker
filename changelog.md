@@ -1,3 +1,8 @@
+#14.0.6
+* Fix missing initializer, causing unwanted behaviour when not linking an input and not setting format
+* Improve data management for picker dialog
+* Misc refactor
+
 #14.0.5
 * Fix dial numbers not disabled when out of min or max range (closes [#42](https://github.com/tonysamperi/ngx-mat-timepicker/issues/42))
 

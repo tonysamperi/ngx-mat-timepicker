@@ -479,7 +479,8 @@
 							   [ngxMatTimepicker]="pickerG"
 							   placeholder="12:00"
 							   readonly />
-						<ngx-mat-timepicker-toggle matSuffix></ngx-mat-timepicker-toggle>
+						<ngx-mat-timepicker-toggle [for]="pickerG"
+												   matSuffix></ngx-mat-timepicker-toggle>
 					</mat-form-field>
 					<button mat-raised-button
 							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
@@ -524,6 +525,38 @@
 &lt;/button&gt;
 &lt;ngx-mat-timepicker color="accent"
 			  #pickerG&gt;&lt;/ngx-mat-timepicker&gt;
+                    </code>
+                </pre>
+			</code-viewer>
+		</div>
+		<div>
+			<h2>Allow input completition</h2>
+			<p>Don't link input to picker</p>
+			<code-viewer>
+				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
+					<mat-form-field>
+						<input matInput
+							   [pattern]="timeRegex"
+							   name="selected_time_h"
+                               #inputModel="ngModel"
+							   [(ngModel)]="selectedTimeFreeInput"
+							   (blur)="inputModel.valid && selectedTimeFreeInputChanged(selectedTimeFreeInput)"
+							   placeholder="12:00" />
+						<mat-error *ngIf="inputModel.hasError('pattern')">Expected format: H:mm AM|PM</mat-error>
+						<!--						<ngx-mat-timepicker-toggle [for]="pickerH" matSuffix></ngx-mat-timepicker-toggle>-->
+					</mat-form-field>
+					<button mat-raised-button
+							class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
+							(click)="pickerH.open()"
+							color="primary">
+						Open picker
+					</button>
+					<ngx-mat-timepicker (timeSet)="updateTime($event, 'selectedTimeFreeInput')"
+                                        #pickerH></ngx-mat-timepicker>
+				</div>
+				<pre class="language-markup">
+                    <code>
+
                     </code>
                 </pre>
 			</code-viewer>
