@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from "@angular/core";
 //
 import {NgxMatTimepickerComponent, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
+import pkg from "../../../../package.json";
 import {catchError, map, of, switchMap, timer} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
 import TypeWriter from "typewriter-effect/dist/core.js";
@@ -35,6 +36,10 @@ export class NgxMatTimepickerAppComponent implements OnInit {
 
     get currentLocaleKey(): string {
         return this.myLocalesReversed[this.currentLocale];
+    }
+
+    get buildRef(): string {
+        return `${pkg.version}-build-${pkg.build}`;
     }
 
     githubLink: string = `https://github.com/tonysamperi/${pkgName}`;

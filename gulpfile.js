@@ -10,16 +10,30 @@ function logEnd(msg) {
 
 const gulp = require("gulp"),
     {join} = require("path"),
-    bump = require("gulp-bump")
+    semver = require("semver"),
+    log = require("plugin-log"),
+    {obj} = require("through2");
 ;
 
 const libName = "ngx-mat-timepicker";
 const rootFolder = join(__dirname);
 const distFolder = join(rootFolder, `dist/${libName}`);
+
 const doBump = (type) => {
     return Promise.all(["./", join(rootFolder, "projects", libName)].map((p) => {
         return gulp.src(join(p, "package.json"))
-        .pipe(bump({type}))
+        .pipe(obj((file, enc, cb) => {
+            const pkgData = JSON.parse(file.contents.toString());
+            const prevVersion = pkgData.version;
+            pkgData.version = semver.inc(prevVersion, type);
+            file.contents = Buffer.from(JSON.stringify(pkgData, null, 2));
+            log(
+                "Bumped", log.colors.cyan(prevVersion),
+                "to", log.colors.magenta(pkgData.version),
+                "with type:", log.colors.cyan(type)
+            );
+            cb(null, file);
+        }))
         .pipe(gulp.dest(p));
     }));
 };
@@ -41,6 +55,22 @@ gulp.task("bump:minor", () => {
 gulp.task("bump:major", () => {
     return doBump("major");
 });
+
+gulp.task("build++", () => {
+    return gulp.src(join(__dirname, "package.json"))
+    .pipe(obj((file, enc, cb) => {
+        const pkgData = JSON.parse(file.contents.toString());
+        const prevBuild = pkgData.build;
+        pkgData.build++;
+        file.contents = Buffer.from(JSON.stringify(pkgData, null, 2));
+        log(
+            "Increased", log.colors.cyan(prevBuild),
+            "to", log.colors.magenta(pkgData.build)
+        );
+        cb(null, file);
+    }))
+    .pipe(gulp.dest(__dirname))
+})
 
 gulp.task(taskNames.copyMDs, (cb) => {
     logStart(taskNames.copyMDs);
