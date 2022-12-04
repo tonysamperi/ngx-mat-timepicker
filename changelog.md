@@ -1,3 +1,7 @@
+#15.1.1
+* Handled weird meridiem formats, such as spanish `a. m.` which apparently doesn't work in TSLuxon (yet)
+* General performance improved 
+
 #15.1.0
 * Fix missing initializer, causing unwanted behaviour when not linking an input and not setting format
 * Improve data management for picker dialog
