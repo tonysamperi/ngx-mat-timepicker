@@ -84,14 +84,14 @@ export class NgxMatTimepickerService {
     }
 
     private _setDefaultTime(time: string, format: number) {
-        const defaultTime = NgxMatTimepickerAdapter.parseTime(time, {format}).toJSDate();
+        const defaultDto = NgxMatTimepickerAdapter.parseTime(time, {format});
 
-        if (DateTime.fromJSDate(defaultTime).isValid) {
+        if (defaultDto.isValid) {
             const period = time.substring(time.length - 2).toUpperCase();
-            const hour = defaultTime.getHours();
+            const hour = defaultDto.hour;
 
             this.hour = {...DEFAULT_HOUR, time: formatHourByPeriod(hour, period as NgxMatTimepickerPeriods)};
-            this.minute = {...DEFAULT_MINUTE, time: defaultTime.getMinutes()};
+            this.minute = {...DEFAULT_MINUTE, time: defaultDto.minute};
             this.period = period as NgxMatTimepickerPeriods;
 
         }
