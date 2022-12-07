@@ -1,6 +1,6 @@
 # ngx-mat-timepicker
 
-[![npm][badge-npm-version]][url-npm] [![npm][badge-npm-downloads]][url-npm] [![MIT licensed][badge-licence]][url-licence] [![Build state][badge-build-state]][url-ci-state] [![Size][badge-bundle]][url-bundle] [![Rate this package][badge-openbase]][url-openbase]
+[![npm][badge-npm-version]][url-npm] [![npm][badge-npm-downloads]][url-npm] [![MIT licensed][badge-licence]][url-licence] [![Build state][badge-ci-state]][url-ci-state] [![Size][badge-bundle]][url-bundle] [![Rate this package][badge-openbase]][url-openbase]
 
 A simple time picker module using Angular Material: it provides an Android style dialog for time selection and a handy input for time selection in Material style.
 
@@ -270,18 +270,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### Thanks to  
   
 [LayZeeDK](https://github.com/LayZeeDK) - For his great work on the unit tests and upgrades for v15 "legacy"
-  
-Agranom for setting up the original repo.
 
-[badge-build-state]: https://travis-ci.com/tonysamperi/ngx-mat-timepicker.svg?branch=master
+[Agranom](https://github.com/Agranom) for setting up the original repo.
+
 [badge-bundle]: https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker
+[badge-ci-state]: https://github.com/tonysamperi/ngx-mat-timepicker/actions/workflows/main.yml/badge.svg
 [badge-licence]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [badge-npm-downloads]: https://img.shields.io/npm/dm/ngx-mat-timepicker.svg?style=flat-square
 [badge-npm-version]: https://img.shields.io/npm/v/ngx-mat-timepicker.svg?style=flat-square
 [badge-openbase]: https://badges.openbase.com/js/rating/ngx-mat-timepicker.svg?token=imNtfVxrKTW3J1VSOlxCqRcyvTG7POhNoOkaljG1DeA=
 [initial-author]: https://github.com/TonySamperi
 [url-bundle]: https://img.shields.io/bundlephobia/minzip/ngx-mat-timepicker
-[url-ci-state]: https://travis-ci.com/tonysamperi/ngx-mat-timepicker
+[url-ci-state]: https://github.com/tonysamperi/ngx-mat-timepicker/actions
 [url-licence]: https://github.com/tonysamperi/ngx-mat-timepicker/blob/master/LICENSE
 [url-npm]: https://www.npmjs.com/package/ngx-mat-timepicker
 [url-openbase]: https://openbase.com/js/ngx-mat-timepicker
