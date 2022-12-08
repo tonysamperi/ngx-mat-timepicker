@@ -13,12 +13,12 @@ import {NgxMatTimepickerLocaleKey} from "../../shared/ngx-mat-timepicker-locale-
 })
 export class NgxMatTimepickerTestComponent implements OnInit {
 
-    get currentLocale() {
+    get currentLocale(): string {
         return this._localeOverrideSrv.locale;
     }
 
     myLocaleKeys: NgxMatTimepickerLocaleKey[];
-    myLocales: Record<keyof typeof NgxMatTimepickerLocaleKey, string> = {
+    myLocales: Record<NgxMatTimepickerLocaleKey, string> = {
         en: "en-GB",
         it: "it-IT",
         es: "es-ES",
