@@ -19,13 +19,18 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {NgxMatTimepickerModule, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerAppComponent} from "./app.component";
-import {CodeViewerComponent} from "./code-viewer/code-viewer.component";
+import {NgxMatTimepickerTestComponent} from "./components/test/test.component";
+import {NgxMatTimepickerDemoComponent} from "./components/demo/demo.component";
+import {CodeViewerComponent} from "./components/code-viewer/code-viewer.component";
+//
 import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
 
 @NgModule({
     declarations: [
+        CodeViewerComponent,
         NgxMatTimepickerAppComponent,
-        CodeViewerComponent
+        NgxMatTimepickerDemoComponent,
+        NgxMatTimepickerTestComponent
     ],
     imports: [
         BrowserModule,
