@@ -16,7 +16,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 // DIRECTIVES
 import {NgxMatTimepickerDirective} from "./directives/ngx-mat-timepicker.directive";
 import {NgxMatTimepickerToggleIconDirective} from "./directives/ngx-mat-timepicker-toggle-icon.directive";
-import {NgxMatTimepickerThemeDirective} from "./directives/ngx-mat-timepicker-theme.directive";
 import {NgxMatTimepickerBaseDirective} from "./directives/ngx-mat-timepicker-base.directive";
 import {
     NgxMatTimepickerHoursFaceDirective
@@ -112,7 +111,6 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         NgxMatTimepickerToggleIconDirective,
         NgxMatTimepickerAutofocusDirective,
         NgxMatTimepickerMinutesFormatterPipe,
-        NgxMatTimepickerThemeDirective,
         NgxMatTimepickerFieldComponent,
         NgxMatTimepickerControlComponent,
         NgxMatTimepickerParserPipe,

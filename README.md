@@ -65,7 +65,6 @@ Refer to the [Angular Material](https://material.angular.io) website for theming
   * [NgxMatTimepickerFieldComponent](#ngxMatTimepickerfieldcomponent)
   * [NgxMatTimepickerToggleComponent](#ngxMatTimepickertogglecomponent)
   * [NgxMatTimepickerToggleIconDirective](#ngxMatTimepickertoggleicondirective)
-  * [NgxMatTimepickerThemeDirective (deprecated)](#ngxMatTimepickerthemedirective)
 * [Development](#development)
 * [Tests](#tests)
 * [License](#license)

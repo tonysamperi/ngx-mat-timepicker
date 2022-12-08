@@ -8,12 +8,11 @@ import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.int
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
-import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
 //
 import {DateTime} from "ts-luxon";
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 
 let config: NgxMatTimepickerConfig;
 
@@ -65,7 +64,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     }
 
     @Input()
-    set format(value: number) {
+    set format(value: 12 | 24) {
         this._format = value === 24 ? 24 : 12;
     }
 
@@ -102,10 +101,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         return this._timepickerInput && this._timepickerInput.value;
     }
 
-    set ngxMatTimepickerTheme(newValue: NgxMatTimepickerTheme) {
-        this._ngxMatTimepickerTheme = newValue;
-    }
-
     @Input() cancelBtnTmpl: TemplateRef<Node>;
     @Output() closed = new EventEmitter<void>();
     @Input() confirmBtnTmpl: TemplateRef<Node>;
@@ -138,7 +133,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     ];
     @Input() preventOverlayClick: boolean;
     showPicker: boolean = !1;
-    @Input() theme: NgxMatTimepickerTheme;
     @Output() timeChanged = new EventEmitter<string>();
     @Input() timepickerClass: string;
     @Output() timeSet = new EventEmitter<string>();
@@ -149,7 +143,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
     private _format: 12 | 24 = 12;
     private _minutesGap: number;
-    private _ngxMatTimepickerTheme: NgxMatTimepickerTheme;
     private _overlayRef: OverlayRef;
     private _timepickerInput: NgxMatTimepickerDirective;
 
@@ -188,7 +181,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
             preventOverlayClick: this.preventOverlayClick,
             appendToInput: this._appendToInput,
             hoursOnly: this.hoursOnly,
-            theme: this.theme || this._ngxMatTimepickerTheme,
             timepickerClass: this.timepickerClass,
             inputElement: this.inputElement,
             color: this.color

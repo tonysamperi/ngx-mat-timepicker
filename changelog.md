@@ -1,3 +1,8 @@
+#15.1.2
+* Tiny performance improvements
+* Clarified code docs
+* Delete NgxMatTimepickerThemeDirective for good (don't worry it was useless)
+
 #15.1.1
 * Handled weird meridiem formats, such as spanish `a. m.` which apparently doesn't work in TSLuxon (yet)
 * General performance improved 

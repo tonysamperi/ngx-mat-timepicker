@@ -19,7 +19,6 @@ import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
-import {NgxMatTimepickerTheme} from "../../models/ngx-mat-timepicker-theme.interface";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
@@ -72,7 +71,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._floatLabel = newValue;
     }
 
-    get format(): number {
+    get format(): 12 | 24 {
         return this._format;
     }
 
@@ -126,9 +125,6 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     cancelBtnTmpl: TemplateRef<Node>;
 
     @Input()
-    clockTheme: NgxMatTimepickerTheme;
-
-    @Input()
     confirmBtnTmpl: TemplateRef<Node>;
 
     @Input()
@@ -159,7 +155,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _color: ThemePalette = "primary";
     private _defaultTime: string;
     private _floatLabel: FloatLabelType = "auto";
-    private _format = 12;
+    private _format: 12 | 24 = 12;
     private _isDefaultTime: boolean;
     private _isFirstTimeChange: boolean = true;
     private _max: string | DateTime;

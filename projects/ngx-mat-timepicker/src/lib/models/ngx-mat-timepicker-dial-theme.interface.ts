@@ -1,7 +1,7 @@
 export interface NgxMatTimepickerDialTheme {
-    dialBackgroundColor?: string;
-    dialInactiveColor?: string;
     dialActiveColor?: string;
+    dialBackgroundColor?: string;
     dialEditableActiveColor?: string;
     dialEditableBackgroundColor?: string;
+    dialInactiveColor?: string;
 }

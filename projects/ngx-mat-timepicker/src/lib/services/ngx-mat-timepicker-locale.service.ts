@@ -7,7 +7,7 @@ import {NGX_MAT_TIMEPICKER_LOCALE} from "../tokens/ngx-mat-timepicker-time-local
 })
 export class NgxMatTimepickerLocaleService {
 
-    get locale() {
+    get locale(): string {
         return this._locale;
     }
 
