@@ -1,4 +1,5 @@
 import {AfterViewInit, Directive, ElementRef, Input} from "@angular/core";
+//
 import {NgxMatTimepickerTheme} from "../models/ngx-mat-timepicker-theme.interface";
 
 @Directive({selector: "[ngxMatTimepickerTheme]"})
@@ -15,11 +16,11 @@ export class NgxMatTimepickerThemeDirective implements AfterViewInit {
 
     ngAfterViewInit() {
         if (this.theme) {
-            this.setTheme(this.theme);
+            this._setTheme(this.theme);
         }
     }
 
-    private setTheme(theme): void {
+    private _setTheme(theme): void {
         for (const val in theme) {
             if (theme.hasOwnProperty(val)) {
                 if (typeof theme[val] === "string") {
@@ -31,7 +32,7 @@ export class NgxMatTimepickerThemeDirective implements AfterViewInit {
 
                     return;
                 }
-                this.setTheme(theme[val]);
+                this._setTheme(theme[val]);
             }
 
         }

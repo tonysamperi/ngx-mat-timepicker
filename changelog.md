@@ -1,3 +1,7 @@
+#14.0.8
+* Tiny performance improvements
+* Clarified code docs
+
 #14.0.7
 * Handled weird meridiem formats, such as spanish `a. m.` which apparently doesn't work in TSLuxon (yet)
 * General performance improved
