@@ -23,7 +23,7 @@ const pkgName = "ngx-mat-timepicker";
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"]
 })
-export class NgxMatTimepickerAppComponent implements OnInit {
+export class NgxMatTimepickerDemoComponent implements OnInit {
 
     get currentLocale(): NgxMatTimepickerLocaleKey {
         return this._localeOverrideSrv.locale as NgxMatTimepickerLocaleKey;
