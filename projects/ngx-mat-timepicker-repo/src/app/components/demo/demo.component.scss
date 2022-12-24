@@ -2,207 +2,204 @@
 @import "../../../scss/themes";
 
 :host {
-  display: block;
-  padding-top: 56px;
+	display: block;
+	padding-top: 56px;
 }
 
 .ngx-mtp-header {
-  overflow: hidden;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
+	overflow: hidden;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
 
-  > div {
-    display: flex;
-    align-items: center;
+	> div {
+		display: flex;
+		align-items: center;
 
-    > img.ngx-mtp-ng-logo {
-      display: inline-block;
-      margin-right: 16px;
-      height: 26px;
-    }
+		> img.ngx-mtp-ng-logo {
+			display: inline-block;
+			margin-right: 16px;
+			height: 26px;
+		}
 
-    > .ngx-mtp-header-title {
-      font-size: 22px;
-    }
+		> .ngx-mtp-header-title {
+			font-size: 22px;
+		}
 
-    .ngx-mtp-github-link-desktop {
-      color: inherit;
+		.ngx-mtp-github-link-desktop {
+			color: inherit;
 
-      @include respond-below(sm) {
-        display: none;
-      }
-    }
+			span.ngx-mtp-github-logo-text {
+				display: inline-block;
+				margin-left: 8px;
 
-    .ngx-mtp-github-link-mobile {
-      display: none;
-      @include respond-below(sm) {
-        display: inline;
-      }
-    }
+				@include respond-below(sm) {
+					display: none;
+				}
+			}
+		}
+	}
 
-  }
-
-  @include respond-below(sm) {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+	@include respond-below(sm) {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
 }
 
 .ngx-mtp-github-logo {
-  display: inline-block;
-  height: 26px;
-  vertical-align: middle;
+	display: inline-block;
+	height: 26px;
+	vertical-align: middle;
 }
 
 .ngx-mtp-top {
-  width: 100%;
-  min-height: 20px;
-  text-align: center;
-  overflow: hidden;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  position: relative;
+	width: 100%;
+	min-height: 20px;
+	text-align: center;
+	overflow: hidden;
+	padding-top: 60px;
+	padding-bottom: 20px;
+	position: relative;
 
-  &:before {
-    content: "";
-    position: absolute;
-    background-image: url(../../../assets/angular-white-transparent.svg);
-    background-size: contain;
-    bottom: 0;
-    right: 150px;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;
-    width: 200px;
-    height: 200px;
+	&:before {
+		content: "";
+		position: absolute;
+		background-image: url(../../../assets/angular-white-transparent.svg);
+		background-size: contain;
+		bottom: 0;
+		right: 150px;
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity: 0.2;
+		width: 200px;
+		height: 200px;
 
-    @include respond-below(sm) {
-      right: calc(50% - 100px);
-      opacity: 0.1;
-    }
-  }
+		@include respond-below(sm) {
+			right: calc(50% - 100px);
+			opacity: 0.1;
+		}
+	}
 
-  > h1.ngx-mtp-main-title {
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 56px;
-    margin: 15px 5px;
-  }
+	> h1.ngx-mtp-main-title {
+		font-size: 56px;
+		font-weight: 300;
+		line-height: 56px;
+		margin: 15px 5px;
+	}
 
-  .ngx-mtp-badges {
-    > img, a {
-      display: inline-block;
-      margin-right: 8px;
+	.ngx-mtp-badges {
+		> img, a {
+			display: inline-block;
+			margin-right: 8px;
 
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
 }
 
 .ngx-mtp-container {
-  padding: 20px;
-  text-align: center;
+	padding: 20px;
+	text-align: center;
 }
 
 .ngx-mtp-locales {
 
-  .locale {
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.2s ease-in-out;
+	.locale {
+		cursor: pointer;
+		opacity: 0.5;
+		transition: opacity 0.2s ease-in-out;
 
-    &.active {
-      opacity: 1;
-    }
-  }
+		&.active {
+			opacity: 1;
+		}
+	}
 }
 
 .demo-form {
-  padding: 16px;
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+	padding: 16px;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
 
-  > * {
-    box-sizing: border-box;
-    margin: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+	> * {
+		box-sizing: border-box;
+		margin: 8px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
 
-    @include respond-above(xs) {
-      width: calc(50% - 16px);
-    }
+		@include respond-above(xs) {
+			width: calc(50% - 16px);
+		}
 
-    @include respond-below(sm) {
-      width: calc(100% - 16px);
-    }
-  }
+		@include respond-below(sm) {
+			width: calc(100% - 16px);
+		}
+	}
 
-  h2 {
-    margin-bottom: 0;
-  }
+	h2 {
+		margin-bottom: 0;
+	}
 }
 
 footer {
-  text-align: center;
-  //background-color: #1c1428;
-  padding: 25px 0;
-  //color: #9479b9;
-  width: 100%;
+	text-align: center;
+	//background-color: #1c1428;
+	padding: 25px 0;
+	//color: #9479b9;
+	width: 100%;
 }
 
 // Terminal
 
 .terminal {
-  position: relative;
-  width: 80%;
-  max-width: 600px;
-  border-radius: 6px;
-  padding-top: 45px;
-  margin-top: 8px;
-  overflow: hidden;
-  background-color: rgb(15, 15, 16);
-  @include respond-below(sm) {
-    width: 100%;
-  }
+	position: relative;
+	width: 80%;
+	max-width: 600px;
+	border-radius: 6px;
+	padding-top: 45px;
+	margin-top: 8px;
+	overflow: hidden;
+	background-color: rgb(15, 15, 16);
+	@include respond-below(sm) {
+		width: 100%;
+	}
 }
 
 .terminal::before {
-  content: "\2022 \2022 \2022";
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: #3a3a3a;
-  color: #c2c3c4;
-  width: 100%;
-  font-size: 34px;
-  line-height: 26px;
-  text-indent: 6px;
-  text-align: left;
-  height: 34px;
+	content: "\2022 \2022 \2022";
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background: #3a3a3a;
+	color: #c2c3c4;
+	width: 100%;
+	font-size: 34px;
+	line-height: 26px;
+	text-indent: 6px;
+	text-align: left;
+	height: 34px;
 }
 
 .terminal {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  color: white;
-  padding: 0 1rem 1rem;
-  margin: 0;
-  text-align: left;
-  padding-top: 44px;
+	font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+	color: white;
+	padding: 0 1rem 1rem;
+	margin: 0;
+	text-align: left;
+	padding-top: 44px;
 }
 
 .terminal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
