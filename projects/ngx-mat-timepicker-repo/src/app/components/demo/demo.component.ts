@@ -23,7 +23,7 @@ const pkgName = "ngx-mat-timepicker";
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"]
 })
-export class NgxMatTimepickerAppComponent implements OnInit {
+export class NgxMatTimepickerDemoComponent implements OnInit {
 
     get currentLocale(): NgxMatTimepickerLocaleKey {
         return this._localeOverrideSrv.locale as NgxMatTimepickerLocaleKey;
@@ -52,7 +52,7 @@ export class NgxMatTimepickerAppComponent implements OnInit {
         es: "es-ES",
         fr: "fr-FR"
     };
-    myLocalesReversed: Record<string, keyof typeof NgxMatTimepickerLocaleKey> = Object.fromEntries(Object.entries(this.myLocales).map(a => a.reverse()));
+    myLocalesReversed: Record<string, NgxMatTimepickerLocaleKey> = Object.fromEntries(Object.entries(this.myLocales).map(a => a.reverse()));
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
     @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
@@ -85,26 +85,28 @@ export class NgxMatTimepickerAppComponent implements OnInit {
                 }
             });
 
-        ajax.get(`./assets/messages.json`)
-            .pipe(
-                switchMap((resp: AjaxResponse<any>) => {
-                    this.messages = resp.response.messages;
+        if (document.querySelector("[mtp-messages]")) {
+            ajax.get(`./assets/messages.json`)
+                .pipe(
+                    switchMap((resp: AjaxResponse<any>) => {
+                        this.messages = resp.response.messages;
 
-                    return timer(150);
-                }),
-                catchError(() => of([]))
-            )
-            .subscribe({
-                next: () => {
-                    this.messages.forEach((m: string, i: number) => {
-                        new TypeWriter(`[mtp-messages] li:nth-child(${i + 1})`, {
-                            strings: [m],
-                            autoStart: true,
-                            loop: true
+                        return timer(150);
+                    }),
+                    catchError(() => of([]))
+                )
+                .subscribe({
+                    next: () => {
+                        this.messages.forEach((m: string, i: number) => {
+                            new TypeWriter(`[mtp-messages] li:nth-child(${i + 1})`, {
+                                strings: [m],
+                                autoStart: true,
+                                loop: true
+                            });
                         });
-                    });
-                }
-            });
+                    }
+                });
+        }
     }
 
     onTimeSet($event: string): void {

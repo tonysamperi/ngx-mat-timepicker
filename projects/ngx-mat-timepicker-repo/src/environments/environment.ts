@@ -4,7 +4,7 @@
 
 export const NGX_MAT_TIMEPICKER_ENVIRONMENT = {
   production: false,
-  isDemo: !1
+  isDemo: !0
 };
 
 /*
