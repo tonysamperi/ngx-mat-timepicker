@@ -30,6 +30,8 @@
     }
 
     .ngx-mtp-github-link-desktop {
+      color: inherit;
+
       @include respond-below(sm) {
         display: none;
       }
@@ -42,18 +44,18 @@
       }
     }
 
-    .ngx-mtp-github-logo {
-      display: inline-block;
-      height: 26px;
-      vertical-align: middle;
-    }
-
   }
 
   @include respond-below(sm) {
     padding-left: 8px;
     padding-right: 8px;
   }
+}
+
+.ngx-mtp-github-logo {
+  display: inline-block;
+  height: 26px;
+  vertical-align: middle;
 }
 
 .ngx-mtp-top {
