@@ -5,6 +5,8 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
+import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
@@ -59,13 +61,13 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         return this._timepickerInput && this._timepickerInput.disabled;
     }
 
-    get format(): 12 | 24 {
+    get format(): NgxMatTimepickerFormatType {
         return this._timepickerInput ? this._timepickerInput.format : this._format;
     }
 
     @Input()
-    set format(value: 12 | 24) {
-        this._format = value === 24 ? 24 : 12;
+    set format(value: NgxMatTimepickerFormatType) {
+        this._format = NgxMatTimepickerAdapter.isTwentyFour(value) ? 24 : 12;
     }
 
     get inputElement(): HTMLElement {
@@ -141,7 +143,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _appendToInput: boolean = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
-    private _format: 12 | 24 = 12;
+    private _format: NgxMatTimepickerFormatType = 12;
     private _minutesGap: number;
     private _overlayRef: OverlayRef;
     private _timepickerInput: NgxMatTimepickerDirective;

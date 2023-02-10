@@ -57,7 +57,7 @@ import {NgxMatTimepickerAutofocusDirective} from "./directives/ngx-mat-timepicke
 import {NgxMatTimepickerFieldComponent} from "./components/ngx-mat-timepicker-field/ngx-mat-timepicker-field.component";
 import {
     NgxMatTimepickerControlComponent
-} from "./components/ngx-mat-timepicker-field/ngx-mat-timepicker-control/ngx-mat-timepicker-control.component";
+} from "./components/ngx-mat-timepicker-control/ngx-mat-timepicker-control.component";
 // PIPES + SERVICES + TOKENS
 import {NgxMatTimepickerLocaleService} from "./services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerTimeLocalizerPipe} from "./pipes/ngx-mat-timepicker-time-localizer.pipe";

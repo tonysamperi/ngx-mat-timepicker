@@ -15,12 +15,12 @@ import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {MatFormField} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatTimepickerFormatType} from "../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 //
+import {Subject, takeUntil} from "rxjs";
 import {DateTime} from "ts-luxon";
-import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
 
 @Directive({
     selector: "[ngxMatTimepicker]",
@@ -43,13 +43,13 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         return this._elementRef && this._elementRef.nativeElement;
     }
 
-    get format(): 12 | 24 {
+    get format(): NgxMatTimepickerFormatType {
         return this._format;
     }
 
     @Input()
     set format(value: number) {
-        this._format = +value === 24 ? 24 : 12;
+        this._format = NgxMatTimepickerAdapter.isTwentyFour(+value as NgxMatTimepickerFormatType) ? 24 : 12;
         const isDynamicallyChanged = value && (this._previousFormat && this._previousFormat !== this._format);
 
         if (isDynamicallyChanged) {
@@ -143,7 +143,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     @Input() disableClick: boolean;
     @Input() disabled: boolean;
 
-    private _format: 12 | 24 = 12;
+    private _format: NgxMatTimepickerFormatType = 12;
     private _max: string | DateTime;
     private _min: string | DateTime;
     private _previousFormat: number;

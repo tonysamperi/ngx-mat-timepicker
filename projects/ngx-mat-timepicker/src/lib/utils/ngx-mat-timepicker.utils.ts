@@ -12,7 +12,9 @@ export class NgxMatTimepickerUtils {
         if (config.min || config.max) {
 
             return hours.map(value => {
-                const hour = config.format === 24 ? value.time : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
+                const hour = NgxMatTimepickerAdapter.isTwentyFour(config.format)
+                    ? value.time
+                    : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
                 const currentTime = DateTime.fromObject({hour}).toFormat(NgxMatTimepickerFormat.TWELVE);
 
                 return {

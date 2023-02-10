@@ -3,10 +3,10 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DateTime} from "ts-luxon";
 import {NgxMatTimepickerControlComponent} from "./ngx-mat-timepicker-control.component";
-import {NgxMatTimepickerUnits} from "../../../models/ngx-mat-timepicker-units.enum";
-import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-parser.pipe";
-import {NgxMatTimepickerModule} from "../../../ngx-mat-timepicker.module";
-import {NgxMatTimepickerTimeFormatterPipe} from "../../../pipes/ngx-mat-timepicker-time-formatter.pipe";
+import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
+import {NgxMatTimepickerModule} from "../../ngx-mat-timepicker.module";
+import {NgxMatTimepickerTimeFormatterPipe} from "../../pipes/ngx-mat-timepicker-time-formatter.pipe";
 
 describe("NgxMatTimepickerControlComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerControlComponent>;

@@ -16,7 +16,9 @@ import {
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 
 
 function roundAngle(angle: number, step: number): number {
@@ -68,7 +70,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     faceTime: NgxMatTimepickerClockFace[];
 
     @Input()
-    format: number;
+    format: NgxMatTimepickerFormatType;
 
     innerClockFaceSize = 85;
     isClockFaceDisabled: boolean;
@@ -95,14 +97,16 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     private _touchEndHandler: (e: any) => any;
     private _touchStartHandler: (e: any) => any;
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._setClockHandPosition();
         this._addTouchEvents();
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        const faceTimeChanges = changes['faceTime'];
-        const selectedTimeChanges = changes['selectedTime'];
+    ngOnChanges(changes: SimpleChanges): void {
+        // tslint:disable-next-line:no-string-literal
+        const faceTimeChanges = changes["faceTime"];
+        // tslint:disable-next-line:no-string-literal
+        const selectedTimeChanges = changes["selectedTime"];
 
         if ((faceTimeChanges && faceTimeChanges.currentValue)
             && (selectedTimeChanges && selectedTimeChanges.currentValue)) {
@@ -217,7 +221,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
     private _setClockHandPosition(): void {
-        if (this.format === 24) {
+        if (NgxMatTimepickerAdapter.isTwentyFour(this.format)) {
             if (this.selectedTime.time > 12 || this.selectedTime.time === 0) {
                 this._decreaseClockHand();
             }

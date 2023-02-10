@@ -6,6 +6,7 @@ import {
     ScrollStrategy
 } from "@angular/cdk/overlay";
 //
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
@@ -33,7 +34,7 @@ import {DateTime} from "ts-luxon";
 export class NgxMatTimepickerPeriodComponent {
 
     @Input() activeTimeUnit: NgxMatTimepickerUnits;
-    @Input() format: number;
+    @Input() format: NgxMatTimepickerFormatType;
     @Input() hours: NgxMatTimepickerClockFace[];
     isPeriodAvailable = true;
     @Input() maxTime: DateTime;
