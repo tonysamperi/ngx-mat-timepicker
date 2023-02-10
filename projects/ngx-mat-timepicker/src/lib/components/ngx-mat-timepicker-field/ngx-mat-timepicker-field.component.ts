@@ -15,6 +15,7 @@ import {ThemePalette} from "@angular/material/core";
 import {FloatLabelType} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
@@ -71,13 +72,13 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._floatLabel = newValue;
     }
 
-    get format(): 12 | 24 {
+    get format(): NgxMatTimepickerFormatType {
         return this._format;
     }
 
     @Input()
-    set format(value: number) {
-        this._format = value === 24 ? 24 : 12;
+    set format(value: NgxMatTimepickerFormatType) {
+        this._format = NgxMatTimepickerAdapter.isTwentyFour(value) ? 24 : 12;
         this.minHour = this._format === 12 ? 1 : 0;
         this.maxHour = this._format === 12 ? 12 : 23;
         this.hoursList = NgxMatTimepickerUtils.getHours(this._format);
@@ -155,7 +156,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _color: ThemePalette = "primary";
     private _defaultTime: string;
     private _floatLabel: FloatLabelType = "auto";
-    private _format: 12 | 24 = 12;
+    private _format: NgxMatTimepickerFormatType = 12;
     private _isDefaultTime: boolean;
     private _isFirstTimeChange: boolean = true;
     private _max: string | DateTime;

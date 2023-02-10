@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
@@ -23,7 +24,7 @@ export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
         return this._color;
     }
 
-    @Input() format: number;
+    @Input() format: NgxMatTimepickerFormatType;
     @Input() maxTime: DateTime;
     @Input() minTime: DateTime;
 
@@ -43,7 +44,8 @@ export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['period'] && changes['period'].currentValue) {
+        // tslint:disable-next-line:no-string-literal
+        if (changes["period"] && changes["period"].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
             this.minutesList = NgxMatTimepickerUtils.disableMinutes(minutes, this.selectedHour, {
                 min: this.minTime,

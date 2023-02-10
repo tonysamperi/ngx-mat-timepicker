@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Outp
 import {ThemePalette} from "@angular/material/core";
 import {FloatLabelType} from "@angular/material/form-field";
 //
-import {NgxMatTimepickerUnits} from "../../../models/ngx-mat-timepicker-units.enum";
-import {NgxMatTimepickerParserPipe} from "../../../pipes/ngx-mat-timepicker-parser.pipe";
-import {NgxMatTimepickerClockFace} from "../../../models/ngx-mat-timepicker-clock-face.interface";
-import {NgxMatTimepickerUtils} from "../../../utils/ngx-mat-timepicker.utils";
+import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
+import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
+import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 
 function concatTime(currentTime: string, nextTime: string): number | undefined {
     const isNumber = /\d/.test(nextTime);

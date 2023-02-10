@@ -1,6 +1,7 @@
 import {TemplateRef} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
+import {NgxMatTimepickerFormatType} from "./ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerRef} from "./ngx-mat-timepicker-ref.interface";
 //
 import {DateTime} from "ts-luxon";
@@ -15,7 +16,7 @@ export interface NgxMatTimepickerConfig {
     disabled: boolean;
     editableHintTmpl: TemplateRef<Node>;
     enableKeyboardInput: boolean;
-    format: 12 | 24;
+    format: NgxMatTimepickerFormatType;
     hoursOnly: boolean;
     inputElement: any;
     maxTime: DateTime;

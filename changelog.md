@@ -1,3 +1,9 @@
+#15.1.3
+* Upgraded ts-luxon version (fixes #51)
+* Improved handling of meridiem (fixes #51)
+* Improved typings
+* Deleted residual legacy files (unused)
+
 #15.1.2
 * Tiny performance improvements
 * Clarified code docs

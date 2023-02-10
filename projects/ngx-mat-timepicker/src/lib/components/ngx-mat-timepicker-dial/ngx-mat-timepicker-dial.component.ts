@@ -10,6 +10,7 @@ import {
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 //
+import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
@@ -51,7 +52,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     }
 
     @Input() editableHintTmpl: TemplateRef<Node>;
-    @Input() format: number;
+    @Input() format: NgxMatTimepickerFormatType;
     @Input() hour: number | string;
     @Output() hourChanged = new EventEmitter<NgxMatTimepickerClockFace>();
 
@@ -100,8 +101,10 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        const periodChanged = changes['period'] && changes['period'].currentValue;
-        if (periodChanged || changes['format'] && changes['format'].currentValue) {
+        // tslint:disable-next-line:no-string-literal
+        const periodChanged = changes["period"] && changes["period"].currentValue;
+        // tslint:disable-next-line:no-string-literal
+        if (periodChanged || changes["format"] && changes["format"].currentValue) {
             const hours = NgxMatTimepickerUtils.getHours(this.format);
 
             this.hours = NgxMatTimepickerUtils.disableHours(hours, {
@@ -111,7 +114,8 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
                 period: this.period
             });
         }
-        if (periodChanged || changes['hour'] && changes['hour'].currentValue) {
+        // tslint:disable-next-line:no-string-literal
+        if (periodChanged || changes["hour"] && changes["hour"].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
 
             this.minutes = NgxMatTimepickerUtils.disableMinutes(minutes, +this.hour, {
