@@ -15,7 +15,7 @@ export class NgxMatTimepickerAdapter {
      *  Format hour according to time format (12 or 24)
      */
     static formatHour(currentHour: number, format: number, period: NgxMatTimepickerPeriods): number {
-        if (format === 24) {
+        if (this.isTwentyFour(format)) {
             return currentHour;
         }
         const hour = period === NgxMatTimepickerPeriods.AM ? currentHour : currentHour + 12;
@@ -34,13 +34,12 @@ export class NgxMatTimepickerAdapter {
         if (!time) {
             return "Invalid Time";
         }
-        const {format} = opts;
-        const parsedTime = NgxMatTimepickerAdapter.parseTime(time, opts).setLocale(NgxMatTimepickerAdapter.defaultLocale);
-
-        if (format !== 24) {
+        const parsedTime = this.parseTime(time, opts).setLocale(this.defaultLocale);
+        const isTwelve = !this.isTwentyFour(opts.format);
+        if (isTwelve) {
             return parsedTime.toLocaleString({
                 ...DateTime.TIME_SIMPLE,
-                hour12: format !== 24
+                hour12: isTwelve
             }).replace(/\u200E/g, "");
         }
 
@@ -52,39 +51,33 @@ export class NgxMatTimepickerAdapter {
     }
 
     static fromDateTimeToString(time: DateTime, format: number): string {
-        const timeFormat = format === 24 ? NgxMatTimepickerFormat.TWENTY_FOUR : NgxMatTimepickerFormat.TWELVE;
 
         return time.reconfigure({
-            numberingSystem: NgxMatTimepickerAdapter.defaultNumberingSistem,
-            locale: NgxMatTimepickerAdapter.defaultLocale
-        }).toFormat(timeFormat);
+            numberingSystem: this.defaultNumberingSistem,
+            locale: this.defaultLocale
+        }).toFormat(this.isTwentyFour(format) ? NgxMatTimepickerFormat.TWENTY_FOUR : NgxMatTimepickerFormat.TWELVE);
     }
 
     static isBetween(time: DateTime, before: DateTime, after: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
-        if (unit === "hours") {
-            return this.isSameOrBefore(time, after, unit) && this.isSameOrAfter(time, before, unit);
-        }
-        if (unit === "minutes") {
-            return this.isSameOrBefore(time, after) && this.isSameOrAfter(time, before);
-        }
+        const innerUnit = unit === "hours" ? unit : void 0;
+
+        return this.isSameOrBefore(time, after, innerUnit) && this.isSameOrAfter(time, before, innerUnit);
     }
 
     static isSameOrAfter(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
         if (unit === "hours") {
             return time.hour >= compareWith.hour;
         }
-        if (unit === "minutes") {
-            return time.hasSame(compareWith, unit) || time.valueOf() > compareWith.valueOf();
-        }
+
+        return time.hasSame(compareWith, unit) || time.valueOf() > compareWith.valueOf();
     }
 
     static isSameOrBefore(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
         if (unit === "hours") {
             return time.hour <= compareWith.hour;
         }
-        if (unit === "minutes") {
-            return time.hasSame(compareWith, unit) || time.valueOf() <= compareWith.valueOf();
-        }
+
+        return time.hasSame(compareWith, unit) || time.valueOf() <= compareWith.valueOf();
     }
 
     static isTimeAvailable(time: string,
@@ -94,7 +87,7 @@ export class NgxMatTimepickerAdapter {
                            minutesGap?: number | null,
                            format?: number): boolean {
         if (!time) {
-            return;
+            return void 0;
         }
 
         const convertedTime = this.parseTime(time, {format});
@@ -114,12 +107,31 @@ export class NgxMatTimepickerAdapter {
         return isAfter || isBefore || between || isAvailable;
     }
 
-    static parseTime(time: string, opts: NgxMatTimepickerOptions): DateTime {
-        const {numberingSystem, locale} = NgxMatTimepickerAdapter._getLocaleOptionsByTime(time, opts);
-        const isPeriodExist = time.split(" ").length === 2;
-        const timeMask = isPeriodExist ? NgxMatTimepickerFormat.TWELVE_SHORT : NgxMatTimepickerFormat.TWENTY_FOUR_SHORT;
+    static isTwentyFour(format: number): boolean {
+        return format === 24;
+    }
 
-        return DateTime.fromFormat(time, timeMask, {numberingSystem, locale});
+    static parseTime(time: string, opts: NgxMatTimepickerOptions): DateTime {
+        const localeOpts = this._getLocaleOptionsByTime(time, opts);
+        let timeMask = NgxMatTimepickerFormat.TWENTY_FOUR_SHORT;
+        // If there's a space, means we have the meridiem. Way faster than splitting text
+        // if (~time.indexOf(" ")) {
+        // 09/02/2023 it seems that sometimes the space from the formatter is a nnbsp (Chromium >= 110)
+        // which causes the indexOf(" ") to fail: charCode 32, while nbsp is 8239
+        if (time.match(/\s/g)) {
+            /*
+             * We translate the meridiem in simple AM or PM letters (instead of A.M.)
+             * because even if we set the locale with NgxMatTimepickerModule.setLocale
+             * the default (en-US) will always be used here
+             */
+            time = time.replace(/\.\s*/g, "");
+            timeMask = NgxMatTimepickerFormat.TWELVE_SHORT;
+        }
+
+        return DateTime.fromFormat(time.replace(/\s+/g, " "), timeMask, {
+            numberingSystem: localeOpts.numberingSystem,
+            locale: localeOpts.locale
+        });
     }
 
     static toLocaleTimeString(time: string, opts: NgxMatTimepickerOptions = {}): string {

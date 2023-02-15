@@ -32,3 +32,6 @@
 #9.1.2
 * Fixed "appendToInput"
 * Moved ts-luxon to dependencies
+
+#9.1.3
+* Fix ts-luxon Chromium 110+ bug
