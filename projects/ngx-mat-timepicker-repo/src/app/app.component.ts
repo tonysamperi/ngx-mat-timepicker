@@ -4,6 +4,7 @@ import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 import {map} from "rxjs";
 //
 import {ajax, AjaxResponse} from "rxjs/ajax";
+import {DateTime} from "ts-luxon";
 
 // tslint:disable-next-line:naming-convention
 interface Theme {
@@ -27,6 +28,8 @@ export class NgxMatTimepickerAppComponent implements OnInit {
 
     githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
     latestVersion: string = "";
+    maxDto: DateTime = DateTime.local().set({hour: 17, minute: 0, second: 0});
+    minDto: DateTime = DateTime.local().set({hour: 2, minute: 0, second: 0});
     myLocaleKeys: string[];
     myLocales: Record<"en" | "it" | "es" | "fr", string> = {
         en: "en-GB",

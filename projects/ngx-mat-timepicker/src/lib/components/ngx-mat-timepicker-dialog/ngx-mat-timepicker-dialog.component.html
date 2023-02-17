@@ -15,6 +15,7 @@
         <div class="timepicker"
              [ngClass]="data.timepickerClass">
             <mat-toolbar [color]="color"
+                         [class.is-editable]="data.enableKeyboardInput"
                          class="timepicker-header">
                 <ngx-mat-timepicker-dial [color]="color"
                                          [format]="data.format"

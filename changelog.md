@@ -1,3 +1,9 @@
+#13.2.7
+* Upgraded ts-luxon version (fixes [#51](https://github.com/tonysamperi/ngx-mat-timepicker/issues/56))
+* Fixed appearance of picker header when keyboard input is enabled
+* Added coerceBooleanProperty on keyboardInputEnabled input
+* Refactored timepicker adapter (performance boost)
+
 #13.2.6 
 * Fix wrong variable ref causing stack overflow
 

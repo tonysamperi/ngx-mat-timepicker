@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "13.2.6",
+  "version": "13.2.7",
   "license": "MIT",
   "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
   "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",
@@ -24,7 +24,7 @@
     "Time picker"
   ],
   "dependencies": {
-    "ts-luxon": "^3.0.1"
+    "ts-luxon": "^3.5.2"
   },
   "peerDependencies": {
     "@angular/animations": "^13.0.3",

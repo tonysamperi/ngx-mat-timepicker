@@ -148,12 +148,14 @@
 							   [(ngModel)]="selectedTime"
 							   [ngxMatTimepicker]="pickerA"
 							   placeholder="4:00 PM"
+							   [min]="minDto"
+							   [max]="maxDto"
 							   readonly />
 						<mat-icon matSuffix
 								  (click)="pickerA.open()">watch_later
 						</mat-icon>
 					</mat-form-field>
-					<ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
+					<ngx-mat-timepicker #pickerA enableKeyboardInput></ngx-mat-timepicker>
 				</div>
 				<pre class="language-markup">
                     <code>
