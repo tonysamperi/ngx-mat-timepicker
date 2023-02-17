@@ -1,8 +1,8 @@
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef, ViewContainerRef} from "@angular/core";
 import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
-import {SmpDomService} from "smp-core-utils";
 //
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
@@ -52,6 +52,15 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
     get disabled(): boolean {
         return this._timepickerInput && this._timepickerInput.disabled;
+    }
+
+    @Input()
+    set enableKeyboardInput(newValue: boolean) {
+        this._enableKeyboardInput = coerceBooleanProperty(newValue);
+    }
+
+    get enableKeyboardInput(): boolean {
+        return this._enableKeyboardInput;
     }
 
     get format(): number {
@@ -107,7 +116,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     @Input() defaultTime: string;
     @Input() disableAnimation: boolean;
     @Input() editableHintTmpl: TemplateRef<Node>;
-    @Input() enableKeyboardInput: boolean;
     @Output() hourSelected = new EventEmitter<number>();
     @Input() hoursOnly = false;
     @HostBinding("id") id: string = `ngx_mat_timepicker_${++NgxMatTimepickerComponent.nextId}`;
@@ -141,6 +149,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
+    private _enableKeyboardInput: boolean = false;
     private _format: number;
     private _minutesGap: number;
     private _ngxMatTimepickerTheme: NgxMatTimepickerTheme;
@@ -151,8 +160,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         private _vcr: ViewContainerRef,
         private _eventService: NgxMatTimepickerEventService,
         private _dialog: MatDialog,
-        private _overlay: Overlay,
-        private _domService: SmpDomService) {
+        private _overlay: Overlay) {
     }
 
     close(): void {

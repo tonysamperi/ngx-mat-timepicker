@@ -4,7 +4,6 @@ import {PortalModule} from "@angular/cdk/portal";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {A11yModule} from "@angular/cdk/a11y";
-import {SmpCoreUtilsModule} from "smp-core-utils";
 // MATERIAL
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -71,8 +70,7 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "./tokens/ngx-mat-timepicker-config.toke
         MatToolbarModule,
         MatIconModule,
         OverlayModule,
-        PortalModule,
-        SmpCoreUtilsModule.forRoot()
+        PortalModule
     ],
     exports: [
         NgxMatTimepickerComponent,
