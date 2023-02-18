@@ -97,7 +97,13 @@
                   "maximumError": "10kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-mat-timepicker-repo/src/environments/environment.ts",
+                  "with": "projects/ngx-mat-timepicker-repo/src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
