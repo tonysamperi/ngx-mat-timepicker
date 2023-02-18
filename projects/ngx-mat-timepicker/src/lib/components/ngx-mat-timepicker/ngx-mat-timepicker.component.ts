@@ -61,6 +61,15 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         return this._timepickerInput && this._timepickerInput.disabled;
     }
 
+    @Input()
+    set enableKeyboardInput(newValue: boolean) {
+        this._enableKeyboardInput = coerceBooleanProperty(newValue);
+    }
+
+    get enableKeyboardInput(): boolean {
+        return this._enableKeyboardInput;
+    }
+
     get format(): NgxMatTimepickerFormatType {
         return this._timepickerInput ? this._timepickerInput.format : this._format;
     }
@@ -109,7 +118,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     @Input() defaultTime: string;
     @Input() disableAnimation: boolean;
     @Input() editableHintTmpl: TemplateRef<Node>;
-    @Input() enableKeyboardInput: boolean;
     @Output() hourSelected = new EventEmitter<number>();
     @Input() hoursOnly = false;
     @HostBinding("id") id: string = `ngx_mat_timepicker_${++NgxMatTimepickerComponent.nextId}`;
@@ -143,6 +151,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _appendToInput: boolean = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
+    private _enableKeyboardInput: boolean = !1;
     private _format: NgxMatTimepickerFormatType = 12;
     private _minutesGap: number;
     private _overlayRef: OverlayRef;

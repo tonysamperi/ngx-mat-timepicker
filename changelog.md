@@ -1,3 +1,8 @@
+#15.1.4
+* Fixed "Invalid Datetime" on user input when caret is before (fixes [#49](https://github.com/tonysamperi/ngx-mat-timepicker/issues/49))
+* Fix appearance of mat-toolbar on keyboard input enabled
+* Use of coerceBooleanProperty on @Input enableKeyboardInput for ngx-mat-timepicker 
+
 #15.1.3
 * Upgraded ts-luxon version (fixes #51)
 * Improved handling of meridiem (fixes #51)
