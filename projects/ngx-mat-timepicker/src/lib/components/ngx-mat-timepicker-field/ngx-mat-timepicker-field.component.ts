@@ -90,7 +90,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._previousFormat = this._format;
     }
 
-    get max(): string | DateTime {
+    get max(): DateTime {
         return this._max;
     }
 
@@ -104,7 +104,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._max = value;
     }
 
-    get min(): string | DateTime {
+    get min(): DateTime {
         return this._min;
     }
 
@@ -159,8 +159,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _format: NgxMatTimepickerFormatType = 12;
     private _isDefaultTime: boolean;
     private _isFirstTimeChange: boolean = true;
-    private _max: string | DateTime;
-    private _min: string | DateTime;
+    private _max: DateTime;
+    private _min: DateTime;
     private _previousFormat: number;
     private _selectedHour: number;
     private _subsCtrl$: Subject<void> = new Subject<void>();
@@ -197,7 +197,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this.isTimeRangeSet = !!(this.min || this.max);
 
         this.hour$ = this._timepickerService.selectedHour.pipe(
-            tap((clockTime: NgxMatTimepickerClockFace) => this._selectedHour = clockTime.time),
+            tap((clockTime: NgxMatTimepickerClockFace) => this._selectedHour = clockTime?.time),
             map(this._changeDefaultTimeValue.bind(this)),
             tap(() => this.isTimeRangeSet && this._updateAvailableMinutes())
         ) as Observable<NgxMatTimepickerClockFace>;
