@@ -1,3 +1,6 @@
+#15.1.5
+* Reverted behaviour before changes for #49 because it actually makes more difficult writing the value
+
 #15.1.4
 * Fixed "Invalid Datetime" on user input when caret is before (fixes [#49](https://github.com/tonysamperi/ngx-mat-timepicker/issues/49))
 * Fix appearance of mat-toolbar on keyboard input enabled

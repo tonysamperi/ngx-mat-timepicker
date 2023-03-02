@@ -89,8 +89,7 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
     }
 
     onModelChange(value: string): void {
-        // [TS]: substring handles user input when value is 00 and user adds 2 or more before
-        this.time = this._timeParserPipe.transform(value.substring(0, 2), this.timeUnit);
+        this.time = this._timeParserPipe.transform(value, this.timeUnit);
     }
 
     saveTimeAndChangeTimeUnit(event: FocusEvent, unit: NgxMatTimepickerUnits): void {
