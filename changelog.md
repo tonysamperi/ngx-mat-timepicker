@@ -1,3 +1,6 @@
+#15.1.6
+* Fix ts-luxon version (closes [#60](https://github.com/tonysamperi/ngx-mat-timepicker/issues/60))
+
 #15.1.5
 * Reverted behaviour before changes for #49 because it actually makes more difficult writing the value
 
