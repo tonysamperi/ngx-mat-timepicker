@@ -185,7 +185,7 @@
                     <mat-form-field>
                         <input matInput
                                name="selected_time_B"
-                               format="24"
+                               [format]="24"
                                [(ngModel)]="selectedTime"
                                [ngxMatTimepicker]="pickerB"
                                placeholder="16:00"
