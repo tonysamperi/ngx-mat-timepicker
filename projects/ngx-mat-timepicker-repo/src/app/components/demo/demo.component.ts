@@ -43,7 +43,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         hour: 16,
         minute: 0
     });
-    messages: string[] = [];
+    messages: { opts?: { delay?: number | "natural"; loop?: boolean; }; text: string; }[] = [];
     minTime: DateTime = this.maxTime.set({hour: 14});
     myLocaleKeys: NgxMatTimepickerLocaleKey[];
     myLocales: Record<keyof typeof NgxMatTimepickerLocaleKey, string> = {
@@ -85,28 +85,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
                 }
             });
 
-        if (document.querySelector("[mtp-messages]")) {
-            ajax.get(`./assets/messages.json`)
-                .pipe(
-                    switchMap((resp: AjaxResponse<any>) => {
-                        this.messages = resp.response.messages;
-
-                        return timer(150);
-                    }),
-                    catchError(() => of([]))
-                )
-                .subscribe({
-                    next: () => {
-                        this.messages.forEach((m: string, i: number) => {
-                            new TypeWriter(`[mtp-messages] li:nth-child(${i + 1})`, {
-                                strings: [m],
-                                autoStart: true,
-                                loop: true
-                            });
-                        });
-                    }
-                });
-        }
+        this._getMessages("[mtp-messages]");
     }
 
     onTimeSet($event: string): void {
@@ -136,6 +115,38 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     updateTime($event: string, targetProp: string): void {
         console.info("TIME SET", $event);
         (this as any)[targetProp] = $event;
+    }
+
+    //
+
+    private _getMessages(wrapperSelector: string): void {
+        ajax.get(`./assets/messages.json`)
+            .pipe(
+                switchMap((resp: AjaxResponse<any>) => {
+                    this.messages = resp.response.messages;
+
+                    return timer(150);
+                }),
+                catchError(() => of([]))
+            )
+            .subscribe({
+                next: () => {
+                    this.messages.forEach(({text, opts = {}}, i: number) => {
+                        const tw = new TypeWriter(`${wrapperSelector} li:nth-child(${i + 1})`, {
+                            strings: !!opts.loop ? [text] : void 0,
+                            autoStart: !!opts.loop,
+                            loop: !!opts.loop,
+                            delay: opts.delay || "natural"
+                        });
+                        if (!opts.loop) {
+                            tw.typeString(text).stop().start();
+                        }
+                        else {
+                            console.info("AUTOSTART WAS TRUE FOR", text);
+                        }
+                    });
+                }
+            });
     }
 
 }

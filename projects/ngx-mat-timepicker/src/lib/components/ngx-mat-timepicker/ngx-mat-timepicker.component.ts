@@ -62,7 +62,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     }
 
     @Input()
-    set enableKeyboardInput(newValue: boolean) {
+    set enableKeyboardInput(newValue: boolean | string | void) {
         this._enableKeyboardInput = coerceBooleanProperty(newValue);
     }
 

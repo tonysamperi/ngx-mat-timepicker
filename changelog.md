@@ -1,3 +1,6 @@
+#15.1.7
+* Fix allow empty enableKeyboardInput (coerced) attribute even with strictTemplates enabled
+
 #15.1.6
 * Fix ts-luxon version (closes [#60](https://github.com/tonysamperi/ngx-mat-timepicker/issues/60))
 
