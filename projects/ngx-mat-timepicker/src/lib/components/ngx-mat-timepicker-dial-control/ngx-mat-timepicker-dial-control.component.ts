@@ -18,7 +18,7 @@ function retainSelection(this: HTMLInputElement) {
 export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDestroy {
 
     private get _selectedTime(): NgxMatTimepickerClockFace | undefined {
-        if (!!this.time) {
+        if (this.time) {
             return this.timeList.find(t => t.time === +this.time);
         }
 

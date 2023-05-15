@@ -101,9 +101,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        // tslint:disable-next-line:no-string-literal
         const periodChanged = changes["period"] && changes["period"].currentValue;
-        // tslint:disable-next-line:no-string-literal
         if (periodChanged || changes["format"] && changes["format"].currentValue) {
             const hours = NgxMatTimepickerUtils.getHours(this.format);
 
@@ -114,7 +112,6 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
                 period: this.period
             });
         }
-        // tslint:disable-next-line:no-string-literal
         if (periodChanged || changes["hour"] && changes["hour"].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
 

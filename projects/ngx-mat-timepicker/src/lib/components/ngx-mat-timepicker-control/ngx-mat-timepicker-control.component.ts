@@ -29,7 +29,7 @@ function concatTime(currentTime: string, nextTime: string): number | undefined {
 
 export class NgxMatTimepickerControlComponent implements OnChanges {
 
-    static nextId: number = 0;
+    static nextId = 0;
 
     @Input()
     set color(newValue: ThemePalette) {
@@ -116,7 +116,6 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // tslint:disable-next-line:no-string-literal
         if (changes["timeList"] && this.time != null) {
             if (this._isSelectedTimeDisabled(this.time)) {
                 this._setAvailableTime();

@@ -36,14 +36,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-mat-timepicker/tsconfig.lib.json",
-              "projects/ngx-mat-timepicker/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ngx-mat-timepicker/**/*.ts",
+              "projects/ngx-mat-timepicker/**/*.html"
             ]
           }
         }
@@ -155,15 +152,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-mat-timepicker-repo/tsconfig.app.json",
-              "projects/ngx-mat-timepicker-repo/tsconfig.spec.json",
-              "projects/ngx-mat-timepicker-repo/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ngx-mat-timepicker-repo/**/*.ts",
+              "projects/ngx-mat-timepicker-repo/**/*.html"
             ]
           }
         },

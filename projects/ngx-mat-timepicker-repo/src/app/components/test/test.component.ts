@@ -6,7 +6,7 @@ import {NgxMatTimepickerDemoComponent} from "../demo/demo.component";
 
 
 @Component({
-    // tslint:disable-next-line:component-selector
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: "app-test",
     templateUrl: "test.component.html",
     styleUrls: ["test.component.scss"]

@@ -32,7 +32,7 @@ Also a few components were unnecessary and not in material style, so I got rid o
 
 ### Compatibility
 
-* v9 < Angular/Material < v16
+* v9 < Angular/Material <= v16
 
 **IMPORTANT**  
 Remember to include a Material Theme in your project, example:
@@ -56,17 +56,25 @@ If you still need the legacy version you can contact me and we'll see what can b
 Refer to the [Angular Material](https://material.angular.io) website for theming options.
 
 ## Table of contents
-* [Getting started](#getting-started)
-* [Internationalization](#internationalization)
-* [Documentation](#documentation)
-  * [NgxMatTimepicker](#ngxMatTimepicker)
-  * [NgxMatTimepickerComponent](#ngxMatTimepickercomponent)
-  * [NgxMatTimepickerFieldComponent](#ngxMatTimepickerfieldcomponent)
-  * [NgxMatTimepickerToggleComponent](#ngxMatTimepickertogglecomponent)
-  * [NgxMatTimepickerToggleIconDirective](#ngxMatTimepickertoggleicondirective)
-* [Development](#development)
-* [Tests](#tests)
-* [License](#license)
+- [ngx-mat-timepicker](#ngx-mat-timepicker)
+  - [VERY IMPORTANT READ THIS](#very-important-read-this)
+    - [Why this project?](#why-this-project)
+    - [Compatibility](#compatibility)
+  - [Table of contents](#table-of-contents)
+  - [Getting started](#getting-started)
+  - [Internationalization](#internationalization)
+  - [Documentation](#documentation)
+      - [API reference for Angular Material Timepicker](#api-reference-for-angular-material-timepicker)
+      - [NgxMatTimepicker](#ngxmattimepicker)
+      - [NgxMatTimepickerLocaleService (⭐NEW FROM v 13.2.0!!!⭐)](#ngxmattimepickerlocaleservice-new-from-v-1320)
+      - [NgxMatTimepickerComponent](#ngxmattimepickercomponent)
+      - [NgxMatTimepickerFieldComponent](#ngxmattimepickerfieldcomponent)
+      - [NgxMatTimepickerToggleComponent](#ngxmattimepickertogglecomponent)
+      - [NgxMatTimepickerToggleIconDirective](#ngxmattimepickertoggleicondirective)
+    - [Demo](#demo)
+  - [Special thanks](#special-thanks)
+  - [License](#license)
+    - [Thanks to](#thanks-to)
 
 ## Getting started
 

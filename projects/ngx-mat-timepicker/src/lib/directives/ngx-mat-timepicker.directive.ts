@@ -31,7 +31,7 @@ import {DateTime} from "ts-luxon";
             multi: true
         }
     ],
-    // tslint:disable-next-line:no-host-metadata-property
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
     host: {
         "[disabled]": "disabled",
         "(blur)": "onTouched()"
@@ -149,7 +149,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _previousFormat: number;
     private _subsCtrl$: Subject<void> = new Subject<void>();
     private _timepicker: NgxMatTimepickerComponent;
-    private _value: string = "";
+    private _value = "";
 
     constructor(private _elementRef: ElementRef,
                 private _timepickerLocaleSrv: NgxMatTimepickerLocaleService,
@@ -157,7 +157,6 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        // tslint:disable-next-line:no-string-literal
         const vChanges = changes["value"];
         if (vChanges && vChanges.currentValue) {
             this._defaultTime = vChanges.currentValue;

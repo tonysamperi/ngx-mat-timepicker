@@ -18,7 +18,7 @@ interface NgxMatTimepickerTheme {
 const pkgName = "ngx-mat-timepicker";
 
 @Component({
-    // tslint:disable-next-line:component-selector
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"]
@@ -37,8 +37,8 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         return `${pkg.version}-build-${pkg.build}`;
     }
 
-    githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
-    latestVersion: string = "";
+    githubLink = `https://github.com/tonysamperi/${pkgName}`;
+    latestVersion = "";
     maxTime: DateTime = DateTime.local().startOf("day").set({
         hour: 16,
         minute: 0
@@ -53,21 +53,21 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         fr: "fr-FR"
     };
     myLocalesReversed: Record<string, NgxMatTimepickerLocaleKey> = Object.fromEntries(Object.entries(this.myLocales).map(a => a.reverse()));
-    npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
+    npmLink = `https://www.npmjs.com/package/${pkgName}`;
     @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
     selectedTime: string;
     selectedTimeFreeInput: string;
     selectedTimeWithRange: string;
-    showInput: boolean = !0;
+    showInput = !0;
     themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},
         {value: "dark-theme", description: "Dark"}
     ];
-    timeRegex: RegExp = /([0-9]|1\d):[0-5]\d (AM|PM)/;
+    timeRegex = /([0-9]|1\d):[0-5]\d (AM|PM)/;
     year: number = new Date().getFullYear();
 
-    private _nextLocale: number = 0;
+    private _nextLocale = 0;
 
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
     }
@@ -133,7 +133,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
                 next: () => {
                     this.messages.forEach(({text, opts = {}}, i: number) => {
                         const tw = new TypeWriter(`${wrapperSelector} li:nth-child(${i + 1})`, {
-                            strings: !!opts.loop ? [text] : void 0,
+                            strings: opts.loop ? [text] : void 0,
                             autoStart: !!opts.loop,
                             loop: !!opts.loop,
                             delay: opts.delay || "natural"

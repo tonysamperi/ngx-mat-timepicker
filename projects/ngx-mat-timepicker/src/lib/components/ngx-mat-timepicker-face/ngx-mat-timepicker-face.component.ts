@@ -103,9 +103,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // tslint:disable-next-line:no-string-literal
         const faceTimeChanges = changes["faceTime"];
-        // tslint:disable-next-line:no-string-literal
         const selectedTimeChanges = changes["selectedTime"];
 
         if ((faceTimeChanges && faceTimeChanges.currentValue)

@@ -40,11 +40,7 @@ export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
 
     private _color: ThemePalette = "primary";
 
-    constructor() {
-    }
-
     ngOnChanges(changes: SimpleChanges) {
-        // tslint:disable-next-line:no-string-literal
         if (changes["period"] && changes["period"].currentValue) {
             const minutes = NgxMatTimepickerUtils.getMinutes(this.minutesGap);
             this.minutesList = NgxMatTimepickerUtils.disableMinutes(minutes, this.selectedHour, {

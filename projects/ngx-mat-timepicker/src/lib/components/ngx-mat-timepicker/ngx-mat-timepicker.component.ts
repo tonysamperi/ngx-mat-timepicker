@@ -41,7 +41,7 @@ let config: NgxMatTimepickerConfig;
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
-    static nextId: number = 0;
+    static nextId = 0;
 
     @Input()
     set appendToInput(newValue: boolean | string | void) {
@@ -120,7 +120,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     @Input() editableHintTmpl: TemplateRef<Node>;
     @Output() hourSelected = new EventEmitter<number>();
     @Input() hoursOnly = false;
-    @HostBinding("id") id: string = `ngx_mat_timepicker_${++NgxMatTimepickerComponent.nextId}`;
+    @HostBinding("id") id = `ngx_mat_timepicker_${++NgxMatTimepickerComponent.nextId}`;
     @Input() isEsc = !0;
     @Input() max: DateTime;
     @Input() min: DateTime;
@@ -142,16 +142,16 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         }
     ];
     @Input() preventOverlayClick: boolean;
-    showPicker: boolean = !1;
+    showPicker = !1;
     @Output() timeChanged = new EventEmitter<string>();
     @Input() timepickerClass: string;
     @Output() timeSet = new EventEmitter<string>();
     timeUpdated = new BehaviorSubject<string>(void 0); // used in the dialog, check if a better approach can be used
 
-    private _appendToInput: boolean = !1;
+    private _appendToInput = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
-    private _enableKeyboardInput: boolean = !1;
+    private _enableKeyboardInput = !1;
     private _format: NgxMatTimepickerFormatType = 12;
     private _minutesGap: number;
     private _overlayRef: OverlayRef;

@@ -8,10 +8,11 @@ import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.token";
 
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: "ngx-mat-timepicker-standalone",
     templateUrl: "ngx-mat-timepicker-standalone.component.html",
     styleUrls: ["ngx-mat-timepicker-standalone.component.scss"],
-    // tslint:disable-next-line:no-host-metadata-property
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
     host: {
       "[class.mat-app-background]": "true"
     },
