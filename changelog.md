@@ -1,3 +1,6 @@
+#16.0.0
+* Update for Angular 16! 🎉
+
 #15.1.7
 * Fix allow empty enableKeyboardInput (coerced) attribute even with strictTemplates enabled
 

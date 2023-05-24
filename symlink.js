@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {join, toNamespacedPath} = require("path");
+const {join} = require("path");
 const pkg = require("./package.json");
 
 (function createSymlink() {
@@ -9,7 +9,12 @@ const pkg = require("./package.json");
     if (fs.existsSync(nodeModulesPath)) {
         fs.unlinkSync(nodeModulesPath);
     }
-    fs.symlink(join(__dirname, targetPath), nodeModulesPath, 'dir', (err) => {
+    if (!fs.existsSync(targetPath)) {
+        console.info("Target folder doesn't exist, stop before creating new symlink");
+        return;
+    }
+
+    fs.symlink(join(__dirname, targetPath), nodeModulesPath, "dir", (err) => {
         if (err) {
             console.log(err);
         }

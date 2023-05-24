@@ -36,21 +36,22 @@
 				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
 					<mat-form-field>
 						<input matInput
-							   name="selected_time_A"
+							   name="selected_time_d"
+							   [format]="24"
 							   [(ngModel)]="selectedTime"
-							   [ngxMatTimepicker]="pickerA"
-							   placeholder="4:00 PM"
+							   [ngxMatTimepicker]="pickerD"
+							   placeholder="23:59"
 							   readonly />
 						<mat-icon matSuffix
-								  (click)="pickerA.open()">watch_later
+								  (click)="pickerD.open()">watch_later
 						</mat-icon>
 					</mat-form-field>
-					<button mat-raised-button
-							color="primary"
-							(click)="selectedTime = undefined">clear
-					</button>
-					<ngx-mat-timepicker #pickerA
-										(timeSet)="onTimeSet($event)"></ngx-mat-timepicker>
+					<div class="ngx-mtp-box-bordered">
+						<small>ngx-mat-timepicker is here</small>
+						<ngx-mat-timepicker color="accent"
+											appendToInput
+                                            #pickerD></ngx-mat-timepicker>
+					</div>
 				</div>
 				<pre class="language-markup">
                     <code>
@@ -58,17 +59,6 @@
                     </code>
                 </pre>
 			</code-viewer>
-		</div>
-		<div *ngIf="false">
-			<h2>ngx-mat-timepicker-field</h2>
-			<ngx-mat-timepicker-field color="warn"
-									  [format]="12"
-									  [max]="maxTime"
-									  [min]="minTime"
-									  [defaultTime]="'11:11 PM'"></ngx-mat-timepicker-field>
-			<ngx-mat-timepicker-field color="warn"
-									  [format]="24"
-									  [defaultTime]="'23:11'"></ngx-mat-timepicker-field>
 		</div>
 	</form>
 </div>

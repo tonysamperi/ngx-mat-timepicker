@@ -1,13 +1,13 @@
 {
   "messages": [
     {
-      "text": "🔥 21/05/2023: working on V16! Stay tuned!",
+      "text": "⚡ 24/05/2023: published V16! Check it out!",
       "opts": {
         "loop": true
       }
     },
     {
-      "text": "⭐ current version v15!",
+      "text": "⭐ prev version v15!",
       "opts": {
         "loop": false,
         "delay": 80

@@ -72,6 +72,10 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
     }
 
+    debug(): void {
+        console.info("focused input!");
+    }
+
     ngOnInit(): void {
         this.myLocaleKeys = Object.keys(this.myLocales) as NgxMatTimepickerLocaleKey[];
         this.selectedTheme = this.themes[0];
@@ -120,6 +124,11 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     //
 
     private _getMessages(wrapperSelector: string): void {
+        if (!document.querySelector(wrapperSelector)) {
+            console.warn(`No results for selector ${wrapperSelector}, skipping messages!`);
+
+            return;
+        }
         ajax.get(`./assets/messages.json`)
             .pipe(
                 switchMap((resp: AjaxResponse<any>) => {
@@ -140,9 +149,6 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
                         });
                         if (!opts.loop) {
                             tw.typeString(text).stop().start();
-                        }
-                        else {
-                            console.info("AUTOSTART WAS TRUE FOR", text);
                         }
                     });
                 }
