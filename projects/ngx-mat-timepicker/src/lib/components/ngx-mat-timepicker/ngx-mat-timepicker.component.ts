@@ -169,6 +169,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
         else {
             this._dialogRef && this._dialogRef.close();
         }
+        this.inputElement.focus(); // Fix ExpressionHasChangedAfterCheck error on overlay destroy
         this.showPicker = !1;
         this.closed.emit();
     }
