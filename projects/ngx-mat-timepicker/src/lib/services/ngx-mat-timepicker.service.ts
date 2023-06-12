@@ -8,7 +8,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {DateTime} from "ts-luxon";
 
 const DEFAULT_HOUR: NgxMatTimepickerClockFace = {
-    time: 12,
+    time: 0,
     angle: 360
 };
 const DEFAULT_MINUTE: NgxMatTimepickerClockFace = {
