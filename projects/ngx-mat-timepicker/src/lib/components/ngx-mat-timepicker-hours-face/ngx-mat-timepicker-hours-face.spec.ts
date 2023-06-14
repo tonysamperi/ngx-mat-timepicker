@@ -4,14 +4,12 @@ import {Subscription} from "rxjs";
 import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-face.directive";
 
 @Component({
-    template: `<div ngxMatTimepickerHoursFace [format]="format">`
+    template: `<div ngxMatTimepickerHoursFace [format]="format"></div>`
 })
 class TestHostComponent {
-    @Input()
-    format: 12 | 24 = 24;
 
-    @ViewChild(NgxMatTimepickerHoursFaceDirective)
-    directive: NgxMatTimepickerHoursFaceDirective;
+    @ViewChild(NgxMatTimepickerHoursFaceDirective) directive: NgxMatTimepickerHoursFaceDirective;
+    @Input() format: 12 | 24 = 24;
 }
 
 

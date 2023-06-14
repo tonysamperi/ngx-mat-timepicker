@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "build": 0,
   "license": "MIT",
   "private": true,
@@ -50,8 +50,8 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "rxjs": "^7.4.0",
     "t-writer.js": "^1.0.4",
-    "ts-luxon": "^4.2.1",
-    "tslib": "^2.4.1",
+    "ts-luxon": "^4.3.2",
+    "tslib": "^2.5.2",
     "typewriter-effect": "^2.19.0",
     "zone.js": "^0.12.0"
   },
