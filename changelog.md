@@ -1,3 +1,6 @@
+#16.0.1
+* Don't emit unless both values are set in ngx-mat-timepicker-field (fixes [#71](https://github.com/tonysamperi/ngx-mat-timepicker/issues/71))
+
 #16.0.0
 * Update for Angular 16! 🎉
 

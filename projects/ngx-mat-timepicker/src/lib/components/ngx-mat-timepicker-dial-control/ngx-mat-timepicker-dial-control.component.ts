@@ -25,40 +25,29 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
         return undefined;
     }
 
-    @Input()
-    disabled: boolean;
+    @Input() disabled: boolean;
 
-    @Output()
-    focused = new EventEmitter<void>();
+    @Output() focused = new EventEmitter<void>();
 
-    @Input()
-    isActive: boolean;
+    @Input() isActive: boolean;
 
-    @Input()
-    isEditable: boolean;
+    @Input() isEditable: boolean;
 
-    @Input()
-    minutesGap: number;
+    @Input() minutesGap: number;
 
     previousTime: number | string;
 
-    @Input()
-    time: string;
+    @Input() time: string;
 
-    @Output()
-    timeChanged = new EventEmitter<NgxMatTimepickerClockFace>();
+    @Output() timeChanged = new EventEmitter<NgxMatTimepickerClockFace>();
 
-    @Input()
-    timeList: NgxMatTimepickerClockFace[];
+    @Input() timeList: NgxMatTimepickerClockFace[];
 
-    @Input()
-    timeUnit: NgxMatTimepickerUnits;
+    @Input() timeUnit: NgxMatTimepickerUnits;
 
-    @Output()
-    timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
+    @Output() timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
 
-    @Output()
-    unfocused = new EventEmitter<void>();
+    @Output() unfocused = new EventEmitter<void>();
 
     constructor(private _elRef: ElementRef, private _timeParserPipe: NgxMatTimepickerParserPipe) {
     }
