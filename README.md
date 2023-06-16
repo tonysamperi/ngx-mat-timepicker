@@ -72,7 +72,9 @@ Refer to the [Angular Material](https://material.angular.io) website for theming
 
 Install timepicker through npm:
 ```bash  
-npm i --save ngx-mat-timepicker```  
+npm i --save ngx-mat-timepicker
+```  
+
 Next import the timepicker module into your app's module:  
 ```typescript  
 import {NgModule} from '@angular/core';  
