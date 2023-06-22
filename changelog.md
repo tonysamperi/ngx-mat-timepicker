@@ -1,3 +1,6 @@
+#16.0.2
+* Fix change Hostlistener behaviour and add check after parse to handle invalid parsed DateTime (fixes [#70](https://github.com/tonysamperi/ngx-mat-timepicker/issues/70)) 
+
 #16.0.1
 * Don't emit unless both values are set in ngx-mat-timepicker-field (fixes [#71](https://github.com/tonysamperi/ngx-mat-timepicker/issues/71))
 

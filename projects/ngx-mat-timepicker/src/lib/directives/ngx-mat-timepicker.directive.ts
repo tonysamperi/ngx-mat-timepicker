@@ -194,9 +194,9 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
     @HostListener("change", ["$event"])
-    updateValue(value: string) {
-        this.value = value;
-        this._onChange(value);
+    updateValue(e: Event) {
+        this.value = (e.target as HTMLInputElement).value;
+        this._onChange(this.value);
     }
 
     writeValue(value: string): void {

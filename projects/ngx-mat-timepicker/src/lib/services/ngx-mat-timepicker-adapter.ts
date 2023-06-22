@@ -36,6 +36,9 @@ export class NgxMatTimepickerAdapter {
             return "Invalid Time";
         }
         const parsedTime = this.parseTime(time, opts).setLocale(this.defaultLocale);
+        if (!parsedTime.isValid) {
+            return "Invalid time";
+        }
         const isTwelve = !this.isTwentyFour(opts.format as NgxMatTimepickerFormatType);
         if (isTwelve) {
             return parsedTime.toLocaleString({

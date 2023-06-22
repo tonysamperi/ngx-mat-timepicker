@@ -34,24 +34,35 @@
 			<p>using <span class="mat-color-primary">default</span> palette (primary)</p>
 			<code-viewer>
 				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
-					<mat-form-field>
-						<input matInput
-							   name="selected_time_d"
+					<mat-form-field appearance="outline">
+						<mat-label>Enter Time</mat-label>
+						<input type="text"
+							   matInput
+							   [ngxMatTimepicker]="timepicker"
 							   [format]="24"
-							   [(ngModel)]="selectedTime"
-							   [ngxMatTimepicker]="pickerD"
-							   placeholder="23:59"
-							   readonly />
-						<mat-icon matSuffix
-								  (click)="pickerD.open()">watch_later
+							   [disableClick]="true"
+							   [formControl]="formControlItem" />
+
+						<mat-icon
+								matPrefix
+								[style.visibility]="formControlItem.value && !formControlItem.disabled ? 'visible' : 'hidden'"
+								(click)="onClear()">
+							close
 						</mat-icon>
+
+						<mat-icon
+								matSuffix
+								*ngIf="!formControlItem.disabled"
+								(click)="openFromIcon(timepicker)">schedule
+						</mat-icon>
+
+						<mat-error *ngIf="formControlItem.hasError('pattern')">Invalid format!</mat-error>
 					</mat-form-field>
-					<div class="ngx-mtp-box-bordered">
-						<small>ngx-mat-timepicker is here</small>
-						<ngx-mat-timepicker color="accent"
-											appendToInput
-                                            #pickerD></ngx-mat-timepicker>
-					</div>
+
+					<ngx-mat-timepicker
+                        #timepicker
+						[enableKeyboardInput]="true"></ngx-mat-timepicker>
+
 				</div>
 				<pre class="language-markup">
                     <code>
