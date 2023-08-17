@@ -1,3 +1,4 @@
+import {MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
@@ -19,7 +20,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {NgxMatTimepickerModule, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerAppComponent} from "./app.component";
-import {NgxMatTimepickerTestComponent} from "./components/test/test.component";
+import {NgxMatTimepickerTestComponent, NgxMatTimepickerTestDialogComponent} from "./components/test/test.component";
 import {NgxMatTimepickerDemoComponent} from "./components/demo/demo.component";
 import {CodeViewerComponent} from "./components/code-viewer/code-viewer.component";
 //
@@ -30,7 +31,8 @@ import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
         CodeViewerComponent,
         NgxMatTimepickerAppComponent,
         NgxMatTimepickerDemoComponent,
-        NgxMatTimepickerTestComponent
+        NgxMatTimepickerTestComponent,
+        NgxMatTimepickerTestDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -42,6 +44,7 @@ import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
         MatButtonModule,
         MatCardModule,
         MatDatepickerModule,
+        MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,

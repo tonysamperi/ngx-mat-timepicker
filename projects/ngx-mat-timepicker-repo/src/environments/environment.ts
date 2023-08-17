@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const NGX_MAT_TIMEPICKER_ENVIRONMENT = {
-  production: false,
-  isDemo: !0
+    production: false,
+    isDemo: !1
 };
 
 /*
@@ -14,4 +14,4 @@ export const NGX_MAT_TIMEPICKER_ENVIRONMENT = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import "zone.js/dist/zone-error";  // Included with Angular CLI.
