@@ -1,3 +1,6 @@
+#16.0.3
+* Remove pointless cdkTrapFocusAutoCapture (closes [#77](https://github.com/tonysamperi/ngx-mat-timepicker/issues/77))
+
 #16.0.2
 * Fix change Hostlistener behaviour and add check after parse to handle invalid parsed DateTime (fixes [#70](https://github.com/tonysamperi/ngx-mat-timepicker/issues/70)) 
 
