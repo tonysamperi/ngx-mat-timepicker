@@ -59,6 +59,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     selectedTime: string;
     selectedTimeFreeInput: string;
     selectedTimeWithRange: string;
+    timepickerFieldValue = '00:00';
     showInput: boolean = !0;
     themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},

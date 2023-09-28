@@ -255,7 +255,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     private _changeTime(): void {
-        if (this.hour$.getValue()?.time && this.minute$.getValue()?.time) {
+        if (Number.isInteger(this.hour$.getValue()?.time) && Number.isInteger(this.minute$.getValue()?.time)) {
             const time = this._timepickerService.getFullTime(this.format);
             this.timepickerTime = time;
             this._emitLocalTimeChange(time);
