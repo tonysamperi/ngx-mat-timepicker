@@ -230,11 +230,10 @@
                                               [max]="maxTime"
                                               [min]="minTime"
                                               [defaultTime]="'11:11 PM'"></ngx-mat-timepicker-field>
-                    <p><strong>format = 24 - debug: timepickerFieldValue = `{{timepickerFieldValue}}` </strong></p>
+                    <p><strong>format = 24</strong></p>
                     <ngx-mat-timepicker-field color="warn"
                                               [format]="24"
-                                              [defaultTime]="timepickerFieldValue"
-                                              (timeChanged)="timepickerFieldValue = $event"
+                                              [defaultTime]="'23:11'"
                                               ></ngx-mat-timepicker-field>
                 </div>
                 <pre class="language-markup">
