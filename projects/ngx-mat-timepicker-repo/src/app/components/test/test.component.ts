@@ -44,7 +44,7 @@ export class NgxMatTimepickerTestDialogComponent {
 export class NgxMatTimepickerTestComponent extends NgxMatTimepickerDemoComponent {
 
     formControlItem: FormControl = new FormControl("", [Validators.pattern(/([0-9]|[1-2]\d):[0-5]\d/)]);
-    time: string;
+    time: string = "00:00";
     @ViewChild("timepicker") timepicker: NgxMatTimepickerComponent;
 
     constructor(private _matDialog: MatDialog, localeOverrideSrv: NgxMatTimepickerLocaleService) {
