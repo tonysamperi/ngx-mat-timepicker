@@ -1,13 +1,17 @@
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {NgxMatTimepickerAutofocusDirective} from "./ngx-mat-timepicker-autofocus.directive";
 import {By} from "@angular/platform-browser";
+//
+import {NgxMatTimepickerAutofocusDirective} from "./ngx-mat-timepicker-autofocus.directive";
 
 @Component({
     template: `
 		<button id="button">Push me</button>
-		<input [ngxMatTimepickerAutofocus]="true">`
+		<input [ngxMatTimepickerAutofocus]="true">`,
+    standalone: true,
+    imports: [NgxMatTimepickerAutofocusDirective]
 })
+// tslint:disable-next-line:naming-convention
 class TestComponent {
 }
 
@@ -19,7 +23,7 @@ describe("AutofocusDirective", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [TestComponent, NgxMatTimepickerAutofocusDirective],
+            imports: [TestComponent, NgxMatTimepickerAutofocusDirective],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(TestComponent);
 

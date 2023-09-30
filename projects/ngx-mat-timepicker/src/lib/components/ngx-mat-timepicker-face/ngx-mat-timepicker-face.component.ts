@@ -13,13 +13,19 @@ import {
     ViewChild,
     ViewEncapsulation
 } from "@angular/core";
+import {NgStyle, NgFor, NgIf, NgTemplateOutlet, NgClass, SlicePipe} from "@angular/common";
 import {ThemePalette} from "@angular/material/core";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
-
+import {NgxMatTimepickerTimeLocalizerPipe} from "../../pipes/ngx-mat-timepicker-time-localizer.pipe";
+import {NgxMatTimepickerMinutesFormatterPipe} from "../../pipes/ngx-mat-timepicker-minutes-formatter.pipe";
+import {NgxMatTimepickerActiveMinutePipe} from "../../pipes/ngx-mat-timepicker-active-minute.pipe";
+import {NgxMatTimepickerActiveHourPipe} from "../../pipes/ngx-mat-timepicker-active-hour.pipe";
 
 function roundAngle(angle: number, step: number): number {
     return Math.round(angle / step) * step;
@@ -56,7 +62,21 @@ const CLOCK_HAND_STYLES = {
     templateUrl: "./ngx-mat-timepicker-face.component.html",
     styleUrls: ["./ngx-mat-timepicker-face.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        NgStyle,
+        NgFor,
+        NgIf,
+        NgTemplateOutlet,
+        MatToolbarModule,
+        NgClass,
+        SlicePipe,
+        NgxMatTimepickerActiveHourPipe,
+        NgxMatTimepickerActiveMinutePipe,
+        NgxMatTimepickerMinutesFormatterPipe,
+        NgxMatTimepickerTimeLocalizerPipe]
 })
 export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, OnDestroy {
 

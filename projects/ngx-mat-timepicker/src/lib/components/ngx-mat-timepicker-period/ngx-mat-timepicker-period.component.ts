@@ -1,10 +1,7 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {animate, sequence, style, transition, trigger} from "@angular/animations";
-import {
-    FlexibleConnectedPositionStrategy,
-    Overlay,
-    ScrollStrategy
-} from "@angular/cdk/overlay";
+import { NgClass, NgIf } from "@angular/common";
+import { FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy, CdkOverlayOrigin, CdkConnectedOverlay } from "@angular/cdk/overlay";
 //
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
@@ -21,15 +18,17 @@ import {DateTime} from "ts-luxon";
     animations: [
         trigger("scaleInOut", [
             transition(":enter", [
-                style({transform: "scale(0)"}),
-                animate(".2s", style({transform: "scale(1)"})),
+                style({ transform: "scale(0)" }),
+                animate(".2s", style({ transform: "scale(1)" })),
                 sequence([
-                    animate("3s", style({opacity: 1})),
-                    animate(".3s", style({opacity: 0}))
+                    animate("3s", style({ opacity: 1 })),
+                    animate(".3s", style({ opacity: 0 }))
                 ])
             ])
         ])
-    ]
+    ],
+    standalone: true,
+    imports: [CdkOverlayOrigin, NgClass, CdkConnectedOverlay, NgIf]
 })
 export class NgxMatTimepickerPeriodComponent {
 

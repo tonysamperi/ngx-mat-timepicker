@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {NgxMatTimepickerToggleComponent} from "./ngx-mat-timepicker-toggle.component";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+//
+import {NgxMatTimepickerToggleComponent} from "./ngx-mat-timepicker-toggle.component";
 import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
 
 describe("NgxMatTimepickerToggleComponent", () => {
@@ -10,7 +11,7 @@ describe("NgxMatTimepickerToggleComponent", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [NgxMatTimepickerToggleComponent],
+            imports: [NgxMatTimepickerToggleComponent],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepickerToggleComponent);
 

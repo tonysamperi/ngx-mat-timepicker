@@ -9,10 +9,12 @@ import {
     TemplateRef,
     ViewEncapsulation
 } from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {MatSelectChange} from "@angular/material/select";
-import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import {NgClass, NgIf, NgFor, NgTemplateOutlet} from "@angular/common";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule} from "@angular/forms";
+import {MatSelectChange, MatSelectModule} from "@angular/material/select";
+import {ThemePalette, MatOptionModule} from "@angular/material/core";
+import {FloatLabelType, MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
@@ -22,6 +24,10 @@ import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.e
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatTimepickerToggleIconDirective} from "../../directives/ngx-mat-timepicker-toggle-icon.directive";
+import {NgxMatTimepickerToggleComponent} from "../ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
+import {NgxMatTimepickerControlComponent} from "../ngx-mat-timepicker-control/ngx-mat-timepicker-control.component";
 //
 import {DateTime} from "ts-luxon";
 import {BehaviorSubject, Subject} from "rxjs";
@@ -40,7 +46,23 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
         }
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [
+        NgClass,
+        NgxMatTimepickerControlComponent,
+        NgIf,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        NgFor,
+        MatOptionModule,
+        NgxMatTimepickerToggleComponent,
+        NgxMatTimepickerToggleIconDirective,
+        NgTemplateOutlet,
+        NgxMatTimepickerComponent,
+        MatIconModule
+    ]
 })
 export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, ControlValueAccessor {
 

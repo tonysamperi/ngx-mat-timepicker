@@ -1,12 +1,14 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
-import {NgxMatTimepickerDialControlComponent} from "./ngx-mat-timepicker-dial-control.component";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+//
+import {NgxMatTimepickerDialControlComponent} from "./ngx-mat-timepicker-dial-control.component";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerTimeLocalizerPipe} from "../../pipes/ngx-mat-timepicker-time-localizer.pipe";
 import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
-import {DateTime} from "ts-luxon";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+//
+import {DateTime} from "ts-luxon";
 
 describe("NgxMatTimepickerDialControlComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerDialControlComponent>;
@@ -14,11 +16,9 @@ describe("NgxMatTimepickerDialControlComponent", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [
-                NgxMatTimepickerDialControlComponent,
+            imports: [NgxMatTimepickerDialControlComponent,
                 NgxMatTimepickerTimeLocalizerPipe,
-                NgxMatTimepickerParserPipe
-            ],
+                NgxMatTimepickerParserPipe],
             providers: [
                 NgxMatTimepickerParserPipe,
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: "ar-AE"}
@@ -84,16 +84,16 @@ describe("NgxMatTimepickerDialControlComponent", () => {
         });
 
         it("should call preventDefault if no time exist or time disabled", () => {
-            const NUM_1 = 49; // 1
+            const num1 = 49; // 1
             component.timeList = [{time: 1, angle: 30, disabled: true}];
             component.time = "1";
 
 
-            component.changeTimeByKeyboard({...event, keyCode: NUM_1});
+            component.changeTimeByKeyboard({...event, keyCode: num1});
             expect(counter).toBe(1);
 
             component.time = "";
-            component.changeTimeByKeyboard({...event, keyCode: NUM_1});
+            component.changeTimeByKeyboard({...event, keyCode: num1});
             expect(counter).toBe(2);
         });
 

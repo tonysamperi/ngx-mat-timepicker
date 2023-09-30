@@ -1,16 +1,17 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import {Pipe, PipeTransform} from "@angular/core";
 //
-import { NgxMatTimepickerUnits } from "../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 //
-import { DateTime } from "ts-luxon";
+import {DateTime} from "ts-luxon";
 
 @Pipe({
-    name: "timeFormatter"
+    name: "timeFormatter",
+    standalone: true
 })
 export class NgxMatTimepickerTimeFormatterPipe implements PipeTransform {
 
     transform(time: number | string, timeUnit: NgxMatTimepickerUnits): any {
-        if (time == null || time === '') {
+        if (time == null || time === "") {
             return time;
         }
         switch (timeUnit) {

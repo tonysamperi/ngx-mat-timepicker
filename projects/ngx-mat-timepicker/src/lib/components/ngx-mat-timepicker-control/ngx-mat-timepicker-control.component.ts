@@ -1,11 +1,15 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
+import { NgClass } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
 import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import { FloatLabelType, MatFormFieldModule } from "@angular/material/form-field";
 //
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import { NgxMatTimepickerTimeLocalizerPipe } from "../../pipes/ngx-mat-timepicker-time-localizer.pipe";
 
 function concatTime(currentTime: string, nextTime: string): number | undefined {
     const isNumber = /\d/.test(nextTime);
@@ -24,7 +28,9 @@ function concatTime(currentTime: string, nextTime: string): number | undefined {
     templateUrl: "./ngx-mat-timepicker-control.component.html",
     styleUrls: ["./ngx-mat-timepicker-control.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [NgxMatTimepickerParserPipe]
+    providers: [NgxMatTimepickerParserPipe],
+    standalone: true,
+    imports: [MatFormFieldModule, NgClass, MatInputModule, FormsModule, NgxMatTimepickerParserPipe, NgxMatTimepickerTimeLocalizerPipe]
 })
 
 export class NgxMatTimepickerControlComponent implements OnChanges {

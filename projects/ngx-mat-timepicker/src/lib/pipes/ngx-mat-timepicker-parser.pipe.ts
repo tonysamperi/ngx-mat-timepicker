@@ -7,7 +7,8 @@ import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-loca
 import {DateTime, NumberingSystem} from "ts-luxon";
 
 @Pipe({
-    name: "ngxMatTimepickerParser"
+    name: "ngxMatTimepickerParser",
+    standalone: true
 })
 @Injectable()
 export class NgxMatTimepickerParserPipe implements PipeTransform {

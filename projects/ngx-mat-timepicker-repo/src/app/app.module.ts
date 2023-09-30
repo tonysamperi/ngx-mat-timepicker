@@ -27,13 +27,7 @@ import {CodeViewerComponent} from "./components/code-viewer/code-viewer.componen
 import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
 
 @NgModule({
-    declarations: [
-        CodeViewerComponent,
-        NgxMatTimepickerAppComponent,
-        NgxMatTimepickerDemoComponent,
-        NgxMatTimepickerTestComponent,
-        NgxMatTimepickerTestDialogComponent
-    ],
+    declarations: [NgxMatTimepickerAppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -54,10 +48,14 @@ import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
         MatToolbarModule,
         MatTooltipModule,
         //
-        NgxMatTimepickerModule
+        NgxMatTimepickerModule,
+        CodeViewerComponent,
+        NgxMatTimepickerDemoComponent,
+        NgxMatTimepickerTestComponent,
+        NgxMatTimepickerTestDialogComponent
     ],
     providers: [
-        // {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
+    // {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
     ],
     bootstrap: [NgxMatTimepickerAppComponent]
 })

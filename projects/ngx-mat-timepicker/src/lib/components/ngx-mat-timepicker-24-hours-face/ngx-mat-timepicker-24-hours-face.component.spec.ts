@@ -1,8 +1,10 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+//
 import {NgxMatTimepicker24HoursFaceComponent} from "./ngx-mat-timepicker-24-hours-face.component";
-import {DateTime} from "ts-luxon";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+//
+import {DateTime} from "ts-luxon";
 
 describe("NgxMatTimepicker24HoursFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepicker24HoursFaceComponent>;
@@ -10,7 +12,7 @@ describe("NgxMatTimepicker24HoursFaceComponent", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [NgxMatTimepicker24HoursFaceComponent],
+            imports: [NgxMatTimepicker24HoursFaceComponent],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepicker24HoursFaceComponent);
 

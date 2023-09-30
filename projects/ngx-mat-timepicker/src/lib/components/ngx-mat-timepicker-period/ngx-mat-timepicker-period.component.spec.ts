@@ -1,28 +1,29 @@
-import { OverlayModule } from '@angular/cdk/overlay';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxMatTimepickerPeriodComponent } from './ngx-mat-timepicker-period.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { NgxMatTimepickerUnits } from '../../models/ngx-mat-timepicker-units.enum';
-import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from "ts-luxon";
-import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
+import {OverlayModule} from "@angular/cdk/overlay";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+//
+import {NgxMatTimepickerPeriodComponent} from "./ngx-mat-timepicker-period.component";
+import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
+import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
+import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+//
+import {DateTime} from "ts-luxon";
 
-describe('NgxMatTimepickerPeriodComponent', () => {
+describe("NgxMatTimepickerPeriodComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerPeriodComponent>;
     let component: NgxMatTimepickerPeriodComponent;
     const minutes = NgxMatTimepickerUtils.getMinutes();
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [NgxMatTimepickerPeriodComponent],
-            imports: [OverlayModule],
+            imports: [OverlayModule, NgxMatTimepickerPeriodComponent],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepickerPeriodComponent);
 
         component = fixture.componentInstance;
     });
 
-    it('should change period for hour unit', () => {
+    it("should change period for hour unit", () => {
         component.activeTimeUnit = NgxMatTimepickerUnits.HOUR;
         component.format = 12;
         component.minTime = DateTime.fromObject({hour: 1});
@@ -36,7 +37,7 @@ describe('NgxMatTimepickerPeriodComponent', () => {
         expect(component.selectedPeriod).toBe(NgxMatTimepickerPeriods.PM);
     });
 
-    it('should change period for minute unit', () => {
+    it("should change period for minute unit", () => {
         component.activeTimeUnit = NgxMatTimepickerUnits.MINUTE;
         component.format = 12;
         component.minTime = DateTime.fromObject({hour: 1});
@@ -49,7 +50,7 @@ describe('NgxMatTimepickerPeriodComponent', () => {
         expect(component.selectedPeriod).toBe(NgxMatTimepickerPeriods.AM);
     });
 
-    it('should not change period', () => {
+    it("should not change period", () => {
         component.activeTimeUnit = NgxMatTimepickerUnits.MINUTE;
         component.format = 12;
         component.minTime = DateTime.fromObject({hour: 1});
@@ -63,7 +64,7 @@ describe('NgxMatTimepickerPeriodComponent', () => {
         expect(component.selectedPeriod).toBe(NgxMatTimepickerPeriods.AM);
     });
 
-    it('should throw an error', () => {
+    it("should throw an error", () => {
         component.format = 12;
         component.minTime = DateTime.fromObject({hour: 1});
         component.maxTime = DateTime.fromObject({hour: 5});
@@ -72,13 +73,14 @@ describe('NgxMatTimepickerPeriodComponent', () => {
         component.selectedPeriod = NgxMatTimepickerPeriods.AM;
         try {
             component.changePeriod(NgxMatTimepickerPeriods.PM);
-        } catch (e: any) {
-            expect(e.message).toBe('no such NgxMatTimepickerUnits');
+        }
+        catch (e: any) {
+            expect(e.message).toBe("no such NgxMatTimepickerUnits");
         }
 
     });
 
-    it('should set isPeriodAvailable to true', () => {
+    it("should set isPeriodAvailable to true", () => {
         component.isPeriodAvailable = false;
         expect(component.isPeriodAvailable).toBeFalsy();
 

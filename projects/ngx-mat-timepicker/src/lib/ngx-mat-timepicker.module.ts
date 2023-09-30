@@ -80,16 +80,7 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         MatToolbarModule,
         MatIconModule,
         OverlayModule,
-        PortalModule
-    ],
-    exports: [
-        NgxMatTimepickerComponent,
-        NgxMatTimepickerToggleComponent,
-        NgxMatTimepickerFieldComponent,
-        NgxMatTimepickerDirective,
-        NgxMatTimepickerToggleIconDirective
-    ],
-    declarations: [
+        PortalModule,
         // Not really used, but needed to use it as abstract class
         NgxMatTimepickerBaseDirective,
         NgxMatTimepickerHoursFaceDirective,
@@ -118,10 +109,17 @@ import {NgxMatTimepickerActiveMinutePipe} from "./pipes/ngx-mat-timepicker-activ
         NgxMatTimepickerTimeFormatterPipe,
         NgxMatTimepickerTimeLocalizerPipe
     ],
+    exports: [
+        NgxMatTimepickerComponent,
+        NgxMatTimepickerToggleComponent,
+        NgxMatTimepickerFieldComponent,
+        NgxMatTimepickerDirective,
+        NgxMatTimepickerToggleIconDirective
+    ],
     providers: [
         NgxMatTimepickerLocaleService,
         {
-            provide: MAT_FAB_DEFAULT_OPTIONS, useValue: {color: "void"}
+            provide: MAT_FAB_DEFAULT_OPTIONS, useValue: { color: "void" }
         }
     ]
 })

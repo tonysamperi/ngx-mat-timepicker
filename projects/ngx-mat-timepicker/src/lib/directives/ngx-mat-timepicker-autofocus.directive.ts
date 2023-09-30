@@ -2,7 +2,8 @@ import {Directive, ElementRef, Inject, Input, OnChanges, OnDestroy, Optional} fr
 import {DOCUMENT} from "@angular/common";
 
 @Directive({
-    selector: "[ngxMatTimepickerAutofocus]"
+    selector: "[ngxMatTimepickerAutofocus]",
+    standalone: true
 })
 export class NgxMatTimepickerAutofocusDirective implements OnChanges, OnDestroy {
 
@@ -10,19 +11,19 @@ export class NgxMatTimepickerAutofocusDirective implements OnChanges, OnDestroy 
 
     private _activeElement: HTMLElement;
 
-    constructor(private _element: ElementRef, @Optional() @Inject(DOCUMENT) private document: any) {
-        this._activeElement = this.document.activeElement;
+    constructor(private _element: ElementRef, @Optional() @Inject(DOCUMENT) private _document: any) {
+        this._activeElement = this._document.activeElement;
     }
 
     ngOnChanges() {
         if (this.isFocusActive) {
             // To avoid ExpressionChangedAfterItHasBeenCheckedError;
-            setTimeout(() => this._element.nativeElement.focus({ preventScroll: true }));
+            setTimeout(() => this._element.nativeElement.focus({preventScroll: true}));
         }
     }
 
     ngOnDestroy() {
         // To avoid ExpressionChangedAfterItHasBeenCheckedError;
-        setTimeout(() => this._activeElement.focus({ preventScroll: true }));
+        setTimeout(() => this._activeElement.focus({preventScroll: true}));
     }
 }
