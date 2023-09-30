@@ -7,6 +7,7 @@ export {NgxMatTimepickerDirective} from "./lib/directives/ngx-mat-timepicker.dir
 export {NgxMatTimepickerToggleIconDirective} from "./lib/directives/ngx-mat-timepicker-toggle-icon.directive";
 // MODELS
 export {NgxMatTimepickerConfig} from "./lib/models/ngx-mat-timepicker-config.interface";
+export {NgxMatTimepickerFormatType} from "./lib/models/ngx-mat-timepicker-format.type";
 // SERVICES
 export {NgxMatTimepickerLocaleService} from "./lib/services/ngx-mat-timepicker-locale.service";
 //
