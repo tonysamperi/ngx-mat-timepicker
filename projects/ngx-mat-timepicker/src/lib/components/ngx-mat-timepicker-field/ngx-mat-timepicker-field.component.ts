@@ -78,9 +78,16 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
 
     @Input()
     set format(value: NgxMatTimepickerFormatType) {
-        this._format = NgxMatTimepickerAdapter.isTwentyFour(value) ? 24 : 12;
-        this.minHour = this._format === 12 ? 1 : 0;
-        this.maxHour = this._format === 12 ? 12 : 23;
+        if (NgxMatTimepickerAdapter.isTwentyFour(value)) {
+            this._format = 24;
+            this.minHour = 0;
+            this.maxHour = 23;
+        }
+        else {
+            this._format = 12;
+            this.minHour = 1;
+            this.maxHour = 12;
+        }
         this.hoursList = NgxMatTimepickerUtils.getHours(this._format);
         const isDynamicallyChanged = value && (this._previousFormat && this._previousFormat !== this._format);
 
