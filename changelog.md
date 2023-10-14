@@ -1,3 +1,6 @@
+#16.1.1
+* Add onTouch handler
+
 #16.1.0
 * Update for standalone components
 
