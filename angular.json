@@ -166,18 +166,6 @@
               "**/node_modules/**"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/ngx-mat-timepicker-repo/e2e/protractor.conf.js",
-            "devServerTarget": "ngx-mat-timepicker-repo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ngx-mat-timepicker-repo:serve:production"
-            }
-          }
         }
       }
     }
