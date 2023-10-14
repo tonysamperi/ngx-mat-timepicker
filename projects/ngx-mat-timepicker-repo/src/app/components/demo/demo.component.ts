@@ -90,8 +90,14 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
     selectedTime: string;
-    selectedTimeFreeInput: string;
-    selectedTimeWithRange: string;
+    selectedTimes: Record<"C" | "D" | "E" | "F" | "G" | "H", string> = {
+        C: void 0,
+        D: void 0,
+        E: void 0,
+        F: void 0,
+        G: void 0,
+        H: void 0
+    };
     showInput: boolean = !0;
     themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},
