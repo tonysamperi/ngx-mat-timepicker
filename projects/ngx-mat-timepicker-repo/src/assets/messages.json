@@ -1,16 +1,16 @@
 {
   "messages": [
     {
-      "text": "⚡ 24/05/2023: published V16! Check it out!",
-      "opts": {
-        "loop": true
-      }
-    },
-    {
-      "text": "⭐ prev version v15!",
+      "text": "⭐ 30/09/2023: new V16 beta with standalone components!",
       "opts": {
         "loop": false,
         "delay": 80
+      }
+    },
+    {
+      "text": "⚡ 24/05/2023: published V16! Check it out!",
+      "opts": {
+        "loop": true
       }
     }
   ]
