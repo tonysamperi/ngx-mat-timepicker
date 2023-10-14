@@ -179,15 +179,12 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         }
     }
 
-    onTouched = () => {
-    }
-
     registerOnChange(fn: (value: any) => void): void {
         this._onChange = fn;
     }
 
     registerOnTouched(fn: () => void): void {
-        this.onTouched = fn;
+        this._onTouched = fn;
     }
 
     setDisabledState(isDisabled: boolean): void {
@@ -210,6 +207,10 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _onChange: (value: any) => void = () => {
     }
 
+
+    private _onTouched = () => {
+    }
+
     private _registerTimepicker(picker: NgxMatTimepickerComponent): void {
         if (picker) {
             this._timepicker = picker;
@@ -219,7 +220,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
                 .subscribe((time: string) => {
                     this.value = time;
                     this._onChange(this.value);
-                    this.onTouched();
+                    this._onTouched();
                     this._defaultTime = this._value;
                 });
         }
