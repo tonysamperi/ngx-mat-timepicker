@@ -1,6 +1,22 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
+import {NgFor, NgIf} from "@angular/common";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 //
-import {NgxMatTimepickerComponent, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {CodeViewerComponent} from "../code-viewer/code-viewer.component";
+import {
+    NgxMatTimepickerComponent,
+    NgxMatTimepickerLocaleService,
+    NgxMatTimepickerToggleComponent,
+    NgxMatTimepickerFieldComponent,
+    NgxMatTimepickerDirective
+} from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerLocaleKey} from "../../shared/ngx-mat-timepicker-locale-key.enum";
 //
@@ -21,7 +37,24 @@ const pkgName = "ngx-mat-timepicker";
     // tslint:disable-next-line:component-selector
     selector: "app-demo",
     templateUrl: "demo.component.html",
-    styleUrls: ["demo.component.scss"]
+    styleUrls: ["demo.component.scss"],
+    standalone: true,
+    imports: [MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatMenuModule,
+        NgFor,
+        NgIf,
+        FormsModule,
+        CodeViewerComponent,
+        MatFormFieldModule,
+        MatInputModule,
+        NgxMatTimepickerDirective,
+        NgxMatTimepickerComponent,
+        NgxMatTimepickerFieldComponent,
+        MatDatepickerModule,
+        NgxMatTimepickerToggleComponent
+    ]
 })
 export class NgxMatTimepickerDemoComponent implements OnInit {
 
@@ -57,8 +90,14 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
     selectedTime: string;
-    selectedTimeFreeInput: string;
-    selectedTimeWithRange: string;
+    selectedTimes: Record<"C" | "D" | "E" | "F" | "G" | "H", string> = {
+        C: void 0,
+        D: void 0,
+        E: void 0,
+        F: void 0,
+        G: void 0,
+        H: void 0
+    };
     showInput: boolean = !0;
     themes: NgxMatTimepickerTheme[] = [
         {value: "", description: "Light"},

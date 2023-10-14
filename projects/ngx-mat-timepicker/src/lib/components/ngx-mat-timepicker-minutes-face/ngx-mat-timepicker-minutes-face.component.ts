@@ -6,12 +6,15 @@ import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import { NgxMatTimepickerFaceComponent } from "../ngx-mat-timepicker-face/ngx-mat-timepicker-face.component";
 //
 import {DateTime} from "ts-luxon";
 
 @Component({
     selector: "ngx-mat-timepicker-minutes-face",
-    templateUrl: "./ngx-mat-timepicker-minutes-face.component.html"
+    templateUrl: "./ngx-mat-timepicker-minutes-face.component.html",
+    standalone: true,
+    imports: [NgxMatTimepickerFaceComponent]
 })
 export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
 

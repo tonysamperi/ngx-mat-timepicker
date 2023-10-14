@@ -1,6 +1,6 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from "@angular/core";
-import {CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from "@angular/cdk/overlay";
+import { CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef, CdkConnectedOverlay } from "@angular/cdk/overlay";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
 //
@@ -15,6 +15,7 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.
 //
 import {DateTime} from "ts-luxon";
 import {BehaviorSubject} from "rxjs";
+import { NgxMatTimepickerStandaloneComponent } from "../ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
 
 let config: NgxMatTimepickerConfig;
 
@@ -37,7 +38,9 @@ let config: NgxMatTimepickerConfig;
                 return config;
             }
         }
-    ]
+    ],
+    standalone: true,
+    imports: [CdkConnectedOverlay, NgxMatTimepickerStandaloneComponent]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 

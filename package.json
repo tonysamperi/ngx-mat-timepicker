@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker",
-  "version": "16.0.3",
+  "version": "16.1.0",
   "build": 0,
   "license": "MIT",
   "private": true,
@@ -32,9 +32,12 @@
     "build++": "gulp build++",
     "build": "ng build ngx-mat-timepicker --configuration=production && gulp postBuild",
     "build:demo": "ng build ngx-mat-timepicker-repo --configuration=production --base-href=",
-    "bump:major": "gulp bump:major",
     "bump:patch": "gulp bump:patch",
+    "bump:minor": "gulp bump:minor",
+    "bump:major": "gulp bump:major",
+    "bump:beta": "gulp bump:beta",
     "publish": "npm publish ./dist/ngx-mat-timepicker",
+    "publish:beta": "npm publish ./dist/ngx-mat-timepicker --tag beta",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

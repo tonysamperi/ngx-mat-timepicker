@@ -1,4 +1,6 @@
 import {Component, ContentChild, Input, ViewEncapsulation} from "@angular/core";
+import { NgIf } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
 //
 import {NgxMatTimepickerToggleIconDirective} from "../../directives/ngx-mat-timepicker-toggle-icon.directive";
 import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
@@ -7,7 +9,9 @@ import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicke
     selector: "ngx-mat-timepicker-toggle",
     templateUrl: "ngx-mat-timepicker-toggle.component.html",
     styleUrls: ["ngx-mat-timepicker-toggle.component.scss"],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [MatButtonModule, NgIf]
 })
 
 export class NgxMatTimepickerToggleComponent {

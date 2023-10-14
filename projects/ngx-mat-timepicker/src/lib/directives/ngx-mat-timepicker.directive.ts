@@ -35,7 +35,8 @@ import {DateTime} from "ts-luxon";
     host: {
         "[disabled]": "disabled",
         "(blur)": "onTouched()"
-    }
+    },
+    standalone: true
 })
 export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestroy, OnChanges {
 

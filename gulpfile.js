@@ -13,19 +13,18 @@ const gulp = require("gulp"),
     semver = require("semver"),
     log = require("plugin-log"),
     {obj} = require("through2");
-;
 
 const libName = "ngx-mat-timepicker";
 const rootFolder = join(__dirname);
 const distFolder = join(rootFolder, `dist/${libName}`);
 
-const doBump = (type) => {
+const doBump = (type, identifier) => {
     return Promise.all(["./", join(rootFolder, "projects", libName)].map((p) => {
         return gulp.src(join(p, "package.json"))
         .pipe(obj((file, enc, cb) => {
             const pkgData = JSON.parse(file.contents.toString());
             const prevVersion = pkgData.version;
-            pkgData.version = semver.inc(prevVersion, type);
+            pkgData.version = semver.inc(prevVersion, type, identifier);
             file.contents = Buffer.from(JSON.stringify(pkgData, null, 2));
             log(
                 "Bumped", log.colors.cyan(prevVersion),
@@ -54,6 +53,10 @@ gulp.task("bump:minor", () => {
 
 gulp.task("bump:major", () => {
     return doBump("major");
+});
+
+gulp.task("bump:beta", () => {
+    return doBump("prerelease", "beta");
 });
 
 gulp.task("build++", () => {

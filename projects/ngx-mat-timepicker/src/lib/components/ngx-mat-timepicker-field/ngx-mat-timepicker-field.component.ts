@@ -9,10 +9,12 @@ import {
     TemplateRef,
     ViewEncapsulation
 } from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {MatSelectChange} from "@angular/material/select";
-import {ThemePalette} from "@angular/material/core";
-import {FloatLabelType} from "@angular/material/form-field";
+import {NgClass, NgIf, NgFor, NgTemplateOutlet} from "@angular/common";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule} from "@angular/forms";
+import {MatSelectChange, MatSelectModule} from "@angular/material/select";
+import {ThemePalette, MatOptionModule} from "@angular/material/core";
+import {FloatLabelType, MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
 //
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
@@ -22,6 +24,10 @@ import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.e
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicker.component";
+import {NgxMatTimepickerToggleIconDirective} from "../../directives/ngx-mat-timepicker-toggle-icon.directive";
+import {NgxMatTimepickerToggleComponent} from "../ngx-mat-timepicker-toggle/ngx-mat-timepicker-toggle.component";
+import {NgxMatTimepickerControlComponent} from "../ngx-mat-timepicker-control/ngx-mat-timepicker-control.component";
 //
 import {DateTime} from "ts-luxon";
 import {BehaviorSubject, Subject} from "rxjs";
@@ -40,7 +46,23 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
         }
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [
+        NgClass,
+        NgxMatTimepickerControlComponent,
+        NgIf,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        NgFor,
+        MatOptionModule,
+        NgxMatTimepickerToggleComponent,
+        NgxMatTimepickerToggleIconDirective,
+        NgTemplateOutlet,
+        NgxMatTimepickerComponent,
+        MatIconModule
+    ]
 })
 export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
@@ -78,9 +100,16 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
 
     @Input()
     set format(value: NgxMatTimepickerFormatType) {
-        this._format = NgxMatTimepickerAdapter.isTwentyFour(value) ? 24 : 12;
-        this.minHour = this._format === 12 ? 1 : 0;
-        this.maxHour = this._format === 12 ? 12 : 23;
+        if (NgxMatTimepickerAdapter.isTwentyFour(value)) {
+            this._format = 24;
+            this.minHour = 0;
+            this.maxHour = 23;
+        }
+        else {
+            this._format = 12;
+            this.minHour = 1;
+            this.maxHour = 12;
+        }
         this.hoursList = NgxMatTimepickerUtils.getHours(this._format);
         const isDynamicallyChanged = value && (this._previousFormat && this._previousFormat !== this._format);
 
@@ -255,7 +284,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     private _changeTime(): void {
-        if (this.hour$.getValue()?.time && this.minute$.getValue()?.time) {
+        if (!isNaN(this.hour$.getValue()?.time) && !isNaN(this.minute$.getValue()?.time)) {
             const time = this._timepickerService.getFullTime(this.format);
             this.timepickerTime = time;
             this._emitLocalTimeChange(time);

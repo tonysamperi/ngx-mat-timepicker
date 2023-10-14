@@ -1,7 +1,7 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
-import {Subscription} from "rxjs";
-import {NgxMatTimepickerFaceComponent} from "./ngx-mat-timepicker-face.component";
 import {ElementRef, NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
+//
+import {NgxMatTimepickerFaceComponent} from "./ngx-mat-timepicker-face.component";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerMinutesFormatterPipe} from "../../pipes/ngx-mat-timepicker-minutes-formatter.pipe";
@@ -10,6 +10,8 @@ import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-lo
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerActiveHourPipe} from "../../pipes/ngx-mat-timepicker-active-hour.pipe";
 import {NgxMatTimepickerActiveMinutePipe} from "../../pipes/ngx-mat-timepicker-active-minute.pipe";
+//
+import {Subscription} from "rxjs";
 
 
 describe("NgxMatTimepickerFaceComponent", () => {
@@ -20,13 +22,11 @@ describe("NgxMatTimepickerFaceComponent", () => {
     beforeEach(() => {
         subscription = new Subscription();
         fixture = TestBed.configureTestingModule({
-            declarations: [
-                NgxMatTimepickerFaceComponent,
+            imports: [NgxMatTimepickerFaceComponent,
                 NgxMatTimepickerMinutesFormatterPipe,
                 NgxMatTimepickerTimeLocalizerPipe,
                 NgxMatTimepickerActiveHourPipe,
-                NgxMatTimepickerActiveMinutePipe
-            ],
+                NgxMatTimepickerActiveMinutePipe],
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: NgxMatTimepickerAdapter.defaultLocale}
             ],
@@ -181,7 +181,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
             {time: 21, angle: 630, disabled: false},
             {time: 22, angle: 660, disabled: false},
             {time: 23, angle: 690, disabled: false},
-            {time: 24, angle: 720, disabled: false},
+            {time: 24, angle: 720, disabled: false}
         ];
 
         const minutesFaceTime = Array(60).fill(0).map((v, i) => {

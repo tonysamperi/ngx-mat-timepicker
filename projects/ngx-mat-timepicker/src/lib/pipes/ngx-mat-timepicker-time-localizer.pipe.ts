@@ -1,13 +1,14 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 //
+import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerMeasure} from "../models/ngx-mat-timepicker-measures.enum";
 //
 import {DateTime} from "ts-luxon";
 
 @Pipe({
-    name: "timeLocalizer"
+    name: "timeLocalizer",
+    standalone: true
 })
 export class NgxMatTimepickerTimeLocalizerPipe implements PipeTransform {
 
@@ -39,7 +40,8 @@ export class NgxMatTimepickerTimeLocalizerPipe implements PipeTransform {
     private _formatTime(timeMeasure: NgxMatTimepickerMeasure, time: string | number, format: string): string {
         try {
             return DateTime.fromObject({[timeMeasure]: +time}).setLocale(this._locale).toFormat(format);
-        } catch {
+        }
+        catch {
             throw new Error(`Cannot format provided time - ${time} to locale - ${this._locale}`);
         }
     }

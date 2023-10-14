@@ -1,25 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxMatTimepicker12HoursFaceComponent } from './ngx-mat-timepicker-12-hours-face.component';
-import { NO_ERRORS_SCHEMA, SimpleChanges } from '@angular/core';
-import { NgxMatTimepickerPeriods } from '../../models/ngx-mat-timepicker-periods.enum';
-import { DateTime } from "ts-luxon";
-import { NgxMatTimepickerUtils } from '../../utils/ngx-mat-timepicker.utils';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
+//
+import {NgxMatTimepicker12HoursFaceComponent} from "./ngx-mat-timepicker-12-hours-face.component";
+import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
+import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+//
+import {DateTime} from "ts-luxon";
 
-describe('NgxMatTimepicker12HoursFaceComponent', () => {
+describe("NgxMatTimepicker12HoursFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepicker12HoursFaceComponent>;
     let component: NgxMatTimepicker12HoursFaceComponent;
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [NgxMatTimepicker12HoursFaceComponent],
+            imports: [NgxMatTimepicker12HoursFaceComponent],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepicker12HoursFaceComponent);
 
         component = fixture.componentInstance;
     });
 
-    it('should call disabledHours once period changed', () => {
-        const spy = spyOn(NgxMatTimepickerUtils, 'disableHours');
+    it("should call disabledHours once period changed", () => {
+        const spy = spyOn(NgxMatTimepickerUtils, "disableHours");
         const changes: SimpleChanges = {
             period: {
                 currentValue: NgxMatTimepickerPeriods.PM,
@@ -42,8 +44,8 @@ describe('NgxMatTimepicker12HoursFaceComponent', () => {
         expect(spy).toHaveBeenCalledWith(hours, {min: time, max: time, format, period});
     });
 
-    it('should not call disabledHours', () => {
-        const spy = spyOn(NgxMatTimepickerUtils, 'disableHours');
+    it("should not call disabledHours", () => {
+        const spy = spyOn(NgxMatTimepickerUtils, "disableHours");
         const changes: SimpleChanges = {
             minTime: {
                 currentValue: null,

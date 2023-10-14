@@ -9,6 +9,7 @@ import {
     TemplateRef
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
+import { NgIf, NgClass, NgTemplateOutlet } from "@angular/common";
 //
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
@@ -16,6 +17,8 @@ import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum"
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
+import { NgxMatTimepickerPeriodComponent } from "../ngx-mat-timepicker-period/ngx-mat-timepicker-period.component";
+import { NgxMatTimepickerDialControlComponent } from "../ngx-mat-timepicker-dial-control/ngx-mat-timepicker-dial-control.component";
 //
 import {DateTime, Info} from "ts-luxon";
 
@@ -23,7 +26,9 @@ import {DateTime, Info} from "ts-luxon";
     selector: "ngx-mat-timepicker-dial",
     templateUrl: "ngx-mat-timepicker-dial.component.html",
     styleUrls: ["ngx-mat-timepicker-dial.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgxMatTimepickerDialControlComponent, NgIf, NgxMatTimepickerPeriodComponent, NgClass, NgTemplateOutlet]
 })
 export class NgxMatTimepickerDialComponent implements OnChanges {
 

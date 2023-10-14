@@ -1,3 +1,9 @@
+#16.1.0
+* Update for standalone components
+
+#16.0.4
+* Fix timeChange not firing on 0 values (fixes [#81](https://github.com/tonysamperi/ngx-mat-timepicker/issues/81))
+
 #16.0.3
 * Remove pointless cdkTrapFocusAutoCapture (closes [#77](https://github.com/tonysamperi/ngx-mat-timepicker/issues/77))
 

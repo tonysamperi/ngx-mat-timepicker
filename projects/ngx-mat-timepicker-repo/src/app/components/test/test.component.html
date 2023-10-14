@@ -66,6 +66,15 @@
 							mat-button
 							color="primary">OPEN DIALOG</button>
 
+					<ngx-mat-timepicker-field
+							color="warn"
+							[format]="24"
+							[defaultTime]="time"
+							(timeChanged)="time = $event"
+							[controlOnly]="true"
+					></ngx-mat-timepicker-field>
+					<p>{{time}}</p>
+
 				</div>
 				<pre class="language-markup">
                     <code>

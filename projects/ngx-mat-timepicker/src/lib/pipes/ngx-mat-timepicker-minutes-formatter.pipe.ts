@@ -1,7 +1,8 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
-    name: 'minutesFormatter'
+    name: "minutesFormatter",
+    standalone: true
 })
 export class NgxMatTimepickerMinutesFormatterPipe implements PipeTransform {
 
@@ -10,7 +11,7 @@ export class NgxMatTimepickerMinutesFormatterPipe implements PipeTransform {
             return minute;
         }
 
-        return minute % gap === 0 ? minute : '';
+        return minute % gap === 0 ? minute : "";
     }
 
 }

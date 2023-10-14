@@ -1,17 +1,22 @@
 import {Component, DebugElement, SimpleChanges} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {By} from "@angular/platform-browser";
+//
+import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerModule} from "../ngx-mat-timepicker.module";
+//
 import {DateTime} from "ts-luxon";
 
 @Component({
     template: `
 		<input [ngxMatTimepicker]="picker">
 		<ngx-mat-timepicker #picker></ngx-mat-timepicker>
-    `
+    `,
+    standalone: true,
+    imports: [NgxMatTimepickerModule]
 })
+// tslint:disable-next-line:naming-convention
 class TestComponent {
 
 }
@@ -25,11 +30,8 @@ describe("NgxMatTimepickerDirective", () => {
 
     beforeEach(() => {
         fixture = TestBed.configureTestingModule({
-            declarations: [
-                TestComponent
-            ],
-            imports: [NgxMatTimepickerModule]
-        }).createComponent(TestComponent);
+    imports: [NgxMatTimepickerModule, TestComponent]
+}).createComponent(TestComponent);
         input = fixture.debugElement.query(By.directive(NgxMatTimepickerDirective));
         directive = input.injector.get<NgxMatTimepickerDirective>(NgxMatTimepickerDirective);
         timepickerComponent = TestBed.createComponent(NgxMatTimepickerComponent).componentInstance;
@@ -90,8 +92,8 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should return min time in DateTime type if pass string", () => {
         directive.min = "11:00 pm";
-        expect((directive.min as unknown as DateTime)["hour"]).toBe(23);
-        expect((directive.min as unknown as DateTime)["minute"]).toBe(0);
+        expect((directive.min as unknown as DateTime).hour).toBe(23);
+        expect((directive.min as unknown as DateTime).minute).toBe(0);
     });
 
     it("should return min time in DateTime type if pass DateTime", () => {
@@ -102,8 +104,8 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should return max time in DateTime type if pass string", () => {
         directive.max = "11:00 pm";
-        expect((directive.max as unknown as DateTime)["hour"]).toBe(23);
-        expect((directive.max as unknown as DateTime)["minute"]).toBe(0);
+        expect((directive.max as unknown as DateTime).hour).toBe(23);
+        expect((directive.max as unknown as DateTime).minute).toBe(0);
     });
 
     it("should return max time in DateTime type if pass DateTime", () => {
@@ -151,7 +153,14 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should change time onChange", () => {
         directive.timepicker = timepickerComponent;
-        directive.updateValue("11:12");
+        const updateEvent = new CustomEvent<any>("change", {
+            composed: !1,
+            detail: {
+                target: directive.element,
+                data: "11:12",
+            }
+        });
+        directive.updateValue(updateEvent);
         expect(directive.value).toBe("11:12 AM");
     });
 
@@ -228,10 +237,16 @@ describe("NgxMatTimepickerDirective", () => {
     it("should set onChange function on registerOnChange", () => {
         directive.timepicker = timepickerComponent;
         const spy = spyOn(console, "log");
-        const time = "11:12 am";
-
         directive.registerOnChange(console.log);
-        directive.updateValue(time);
+        const time = "11:12 am";
+        const updateEvent = new CustomEvent<any>("change", {
+            composed: !1,
+            detail: {
+                target: directive.element,
+                data: time,
+            }
+        });
+        directive.updateValue(updateEvent);
 
         expect(spy).toHaveBeenCalledWith(time);
     });

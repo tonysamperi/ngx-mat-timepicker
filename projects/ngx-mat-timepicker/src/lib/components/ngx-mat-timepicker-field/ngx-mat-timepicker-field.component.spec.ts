@@ -18,7 +18,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [NgxMatTimepickerFieldComponent],
+            imports: [NgxMatTimepickerFieldComponent],
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: "en-US"}
             ],
@@ -160,6 +160,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
         });
 
         it("should set 12-hours format", () => {
+            // @ts-expect-error
             component.format = 14;
             expect(component.format).toBe(12);
         });
