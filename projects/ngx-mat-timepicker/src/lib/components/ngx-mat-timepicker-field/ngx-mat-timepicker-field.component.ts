@@ -260,6 +260,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     registerOnTouched(_fn_: any): void {
+        this._onTouched = fn;
     }
 
     setDisabledState(isDisabled: boolean): void {
@@ -295,6 +296,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         const localTime = NgxMatTimepickerAdapter.toLocaleTimeString(time, {format: this.format, locale: this._locale});
 
         this._onChange(localTime);
+        this._onTouched(localTime);
         this.timeChanged.emit(localTime);
     }
 
@@ -328,6 +330,9 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _onChange: (value: string) => void = () => {
     };
 
+    private _onTouched: (value: string) => void = () => {
+    };
+    
     private _resetTime(): void {
         this._timepickerService.hour = {angle: 0, time: null};
         this._timepickerService.minute = {angle: 0, time: null};
