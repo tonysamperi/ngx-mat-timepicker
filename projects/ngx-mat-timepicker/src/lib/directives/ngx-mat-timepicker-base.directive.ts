@@ -90,7 +90,11 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
         this.selectedPeriod = this._timepickerSrv.selectedPeriod
             .pipe(shareReplay({bufferSize: 1, refCount: true}));
         this.data.timepickerBaseRef.timeUpdated.pipe(takeUntil(this._subsCtrl$))
-            .subscribe(this._setDefaultTime.bind(this));
+            .subscribe({
+                next: (v: string) => {
+                    v && this._setDefaultTime(v);
+                }
+            });
     }
 
     onHourChange(hour: NgxMatTimepickerClockFace): void {

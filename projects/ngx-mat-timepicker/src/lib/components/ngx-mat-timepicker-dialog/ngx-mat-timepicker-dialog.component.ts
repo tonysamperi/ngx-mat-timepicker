@@ -27,19 +27,24 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
     templateUrl: "./ngx-mat-timepicker-dialog.component.html",
     encapsulation: ViewEncapsulation.None,
     standalone: true,
-    imports: [MatButtonModule,
-        MatDialogModule,
-        NgxMatTimepickerContentComponent,
-        NgClass, MatToolbarModule,
-        NgxMatTimepickerDialComponent,
+    imports: [
+        AsyncPipe,
+        // Common
+        NgClass,
+        NgIf,
         NgSwitch,
         NgSwitchCase,
-        NgIf,
+        NgTemplateOutlet,
+        // Material
+        MatButtonModule,
+        MatDialogModule,
+        MatToolbarModule,
+        // NgxMatTimepicker
+        NgxMatTimepickerContentComponent,
+        NgxMatTimepickerDialComponent,
         NgxMatTimepicker24HoursFaceComponent,
         NgxMatTimepicker12HoursFaceComponent,
-        NgxMatTimepickerMinutesFaceComponent,
-        NgTemplateOutlet,
-        AsyncPipe
+        NgxMatTimepickerMinutesFaceComponent
     ]
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {

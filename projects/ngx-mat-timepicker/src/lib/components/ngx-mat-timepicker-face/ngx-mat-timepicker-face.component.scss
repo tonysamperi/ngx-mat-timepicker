@@ -1,6 +1,10 @@
 ngx-mat-timepicker-face {
 	[mat-mini-fab].mat-unthemed {
 		--mdc-fab-container-color: transparent;
+
+		&:disabled[disabled] {
+			--mdc-fab-container-color: transparent;
+		}
 	}
 
 	.clock-face {
