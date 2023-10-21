@@ -89,8 +89,9 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     npmLink: string = `https://www.npmjs.com/package/${pkgName}`;
     @ViewChild("pickerH") pickerFreeInput: NgxMatTimepickerComponent;
     selectedTheme: NgxMatTimepickerTheme;
-    selectedTime: string;
-    selectedTimes: Record<"C" | "D" | "E" | "F" | "G" | "H", string> = {
+    selectedTimes: Record<"A"| "B" | "C" | "D" | "E" | "F" | "G" | "H", string> = {
+        A: void 0,
+        B: void 0,
         C: void 0,
         D: void 0,
         E: void 0,

@@ -1,3 +1,6 @@
+#16.1.2
+* Fix weird behaviours caused by multiple pickers in same page (fixes [#29](https://github.com/tonysamperi/ngx-mat-timepicker/issues/29))
+
 #16.1.1
 * Add onTouch handler
 
