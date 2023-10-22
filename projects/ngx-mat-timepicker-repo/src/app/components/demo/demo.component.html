@@ -142,7 +142,7 @@
                     <mat-form-field>
                         <input matInput
                                name="selected_time_A"
-                               [(ngModel)]="selectedTime"
+                               [(ngModel)]="selectedTimes.A"
                                [ngxMatTimepicker]="pickerA"
                                placeholder="4:00 PM"
                                readonly />
@@ -152,7 +152,7 @@
                     </mat-form-field>
                     <button mat-raised-button
                             color="primary"
-                            (click)="selectedTime = undefined">clear
+                            (click)="selectedTimes.A = undefined">clear
                     </button>
                     <ngx-mat-timepicker #pickerA
                                         enableKeyboardInput
@@ -163,7 +163,7 @@
 &lt;mat-form-field&gt;
     &lt;input matInput
            name="selected_time_A"
-           [(ngModel)]="selectedTime"
+           [(ngModel)]="selectedTimes.A"
            [ngxMatTimepicker]="pickerA"
            placeholder="4:00 PM"
            readonly /&gt;
@@ -186,7 +186,7 @@
                         <input matInput
                                name="selected_time_B"
                                [format]="24"
-                               [(ngModel)]="selectedTime"
+                               [(ngModel)]="selectedTimes.B"
                                [ngxMatTimepicker]="pickerB"
                                placeholder="16:00"
                                readonly />
@@ -204,7 +204,7 @@
     &lt;input matInput
            name="selected_time_B"
            format="24"
-           [(ngModel)]="selectedTime"
+           [(ngModel)]="selectedTimes.B"
            [ngxMatTimepicker]="pickerB"
            placeholder="16:00"
            readonly /&gt;
@@ -284,7 +284,7 @@
     &lt;input matInput
     name="selected_time"
     [format]="24"
-    [(ngModel)]="selectedTime"
+    [(ngModel)]="selectedTimes.C"
     [ngxMatTimepicker]="pickerC"
     placeholder="12:00"
     readonly /&gt;
@@ -338,7 +338,7 @@
 &lt;mat-form-field&gt;
     &lt;input matInput
     [format]="24"
-    [(ngModel)]="selectedTime"
+    [(ngModel)]="selectedTimes.D"
     [ngxMatTimepicker]="pickerD"
     placeholder="12:00"
     readonly /&gt;
@@ -388,7 +388,7 @@
 &lt;mat-form-field&gt;
     &lt;input matInput
     [format]="24"
-    [(ngModel)]="selectedTime"
+    [(ngModel)]="selectedTimes.E"
     [ngxMatTimepicker]="pickerE"
     placeholder="12:00"
     readonly /&gt;
@@ -447,7 +447,7 @@
 &lt;mat-form-field&gt;
     &lt;input matInput
     [format]="24"
-    [(ngModel)]="selectedTime"
+    [(ngModel)]="selectedTimes.F"
     [ngxMatTimepicker]="pickerF"
     placeholder="12:00"
     readonly /&gt;
@@ -506,7 +506,7 @@
 		   [format]="12"
 		   [max]="maxTime"
 		   [min]="minTime"
-		   [(ngModel)]="selectedTime"
+		   [(ngModel)]="selectedTimes.G"
 		   [ngxMatTimepicker]="pickerG"
 		   placeholder="12:00"
 		   readonly /&gt;
@@ -520,7 +520,7 @@
 &lt;/button&gt;
 &lt;button mat-raised-button
 		class="ngx-mtp-margin-top ngx-mtp-margin-bottom ngx-mtp-d-inline-block"
-		(click)="selectedTime = '12:00'"
+		(click)="selectedTimes.G = '12:00'"
 		color="primary"&gt;
 	Invalidate
 &lt;/button&gt;

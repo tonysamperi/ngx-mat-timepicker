@@ -187,7 +187,6 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
     }
 
-
     trackByTime(_item_: any, time: NgxMatTimepickerClockFace): string | number {
         return time.time;
     }
@@ -241,6 +240,8 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
             }
         }
 
-        this.clockHand.nativeElement.style.transform = `rotate(${this.selectedTime.angle}deg)`;
+        if (this.selectedTime) {
+            this.clockHand.nativeElement.style.transform = `rotate(${this.selectedTime.angle}deg)`;
+        }
     }
 }

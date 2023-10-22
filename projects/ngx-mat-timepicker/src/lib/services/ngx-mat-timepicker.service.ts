@@ -67,12 +67,14 @@ export class NgxMatTimepickerService {
 
 
     setDefaultTimeIfAvailable(time: string, min: DateTime, max: DateTime, format: number, minutesGap?: number) {
+        time || this._resetTime();
         /* Workaround to double error message*/
         try {
             if (NgxMatTimepickerAdapter.isTimeAvailable(time, min, max, "minutes", minutesGap)) {
                 this._setDefaultTime(time, format);
             }
-        } catch (e) {
+        }
+        catch (e) {
             console.error(e);
         }
     }
