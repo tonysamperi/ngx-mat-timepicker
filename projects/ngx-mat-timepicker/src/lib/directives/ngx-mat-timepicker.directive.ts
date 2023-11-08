@@ -182,7 +182,6 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     onTouched = () => {
     };
 
-
     registerOnChange(fn: (value: any) => void): void {
         this._onChange = fn;
     }
