@@ -120,10 +120,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "ngx-mat-timepicker-repo:build:development"
+              "buildTarget": "ngx-mat-timepicker-repo:build:development"
             },
             "production": {
-              "browserTarget": "ngx-mat-timepicker-repo:build:production"
+              "buildTarget": "ngx-mat-timepicker-repo:build:production"
             }
           },
           "defaultConfiguration": "development"
@@ -131,7 +131,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-mat-timepicker-repo:build"
+            "buildTarget": "ngx-mat-timepicker-repo:build"
           }
         },
         "test": {
@@ -165,18 +165,6 @@
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/ngx-mat-timepicker-repo/e2e/protractor.conf.js",
-            "devServerTarget": "ngx-mat-timepicker-repo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ngx-mat-timepicker-repo:serve:production"
-            }
           }
         }
       }
