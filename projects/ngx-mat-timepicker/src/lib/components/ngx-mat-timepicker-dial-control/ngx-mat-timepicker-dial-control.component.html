@@ -1,23 +1,26 @@
-<input class="timepicker-dial__control timepicker-dial__item"
-       [ngClass]="{'active': isActive}"
-       [ngModel]="time | timeLocalizer: timeUnit: true"
-       (ngModelChange)="time = $event"
-       [disabled]="disabled"
-       (input)="updateTime()"
-       (focus)="saveTimeAndChangeTimeUnit($event, timeUnit)"
-       readonly
-       [ngxMatTimepickerAutofocus]="isActive"
-       *ngIf="!isEditable;else editableTemplate">
-
-<ng-template #editableTemplate>
-    <input class="timepicker-dial__control timepicker-dial__item timepicker-dial__control_editable"
-           [ngClass]="{'active': isActive}"
-           [ngModel]="time | ngxMatTimepickerParser: timeUnit | timeLocalizer: timeUnit : true"
-           (ngModelChange)="onModelChange($event)"
-           [disabled]="disabled"
-           (input)="updateTime()"
-           (focus)="saveTimeAndChangeTimeUnit($event, timeUnit)"
-           [ngxMatTimepickerAutofocus]="isActive"
-           (keydown)="onKeydown($event)"
-           (keypress)="changeTimeByKeyboard($event)">
-</ng-template>
+@if (!isEditable) {
+       <input
+              readonly
+              class="timepicker-dial__control timepicker-dial__item"
+              [ngClass]="{ active: isActive }"
+              [ngModel]="time | timeLocalizer : timeUnit : true"
+              [disabled]="disabled"
+              [ngxMatTimepickerAutofocus]="isActive"
+              (input)="updateTime()"
+              (focus)="saveTimeAndChangeTimeUnit($event, timeUnit)"
+              (ngModelChange)="time = $event"
+       />
+} @else {
+       <input
+              class="timepicker-dial__control timepicker-dial__item timepicker-dial__control_editable"
+              [ngClass]="{ active: isActive }"
+              [ngModel]="time | ngxMatTimepickerParser : timeUnit | timeLocalizer : timeUnit : true"
+              [disabled]="disabled"
+              [ngxMatTimepickerAutofocus]="isActive"
+              (input)="updateTime()"
+              (focus)="saveTimeAndChangeTimeUnit($event, timeUnit)"
+              (keydown)="onKeydown($event)"
+              (keypress)="changeTimeByKeyboard($event)"
+              (ngModelChange)="onModelChange($event)"
+       />
+}

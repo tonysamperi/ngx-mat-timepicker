@@ -1,9 +1,10 @@
-<div *ngIf="appendToInput;else timepickerModal">
-	<ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
-</div>
-<ng-template #timepickerModal>
-	<ng-container *ngTemplateOutlet="timepickerOutlet"></ng-container>
-</ng-template>
+@if (appendToInput) {
+  <div>
+    <ng-container *ngTemplateOutlet="timepickerOutlet" />
+  </div>
+} @else {
+  <ng-container *ngTemplateOutlet="timepickerOutlet" />
+}
 <ng-template #timepickerOutlet>
-	<ng-content></ng-content>
+  <ng-content></ng-content>
 </ng-template>

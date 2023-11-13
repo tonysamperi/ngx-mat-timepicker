@@ -40,11 +40,6 @@ describe("NgxMatTimepickerFaceComponent", () => {
         subscription.unsubscribe();
     });
 
-    it("trackByTime should return time", () => {
-        const time: NgxMatTimepickerClockFace = {time: 10, angle: 360};
-        expect(component.trackByTime(1, time)).toBe(10);
-    });
-
     it("should set clock hand position to 30deg", () => {
         component.selectedTime = {time: 1, angle: 30};
         component.format = 12;

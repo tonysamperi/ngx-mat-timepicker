@@ -1,95 +1,112 @@
-<mat-toolbar class="ngx-mtp-header mat-elevation-z6"
-			 color="primary">
-	<div>
-		<img class="ngx-mtp-ng-logo"
-			 src="assets/angular-white-transparent.svg"
-			 alt="" />
-		<span class="ngx-mtp-header-title"
-			  title="toggle locale">ngx-mat-timepicker</span>
-	</div>
-	<div>
-
-	</div>
+<mat-toolbar class="ngx-mtp-header mat-elevation-z6" color="primary">
+  <div>
+    <img
+      class="ngx-mtp-ng-logo"
+      src="assets/angular-white-transparent.svg"
+      alt=""
+    />
+    <span class="ngx-mtp-header-title" title="toggle locale">
+      ngx-mat-timepicker
+    </span>
+  </div>
+  <div></div>
 </mat-toolbar>
 <div class="ngx-mtp-container">
-	<div class="ngx-mtp-locales">
-		<p>Dynamic locale (v >= 12.2.0)</p>
-		<p>
-			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">
-				<span class="locale"
-					  [class.active]="locale === currentLocaleKey"
-					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"
-																			*ngIf="!last"> | </span>
-			</ng-container>
-		</p>
-		<button mat-raised-button
-				color="primary"
-				(click)="updateLocale()">
-			Next locale
-		</button>
-	</div>
-	<form class="demo-form">
-		<div *ngIf="true">
-			<h2>Picker with 12h format</h2>
-			<p>using <span class="mat-color-primary">default</span> palette (primary)</p>
-			<code-viewer>
-				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
-<!--					<mat-form-field appearance="outline">-->
-<!--						<mat-label>Enter Time</mat-label>-->
-<!--						<input type="text"-->
-<!--							   matInput-->
-<!--							   [ngxMatTimepicker]="timepicker"-->
-<!--							   [format]="24"-->
-<!--							   [disableClick]="true"-->
-<!--							   [formControl]="formControlItem" />-->
+  <div class="ngx-mtp-locales">
+    <p>Dynamic locale (v >= 12.2.0)</p>
+    <p>
+      @for (locale of myLocaleKeys; track locale; let last = $last) {
+        <span
+          class="locale"
+          [class.active]="locale === currentLocaleKey"
+          (click)="updateLocale(locale)"
+        >
+          {{ locale }}
+        </span>
 
-<!--						<mat-icon-->
-<!--								matPrefix-->
-<!--								[style.visibility]="formControlItem.value && !formControlItem.disabled ? 'visible' : 'hidden'"-->
-<!--								(click)="onClear()">-->
-<!--							close-->
-<!--						</mat-icon>-->
+        @if (!last) {
+          <span class="separator"> | </span>
+        }
+      }
+    </p>
+    <button mat-raised-button color="primary" (click)="updateLocale()">
+      Next locale
+    </button>
+  </div>
+  <form class="demo-form">
+    @if (true) {
+      <div>
+        <h2>Picker with 12h format</h2>
+        <p>
+          using <span class="mat-color-primary">default</span> palette (primary)
+        </p>
+        <code-viewer>
+          <div
+            class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column"
+          >
+            <!--					<mat-form-field appearance="outline">-->
+            <!--						<mat-label>Enter Time</mat-label>-->
+            <!--						<input type="text"-->
+            <!--							   matInput-->
+            <!--							   [ngxMatTimepicker]="timepicker"-->
+            <!--							   [format]="24"-->
+            <!--							   [disableClick]="true"-->
+            <!--							   [formControl]="formControlItem" />-->
 
-<!--						<mat-icon-->
-<!--								matSuffix-->
-<!--								*ngIf="!formControlItem.disabled"-->
-<!--								(click)="openFromIcon(timepicker)">schedule-->
-<!--						</mat-icon>-->
+            <!--						<mat-icon-->
+            <!--								matPrefix-->
+            <!--								[style.visibility]="formControlItem.value && !formControlItem.disabled ? 'visible' : 'hidden'"-->
+            <!--								(click)="onClear()">-->
+            <!--							close-->
+            <!--						</mat-icon>-->
 
-<!--						<mat-error *ngIf="formControlItem.hasError('pattern')">Invalid format!</mat-error>-->
-<!--					</mat-form-field>-->
+            <!--						<mat-icon-->
+            <!--								matSuffix-->
+            <!--								*ngIf="!formControlItem.disabled"-->
+            <!--								(click)="openFromIcon(timepicker)">schedule-->
+            <!--						</mat-icon>-->
 
-<!--					<ngx-mat-timepicker-->
-<!--                        #timepicker-->
-<!--						[enableKeyboardInput]="true"></ngx-mat-timepicker>-->
-					<button (click)="openDialog()"
-							mat-button
-							color="primary">OPEN DIALOG</button>
+            <!--						<mat-error *ngIf="formControlItem.hasError('pattern')">Invalid format!</mat-error>-->
+            <!--					</mat-form-field>-->
 
-					<ngx-mat-timepicker-field
-							color="warn"
-							[format]="24"
-							[defaultTime]="time"
-							(timeChanged)="time = $event"
-							[controlOnly]="true"
-					></ngx-mat-timepicker-field>
-					<p>{{time}}</p>
+            <!--					<ngx-mat-timepicker-->
+            <!--                        #timepicker-->
+            <!--						[enableKeyboardInput]="true"></ngx-mat-timepicker>-->
+            <button (click)="openDialog()" mat-button color="primary">
+              OPEN DIALOG
+            </button>
 
-				</div>
-				<pre class="language-markup">
+            <ngx-mat-timepicker-field
+              color="warn"
+              [format]="24"
+              [defaultTime]="time"
+              (timeChanged)="time = $event"
+              [controlOnly]="true"
+            ></ngx-mat-timepicker-field>
+            <p>{{ time }}</p>
+          </div>
+          <pre class="language-markup">
                     <code>
 
                     </code>
                 </pre>
-			</code-viewer>
-		</div>
-	</form>
+        </code-viewer>
+      </div>
+    }
+  </form>
 </div>
 <footer>
-	<p>Created with ♥ by <a class="mat-color-accent"
-							href="https://tonysamperi.github.io"
-							target="_blank">Tony
-		Samperi</a>
-	</p>
-	<p>© <span>{{year}}</span> MIT License</p>
+  <p>
+    Created with ♥ by
+    <a
+      class="mat-color-accent"
+      href="https://tonysamperi.github.io"
+      target="_blank"
+    >
+      Tony Samperi
+    </a>
+  </p>
+  <p>
+    © <span>{{ year }}</span> MIT License
+  </p>
 </footer>

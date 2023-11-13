@@ -1,26 +1,40 @@
-<div class="timepicker-period"
-	 cdkOverlayOrigin
-     #eventPanelOrigin="cdkOverlayOrigin">
-	<button class="timepicker-dial__item timepicker-period__btn"
-			[ngClass]="{'active': selectedPeriod === timePeriod.AM}"
-			(click)="changePeriod(timePeriod.AM)"
-			type="button">{{meridiems[0]}}</button>
-	<button class="timepicker-dial__item timepicker-period__btn"
-			[ngClass]="{'active': selectedPeriod === timePeriod.PM}"
-			(click)="changePeriod(timePeriod.PM)"
-			type="button">{{meridiems[1]}}</button>
+<div
+  class="timepicker-period"
+  cdkOverlayOrigin
+  #eventPanelOrigin="cdkOverlayOrigin"
+>
+  <button
+    type="button"
+    class="timepicker-dial__item timepicker-period__btn"
+    [ngClass]="{ active: selectedPeriod === timePeriod.AM }"
+    (click)="changePeriod(timePeriod.AM)"
+  >
+    {{ meridiems[0] }}
+  </button>
+  <button
+    type="button"
+    class="timepicker-dial__item timepicker-period__btn"
+    [ngClass]="{ active: selectedPeriod === timePeriod.PM }"
+    (click)="changePeriod(timePeriod.PM)"
+  >
+    {{ meridiems[1] }}
+  </button>
 </div>
 <ng-template
-		cdkConnectedOverlay
-		cdkConnectedOverlayPanelClass="todo-remove-pointer-events-if-necessary"
-		[cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
-		[cdkConnectedOverlayPositionStrategy]="overlayPositionStrategy"
-		[cdkConnectedOverlayOrigin]="eventPanelOrigin"
-		[cdkConnectedOverlayOpen]="!isPeriodAvailable">
-	<div class="timepicker-period__warning"
-		 *ngIf="!isPeriodAvailable"
-		 [@scaleInOut]
-		 (@scaleInOut.done)="animationDone()">
-		<p>Current time would be invalid in this period.</p>
-	</div>
+  cdkConnectedOverlay
+  cdkConnectedOverlayPanelClass="todo-remove-pointer-events-if-necessary"
+  [cdkConnectedOverlayScrollStrategy]="overlayScrollStrategy"
+  [cdkConnectedOverlayPositionStrategy]="overlayPositionStrategy"
+  [cdkConnectedOverlayOrigin]="eventPanelOrigin"
+  [cdkConnectedOverlayOpen]="!isPeriodAvailable"
+>
+  @if (!isPeriodAvailable) {
+    <div
+      class="timepicker-period__warning"
+      [@scaleInOut]
+      (@scaleInOut.done)="animationDone()"
+    >
+      <p>Current time would be invalid in this period.</p>
+    </div>
+  }
 </ng-template>
