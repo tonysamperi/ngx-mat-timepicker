@@ -4,7 +4,7 @@
     <button mat-mini-fab
             disableRipple
             class="mat-elevation-z0"
-            [color]="(time.time | activeHour: selectedTime?.time : isClockFaceDisabled) ? color : undefined"
+            [color]="(time.time | activeHour: selectedTime?.time : isClockFaceDisabled) ? color : 'void'"
             [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
             [disabled]="time.disabled">
         {{time.time | timeLocalizer: timeUnit.HOUR}}
@@ -18,7 +18,7 @@
             <button mat-mini-fab
                     disableRipple
                     class="mat-elevation-z0"
-                    [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
+                    [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : 'void'"
                     [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
                     [disabled]="time.disabled">
                 {{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}

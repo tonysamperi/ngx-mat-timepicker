@@ -22,184 +22,187 @@ body {
 	* {
 		box-sizing: border-box;
 	}
+}
+
+a {
+	&.mat-color-primary {
+		color: $primary-color;
+		-webkit-text-decoration: none;
+		text-decoration: none;
+		padding-bottom: 1px;
+		border-bottom: 2px solid rgba($primary-color, 0.25);
+		-webkit-transition: border-bottom-color 0.15s ease-in-out;
+		transition: border-bottom-color 0.15s ease-in-out;
+
+		&:hover {
+			border-bottom: 2px solid rgba($primary-color, 1);
+		}
+	}
+
+	&.mat-color-accent {
+		color: $accent-color;
+		-webkit-text-decoration: none;
+		text-decoration: none;
+		padding-bottom: 1px;
+		border-bottom: 2px solid rgba($accent-color, 0.25);
+		-webkit-transition: border-bottom-color 0.15s ease-in-out;
+		transition: border-bottom-color 0.15s ease-in-out;
+
+		&:hover {
+			border-bottom: 2px solid rgba($accent-color, 1);
+		}
+	}
+}
+
+.material-icons {
+	font-family: "Material Icons";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-moz-font-feature-settings: "liga";
+	font-feature-settings: "liga";
+	-moz-osx-font-smoothing: grayscale;
+}
+
+mat-icon.mat-icon.ngx-mtp-theme-example {
+	margin-right: 8px;
+	margin-left: 0;
+}
+
+.ngx-mtp-d-inline-block {
+	display: inline-block;
+}
+
+.ngx-mtp-d-none {
+	display: none;
+}
+
+.ngx-mtp-d-flex {
+	display: flex;
+}
+
+.ngx-mtp-flex-column {
+	flex-direction: column;
+}
+
+.ngx-mtp-align-center {
+	align-items: center;
+}
+
+.ngx-mtp-justify-center {
+	justify-content: center;
+}
+
+.ngx-mtp-padding {
+	padding: 16px;
+}
+
+.ngx-mtp-top, footer {
+	background-color: $primary-color;
+	color: mat.get-color-from-palette($candy-app-primary, default-contrast);
+}
+
+.mat-color-primary {
+	color: $primary-color;
+}
+
+.mat-color-accent {
+	color: $accent-color;
+}
+
+.mat-color-warn {
+	color: mat.get-color-from-palette($candy-app-warn);
+}
+
+.ngx-mtp-margin-top {
+	margin-top: 8px;
+}
+
+.ngx-mtp-margin-bottom {
+	margin-bottom: 8px;
+}
+
+.ngx-mtp-box-bordered {
+	text-align: center;
+	min-height: 20px;
+	border-radius: 10px;
+	padding: 8px;
+	width: 100%;
+	border: 2px dashed $primary-color;
+}
+
+.ngx-mtp-generic-section {
+	width: 100%;
+	min-height: 20px;
+	background-color: #F0F0F0;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+// prebuild theme for quick test
+// @import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Include the default theme styles.
+@include mat.all-component-themes($candy-app-theme);
+// @include mat.all-component-themes($candy-app-theme); // doesn't work yet
+
+.dark-theme {
+	@include mat.all-component-colors($dark-theme);
+	// @include mat.all-component-themes($dark-theme); // doesn't work yet
 
 	a {
 		&.mat-color-primary {
-			color: $primary-color;
-			-webkit-text-decoration: none;
-			text-decoration: none;
-			padding-bottom: 1px;
-			border-bottom: 2px solid rgba($primary-color, 0.25);
-			-webkit-transition: border-bottom-color 0.15s ease-in-out;
-			transition: border-bottom-color 0.15s ease-in-out;
+			color: $primary-color-dark;
+			border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 0.25);
 
 			&:hover {
-				border-bottom: 2px solid rgba($primary-color, 1);
+				border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 1);
 			}
 		}
 
 		&.mat-color-accent {
-			color: $accent-color;
-			-webkit-text-decoration: none;
-			text-decoration: none;
-			padding-bottom: 1px;
-			border-bottom: 2px solid rgba($accent-color, 0.25);
-			-webkit-transition: border-bottom-color 0.15s ease-in-out;
-			transition: border-bottom-color 0.15s ease-in-out;
+			color: $accent-color-dark;
+			border-bottom: 2px solid rgba($accent-color-dark, 0.25);
 
 			&:hover {
-				border-bottom: 2px solid rgba($accent-color, 1);
+				border-bottom: 2px solid rgba($accent-color-dark, 1);
 			}
 		}
-	}
-
-	.material-icons {
-		font-family: "Material Icons";
-		font-weight: normal;
-		font-style: normal;
-		font-size: 24px;
-		line-height: 1;
-		letter-spacing: normal;
-		text-transform: none;
-		display: inline-block;
-		white-space: nowrap;
-		word-wrap: normal;
-		direction: ltr;
-		-moz-font-feature-settings: "liga";
-		font-feature-settings: "liga";
-		-moz-osx-font-smoothing: grayscale;
-	}
-
-	mat-icon.mat-icon.ngx-mtp-theme-example {
-		margin-right: 8px;
-		margin-left: 0;
-	}
-
-	.ngx-mtp-d-inline-block {
-		display: inline-block;
-	}
-
-	.ngx-mtp-d-none {
-		display: none;
-	}
-
-	.ngx-mtp-d-flex {
-		display: flex;
-	}
-
-	.ngx-mtp-flex-column {
-		flex-direction: column;
-	}
-
-	.ngx-mtp-align-center {
-		align-items: center;
-	}
-
-	.ngx-mtp-justify-center {
-		justify-content: center;
-	}
-
-	.ngx-mtp-padding {
-		padding: 16px;
-	}
-
-	.ngx-mtp-top, footer {
-		background-color: $primary-color;
-		color: mat.get-color-from-palette($candy-app-primary, default-contrast);
-	}
-
-	.mat-color-primary {
-		color: $primary-color;
-	}
-
-	.mat-color-accent {
-		color: $accent-color;
-	}
-
-	.mat-color-warn {
-		color: mat.get-color-from-palette($candy-app-warn);
-	}
-
-	.ngx-mtp-margin-top {
-		margin-top: 8px;
-	}
-
-	.ngx-mtp-margin-bottom {
-		margin-bottom: 8px;
 	}
 
 	.ngx-mtp-box-bordered {
-		text-align: center;
-		min-height: 20px;
-		border-radius: 10px;
-		padding: 8px;
-		width: 100%;
-		border: 2px dashed $primary-color;
+		border-color: $primary-color-dark;
 	}
 
 	.ngx-mtp-generic-section {
-		width: 100%;
-		min-height: 20px;
-		background-color: #F0F0F0;
-		padding: 20px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		border-bottom: 1px solid #DDDDDD;
+		background-color: #222;
+		border-bottom: 1px solid #000;
 	}
 
-	// Include the default theme styles.
-	@include mat.all-component-themes($candy-app-theme);
-	// @include mat.all-component-themes($candy-app-theme); // doesn't work yet
+	.ngx-mtp-top, footer {
+		background-color: $primary-color-dark;
+		color: mat.get-color-from-palette($dark-primary, default-contrast);
+	}
 
-	&.dark-theme {
-		@include mat.all-component-colors($dark-theme);
-		// @include mat.all-component-themes($dark-theme); // doesn't work yet
+	.mat-color-primary {
+		color: $primary-color-dark;
+	}
 
-		a {
-			&.mat-color-primary {
-				color: $primary-color-dark;
-				border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 0.25);
+	.mat-color-accent {
+		color: $accent-color-dark;
+	}
 
-				&:hover {
-					border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 1);
-				}
-			}
-
-			&.mat-color-accent {
-				color: $accent-color-dark;
-				border-bottom: 2px solid rgba($accent-color-dark, 0.25);
-
-				&:hover {
-					border-bottom: 2px solid rgba($accent-color-dark, 1);
-				}
-			}
-		}
-
-		.ngx-mtp-box-bordered {
-			border-color: $primary-color-dark;
-		}
-
-		.ngx-mtp-generic-section {
-			background-color: #222;
-			border-bottom: 1px solid #000;
-		}
-
-		.ngx-mtp-top, footer {
-			background-color: $primary-color-dark;
-			color: mat.get-color-from-palette($dark-primary, default-contrast);
-		}
-
-		.mat-color-primary {
-			color: $primary-color-dark;
-		}
-
-		.mat-color-accent {
-			color: $accent-color-dark;
-		}
-
-		.mat-color-warn {
-			color: mat.get-color-from-palette($dark-warn);
-		}
+	.mat-color-warn {
+		color: mat.get-color-from-palette($dark-warn);
 	}
 }
