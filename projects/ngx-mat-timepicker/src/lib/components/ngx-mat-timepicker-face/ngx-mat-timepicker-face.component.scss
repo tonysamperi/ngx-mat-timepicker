@@ -4,6 +4,7 @@ ngx-mat-timepicker-face {
 
 		&:disabled[disabled] {
 			--mdc-fab-container-color: transparent;
+			background-color: transparent;
 		}
 	}
 

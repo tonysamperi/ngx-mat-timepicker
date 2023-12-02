@@ -1,3 +1,6 @@
+#17.0.1
+* Fix disabled clock buttons appearance (fixes [#94](https://github.com/tonysamperi/ngx-mat-timepicker/issues/94))
+
 #17.0.0
 * Update for Angular 17! 🎉
 
