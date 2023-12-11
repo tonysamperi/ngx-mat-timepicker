@@ -55,7 +55,7 @@ export class NgxMatTimepickerStandaloneComponent extends NgxMatTimepickerBaseDir
                 timepickerSrv: NgxMatTimepickerService,
                 eventSrv: NgxMatTimepickerEventService,
                 timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
-
+        console.info("DEBUG", data);
         super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
     }
 
