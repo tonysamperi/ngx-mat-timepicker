@@ -1,8 +1,14 @@
+#17.0.2
+* Fix time not preserved in picker when "appendToInput" is true (fixes [#93](https://github.com/tonysamperi/ngx-mat-timepicker/issues/93))
+
 #17.0.1
 * Fix disabled clock buttons appearance (fixes [#94](https://github.com/tonysamperi/ngx-mat-timepicker/issues/94))
 
 #17.0.0
 * Update for Angular 17! 🎉
+
+#16.1.3
+* Fix time not preserved in picker when "appendToInput" is true (fixes [#93](https://github.com/tonysamperi/ngx-mat-timepicker/issues/93))
 
 #16.1.2
 * Fix weird behaviours caused by multiple pickers in same page (fixes [#29](https://github.com/tonysamperi/ngx-mat-timepicker/issues/29))

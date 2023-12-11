@@ -1,13 +1,12 @@
 import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from "@angular/core";
-import { CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef, CdkConnectedOverlay } from "@angular/cdk/overlay";
+import {CdkOverlayOrigin, ConnectedPosition, OverlayRef, CdkConnectedOverlay} from "@angular/cdk/overlay";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ThemePalette} from "@angular/material/core";
 //
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter";
-import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
 import {NgxMatTimepickerDirective} from "../../directives/ngx-mat-timepicker.directive";
 import {NgxMatTimepickerRef} from "../../models/ngx-mat-timepicker-ref.interface";
 import {NgxMatTimepickerDialogComponent} from "../ngx-mat-timepicker-dialog/ngx-mat-timepicker-dialog.component";
@@ -15,9 +14,28 @@ import {NGX_MAT_TIMEPICKER_CONFIG} from "../../tokens/ngx-mat-timepicker-config.
 //
 import {DateTime} from "ts-luxon";
 import {BehaviorSubject} from "rxjs";
-import { NgxMatTimepickerStandaloneComponent } from "../ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
+import {
+    NgxMatTimepickerStandaloneComponent
+} from "../ngx-mat-timepicker-standalone/ngx-mat-timepicker-standalone.component";
 
 let config: NgxMatTimepickerConfig;
+
+@Component({
+    selector: "ngx-mat-timepicker-provider",
+    template: `<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>`,
+    standalone: true,
+    providers: [
+        {
+            provide: NGX_MAT_TIMEPICKER_CONFIG,
+            useFactory() {
+                return config;
+            }
+        }
+    ],
+    imports: [NgxMatTimepickerStandaloneComponent]
+})
+export class NgxMatTimepickerProvider {
+}
 
 @Component({
     selector: "ngx-mat-timepicker",
@@ -30,17 +48,11 @@ let config: NgxMatTimepickerConfig;
 				(backdropClick)="close()"
 				[cdkConnectedOverlayOrigin]="overlayOrigin"
 				[cdkConnectedOverlayOpen]="showPicker">
-			<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>
-		</ng-template>`,
-    providers: [
-        {
-            provide: NGX_MAT_TIMEPICKER_CONFIG, useFactory() {
-                return config;
-            }
-        }
-    ],
+            <ngx-mat-timepicker-provider></ngx-mat-timepicker-provider>
+		</ng-template>
+    `,
     standalone: true,
-    imports: [CdkConnectedOverlay, NgxMatTimepickerStandaloneComponent]
+    imports: [CdkConnectedOverlay, NgxMatTimepickerStandaloneComponent, NgxMatTimepickerProvider]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
@@ -160,9 +172,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _overlayRef: OverlayRef;
     private _timepickerInput: NgxMatTimepickerDirective;
 
-    constructor(private _eventService: NgxMatTimepickerEventService,
-                private _dialog: MatDialog,
-                private _overlay: Overlay) {
+    constructor(private _dialog: MatDialog) {
     }
 
     close(): void {
