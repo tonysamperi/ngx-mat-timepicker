@@ -33,7 +33,7 @@
     "build": "ng build ngx-mat-timepicker --configuration=production && gulp postBuild",
     "build:demo": "ng build ngx-mat-timepicker-repo --configuration=production --base-href=",
     "bump:patch": "gulp bump:patch",
-    "publish": "npm publish ./dist/ngx-mat-timepicker",
+    "publish": "npm publish ./dist/ngx-mat-timepicker --tag latest-ng15",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
