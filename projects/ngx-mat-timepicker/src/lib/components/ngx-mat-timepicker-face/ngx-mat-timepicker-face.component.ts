@@ -84,24 +84,15 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     @ViewChild("clockHand", {static: true, read: ElementRef}) clockHand: ElementRef;
 
     @Input() color: ThemePalette = "primary";
-
     @Input() faceTime: NgxMatTimepickerClockFace[];
-
     @Input() format: NgxMatTimepickerFormatType;
-
     innerClockFaceSize = 85;
     isClockFaceDisabled: boolean;
-
     @Input() minutesGap: number;
-
     @Input() selectedTime: NgxMatTimepickerClockFace;
-
     @Output() timeChange = new EventEmitter<NgxMatTimepickerClockFace>();
-
     @Output() timeSelected = new EventEmitter<number>();
-
     timeUnit = NgxMatTimepickerUnits;
-
     @Input() unit: NgxMatTimepickerUnits;
 
     private _isStarted: boolean;

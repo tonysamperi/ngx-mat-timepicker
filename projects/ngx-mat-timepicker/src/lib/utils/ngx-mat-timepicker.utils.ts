@@ -8,6 +8,10 @@ import {DateTime} from "ts-luxon";
 // @dynamic
 export class NgxMatTimepickerUtils {
 
+    static get DEFAULT_MINUTES_GAP(): number {
+        return 5;
+    }
+
     static disableHours(hours: NgxMatTimepickerClockFace[], config: NgxMatTimepickerDisabledConfig): NgxMatTimepickerClockFace[] {
         if (config.min || config.max) {
 

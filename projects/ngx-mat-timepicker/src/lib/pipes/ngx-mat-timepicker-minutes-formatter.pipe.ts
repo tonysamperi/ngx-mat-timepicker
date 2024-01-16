@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
+import {NgxMatTimepickerUtils} from "../utils/ngx-mat-timepicker.utils";
 
 @Pipe({
     name: "minutesFormatter",
@@ -6,7 +7,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class NgxMatTimepickerMinutesFormatterPipe implements PipeTransform {
 
-    transform(minute: number, gap = 5): number | string {
+    transform(minute: number, gap = NgxMatTimepickerUtils.DEFAULT_MINUTES_GAP): number | string {
         if (!minute) {
             return minute;
         }

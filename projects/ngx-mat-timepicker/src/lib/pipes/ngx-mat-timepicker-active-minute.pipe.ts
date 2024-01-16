@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
+import {NgxMatTimepickerUtils} from "../utils/ngx-mat-timepicker.utils";
 
 @Pipe({
     name: "activeMinute",
@@ -6,13 +7,12 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class NgxMatTimepickerActiveMinutePipe implements PipeTransform {
 
-    transform(minute: number, currentMinute: number, gap: number, isClockFaceDisabled: boolean): boolean {
+    transform(minute: number, currentMinute: number, gap: number | void, isClockFaceDisabled: boolean): boolean {
         if (minute == null || isClockFaceDisabled) {
             return false;
         }
-        const defaultGap = 5;
 
-        return ((currentMinute === minute) && (minute % (gap || defaultGap) === 0));
+        return ((currentMinute === minute) && (minute % (gap || NgxMatTimepickerUtils.DEFAULT_MINUTES_GAP) === 0));
     }
 
 }
