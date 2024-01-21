@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild, inject} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {NgFor, NgIf} from "@angular/common";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
@@ -33,6 +33,10 @@ interface NgxMatTimepickerTheme {
 
 const pkgName = "ngx-mat-timepicker";
 
+interface IReactiveFormDemo {
+    timeValue: FormControl<string>;
+}
+
 @Component({
     // tslint:disable-next-line:component-selector
     selector: "app-demo",
@@ -46,6 +50,7 @@ const pkgName = "ngx-mat-timepicker";
         NgFor,
         NgIf,
         FormsModule,
+        ReactiveFormsModule,
         CodeViewerComponent,
         MatFormFieldModule,
         MatInputModule,
@@ -107,9 +112,25 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     timeRegex: RegExp = /([0-9]|1\d):[0-5]\d (AM|PM)/;
     year: number = new Date().getFullYear();
 
+    reactiveForm: FormGroup<IReactiveFormDemo>;
+
+    get timeValue(): FormControl<string> {
+        return this.reactiveForm.controls.timeValue;
+    }
+
     private _nextLocale: number = 0;
 
     constructor(private _localeOverrideSrv: NgxMatTimepickerLocaleService) {
+        const fb = inject(NonNullableFormBuilder);
+        this.reactiveForm = fb.group<IReactiveFormDemo>({
+            timeValue:fb.control<string>('23:11',{
+                updateOn: 'change'
+            })
+        });
+    }
+
+    updateTimeValue(): void {
+        this.timeValue.setValue('12:34');
     }
 
     debug(): void {
