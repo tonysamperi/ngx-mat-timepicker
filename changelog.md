@@ -1,3 +1,6 @@
+#17.0.3
+* Remove ripple 
+
 #17.0.2
 * Fix time not preserved in picker when "appendToInput" is true (fixes [#93](https://github.com/tonysamperi/ngx-mat-timepicker/issues/93))
 
