@@ -1,3 +1,8 @@
+#16.2.0
+* Add option `dottedMinutesInGap`
+* Fix hours init
+* Fixed README
+
 #16.1.3
 * Fix time not preserved in picker when "appendToInput" is true (fixes [#93](https://github.com/tonysamperi/ngx-mat-timepicker/issues/93))
 

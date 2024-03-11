@@ -6,7 +6,7 @@ import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
-import { NgxMatTimepickerFaceComponent } from "../ngx-mat-timepicker-face/ngx-mat-timepicker-face.component";
+import {NgxMatTimepickerFaceComponent} from "../ngx-mat-timepicker-face/ngx-mat-timepicker-face.component";
 //
 import {DateTime} from "ts-luxon";
 
@@ -27,6 +27,7 @@ export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {
         return this._color;
     }
 
+    @Input() dottedMinutesInGap: boolean;
     @Input() format: NgxMatTimepickerFormatType;
     @Input() maxTime: DateTime;
     @Input() minTime: DateTime;

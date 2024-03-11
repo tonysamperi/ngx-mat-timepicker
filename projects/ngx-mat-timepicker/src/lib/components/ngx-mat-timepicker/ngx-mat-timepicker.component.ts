@@ -22,7 +22,8 @@ let config: NgxMatTimepickerConfig;
 
 @Component({
     selector: "ngx-mat-timepicker-provider",
-    template: `<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>`,
+    template: `
+		<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>`,
     standalone: true,
     providers: [
         {
@@ -48,7 +49,7 @@ export class NgxMatTimepickerProvider {
 				(backdropClick)="close()"
 				[cdkConnectedOverlayOrigin]="overlayOrigin"
 				[cdkConnectedOverlayOpen]="showPicker">
-            <ngx-mat-timepicker-provider></ngx-mat-timepicker-provider>
+			<ngx-mat-timepicker-provider></ngx-mat-timepicker-provider>
 		</ng-template>
     `,
     standalone: true,
@@ -74,6 +75,16 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
     get disabled(): boolean {
         return this._timepickerInput && this._timepickerInput.disabled;
+    }
+
+
+    @Input()
+    set dottedMinutesInGap(newValue: boolean | "") {
+        this._dottedMinutesInGap = coerceBooleanProperty(newValue);
+    }
+
+    get dottedMinutesInGap(): boolean {
+        return this._dottedMinutesInGap;
     }
 
     @Input()
@@ -166,6 +177,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     private _appendToInput: boolean = !1;
     private _color: ThemePalette = "primary";
     private _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent, void>;
+    private _dottedMinutesInGap: boolean = !1;
     private _enableKeyboardInput: boolean = !1;
     private _format: NgxMatTimepickerFormatType = 12;
     private _minutesGap: number;
@@ -193,6 +205,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
             timepickerBaseRef: this,
             time: this.time,
             defaultTime: this.defaultTime,
+            dottedMinutesInGap: this._dottedMinutesInGap,
             maxTime: this.maxTime,
             minTime: this.minTime,
             format: this.format,
@@ -210,7 +223,6 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
             inputElement: this.inputElement,
             color: this.color
         };
-
         if (this._appendToInput) {
             this.showPicker = !0;
         }

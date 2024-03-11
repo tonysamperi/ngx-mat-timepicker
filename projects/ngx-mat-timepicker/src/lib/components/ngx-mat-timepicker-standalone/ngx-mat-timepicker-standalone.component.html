@@ -58,6 +58,7 @@
 						</ng-template>
 					</div>
 					<ngx-mat-timepicker-minutes-face *ngSwitchCase="timeUnit.MINUTE"
+													 [dottedMinutesInGap]="data.dottedMinutesInGap"
 													 [color]="color"
 													 [selectedMinute]="selectedMinute | async"
 													 [selectedHour]="(selectedHour | async)?.time"

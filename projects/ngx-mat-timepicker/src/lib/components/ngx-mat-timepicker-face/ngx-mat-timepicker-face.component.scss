@@ -1,4 +1,21 @@
 ngx-mat-timepicker-face {
+	[mat-mini-fab].mat-void {
+		&.dot {
+			position: relative;
+
+			&:after {
+				content: " ";
+				background-color: #777;
+				width: 3px;
+				height: 3px;
+				border-radius: 50%;
+				left: 50%;
+				top: 50%;
+				position: absolute;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
 
 	.clock-face {
 
