@@ -1,3 +1,7 @@
+#17.1.0-beta
+* Add option `dottedMinutesInGap`
+* Fixed README
+
 #17.0.3
 * Remove ripple 
 

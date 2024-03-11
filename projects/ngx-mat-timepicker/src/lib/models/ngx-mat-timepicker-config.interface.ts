@@ -14,6 +14,7 @@ export interface NgxMatTimepickerConfig {
     defaultTime: string;
     disableAnimation: boolean;
     disabled: boolean;
+    dottedMinutesInGap: boolean;
     editableHintTmpl: TemplateRef<Node>;
     enableKeyboardInput: boolean;
     format: NgxMatTimepickerFormatType;

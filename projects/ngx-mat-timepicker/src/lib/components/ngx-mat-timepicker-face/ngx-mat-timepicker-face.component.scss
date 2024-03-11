@@ -13,6 +13,22 @@ ngx-mat-timepicker-face {
 			--mdc-fab-container-color: transparent;
 			background-color: transparent;
 		}
+
+		&.dot {
+			position: relative;
+
+			&:after {
+				content: " ";
+				background-color: #777;
+				width: 3px;
+				height: 3px;
+				border-radius: 50%;
+				left: 50%;
+				top: 50%;
+				position: absolute;
+				transform: translate(-50%, -50%);
+			}
+		}
 	}
 
 	.clock-face {

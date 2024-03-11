@@ -135,7 +135,7 @@
     </div>
     <form class="demo-form">
         <div>
-            <h2>Picker with 12h format</h2>
+            <h2>Picker with 12h format and "dottedMinutesInGap"</h2>
             <p>using <span class="mat-color-primary">default</span> palette (primary)</p>
             <code-viewer>
                 <div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
@@ -155,6 +155,7 @@
                             (click)="selectedTimes.A = undefined">clear
                     </button>
                     <ngx-mat-timepicker #pickerA
+										dottedMinutesInGap
                                         enableKeyboardInput
                                         (timeSet)="onTimeSet($event)"></ngx-mat-timepicker>
                 </div>
@@ -172,7 +173,10 @@
         watch_later
     &lt;/mat-icon&gt;
 &lt;/mat-form-field&gt;
-&lt;ngx-mat-timepicker #pickerA>&lt;/ngx-mat-timepicker&gt;
+&lt;ngx-mat-timepicker #pickerA
+					dottedMinutesInGap
+					enableKeyboardInput
+					(timeSet)="onTimeSet($event)"&gt;&lt;/ngx-mat-timepicker&gt;
                     </code>
                 </pre>
             </code-viewer>

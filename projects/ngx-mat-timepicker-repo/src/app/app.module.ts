@@ -13,18 +13,16 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
-import { MatSelectModule} from "@angular/material/select";
+import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltipModule} from "@angular/material/tooltip";
 //
-import {NgxMatTimepickerModule, NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerAppComponent} from "./app.component";
 import {NgxMatTimepickerTestComponent, NgxMatTimepickerTestDialogComponent} from "./components/test/test.component";
 import {NgxMatTimepickerDemoComponent} from "./components/demo/demo.component";
 import {CodeViewerComponent} from "./components/code-viewer/code-viewer.component";
-//
-import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
 
 @NgModule({
     declarations: [NgxMatTimepickerAppComponent],
@@ -55,7 +53,7 @@ import {NgxMatTimepickerLocaleOverrideService} from "./locale-override.service";
         NgxMatTimepickerTestDialogComponent
     ],
     providers: [
-    // {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
+        // {provide: NgxMatTimepickerLocaleService, useClass: NgxMatTimepickerLocaleOverrideService}
     ],
     bootstrap: [NgxMatTimepickerAppComponent]
 })
