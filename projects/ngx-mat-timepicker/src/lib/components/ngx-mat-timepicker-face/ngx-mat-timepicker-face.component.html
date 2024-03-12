@@ -15,13 +15,17 @@
         <div class="clock-face__number clock-face__number--outer"
              [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
              *ngFor="let time of faceTime; trackBy: trackByTime">
+			<input #current
+				   type="hidden"
+				   [value]="time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE" />
             <button mat-mini-fab
                     disableRipple
                     class="mat-elevation-z0"
+					[class.dot]="dottedMinutesInGap && current.value === '' && !(time.time | activeMinute: selectedTime?.time:1:isClockFaceDisabled)"
                     [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
                     [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
                     [disabled]="time.disabled">
-                {{time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE}}
+                {{current.value}}
             </button>
         </div>
     </div>

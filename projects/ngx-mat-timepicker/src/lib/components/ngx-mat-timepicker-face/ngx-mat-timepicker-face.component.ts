@@ -84,6 +84,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     @ViewChild("clockHand", {static: true, read: ElementRef}) clockHand: ElementRef;
 
     @Input() color: ThemePalette = "primary";
+    @Input() dottedMinutesInGap: boolean;
     @Input() faceTime: NgxMatTimepickerClockFace[];
     @Input() format: NgxMatTimepickerFormatType;
     innerClockFaceSize = 85;

@@ -239,6 +239,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
                 next: (v: NgxMatTimepickerClockFace) => this.minute$.next(v)
             });
 
+        // Selected period can only change when format is 12
         if (this.format === 12) {
             this._timepickerService.selectedPeriod.pipe(
                 distinctUntilChanged<NgxMatTimepickerPeriods>(),
@@ -246,6 +247,10 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
                 tap(period => this.isChangePeriodDisabled = this._isPeriodDisabled(period)),
                 takeUntil(this._subsCtrl$)
             ).subscribe(() => this.isTimeRangeSet && this._updateAvailableTime());
+        }
+        else {
+            // But we still need to run this once :) see #108
+            this.isTimeRangeSet && this._updateAvailableTime();
         }
 
     }

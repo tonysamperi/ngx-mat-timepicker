@@ -1,3 +1,9 @@
+#17.1.0
+* Add option `dottedMinutesInGap`
+* Fix mini-fab appearance (closes [#105](https://github.com/tonysamperi/ngx-mat-timepicker/issues/105))
+* Fix hours init (closes [#108](https://github.com/tonysamperi/ngx-mat-timepicker/issues/108))
+* Fixed README
+
 #17.0.3
 * Remove ripple 
 

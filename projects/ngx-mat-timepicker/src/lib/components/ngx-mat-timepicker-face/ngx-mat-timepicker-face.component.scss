@@ -1,7 +1,7 @@
 ngx-mat-timepicker-face {
 	[mat-mini-fab].mat-unthemed {
-		--mdc-fab-container-color: transparent;
-
+		--mdc-fab-small-container-color: transparent;
+		--mat-fab-small-disabled-state-container-color: transparent;
 		--mat-fab-hover-state-layer-opacity: 0;
 		box-shadow: none;
 
@@ -9,9 +9,20 @@ ngx-mat-timepicker-face {
 			display: none;
 		}
 
-		&:disabled[disabled] {
-			--mdc-fab-container-color: transparent;
-			background-color: transparent;
+		&.dot {
+			position: relative;
+
+			&:after {
+				content: " ";
+				background-color: #777;
+				width: 3px;
+				height: 3px;
+				border-radius: 50%;
+				left: 50%;
+				top: 50%;
+				position: absolute;
+				transform: translate(-50%, -50%);
+			}
 		}
 	}
 
