@@ -18,8 +18,8 @@
 			<ng-container *ngFor="let locale of myLocaleKeys; let last=last">
 				<span class="locale"
 					  [class.active]="locale === currentLocaleKey"
-					  (click)="updateLocale(locale)">{{locale}}</span><span class="separator"
-																			*ngIf="!last"> | </span>
+					  (click)="updateLocale(locale)">{{ locale }}</span><span class="separator"
+																			  *ngIf="!last"> | </span>
 			</ng-container>
 		</p>
 		<button mat-raised-button
@@ -62,18 +62,19 @@
 <!--					<ngx-mat-timepicker-->
 <!--                        #timepicker-->
 <!--						[enableKeyboardInput]="true"></ngx-mat-timepicker>-->
-					<button (click)="openDialog()"
-							mat-button
-							color="primary">OPEN DIALOG</button>
+<!--					<button (click)="openDialog()"-->
+<!--							mat-button-->
+<!--							color="primary">OPEN DIALOG-->
+<!--					</button>-->
 
 					<ngx-mat-timepicker-field
 							color="warn"
 							[format]="24"
 							[defaultTime]="time"
 							(timeChanged)="time = $event"
-							[controlOnly]="true"
+							[min]="minTime"
 					></ngx-mat-timepicker-field>
-					<p>{{time}}</p>
+					<p>{{ time }}</p>
 
 				</div>
 				<pre class="language-markup">
@@ -91,5 +92,5 @@
 							target="_blank">Tony
 		Samperi</a>
 	</p>
-	<p>© <span>{{year}}</span> MIT License</p>
+	<p>© <span>{{ year }}</span> MIT License</p>
 </footer>
