@@ -62,6 +62,8 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
 
     @Output() unfocused = new EventEmitter<void>();
 
+    NgxMatTimepickerUnits = NgxMatTimepickerUnits;
+
     constructor(private _elRef: ElementRef, private _timeParserPipe: NgxMatTimepickerParserPipe) {
     }
 

@@ -18,6 +18,8 @@
            (input)="updateTime()"
            (focus)="saveTimeAndChangeTimeUnit($event, timeUnit)"
            [ngxMatTimepickerAutofocus]="isActive"
-           (keydown)="onKeydown($event)"
-           (keypress)="changeTimeByKeyboard($event)">
+           type="number"
+           min="0"
+           [max]="timeUnit === NgxMatTimepickerUnits.HOUR ? 23 : 59"
+           >
 </ng-template>

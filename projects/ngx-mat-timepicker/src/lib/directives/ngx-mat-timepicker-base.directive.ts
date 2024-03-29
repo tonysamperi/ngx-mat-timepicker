@@ -112,7 +112,6 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     @HostListener("keydown", ["$event"])
     onKeydown(e: any): void {
         this._eventSrv.dispatchEvent(e);
-        e.stopPropagation();
     }
 
     onMinuteChange(minute: NgxMatTimepickerClockFace): void {
