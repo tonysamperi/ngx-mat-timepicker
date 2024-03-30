@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, Input, Output, ElementRef, AfterViewInit} from "@angular/core";
+import {Component, EventEmitter, Input, Output, ElementRef} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {NgIf, NgClass} from "@angular/common";
 //
@@ -8,10 +8,6 @@ import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 import {NgxMatTimepickerTimeLocalizerPipe} from "../../pipes/ngx-mat-timepicker-time-localizer.pipe";
 import {NgxMatTimepickerAutofocusDirective} from "../../directives/ngx-mat-timepicker-autofocus.directive";
-
-function retainSelection(this: HTMLInputElement) {
-    this.selectionStart = this.selectionEnd;
-}
 
 @Component({
     selector: "ngx-mat-timepicker-dial-control",
@@ -28,7 +24,7 @@ function retainSelection(this: HTMLInputElement) {
         NgxMatTimepickerTimeLocalizerPipe
     ]
 })
-export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDestroy {
+export class NgxMatTimepickerDialControlComponent {
 
     private get _selectedTime(): NgxMatTimepickerClockFace | undefined {
         if (!!this.time) {
@@ -73,14 +69,6 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
         if (isTimeDisabledToChange(this.time, char, this.timeList)) {
             e.preventDefault();
         }
-    }
-
-    ngAfterViewInit(): void {
-        this._elRef.nativeElement.querySelector("input").addEventListener("select", retainSelection, false);
-    }
-
-    ngOnDestroy(): void {
-        this._elRef.nativeElement.querySelector("input").removeEventListener("select", retainSelection);
     }
 
     onKeydown(e: any): void {
