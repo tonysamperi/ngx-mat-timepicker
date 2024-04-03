@@ -110,7 +110,11 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     @HostListener("keydown", ["$event"])
-    onKeydown(e: any): void {
+    onKeydown(e: KeyboardEvent): void {
+        if (e.key === 'Enter') {
+            this.setTime();
+            return;
+        }
         this._eventSrv.dispatchEvent(e);
     }
 
