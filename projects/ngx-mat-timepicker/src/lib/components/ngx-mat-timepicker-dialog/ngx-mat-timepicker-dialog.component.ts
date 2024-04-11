@@ -1,4 +1,4 @@
-import {Component, Inject, ViewEncapsulation} from "@angular/core";
+import {Component, EventEmitter, Inject, Input, Output, ViewEncapsulation} from "@angular/core";
 import {NgClass, NgSwitch, NgSwitchCase, NgIf, NgTemplateOutlet, AsyncPipe} from "@angular/common";
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -20,6 +20,7 @@ import {
 } from "../ngx-mat-timepicker-24-hours-face/ngx-mat-timepicker-24-hours-face.component";
 import {NgxMatTimepickerDialComponent} from "../ngx-mat-timepicker-dial/ngx-mat-timepicker-dial.component";
 import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
+import { TTimepickerMode } from "../../models/timepicker-mode.enum";
 
 @Component({
     selector: "ngx-mat-timepicker-dialog",
@@ -48,6 +49,7 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
     ]
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {
+    pickerMode: TTimepickerMode = 'clockface';
 
     constructor(@Inject(MAT_DIALOG_DATA) public override data: NgxMatTimepickerConfig,
                 protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
@@ -56,10 +58,32 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
                 timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
 
         super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
+        // Load picker mode preference
+         try {
+            const preference = sessionStorage.getItem('timepicker-mode');
+            if (preference === 'keyboard' || preference === 'clockface') {
+                this.pickerMode = preference;
+            }
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     override close(): void {
         this._dialogRef.close();
     }
 
+    toggleMode() {
+        if (this.pickerMode === 'clockface') {
+            this.pickerMode = 'keyboard';
+        } else {
+            this.pickerMode = 'clockface';
+        }
+        // Save the preference
+        try {
+            sessionStorage.setItem('timepicker-mode', this.pickerMode);
+        } catch (e) {
+            console.error(e);
+        }
+    }
 }

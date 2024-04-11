@@ -6,6 +6,7 @@
                                          [timeUnit]="timeUnit.HOUR"
                                          [isActive]="activeTimeUnit === timeUnit.HOUR"
                                          [isEditable]="isEditable"
+                                         [disabled]="disabled"
                                          (timeUnitChanged)="changeTimeUnit($event)"
                                          (timeChanged)="changeHour($event)"
                                          (focused)="showHint()"
@@ -19,7 +20,7 @@
                                          [isActive]="activeTimeUnit === timeUnit.MINUTE"
                                          [isEditable]="isEditable"
                                          [minutesGap]="minutesGap"
-                                         [disabled]="hoursOnly"
+                                         [disabled]="hoursOnly || disabled"
                                          (timeUnitChanged)="changeTimeUnit($event)"
                                          (timeChanged)="changeMinute($event)"
                                          (focused)="showHint()"
@@ -42,7 +43,7 @@
     </div>
     <div *ngIf="isEditable || editableHintTmpl"
          [ngClass]="{'timepicker-dial__hint-container--hidden': !isHintVisible}">
-        <ng-container *ngTemplateOutlet="editableHintTmpl ? editableHintTmpl : editableHintDefault"></ng-container>
+        <ng-container *ngTemplateOutlet="editableHintTmpl ? editableHintTmpl : null"></ng-container>
         <ng-template #editableHintDefault>
             <small class="timepicker-dial__hint"> * use arrows (<span>&#8645;</span>) to change the time</small>
         </ng-template>

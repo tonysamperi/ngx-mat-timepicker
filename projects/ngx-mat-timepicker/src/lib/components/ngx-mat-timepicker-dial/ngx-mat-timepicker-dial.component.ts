@@ -80,6 +80,8 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     timeUnit = NgxMatTimepickerUnits;
     @Output() timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
 
+    @Input() disabled: boolean;
+
     private _color: ThemePalette = "primary";
 
     constructor(private _localeSrv: NgxMatTimepickerLocaleService) {
