@@ -32,6 +32,7 @@
 </ng-template>
 <!-- DEFAULT TEMPLATES - END -->
 <div class="clock-face"
+[attr.hidden]="pickerMode === 'keyboard' ? true : null"
      #clockFace>
     <div *ngIf="unit !== timeUnit.MINUTE;else minutesFace"
          class="clock-face__container">

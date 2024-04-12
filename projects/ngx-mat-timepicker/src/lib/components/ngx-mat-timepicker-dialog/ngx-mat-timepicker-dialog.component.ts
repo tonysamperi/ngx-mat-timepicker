@@ -1,4 +1,4 @@
-import {Component, Inject, ViewEncapsulation} from "@angular/core";
+import {Component, EventEmitter, Inject, Input, Output, ViewEncapsulation} from "@angular/core";
 import {NgClass, NgSwitch, NgSwitchCase, NgIf, NgTemplateOutlet, AsyncPipe} from "@angular/common";
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -48,6 +48,8 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
     ]
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {
+    @Input() pickerMode: string;
+    @Output() toggleMode = new EventEmitter<null>();
 
     constructor(@Inject(MAT_DIALOG_DATA) public override data: NgxMatTimepickerConfig,
                 protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
@@ -61,5 +63,4 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
     override close(): void {
         this._dialogRef.close();
     }
-
 }

@@ -100,9 +100,14 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     private _touchEndHandler: (e: any) => any;
     private _touchStartHandler: (e: any) => any;
 
+    pickerMode: 'clockface' | 'keyboard' = 'clockface';
+
     ngAfterViewInit(): void {
         this._setClockHandPosition();
         this._addTouchEvents();
+        setTimeout(() => {
+            this.pickerMode = 'keyboard';
+        }, 5000);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
