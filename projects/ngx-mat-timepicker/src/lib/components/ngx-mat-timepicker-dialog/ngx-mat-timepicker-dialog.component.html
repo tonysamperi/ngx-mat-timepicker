@@ -8,6 +8,12 @@
 			[color]="color">OK
 	</button>
 </ng-template>
+<ng-template #keyboardBtn>
+	<svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M160-200q-33 0-56.5-23.5T80-280v-400q0-33 23.5-56.5T160-760h640q33 0 56.5 23.5T880-680v400q0 33-23.5 56.5T800-200H160Zm0-80h640v-400H160v400Zm160-40h320v-80H320v80ZM200-440h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80ZM200-560h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80Zm120 0h80v-80h-80v80ZM160-280v-400 400Z"/></svg>
+</ng-template>
+<ng-template #clockFaceBtn>
+	<svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>
+</ng-template>
 <div mat-dialog-content>
 	<ngx-mat-timepicker-content [appendToInput]="data.appendToInput"
 								[inputElement]="data.inputElement">
@@ -28,6 +34,7 @@
 										 [editableHintTmpl]="data.editableHintTmpl"
 										 [minutesGap]="data.minutesGap"
 										 [hoursOnly]="data.hoursOnly"
+										 [disabled]="pickerMode === 'clockface'"
 										 (periodChanged)="changePeriod($event)"
 										 (timeUnitChanged)="changeTimeUnit($event)"
 										 (hourChanged)="onHourChange($event)"
@@ -39,6 +46,7 @@
 					 [ngSwitch]="activeTimeUnit">
 					<div *ngSwitchCase="timeUnit.HOUR">
 						<ngx-mat-timepicker-24-hours-face *ngIf="data.format === 24;else ampmHours"
+														  [attr.hidden]="pickerMode === 'keyboard' ? true : null"
 														  [color]="color"
 														  (hourChange)="onHourChange($event)"
 														  [selectedHour]="selectedHour | async"
@@ -58,6 +66,7 @@
 						</ng-template>
 					</div>
 					<ngx-mat-timepicker-minutes-face *ngSwitchCase="timeUnit.MINUTE"
+													 [attr.hidden]="pickerMode === 'keyboard' ? true : null"
 													 [color]="color"
 													 [dottedMinutesInGap]="data.dottedMinutesInGap"
 													 [selectedMinute]="selectedMinute | async"
@@ -74,6 +83,10 @@
 	</ngx-mat-timepicker-content>
 </div>
 <div mat-dialog-actions>
+	<div (click)="toggleMode()">
+		<ng-container
+				*ngTemplateOutlet="pickerMode === 'keyboard' ? clockFaceBtn: keyboardBtn"></ng-container>
+	</div>
 	<div (click)="close()">
 		<ng-container
 				*ngTemplateOutlet="data.cancelBtnTmpl ? data.cancelBtnTmpl : cancelBtnDefault"></ng-container>

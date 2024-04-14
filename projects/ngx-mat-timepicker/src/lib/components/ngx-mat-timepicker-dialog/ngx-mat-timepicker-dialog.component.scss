@@ -24,9 +24,13 @@ div.ngx-mat-timepicker-dialog {
     div[mat-dialog-actions] {
       justify-content: flex-end;
       display: flex;
+      min-width: 200px;
     }
   }
+  svg {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    fill: #962431;
+  }
 }
-
-
-
