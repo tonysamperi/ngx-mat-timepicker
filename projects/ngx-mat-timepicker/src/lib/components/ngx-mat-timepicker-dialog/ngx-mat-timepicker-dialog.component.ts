@@ -76,6 +76,13 @@ export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirecti
     toggleMode() {
         if (this.pickerMode === 'clockface') {
             this.pickerMode = 'keyboard';
+            // Focus hours
+            window.setTimeout(() => {
+                const inputToFocus: HTMLInputElement = document.querySelector('ngx-mat-timepicker-dial-control input');
+                if (inputToFocus) {
+                    inputToFocus.focus();
+                }
+            }, 0);
         } else {
             this.pickerMode = 'clockface';
         }
