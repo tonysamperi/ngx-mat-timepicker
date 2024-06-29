@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker-repo",
-  "version": "18.0.0",
+  "version": "18.0.0-rc.0",
   "build": 0,
   "license": "MIT",
   "private": true,
@@ -18,12 +18,13 @@
     "email": "github@tonysamperi.it"
   },
   "keywords": [
-    "Angular 9+",
+    "Angular 18",
     "Material timepicker",
     "Timepicker",
     "Android timepicker",
     "Mobile timepicker",
-    "Time picker"
+    "Time picker",
+    "Angular 9+"
   ],
   "scripts": {
     "ng": "ng",
@@ -89,5 +90,6 @@
   },
   "engines": {
     "node": ">=14.20.0"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

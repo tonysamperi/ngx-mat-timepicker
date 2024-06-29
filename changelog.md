@@ -1,3 +1,6 @@
+#18.0.0
+* Update for Angular 18! 🎉
+
 #17.1.0
 * Add option `dottedMinutesInGap`
 * Fix mini-fab appearance (closes [#105](https://github.com/tonysamperi/ngx-mat-timepicker/issues/105))
