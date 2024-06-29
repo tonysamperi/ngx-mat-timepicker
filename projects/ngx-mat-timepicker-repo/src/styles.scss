@@ -9,10 +9,10 @@
 	src: url("assets/fonts/MaterialIcons-Regular.woff") format("woff");
 }
 
-$primary-color: mat.get-color-from-palette($candy-app-primary);
-$accent-color: mat.get-color-from-palette($candy-app-accent);
-$primary-color-dark: mat.get-color-from-palette($dark-primary);
-$accent-color-dark: mat.get-color-from-palette($dark-accent);
+$primary-color: mat.m2-get-color-from-palette($candy-app-primary);
+$accent-color: mat.m2-get-color-from-palette($candy-app-accent);
+$primary-color-dark: mat.m2-get-color-from-palette($dark-primary);
+$accent-color-dark: mat.m2-get-color-from-palette($dark-accent);
 
 body {
 	margin: 0;
@@ -105,7 +105,7 @@ body {
 
 	.ngx-mtp-top, footer {
 		background-color: $primary-color;
-		color: mat.get-color-from-palette($candy-app-primary, default-contrast);
+		color: mat.m2-get-color-from-palette($candy-app-primary, default-contrast);
 	}
 
 	.mat-color-primary {
@@ -117,7 +117,7 @@ body {
 	}
 
 	.mat-color-warn {
-		color: mat.get-color-from-palette($candy-app-warn);
+		color: mat.m2-get-color-from-palette($candy-app-warn);
 	}
 
 	.ngx-mtp-margin-top {
@@ -159,10 +159,10 @@ body {
 		a {
 			&.mat-color-primary {
 				color: $primary-color-dark;
-				border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 0.25);
+				border-bottom: 2px solid rgba(mat.m2-get-color-from-palette($dark-primary), 0.25);
 
 				&:hover {
-					border-bottom: 2px solid rgba(mat.get-color-from-palette($dark-primary), 1);
+					border-bottom: 2px solid rgba(mat.m2-get-color-from-palette($dark-primary), 1);
 				}
 			}
 
@@ -187,7 +187,7 @@ body {
 
 		.ngx-mtp-top, footer {
 			background-color: $primary-color-dark;
-			color: mat.get-color-from-palette($dark-primary, default-contrast);
+			color: mat.m2-get-color-from-palette($dark-primary, default-contrast);
 		}
 
 		.mat-color-primary {
@@ -199,7 +199,7 @@ body {
 		}
 
 		.mat-color-warn {
-			color: mat.get-color-from-palette($dark-warn);
+			color: mat.m2-get-color-from-palette($dark-warn);
 		}
 	}
 }
