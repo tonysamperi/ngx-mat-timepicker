@@ -34,47 +34,52 @@
 			<p>using <span class="mat-color-primary">default</span> palette (primary)</p>
 			<code-viewer>
 				<div class="example ngx-mtp-d-flex ngx-mtp-align-center ngx-mtp-flex-column">
-<!--					<mat-form-field appearance="outline">-->
-<!--						<mat-label>Enter Time</mat-label>-->
-<!--						<input type="text"-->
-<!--							   matInput-->
-<!--							   [ngxMatTimepicker]="timepicker"-->
-<!--							   [format]="24"-->
-<!--							   [disableClick]="true"-->
-<!--							   [formControl]="formControlItem" />-->
+					<!--					<mat-form-field appearance="outline">-->
+					<!--						<mat-label>Enter Time</mat-label>-->
+					<!--						<input type="text"-->
+					<!--							   matInput-->
+					<!--							   [ngxMatTimepicker]="timepicker"-->
+					<!--							   [format]="24"-->
+					<!--							   [disableClick]="true"-->
+					<!--							   [formControl]="formControlItem" />-->
 
-<!--						<mat-icon-->
-<!--								matPrefix-->
-<!--								[style.visibility]="formControlItem.value && !formControlItem.disabled ? 'visible' : 'hidden'"-->
-<!--								(click)="onClear()">-->
-<!--							close-->
-<!--						</mat-icon>-->
+					<!--						<mat-icon-->
+					<!--								matPrefix-->
+					<!--								[style.visibility]="formControlItem.value && !formControlItem.disabled ? 'visible' : 'hidden'"-->
+					<!--								(click)="onClear()">-->
+					<!--							close-->
+					<!--						</mat-icon>-->
 
-<!--						<mat-icon-->
-<!--								matSuffix-->
-<!--								*ngIf="!formControlItem.disabled"-->
-<!--								(click)="openFromIcon(timepicker)">schedule-->
-<!--						</mat-icon>-->
+					<!--						<mat-icon-->
+					<!--								matSuffix-->
+					<!--								*ngIf="!formControlItem.disabled"-->
+					<!--								(click)="openFromIcon(timepicker)">schedule-->
+					<!--						</mat-icon>-->
 
-<!--						<mat-error *ngIf="formControlItem.hasError('pattern')">Invalid format!</mat-error>-->
-<!--					</mat-form-field>-->
+					<!--						<mat-error *ngIf="formControlItem.hasError('pattern')">Invalid format!</mat-error>-->
+					<!--					</mat-form-field>-->
 
-<!--					<ngx-mat-timepicker-->
-<!--                        #timepicker-->
-<!--						[enableKeyboardInput]="true"></ngx-mat-timepicker>-->
-<!--					<button (click)="openDialog()"-->
-<!--							mat-button-->
-<!--							color="primary">OPEN DIALOG-->
-<!--					</button>-->
+					<!--					<ngx-mat-timepicker-->
+					<!--                        #timepicker-->
+					<!--						[enableKeyboardInput]="true"></ngx-mat-timepicker>-->
+					<!--					<button (click)="openDialog()"-->
+					<!--							mat-button-->
+					<!--							color="primary">OPEN DIALOG-->
+					<!--					</button>-->
 
 					<ngx-mat-timepicker-field
+							ngDefaultControl
 							color="warn"
-							[format]="24"
+							[format]="12"
 							[defaultTime]="time"
 							(timeChanged)="time = $event"
 							[min]="minTime"
+							[(ngModel)]="foo"
 					></ngx-mat-timepicker-field>
-					<p>{{ time }}</p>
+					<p>time: {{ time }} / foo (ngModel): {{ foo }}</p>
+					<p>now: {{ now.toString() }}</p>
+					<p>min: {{ minTime.toString() }}</p>
+					<p>max: {{ maxTime.toString() }}</p>
 
 				</div>
 				<pre class="language-markup">

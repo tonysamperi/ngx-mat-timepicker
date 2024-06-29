@@ -9,7 +9,7 @@ import {
     TemplateRef
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
-import { NgIf, NgClass, NgTemplateOutlet } from "@angular/common";
+import {NgIf, NgClass, NgTemplateOutlet} from "@angular/common";
 //
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
@@ -17,8 +17,10 @@ import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum"
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
-import { NgxMatTimepickerPeriodComponent } from "../ngx-mat-timepicker-period/ngx-mat-timepicker-period.component";
-import { NgxMatTimepickerDialControlComponent } from "../ngx-mat-timepicker-dial-control/ngx-mat-timepicker-dial-control.component";
+import {NgxMatTimepickerPeriodComponent} from "../ngx-mat-timepicker-period/ngx-mat-timepicker-period.component";
+import {
+    NgxMatTimepickerDialControlComponent
+} from "../ngx-mat-timepicker-dial-control/ngx-mat-timepicker-dial-control.component";
 //
 import {DateTime, Info} from "ts-luxon";
 
@@ -118,6 +120,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
                 format: this.format,
                 period: this.period
             });
+            console.info("HOURS", hours.map(h => h.time));
         }
         // tslint:disable-next-line:no-string-literal
         if (periodChanged || changes["hour"] && changes["hour"].currentValue) {

@@ -3,6 +3,7 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule} from "@angula
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule, MatLabel} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {DateTime} from "ts-luxon";
 import {CodeViewerComponent} from "../code-viewer/code-viewer.component";
 import {MatButtonModule} from "@angular/material/button";
 import {NgFor, NgIf} from "@angular/common";
@@ -82,8 +83,14 @@ export class NgxMatTimepickerTestDialogComponent {
 })
 export class NgxMatTimepickerTestComponent extends NgxMatTimepickerDemoComponent {
 
+    baseDto: DateTime = DateTime.now().set({day: 9, month: 3, hour: 12});
+    foo: string;
     formControlItem: FormControl = new FormControl("", [Validators.pattern(/([0-9]|[1-2]\d):[0-5]\d/)]);
-    time: string = "00:00";
+    override maxTime: DateTime = this.baseDto.plus({hours: 5}); // this.maxTime.set({hour: 14});
+    override minTime: DateTime = this.baseDto.minus({hours: 5}); // this.maxTime.set({hour: 14});
+    now: DateTime = this.baseDto;
+    time: string = "12:00 PM";
+
     @ViewChild("timepicker")
     private _timepicker: NgxMatTimepickerComponent;
 

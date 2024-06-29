@@ -13,13 +13,20 @@ export class NgxMatTimepickerUtils {
     }
 
     static disableHours(hours: NgxMatTimepickerClockFace[], config: NgxMatTimepickerDisabledConfig): NgxMatTimepickerClockFace[] {
-        if (config.min || config.max) {
+        if (config.min || config.max || true) {
 
             return hours.map(value => {
                 const hour = NgxMatTimepickerAdapter.isTwentyFour(config.format)
                     ? value.time
                     : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
-                const currentTime = DateTime.fromObject({hour}).toFormat(NgxMatTimepickerFormat.TWELVE);
+                const dto = DateTime.fromObject({
+                    hour,
+                    day: 31,
+                    month: 3,
+                    year: 2024
+                });
+                console.info("DTO", dto.toString());
+                const currentTime = dto.toFormat(NgxMatTimepickerFormat.TWELVE);
 
                 return {
                     ...value,
