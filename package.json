@@ -37,8 +37,8 @@
     "bump:minor": "gulp bump:minor",
     "bump:major": "gulp bump:major",
     "bump:beta": "gulp bump:beta",
-    "publish": "npm publish ./dist/ngx-mat-timepicker",
-    "publish:beta": "npm publish ./dist/ngx-mat-timepicker --tag beta",
+    "release": "npm publish ./dist/ngx-mat-timepicker",
+    "release:beta": "npm publish ./dist/ngx-mat-timepicker --tag beta",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
