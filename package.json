@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker-repo",
-  "version": "18.0.0-rc.0",
+  "version": "18.0.0",
   "build": 0,
   "license": "MIT",
   "private": true,
