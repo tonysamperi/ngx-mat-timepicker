@@ -154,6 +154,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     @Input() cancelBtnTmpl: TemplateRef<Node>;
 
     @Input() confirmBtnTmpl: TemplateRef<Node>;
+    @Input() confirmBtnText: string;
+    @Input() cancelBtnText: string;
 
     @Input() controlOnly: boolean;
 

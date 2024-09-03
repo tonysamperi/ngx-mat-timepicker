@@ -1,11 +1,11 @@
 <ng-template #cancelBtnDefault>
 	<button mat-button
-			[color]="color">CANCEL
+			[color]="color">{{ data.cancelBtnText ?? 'CANCEL'}}
 	</button>
 </ng-template>
 <ng-template #confirmBtnDefault>
 	<button mat-button
-			[color]="color">OK
+			[color]="color">{{ data.confirmBtnText ?? 'OK'}}
 	</button>
 </ng-template>
 <div cdkTrapFocus>

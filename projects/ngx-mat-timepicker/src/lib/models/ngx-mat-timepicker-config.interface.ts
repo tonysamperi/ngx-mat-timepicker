@@ -27,4 +27,6 @@ export interface NgxMatTimepickerConfig {
     time: string;
     timepickerBaseRef: NgxMatTimepickerRef;
     timepickerClass: string;
+    confirmBtnText: string;
+    cancelBtnText: string;
 }

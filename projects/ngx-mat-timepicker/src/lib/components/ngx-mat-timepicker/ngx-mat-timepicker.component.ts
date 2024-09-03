@@ -141,6 +141,8 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
     @Input() cancelBtnTmpl: TemplateRef<Node>;
     @Output() closed = new EventEmitter<void>();
     @Input() confirmBtnTmpl: TemplateRef<Node>;
+    @Input() confirmBtnText: string;
+    @Input() cancelBtnText: string;
     @Input() defaultTime: string;
     @Input() disableAnimation: boolean;
     @Input() editableHintTmpl: TemplateRef<Node>;
@@ -221,7 +223,9 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
             hoursOnly: this.hoursOnly,
             timepickerClass: this.timepickerClass,
             inputElement: this.inputElement,
-            color: this.color
+            color: this.color,
+            confirmBtnText: this.confirmBtnText,
+            cancelBtnText: this.cancelBtnText,
         };
         if (this._appendToInput) {
             this.showPicker = !0;
