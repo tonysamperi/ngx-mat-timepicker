@@ -13,7 +13,6 @@ import {DateTime} from "ts-luxon";
 @Component({
     selector: "ngx-mat-timepicker-minutes-face",
     templateUrl: "./ngx-mat-timepicker-minutes-face.component.html",
-    standalone: true,
     imports: [NgxMatTimepickerFaceComponent]
 })
 export class NgxMatTimepickerMinutesFaceComponent implements OnChanges {

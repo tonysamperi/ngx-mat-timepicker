@@ -27,7 +27,6 @@ import {DateTime} from "ts-luxon";
             ])
         ])
     ],
-    standalone: true,
     imports: [CdkOverlayOrigin, NgClass, CdkConnectedOverlay, NgIf]
 })
 export class NgxMatTimepickerPeriodComponent {

@@ -11,7 +11,6 @@ import {NgxMatTimepickerFaceComponent} from "../ngx-mat-timepicker-face/ngx-mat-
     selector: "ngx-mat-timepicker-12-hours-face",
     templateUrl: "ngx-mat-timepicker-12-hours-face.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NgxMatTimepickerFaceComponent]
 })
 export class NgxMatTimepicker12HoursFaceComponent extends NgxMatTimepickerHoursFaceDirective implements OnChanges {
