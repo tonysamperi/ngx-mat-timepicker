@@ -24,7 +24,6 @@ let config: NgxMatTimepickerConfig;
     selector: "ngx-mat-timepicker-provider",
     template: `
 		<ngx-mat-timepicker-standalone></ngx-mat-timepicker-standalone>`,
-    standalone: true,
     providers: [
         {
             provide: NGX_MAT_TIMEPICKER_CONFIG,
@@ -52,7 +51,6 @@ export class NgxMatTimepickerProvider {
 			<ngx-mat-timepicker-provider></ngx-mat-timepicker-provider>
 		</ng-template>
     `,
-    standalone: true,
     imports: [CdkConnectedOverlay, NgxMatTimepickerStandaloneComponent, NgxMatTimepickerProvider]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {

@@ -27,7 +27,6 @@ import {DateTime, Info} from "ts-luxon";
     templateUrl: "ngx-mat-timepicker-dial.component.html",
     styleUrls: ["ngx-mat-timepicker-dial.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NgxMatTimepickerDialControlComponent, NgIf, NgxMatTimepickerPeriodComponent, NgClass, NgTemplateOutlet]
 })
 export class NgxMatTimepickerDialComponent implements OnChanges {

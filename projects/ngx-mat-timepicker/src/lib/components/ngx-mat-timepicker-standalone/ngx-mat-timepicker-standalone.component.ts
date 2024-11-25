@@ -31,7 +31,6 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
         "[class.mat-app-background]": "true"
     },
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [
         MatButtonModule,
         A11yModule,

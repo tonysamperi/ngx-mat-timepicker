@@ -38,7 +38,6 @@ const pkgName = "ngx-mat-timepicker";
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"],
-    standalone: true,
     imports: [MatIconModule,
         MatToolbarModule,
         MatButtonModule,

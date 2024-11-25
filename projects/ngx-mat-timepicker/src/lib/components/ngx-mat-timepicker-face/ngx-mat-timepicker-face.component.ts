@@ -63,7 +63,6 @@ const CLOCK_HAND_STYLES = {
     styleUrls: ["./ngx-mat-timepicker-face.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [
         MatButtonModule,
         NgStyle,
@@ -76,7 +75,8 @@ const CLOCK_HAND_STYLES = {
         NgxMatTimepickerActiveHourPipe,
         NgxMatTimepickerActiveMinutePipe,
         NgxMatTimepickerMinutesFormatterPipe,
-        NgxMatTimepickerTimeLocalizerPipe]
+        NgxMatTimepickerTimeLocalizerPipe
+    ]
 })
 export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, OnDestroy {
 

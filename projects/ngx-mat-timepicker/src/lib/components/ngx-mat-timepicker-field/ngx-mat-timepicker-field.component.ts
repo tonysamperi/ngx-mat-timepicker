@@ -47,7 +47,6 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [
         NgClass,
         NgxMatTimepickerControlComponent,
