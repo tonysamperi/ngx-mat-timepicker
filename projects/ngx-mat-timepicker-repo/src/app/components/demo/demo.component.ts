@@ -23,6 +23,7 @@ import {NgxMatTimepickerLocaleKey} from "../../shared/ngx-mat-timepicker-locale-
 import {catchError, map, of, switchMap, timer} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
 import {DateTime} from "ts-luxon";
+// eslint-disable-next-line @typescript-eslint/naming-convention
 import TypeWriter from "typewriter-effect/dist/core.js";
 import pkg from "../../../../../../package.json";
 
@@ -34,7 +35,6 @@ interface NgxMatTimepickerTheme {
 const pkgName = "ngx-mat-timepicker";
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"],
@@ -58,6 +58,10 @@ const pkgName = "ngx-mat-timepicker";
 })
 export class NgxMatTimepickerDemoComponent implements OnInit {
 
+    get buildRef(): string {
+        return `${pkg.version}-build-${pkg.build}`;
+    }
+
     get currentLocale(): NgxMatTimepickerLocaleKey {
         return this._localeOverrideSrv.locale as NgxMatTimepickerLocaleKey;
     }
@@ -66,17 +70,13 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         return this.myLocalesReversed[this.currentLocale];
     }
 
-    get buildRef(): string {
-        return `${pkg.version}-build-${pkg.build}`;
-    }
-
     githubLink: string = `https://github.com/tonysamperi/${pkgName}`;
     latestVersion: string = "";
     maxTime: DateTime = DateTime.local().startOf("day").set({
         hour: 16,
         minute: 0
     });
-    messages: { opts?: { delay?: number | "natural"; loop?: boolean; }; text: string; }[] = [];
+    messages: { opts?: { delay?: number; loop?: boolean; }; text: string; }[] = [];
     minTime: DateTime = this.maxTime.set({hour: 14});
     myLocaleKeys: NgxMatTimepickerLocaleKey[];
     myLocales: Record<keyof typeof NgxMatTimepickerLocaleKey, string> = {
@@ -148,7 +148,9 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         this._localeOverrideSrv.updateLocale(
             this.myLocales[this.myLocaleKeys[++this._nextLocale]]
         );
-        (this._nextLocale >= this.myLocaleKeys.length - 1) && (this._nextLocale = -1);
+        if(this._nextLocale >= this.myLocaleKeys.length - 1) {
+            (this._nextLocale = -1);
+        }
     }
 
     updateTheme(theme: NgxMatTimepickerTheme): void {
@@ -182,7 +184,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
                 next: () => {
                     this.messages.forEach(({text, opts = {}}, i: number) => {
                         const tw = new TypeWriter(`${wrapperSelector} li:nth-child(${i + 1})`, {
-                            strings: !!opts.loop ? [text] : void 0,
+                            strings: opts.loop ? [text] : void 0,
                             autoStart: !!opts.loop,
                             loop: !!opts.loop,
                             delay: opts.delay || "natural"
