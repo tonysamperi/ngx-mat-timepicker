@@ -59,9 +59,11 @@ jobs:
           key: ${{ runner.os }}-angular-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-angular-build-
+      - name: Enable corepack
+        run: corepack enable
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Static HTML export with Nuxt
+      - name: Static HTML export Angular
         run: ${{ steps.detect-package-manager.outputs.manager }} run build:demo
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
