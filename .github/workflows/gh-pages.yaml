@@ -46,7 +46,6 @@ jobs:
             exit 1
           fi
       - name: Enable Corepack
-        uses: actions/checkout@v4
         run: corepack enable
       - name: Setup Node
         uses: actions/setup-node@v4
