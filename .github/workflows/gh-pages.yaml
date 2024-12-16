@@ -45,6 +45,8 @@ jobs:
             echo "Unable to determine packager manager"
             exit 1
           fi
+      - name: Enable corepack
+        run: corepack enable
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -59,8 +61,6 @@ jobs:
           key: ${{ runner.os }}-angular-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-angular-build-
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export Angular
