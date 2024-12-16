@@ -1,3 +1,6 @@
+#18.0.1
+* Version bump
+
 #18.0.0
 * Update for Angular 18! 🎉
 

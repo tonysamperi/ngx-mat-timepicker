@@ -46,7 +46,7 @@ jobs:
             exit 1
           fi
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "20.11.1"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
@@ -59,8 +59,6 @@ jobs:
           key: ${{ runner.os }}-angular-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-angular-build-
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export Angular
