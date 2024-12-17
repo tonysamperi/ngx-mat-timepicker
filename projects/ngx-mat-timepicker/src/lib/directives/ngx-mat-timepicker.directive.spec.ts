@@ -13,7 +13,6 @@ import {DateTime} from "ts-luxon";
 		<input [ngxMatTimepicker]="picker">
 		<ngx-mat-timepicker #picker></ngx-mat-timepicker>
     `,
-    standalone: true,
     imports: [NgxMatTimepickerModule]
 })
 // tslint:disable-next-line:naming-convention
