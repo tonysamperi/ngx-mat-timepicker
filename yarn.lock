@@ -10311,7 +10311,7 @@ __metadata:
     rxjs: "npm:^7.4.0"
     semver: "npm:^7.3.8"
     through2: "npm:^4.0.2"
-    ts-luxon: "npm:^4.3.2"
+    ts-luxon: "npm:^5.0.6"
     ts-node: "npm:~10.9.1"
     tslib: "npm:^2.5.2"
     typescript: "npm:~5.6.3"
@@ -13427,10 +13427,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-luxon@npm:^4.3.2":
-  version: 4.6.2
-  resolution: "ts-luxon@npm:4.6.2"
-  checksum: 10c0/2ea729a9e14b63d0419d578c1d0634cbb258c81b076b0b9798631f0527f485879a2f7f65690206d98de68e70bf939297e340eb2fb006128c243bee38e9352bc6
+"ts-luxon@npm:^5.0.6":
+  version: 5.0.6
+  resolution: "ts-luxon@npm:5.0.6"
+  checksum: 10c0/86dd54009cacb6f8a25fcf2b8dd58ef073f6ab6b4d728c2d31dc436d92887f021edcf810854138efbab5a7a62fbe91e84b9b435af2011906e0f2d2c3a3b9b7e4
   languageName: node
   linkType: hard
 

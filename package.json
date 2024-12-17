@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker-repo",
-  "version": "18.0.1",
+  "version": "19.0.0",
   "build": 0,
   "license": "MIT",
   "private": true,
@@ -18,7 +18,7 @@
     "email": "github@tonysamperi.it"
   },
   "keywords": [
-    "Angular 18",
+    "Angular 19",
     "Material timepicker",
     "Timepicker",
     "Android timepicker",
@@ -54,7 +54,7 @@
     "@angular/platform-browser-dynamic": "^19.0.4",
     "@angular/ssr": "^19.0.5",
     "rxjs": "^7.4.0",
-    "ts-luxon": "^4.3.2",
+    "ts-luxon": "^5.0.6",
     "tslib": "^2.5.2",
     "typewriter-effect": "^2.21.0",
     "zone.js": "^0.15.0"
@@ -97,7 +97,7 @@
     "typescript-eslint": "^8.18.0"
   },
   "engines": {
-    "node": ">=14.20.0"
+    "node": ">=20.11.1"
   },
   "packageManager": "yarn@4.3.1"
 }
