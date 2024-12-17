@@ -29,7 +29,6 @@ function concatTime(currentTime: string, nextTime: string): number | undefined {
     styleUrls: ["./ngx-mat-timepicker-control.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [NgxMatTimepickerParserPipe],
-    standalone: true,
     imports: [MatFormFieldModule, NgClass, MatInputModule, FormsModule, NgxMatTimepickerParserPipe, NgxMatTimepickerTimeLocalizerPipe]
 })
 

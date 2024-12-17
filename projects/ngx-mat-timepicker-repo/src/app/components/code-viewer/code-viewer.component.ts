@@ -12,7 +12,6 @@ import * as Prism from "prismjs";
     templateUrl: "./code-viewer.component.html",
     styleUrls: ["./code-viewer.component.scss"],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [MatCardModule, MatButtonModule, MatTooltipModule, MatIconModule]
 })
 // tslint:disable-next-line:naming-convention

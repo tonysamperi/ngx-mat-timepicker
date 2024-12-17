@@ -7,7 +7,6 @@ import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-fac
     template: `
 		<div ngxMatTimepickerHoursFace
 			 [format]="format"></div>`,
-    standalone: true,
     imports: [NgxMatTimepickerHoursFaceDirective]
 })
 // tslint:disable-next-line:naming-convention

@@ -8,7 +8,6 @@ import {NgxMatTimepickerAutofocusDirective} from "./ngx-mat-timepicker-autofocus
     template: `
 		<button id="button">Push me</button>
 		<input [ngxMatTimepickerAutofocus]="true">`,
-    standalone: true,
     imports: [NgxMatTimepickerAutofocusDirective]
 })
 // tslint:disable-next-line:naming-convention

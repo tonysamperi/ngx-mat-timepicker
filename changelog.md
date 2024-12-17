@@ -1,3 +1,6 @@
+#19.0.0
+* Update for Angular 19! 🎉
+
 #18.0.1
 * Version bump
 
