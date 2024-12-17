@@ -42,7 +42,6 @@ import {NgxMatTimepickerDemoComponent} from "../demo/demo.component";
 								#pickerA></ngx-mat-timepicker>
 		</div>
     `,
-    standalone: true,
     imports: [
         FormsModule,
         MatDialogModule,
@@ -62,7 +61,6 @@ export class NgxMatTimepickerTestDialogComponent {
     selector: "app-test",
     templateUrl: "test.component.html",
     styleUrls: ["test.component.scss"],
-    standalone: true,
     imports: [
         CodeViewerComponent,
         FormsModule,

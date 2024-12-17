@@ -10,7 +10,6 @@ import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicke
     templateUrl: "ngx-mat-timepicker-toggle.component.html",
     styleUrls: ["ngx-mat-timepicker-toggle.component.scss"],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [MatButtonModule, NgIf]
 })
 
