@@ -1,7 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {MatInputModule, MatLabel} from "@angular/material/input";
+import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {CodeViewerComponent} from "../code-viewer/code-viewer.component";
 import {MatButtonModule} from "@angular/material/button";
@@ -67,10 +67,7 @@ export class NgxMatTimepickerTestDialogComponent {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatLabel,
     MatToolbarModule,
-    NgxMatTimepickerComponent,
-    NgxMatTimepickerDirective,
     NgxMatTimepickerFieldComponent,
     ReactiveFormsModule
 ]

@@ -1,22 +1,10 @@
 {
   "messages": [
     {
-      "text": "⭐ 17/12/2024: published V19! Check it out!",
+      "text": "⭐ 02/06/2025: published V20!",
       "opts": {
-        "loop": false,
+        "loop": true,
         "delay": 80
-      }
-    },
-    {
-      "text": "⚡ 29/06/2024: published V18 RC 0!",
-      "opts": {
-        "loop": true
-      }
-    },
-    {
-      "text": "⚡ 08/11/2023: published V17!",
-      "opts": {
-        "loop": true
       }
     }
   ]
