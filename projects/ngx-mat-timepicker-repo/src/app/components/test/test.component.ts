@@ -1,11 +1,11 @@
 import {Component, ViewChild} from "@angular/core";
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {MatInputModule, MatLabel} from "@angular/material/input";
+import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {CodeViewerComponent} from "../code-viewer/code-viewer.component";
 import {MatButtonModule} from "@angular/material/button";
-import {NgFor, NgIf} from "@angular/common";
+
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 //
@@ -57,26 +57,20 @@ export class NgxMatTimepickerTestDialogComponent {
 }
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: "app-test",
     templateUrl: "test.component.html",
     styleUrls: ["test.component.scss"],
     imports: [
-        CodeViewerComponent,
-        FormsModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatLabel,
-        MatToolbarModule,
-        NgFor,
-        NgIf,
-        NgxMatTimepickerComponent,
-        NgxMatTimepickerDirective,
-        NgxMatTimepickerFieldComponent,
-        ReactiveFormsModule
-    ]
+    CodeViewerComponent,
+    FormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatToolbarModule,
+    NgxMatTimepickerFieldComponent,
+    ReactiveFormsModule
+]
 })
 export class NgxMatTimepickerTestComponent extends NgxMatTimepickerDemoComponent {
 

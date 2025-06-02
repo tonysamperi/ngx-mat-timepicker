@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {animate, sequence, style, transition, trigger} from "@angular/animations";
-import { NgClass, NgIf } from "@angular/common";
+import { NgClass } from "@angular/common";
 import { FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy, CdkOverlayOrigin, CdkConnectedOverlay } from "@angular/cdk/overlay";
 //
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
@@ -27,7 +27,7 @@ import {DateTime} from "ts-luxon";
             ])
         ])
     ],
-    imports: [CdkOverlayOrigin, NgClass, CdkConnectedOverlay, NgIf]
+    imports: [CdkOverlayOrigin, NgClass, CdkConnectedOverlay]
 })
 export class NgxMatTimepickerPeriodComponent {
 

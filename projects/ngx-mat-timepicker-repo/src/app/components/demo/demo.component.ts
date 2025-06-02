@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
-import {NgFor, NgIf} from "@angular/common";
+
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -42,8 +42,6 @@ const pkgName = "ngx-mat-timepicker";
         MatToolbarModule,
         MatButtonModule,
         MatMenuModule,
-        NgFor,
-        NgIf,
         FormsModule,
         CodeViewerComponent,
         MatFormFieldModule,

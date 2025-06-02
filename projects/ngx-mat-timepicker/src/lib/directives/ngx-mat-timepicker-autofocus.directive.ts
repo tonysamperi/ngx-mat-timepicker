@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Inject, Input, OnChanges, OnDestroy, Optional} from "@angular/core";
-import {DOCUMENT} from "@angular/common";
+import {Directive, ElementRef, Inject, Input, OnChanges, OnDestroy, Optional, DOCUMENT} from "@angular/core";
+
 
 @Directive({
     selector: "[ngxMatTimepickerAutofocus]",

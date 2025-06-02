@@ -1,2 +1,6 @@
-<app-demo *ngIf="isDemo"></app-demo>
-<app-test *ngIf="!isDemo"></app-test>
+@if (isDemo) {
+  <app-demo></app-demo>
+}
+@else {
+  <app-test></app-test>
+}
