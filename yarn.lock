@@ -410,17 +410,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cdk@npm:^19.0.3":
-  version: 19.2.18
-  resolution: "@angular/cdk@npm:19.2.18"
+"@angular/cdk@npm:^20.0.1":
+  version: 20.0.1
+  resolution: "@angular/cdk@npm:20.0.1"
   dependencies:
     parse5: "npm:^7.1.2"
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/common": ^19.0.0 || ^20.0.0
-    "@angular/core": ^19.0.0 || ^20.0.0
+    "@angular/common": ^20.0.0 || ^21.0.0
+    "@angular/core": ^20.0.0 || ^21.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10c0/e3ab5636708a34a0bc55b8541c69ce1463fde7b5cc89865e9f06069a56f315e97618b58c82522fcfcee4495ed8921fb757f0f7e84f1f7a46d2e7c4560d259cf9
+  checksum: 10c0/01de2c39222e07c9b93210f77e8830b43f57b593e152908375b9dba39352f784af5ec35ed1821ee342014e1264037af42405468654a7e7b5e34cdc180b1b3a7c
   languageName: node
   linkType: hard
 
@@ -535,19 +535,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/material@npm:^19.0.3":
-  version: 19.2.18
-  resolution: "@angular/material@npm:19.2.18"
+"@angular/material@npm:^20.0.1":
+  version: 20.0.1
+  resolution: "@angular/material@npm:20.0.1"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/cdk": 19.2.18
-    "@angular/common": ^19.0.0 || ^20.0.0
-    "@angular/core": ^19.0.0 || ^20.0.0
-    "@angular/forms": ^19.0.0 || ^20.0.0
-    "@angular/platform-browser": ^19.0.0 || ^20.0.0
+    "@angular/cdk": 20.0.1
+    "@angular/common": ^20.0.0 || ^21.0.0
+    "@angular/core": ^20.0.0 || ^21.0.0
+    "@angular/forms": ^20.0.0 || ^21.0.0
+    "@angular/platform-browser": ^20.0.0 || ^21.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10c0/2ac58d35d0e477dd40cf895f703a919d5a7254aeda5f3e534ae9ea7bb698156a2e7bfe85294ec439280c750ba5c3663639d89a6f1a69397050ba48fbcf7b44ea
+  checksum: 10c0/fb1c1e32eed6eaa4a44b4b5492360c87b3d976d078216d39008bd5f3a761d56b6833450e437e8d332fa6caedb7aafec8d16becdf9c65d3194c0920b18b43b23e
   languageName: node
   linkType: hard
 
@@ -9862,7 +9862,7 @@ __metadata:
     "@angular-eslint/schematics": "npm:^19.7.0"
     "@angular-eslint/template-parser": "npm:^19.7.0"
     "@angular/animations": "npm:^20.0.0"
-    "@angular/cdk": "npm:^19.0.3"
+    "@angular/cdk": "npm:^20.0.1"
     "@angular/cli": "npm:^20.0.0"
     "@angular/common": "npm:^20.0.0"
     "@angular/compiler": "npm:^20.0.0"
@@ -9870,7 +9870,7 @@ __metadata:
     "@angular/core": "npm:^20.0.0"
     "@angular/forms": "npm:^20.0.0"
     "@angular/language-service": "npm:^20.0.0"
-    "@angular/material": "npm:^19.0.3"
+    "@angular/material": "npm:^20.0.1"
     "@angular/platform-browser": "npm:^20.0.0"
     "@angular/platform-browser-dynamic": "npm:^20.0.0"
     "@angular/ssr": "npm:^20.0.0"
@@ -9898,7 +9898,7 @@ __metadata:
     rxjs: "npm:^7.4.0"
     semver: "npm:^7.3.8"
     through2: "npm:^4.0.2"
-    ts-luxon: "npm:^5.0.6"
+    ts-luxon: "npm:^6.1.0"
     ts-node: "npm:~10.9.1"
     tslib: "npm:^2.5.2"
     typescript: "npm:~5.8.3"
@@ -12788,10 +12788,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-luxon@npm:^5.0.6":
-  version: 5.1.0
-  resolution: "ts-luxon@npm:5.1.0"
-  checksum: 10c0/9bf47823cdcd7f214a988b1eeba8913b0b8012df79f544b092dcf622ddda82a98482340d8fa475df353f2a2a9520d70acb08126e7140e275e5891d76a2ec4e0c
+"ts-luxon@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "ts-luxon@npm:6.1.0"
+  checksum: 10c0/88ce9df1ae64100068b5a81b1c1c796c80c41dde54c38ea44138cbd9c61139e448371f001e90e3430ec8899a25c2234a940353ec9a09282478e6fd2c6697ec9b
   languageName: node
   linkType: hard
 

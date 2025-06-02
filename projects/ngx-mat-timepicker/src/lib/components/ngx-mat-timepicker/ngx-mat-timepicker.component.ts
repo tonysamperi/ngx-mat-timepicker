@@ -34,6 +34,7 @@ let config: NgxMatTimepickerConfig;
     ],
     imports: [NgxMatTimepickerStandaloneComponent]
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class NgxMatTimepickerProvider {
 }
 
@@ -51,7 +52,7 @@ export class NgxMatTimepickerProvider {
 			<ngx-mat-timepicker-provider></ngx-mat-timepicker-provider>
 		</ng-template>
     `,
-    imports: [CdkConnectedOverlay, NgxMatTimepickerStandaloneComponent, NgxMatTimepickerProvider]
+    imports: [CdkConnectedOverlay, NgxMatTimepickerProvider]
 })
 export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
 
