@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, Input, Output, ElementRef, AfterViewInit} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {NgIf, NgClass} from "@angular/common";
+import {NgClass} from "@angular/common";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
@@ -19,7 +19,6 @@ function retainSelection(this: HTMLInputElement) {
     styleUrls: ["ngx-mat-timepicker-dial-control.component.scss"],
     providers: [NgxMatTimepickerParserPipe],
     imports: [
-        NgIf,
         FormsModule,
         NgClass,
         NgxMatTimepickerAutofocusDirective,

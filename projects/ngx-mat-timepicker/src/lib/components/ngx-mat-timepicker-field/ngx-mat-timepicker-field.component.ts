@@ -9,7 +9,7 @@ import {
     TemplateRef,
     ViewEncapsulation
 } from "@angular/core";
-import {NgClass, NgIf, NgFor, NgTemplateOutlet} from "@angular/common";
+import { NgClass, NgTemplateOutlet } from "@angular/common";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule} from "@angular/forms";
 import {MatSelectChange, MatSelectModule} from "@angular/material/select";
 import {ThemePalette, MatOptionModule} from "@angular/material/core";
@@ -48,20 +48,18 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     imports: [
-        NgClass,
-        NgxMatTimepickerControlComponent,
-        NgIf,
-        MatFormFieldModule,
-        MatSelectModule,
-        FormsModule,
-        NgFor,
-        MatOptionModule,
-        NgxMatTimepickerToggleComponent,
-        NgxMatTimepickerToggleIconDirective,
-        NgTemplateOutlet,
-        NgxMatTimepickerComponent,
-        MatIconModule
-    ]
+    NgClass,
+    NgxMatTimepickerControlComponent,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    MatOptionModule,
+    NgxMatTimepickerToggleComponent,
+    NgxMatTimepickerToggleIconDirective,
+    NgTemplateOutlet,
+    NgxMatTimepickerComponent,
+    MatIconModule
+]
 })
 export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, ControlValueAccessor {
 

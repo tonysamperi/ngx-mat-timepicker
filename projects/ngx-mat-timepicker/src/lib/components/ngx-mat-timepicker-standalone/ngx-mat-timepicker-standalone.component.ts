@@ -1,5 +1,5 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
-import {NgClass, NgSwitch, NgSwitchCase, NgIf, NgTemplateOutlet, AsyncPipe} from "@angular/common";
+import { NgClass, NgTemplateOutlet, AsyncPipe } from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {A11yModule} from "@angular/cdk/a11y";
 import {MatButtonModule} from "@angular/material/button";
@@ -32,21 +32,18 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
     },
     encapsulation: ViewEncapsulation.None,
     imports: [
-        MatButtonModule,
-        A11yModule,
-        NgxMatTimepickerContentComponent,
-        NgClass,
-        MatToolbarModule,
-        NgxMatTimepickerDialComponent,
-        NgSwitch,
-        NgSwitchCase,
-        NgIf,
-        NgxMatTimepicker24HoursFaceComponent,
-        NgxMatTimepicker12HoursFaceComponent,
-        NgxMatTimepickerMinutesFaceComponent,
-        NgTemplateOutlet,
-        AsyncPipe
-    ]
+    MatButtonModule,
+    A11yModule,
+    NgxMatTimepickerContentComponent,
+    NgClass,
+    MatToolbarModule,
+    NgxMatTimepickerDialComponent,
+    NgxMatTimepicker24HoursFaceComponent,
+    NgxMatTimepicker12HoursFaceComponent,
+    NgxMatTimepickerMinutesFaceComponent,
+    NgTemplateOutlet,
+    AsyncPipe
+]
 })
 export class NgxMatTimepickerStandaloneComponent extends NgxMatTimepickerBaseDirective {
 

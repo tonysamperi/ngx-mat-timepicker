@@ -9,7 +9,7 @@ import {
     TemplateRef
 } from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
-import { NgIf, NgClass, NgTemplateOutlet } from "@angular/common";
+import { NgClass, NgTemplateOutlet } from "@angular/common";
 //
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
@@ -27,7 +27,7 @@ import {DateTime, Info} from "ts-luxon";
     templateUrl: "ngx-mat-timepicker-dial.component.html",
     styleUrls: ["ngx-mat-timepicker-dial.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgxMatTimepickerDialControlComponent, NgIf, NgxMatTimepickerPeriodComponent, NgClass, NgTemplateOutlet]
+    imports: [NgxMatTimepickerDialControlComponent, NgxMatTimepickerPeriodComponent, NgClass, NgTemplateOutlet]
 })
 export class NgxMatTimepickerDialComponent implements OnChanges {
 
