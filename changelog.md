@@ -1,3 +1,9 @@
+#20.0.1
+* Fix peer deps
+
+#20.0.0
+* Update for Angular 20! 🎉
+
 #19.0.0
 * Update for Angular 19! 🎉
 

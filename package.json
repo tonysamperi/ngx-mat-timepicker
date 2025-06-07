@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-timepicker-repo",
-  "version": "20.0.0",
+  "version": "20.0.1",
   "build": 0,
   "license": "MIT",
   "private": true,
@@ -18,7 +18,7 @@
     "email": "github@tonysamperi.it"
   },
   "keywords": [
-    "Angular 19",
+    "Angular 20",
     "Material timepicker",
     "Timepicker",
     "Android timepicker",
