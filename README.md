@@ -40,8 +40,9 @@ components, such as `mat-select` and others.
 * Removed useless exports from NgxMatTimepickerModule
 
 ### Compatibility
-
-* v9 < Angular/Material < v17
+The *major* of this package *matches* the Angular major version you can use it with.
+For this reason, breaking changes might be introduced in minor updates *IF STRICTLY NECESSARY* (and in any case they will be highlighted in the changelog).
+So just read the changelog. Unless otherwise stated, minor updates are fully retro-compatible (as semver implies).
 
 **IMPORTANT**  
 Remember to include a Material Theme in your project, example:
