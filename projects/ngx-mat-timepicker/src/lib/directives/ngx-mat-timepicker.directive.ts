@@ -7,7 +7,6 @@ import {
     OnChanges,
     OnDestroy,
     SimpleChanges,
-    Optional,
     inject
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
@@ -144,7 +143,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
 
     private _elementRef: ElementRef = inject(ElementRef);
     private _format: NgxMatTimepickerFormatType = 12;
-    @Optional() private _matFormField: MatFormField = inject(MatFormField);
+    private _matFormField: MatFormField = inject(MatFormField, {optional: !0});
     private _max: string | DateTime;
     private _min: string | DateTime;
     private _previousFormat: number;
