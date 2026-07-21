@@ -1,25 +1,14 @@
 import {Directive, EventEmitter, Input, Output} from "@angular/core";
-import {ThemePalette} from "@angular/material/core";
+import {DateTime} from "ts-luxon";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
-//
-import {DateTime} from "ts-luxon";
 
 @Directive({
     selector: "[ngxMatTimepickerHoursFace]"
 })
 export class NgxMatTimepickerHoursFaceDirective {
-
-    @Input()
-    set color(newValue: ThemePalette) {
-        this._color = newValue;
-    }
-
-    get color(): ThemePalette {
-        return this._color;
-    }
 
     @Input()
     set format(newValue: NgxMatTimepickerFormatType) {
@@ -39,7 +28,6 @@ export class NgxMatTimepickerHoursFaceDirective {
     @Input() minTime: DateTime;
     @Input() selectedHour: NgxMatTimepickerClockFace;
 
-    protected _color: ThemePalette = "primary";
     protected _format: NgxMatTimepickerFormatType = 24;
 
     constructor() {

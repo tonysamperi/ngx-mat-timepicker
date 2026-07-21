@@ -1,37 +1,20 @@
-import {Directive, HostListener, Inject, Input, OnDestroy, OnInit} from "@angular/core";
-import {ThemePalette} from "@angular/material/core";
-//
-import {NgxMatTimepickerEventService} from "../services/ngx-mat-timepicker-event.service";
-import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
-import {NgxMatTimepickerService} from "../services/ngx-mat-timepicker.service";
-import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
+import {Directive, HostListener, inject, Input, OnDestroy, OnInit} from "@angular/core";
+import {Observable, Subject, shareReplay, takeUntil} from "rxjs";
 //
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerClockFace} from "../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerConfig} from "../models/ngx-mat-timepicker-config.interface";
+import {NgxMatTimepickerEventService} from "../services/ngx-mat-timepicker-event.service";
+import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
+import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NGX_MAT_TIMEPICKER_CONFIG} from "../tokens/ngx-mat-timepicker-config.token";
-//
-import {Observable, Subject} from "rxjs";
-import {shareReplay, takeUntil} from "rxjs/operators";
 
 @Directive({
     selector: "[ngxMatTimepickerBase]"
 })
 export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
 
-    @Input()
-    set color(newValue: ThemePalette) {
-        this._color = newValue;
-    }
-
-    get color(): ThemePalette {
-        return this._color;
-    }
-
-    get defaultTime(): string {
-        return this._defaultTime;
-    }
 
     @Input()
     set defaultTime(time: string) {
@@ -39,27 +22,28 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
         this._setDefaultTime(time);
     }
 
+    get defaultTime(): string {
+        return this._defaultTime;
+    }
+
     private get _locale(): string {
         return this._timepickerLocaleSrv.locale;
     }
 
     activeTimeUnit: NgxMatTimepickerUnits = NgxMatTimepickerUnits.HOUR;
+    data: NgxMatTimepickerConfig = inject(NGX_MAT_TIMEPICKER_CONFIG);
     selectedHour: Observable<NgxMatTimepickerClockFace>;
     selectedMinute: Observable<NgxMatTimepickerClockFace>;
     selectedPeriod: Observable<NgxMatTimepickerPeriods>;
     timeUnit: typeof NgxMatTimepickerUnits = NgxMatTimepickerUnits;
 
-    protected _color: ThemePalette = "primary";
-    protected _defaultTime: string;
+    protected _defaultTime: string = this.data.defaultTime;
+    protected _eventSrv: NgxMatTimepickerEventService = inject(NgxMatTimepickerEventService);
     protected _subsCtrl$: Subject<void> = new Subject<void>();
+    protected _timepickerLocaleSrv: NgxMatTimepickerLocaleService = inject(NgxMatTimepickerLocaleService);
+    protected _timepickerSrv = this.data.timepickerState;
 
-    constructor(protected _timepickerSrv: NgxMatTimepickerService,
-                protected _eventSrv: NgxMatTimepickerEventService,
-                protected _timepickerLocaleSrv: NgxMatTimepickerLocaleService,
-                @Inject(NGX_MAT_TIMEPICKER_CONFIG) public data: NgxMatTimepickerConfig) {
-
-        this.color = data.color;
-        this.defaultTime = data.defaultTime;
+    constructor() {
     }
 
     changePeriod(period: NgxMatTimepickerPeriods): void {
@@ -91,6 +75,7 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
         this.data.timepickerBaseRef.timeUpdated.pipe(takeUntil(this._subsCtrl$))
             .subscribe({
                 next: (v: string) => {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                     v && this._setDefaultTime(v);
                 }
             });
@@ -125,13 +110,13 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     protected _defineTime(): void {
-        const minTime = this.data.minTime;
-
-        if (minTime && (!this.data.time && !this.data.defaultTime)) {
-            const time = NgxMatTimepickerAdapter.fromDateTimeToString(minTime, this.data.format);
-
-            this._setDefaultTime(time);
-        }
+        this._timepickerSrv.setInitialTime(
+            this.data.time || this.data.defaultTime,
+            this.data.minTime,
+            this.data.maxTime,
+            this.data.format,
+            this.data.minutesGap
+        );
     }
 
     protected _onTimeChange(): void {

@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import { NgTemplateOutlet } from "@angular/common";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
     selector: "ngx-mat-timepicker-content",

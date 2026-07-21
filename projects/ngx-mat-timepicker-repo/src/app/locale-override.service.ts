@@ -1,12 +1,13 @@
-import {Injectable} from "@angular/core";
+import {Service} from "@angular/core";
 //
 import {NgxMatTimepickerLocaleService} from "ngx-mat-timepicker";
 
-@Injectable()
+@Service()
 export class NgxMatTimepickerLocaleOverrideService extends NgxMatTimepickerLocaleService {
 
     constructor() {
-        super("en-GB");
+        super();
+        this._locale = "en-GB";
     }
 
 }

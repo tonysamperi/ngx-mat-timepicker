@@ -1,5 +1,5 @@
 ngx-mat-timepicker-face {
-	[mat-mini-fab].mat-unthemed {
+	[matminifab].mat-unthemed {
 		--mat-fab-small-container-color: transparent;
 		--mat-fab-small-disabled-state-container-color: transparent;
 		--mat-fab-hover-state-layer-opacity: 0;
@@ -26,8 +26,12 @@ ngx-mat-timepicker-face {
 		}
 	}
 
-	.clock-face {
+	[matminifab],
+	.mat-mdc-mini-fab {
+		border-radius: 50%;
+	}
 
+	.clock-face {
 		width: 290px;
 		height: 290px;
 		border-radius: 50%;
@@ -35,7 +39,7 @@ ngx-mat-timepicker-face {
 		display: flex;
 		justify-content: center;
 		box-sizing: border-box;
-		background-color: rgba(200, 200, 200, 0.5) !important;
+		background-color: rgba(200, 200, 200, 0.25) !important;
 
 		&__inner {
 			position: absolute;
@@ -45,7 +49,7 @@ ngx-mat-timepicker-face {
 			height: 100%;
 		}
 
-		[mat-mini-fab].mat-void {
+		[matminifab].mat-void {
 			box-shadow: none;
 			background-color: transparent;
 
@@ -91,6 +95,7 @@ ngx-mat-timepicker-face {
 		position: absolute;
 		top: calc(50% - 103px);
 		z-index: 1;
+		background-color: var(--mat-fab-small-container-color, var(--mat-fab-container-color, currentColor));
 	}
 
 	.clock-face__center {
@@ -101,7 +106,8 @@ ngx-mat-timepicker-face {
 		border-radius: 50%;
 		top: 50%;
 		left: 50%;
-		margin: -4px;
+		transform: translate(-50%, -50%);
+		background-color: var(--mat-fab-small-container-color, var(--mat-fab-container-color, currentColor));
 	}
 
 	.clock-face__clock-hand_minute > button {
@@ -112,6 +118,8 @@ ngx-mat-timepicker-face {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		border-radius: 50%;
+		background-color: var(--mat-fab-small-container-color, var(--mat-fab-container-color, currentColor));
 
 		.clock-face__clock-hand_minute_dot {
 			display: block;

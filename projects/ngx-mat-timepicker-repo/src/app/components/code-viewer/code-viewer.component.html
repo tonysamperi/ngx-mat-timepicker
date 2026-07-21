@@ -1,7 +1,7 @@
 <mat-card class="code-viewer mat-elevation-z1">
     <div class="code-viewer-header">
         <span>{{showCode ? "Source" : "Example"}}</span>
-        <button mat-icon-button
+        <button matIconButton
                 (click)="showCode = !showCode"
                 matTooltip="{{showCode ? 'Hide' : 'Show'}} source"
                 title="{{showCode ? 'Hide' : 'Show'}} source">

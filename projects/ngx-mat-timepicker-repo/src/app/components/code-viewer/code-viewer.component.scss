@@ -1,4 +1,4 @@
-@import "code-highlight";
+@use "code-highlight" as ch;
 
 code-viewer {
   display: block;
@@ -37,7 +37,7 @@ code-viewer {
     }
   }
 
-  @include code-highlight();
+  @include ch.code-highlight();
 }
 
 

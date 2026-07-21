@@ -2,7 +2,7 @@ div.ngx-mat-timepicker-dialog {
   > mat-dialog-container {
     padding-top: 0;
 
-    [mat-dialog-content] {
+    [matdialogcontent] {
       padding: 0;
       max-height: 85vh;
 
@@ -21,9 +21,10 @@ div.ngx-mat-timepicker-dialog {
       }
     }
 
-    div[mat-dialog-actions] {
+    div[matdialogactions] {
       justify-content: flex-end;
       display: flex;
+      gap: 16px;
     }
   }
 }

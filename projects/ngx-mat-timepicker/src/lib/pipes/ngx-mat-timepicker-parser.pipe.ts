@@ -1,10 +1,9 @@
-import {Injectable, Pipe, PipeTransform} from "@angular/core";
+import {Injectable, Pipe, PipeTransform, inject} from "@angular/core";
+import {DateTime, NumberingSystem} from "ts-luxon";
 //
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerMeasure} from "../models/ngx-mat-timepicker-measures.enum";
 import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
-//
-import {DateTime, NumberingSystem} from "ts-luxon";
 
 @Pipe({
     name: "ngxMatTimepickerParser"
@@ -17,8 +16,10 @@ export class NgxMatTimepickerParserPipe implements PipeTransform {
     }
 
     private readonly _numberingSystem: NumberingSystem;
+    private _timepickerLocaleSrv = inject(NgxMatTimepickerLocaleService);
 
-    constructor(private _timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
+
+    constructor() {
         this._numberingSystem = DateTime.local().setLocale(this._locale).resolvedLocaleOptions().numberingSystem as NumberingSystem;
     }
 

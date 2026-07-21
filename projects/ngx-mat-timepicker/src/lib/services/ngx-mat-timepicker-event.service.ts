@@ -1,11 +1,9 @@
-import {Injectable} from "@angular/core";
+import {Service} from "@angular/core";
 //
 import {Observable, Subject} from "rxjs";
 import {shareReplay} from "rxjs/operators";
 
-@Injectable({
-    providedIn: "root"
-})
+@Service()
 export class NgxMatTimepickerEventService {
 
     get backdropClick(): Observable<MouseEvent> {
@@ -16,8 +14,8 @@ export class NgxMatTimepickerEventService {
         return this._keydownEvent$.asObservable().pipe(shareReplay({bufferSize: 1, refCount: true}));
     }
 
-    private _backdropClick$: Subject<MouseEvent> = new Subject();
-    private _keydownEvent$: Subject<KeyboardEvent> = new Subject();
+    private _backdropClick$ = new Subject<MouseEvent>();
+    private _keydownEvent$ = new Subject<KeyboardEvent>();
 
     constructor() {
     }

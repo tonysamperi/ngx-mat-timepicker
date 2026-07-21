@@ -6,13 +6,8 @@
 	font-family: "Material Icons";
 	font-style: normal;
 	font-weight: 400;
-	src: url("assets/fonts/MaterialIcons-Regular.woff") format("woff");
+	src: url("/assets/fonts/MaterialIcons-Regular.woff") format("woff");
 }
-
-$primary-color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$candy-app-primary);
-$accent-color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$candy-app-accent);
-$primary-color-dark: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-primary);
-$accent-color-dark: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-accent);
 
 body {
 	margin: 0;
@@ -21,36 +16,6 @@ body {
 
 	* {
 		box-sizing: border-box;
-	}
-
-	a {
-		&.mat-color-primary {
-			color: $primary-color;
-			-webkit-text-decoration: none;
-			text-decoration: none;
-			padding-bottom: 1px;
-			border-bottom: 2px solid rgba($primary-color, 0.25);
-			-webkit-transition: border-bottom-color 0.15s ease-in-out;
-			transition: border-bottom-color 0.15s ease-in-out;
-
-			&:hover {
-				border-bottom: 2px solid rgba($primary-color, 1);
-			}
-		}
-
-		&.mat-color-accent {
-			color: $accent-color;
-			-webkit-text-decoration: none;
-			text-decoration: none;
-			padding-bottom: 1px;
-			border-bottom: 2px solid rgba($accent-color, 0.25);
-			-webkit-transition: border-bottom-color 0.15s ease-in-out;
-			transition: border-bottom-color 0.15s ease-in-out;
-
-			&:hover {
-				border-bottom: 2px solid rgba($accent-color, 1);
-			}
-		}
 	}
 
 	.material-icons {
@@ -103,23 +68,6 @@ body {
 		padding: 16px;
 	}
 
-	.ngx-mtp-top, footer {
-		background-color: $primary-color;
-		color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$candy-app-primary, default-contrast);
-	}
-
-	.mat-color-primary {
-		color: $primary-color;
-	}
-
-	.mat-color-accent {
-		color: $accent-color;
-	}
-
-	.mat-color-warn {
-		color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$candy-app-warn);
-	}
-
 	.ngx-mtp-margin-top {
 		margin-top: 8px;
 	}
@@ -134,72 +82,100 @@ body {
 		border-radius: 10px;
 		padding: 8px;
 		width: 100%;
-		border: 2px dashed $primary-color;
+		border: 2px dashed var(--ngx-mtp-primary);
 	}
 
 	.ngx-mtp-generic-section {
 		width: 100%;
 		min-height: 20px;
-		background-color: #F0F0F0;
+		background-color: var(--ngx-mtp-surface-container);
 		padding: 20px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		border-bottom: 1px solid #DDDDDD;
+		border-bottom: 1px solid color-mix(in srgb, var(--ngx-mtp-on-surface) 12%, transparent);
 	}
+}
 
-	// Include the default theme styles.
-	@include mat.all-component-themes(ngx-mat-timepicker-themes.$candy-app-theme);
-	// @include mat.all-component-themes($candy-app-theme); // doesn't work yet
+html {
+	@include mat.all-component-themes(ngx-mat-timepicker-themes.$light-theme);
+	--ngx-mtp-primary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, primary)};
+	--ngx-mtp-on-primary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, on-primary)};
+	--ngx-mtp-tertiary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, tertiary)};
+	--ngx-mtp-on-tertiary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, on-tertiary)};
+	--ngx-mtp-error: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, error)};
+	--ngx-mtp-on-surface: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, on-surface)};
+	--ngx-mtp-surface-container: #{mat.get-theme-color(ngx-mat-timepicker-themes.$light-theme, surface-container)};
 
-	&.dark-theme {
-		@include mat.all-component-colors(ngx-mat-timepicker-themes.$dark-theme);
-		// @include mat.all-component-themes($dark-theme); // doesn't work yet
+	a {
+		&.mat-color-primary {
+			color: var(--ngx-mtp-primary);
+			-webkit-text-decoration: none;
+			text-decoration: none;
+			padding-bottom: 1px;
+			border-bottom: 2px solid color-mix(in srgb, var(--ngx-mtp-primary) 25%, transparent);
+			-webkit-transition: border-bottom-color 0.15s ease-in-out;
+			transition: border-bottom-color 0.15s ease-in-out;
 
-		a {
-			&.mat-color-primary {
-				color: $primary-color-dark;
-				border-bottom: 2px solid rgba(mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-primary), 0.25);
-
-				&:hover {
-					border-bottom: 2px solid rgba(mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-primary), 1);
-				}
-			}
-
-			&.mat-color-accent {
-				color: $accent-color-dark;
-				border-bottom: 2px solid rgba($accent-color-dark, 0.25);
-
-				&:hover {
-					border-bottom: 2px solid rgba($accent-color-dark, 1);
-				}
+			&:hover {
+				border-bottom: 2px solid var(--ngx-mtp-primary);
 			}
 		}
 
-		.ngx-mtp-box-bordered {
-			border-color: $primary-color-dark;
+		&.mat-color-accent {
+			color: var(--ngx-mtp-on-primary);
+			-webkit-text-decoration: none;
+			text-decoration: none;
+			padding-bottom: 1px;
+			border-bottom: 2px solid color-mix(in srgb, var(--ngx-mtp-on-primary) 25%, transparent);
+			-webkit-transition: border-bottom-color 0.15s ease-in-out;
+			transition: border-bottom-color 0.15s ease-in-out;
+
+			&:hover {
+				border-bottom: 2px solid var(--ngx-mtp-on-primary);
+			}
 		}
 
-		.ngx-mtp-generic-section {
-			background-color: #222;
-			border-bottom: 1px solid #000;
-		}
+		&.mat-color-tertiary {
+			color: var(--ngx-mtp-tertiary);
+			-webkit-text-decoration: none;
+			text-decoration: none;
+			padding-bottom: 1px;
+			border-bottom: 2px solid color-mix(in srgb, var(--ngx-mtp-tertiary) 25%, transparent);
+			-webkit-transition: border-bottom-color 0.15s ease-in-out;
+			transition: border-bottom-color 0.15s ease-in-out;
 
-		.ngx-mtp-top, footer {
-			background-color: $primary-color-dark;
-			color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-primary, default-contrast);
-		}
-
-		.mat-color-primary {
-			color: $primary-color-dark;
-		}
-
-		.mat-color-accent {
-			color: $accent-color-dark;
-		}
-
-		.mat-color-warn {
-			color: mat.m2-get-color-from-palette(ngx-mat-timepicker-themes.$dark-warn);
+			&:hover {
+				border-bottom: 2px solid var(--ngx-mtp-tertiary);
+			}
 		}
 	}
+
+	.ngx-mtp-top, footer {
+		background-color: var(--ngx-mtp-primary);
+		color: var(--ngx-mtp-on-primary);
+	}
+
+	.mat-color-primary {
+		color: var(--ngx-mtp-primary);
+	}
+
+	.mat-color-tertiary {
+		color: var(--ngx-mtp-tertiary);
+	}
+
+	.mat-color-error {
+		color: var(--ngx-mtp-error);
+	}
+}
+
+html.dark-theme {
+	@include mat.all-component-colors(ngx-mat-timepicker-themes.$dark-theme);
+	--ngx-mtp-primary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, primary)};
+	--ngx-mtp-on-primary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, on-primary)};
+	--ngx-mtp-tertiary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, tertiary)};
+	--ngx-mtp-on-tertiary: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, on-tertiary)};
+	--ngx-mtp-error: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, error)};
+	--ngx-mtp-on-surface: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, on-surface)};
+	--ngx-mtp-surface-container: #{mat.get-theme-color(ngx-mat-timepicker-themes.$dark-theme, surface-container)};
 }

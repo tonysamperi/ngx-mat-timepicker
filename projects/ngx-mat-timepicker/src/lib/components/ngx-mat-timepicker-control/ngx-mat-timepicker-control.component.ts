@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
+import {Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
 import {NgClass} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import {ThemePalette} from "@angular/material/core";
 import {FloatLabelType, MatFormFieldModule} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
@@ -12,22 +11,16 @@ import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 import {NgxMatTimepickerTimeLocalizerPipe} from "../../pipes/ngx-mat-timepicker-time-localizer.pipe";
 
 function concatTime(currentTime: string, nextTime: string): number | undefined {
-    const isNumber = /\d/.test(nextTime);
-
-    if (isNumber) {
-        const time = currentTime + nextTime;
-
-        return +time;
+    if (/\d/.test(nextTime)) {
+        return +currentTime + +nextTime;
     }
-
-    return undefined;
+    return void 0;
 }
 
 @Component({
     selector: "ngx-mat-timepicker-time-control",
-    templateUrl: "./ngx-mat-timepicker-control.component.html",
-    styleUrls: ["./ngx-mat-timepicker-control.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: "ngx-mat-timepicker-control.component.html",
+    styleUrls: ["ngx-mat-timepicker-control.component.scss"],
     providers: [NgxMatTimepickerParserPipe],
     imports: [MatFormFieldModule, NgClass, MatInputModule, FormsModule, NgxMatTimepickerParserPipe, NgxMatTimepickerTimeLocalizerPipe]
 })
@@ -35,17 +28,6 @@ function concatTime(currentTime: string, nextTime: string): number | undefined {
 export class NgxMatTimepickerControlComponent implements OnChanges {
 
     static nextId: number = 0;
-
-    @Input()
-    set color(newValue: ThemePalette) {
-        this._color = newValue;
-    }
-
-    get color(): ThemePalette {
-        return this._color;
-    }
-
-    @Input() disabled: boolean;
 
     @Input()
     set floatLabel(newValue: FloatLabelType) {
@@ -56,24 +38,23 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
         return this._floatLabel;
     }
 
+    @Input() disabled: boolean;
     id: number = NgxMatTimepickerControlComponent.nextId++;
     isFocused: boolean;
     @Input() max: number;
     @Input() min: number;
     @Input() placeholder: string;
     @Input() preventTyping: boolean;
-
     @Input() time: number;
-
     @Output() timeChanged = new EventEmitter<number>();
     @Input() timeList: NgxMatTimepickerClockFace[];
     @Input() timeUnit: NgxMatTimepickerUnits;
 
-    private _color: ThemePalette = "primary";
     private _floatLabel: FloatLabelType = "auto";
     private _previousTime: number;
+    private _timeParser: NgxMatTimepickerParserPipe = inject(NgxMatTimepickerParserPipe);
 
-    constructor(private _timeParser: NgxMatTimepickerParserPipe) {
+    constructor() {
     }
 
     changeTime(event: InputEvent): void {
@@ -121,7 +102,6 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // tslint:disable-next-line:no-string-literal
         if (changes["timeList"] && this.time != null) {
             if (this._isSelectedTimeDisabled(this.time)) {
                 this._setAvailableTime();
@@ -201,7 +181,7 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
             }
         }
 
-        return undefined;
+        return void 0;
     }
 
     private _getPrevAvailableTime(index: number): number | undefined {
@@ -212,7 +192,7 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
             }
         }
 
-        return undefined;
+        return void 0;
     }
 
     private _isSelectedTimeDisabled(time: number): boolean {
@@ -224,4 +204,3 @@ export class NgxMatTimepickerControlComponent implements OnChanges {
         this.timeChanged.emit(this.time);
     }
 }
-

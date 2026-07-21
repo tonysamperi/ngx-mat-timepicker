@@ -4,8 +4,8 @@ import {NgxMatTimepickerConfig} from "../models/ngx-mat-timepicker-config.interf
 
 export const NGX_MAT_TIMEPICKER_CONFIG = new InjectionToken<NgxMatTimepickerConfig>("NGX_MAT_TIMEPICKER_CONFIG");
 
-export function provideNgxMatTimepickerOptions(config: NgxMatTimepickerConfig): Provider[] {
+export function provideNgxMatTimepickerConfig(config?: NgxMatTimepickerConfig): Provider[] {
     return [
-        {provide: NGX_MAT_TIMEPICKER_CONFIG, useValue: config},
+        {provide: NGX_MAT_TIMEPICKER_CONFIG, useValue: config}
     ];
 }

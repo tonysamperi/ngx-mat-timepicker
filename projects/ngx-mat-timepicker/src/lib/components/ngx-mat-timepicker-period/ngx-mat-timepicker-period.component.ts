@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Output, inject} from "@angular/core";
 import {animate, sequence, style, transition, trigger} from "@angular/animations";
 import { NgClass } from "@angular/common";
 import { FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy, CdkOverlayOrigin, CdkConnectedOverlay } from "@angular/cdk/overlay";
@@ -40,13 +40,16 @@ export class NgxMatTimepickerPeriodComponent {
     @Input() minTime: DateTime;
     @Input() minutes: NgxMatTimepickerClockFace[];
     overlayPositionStrategy: FlexibleConnectedPositionStrategy;
-    overlayScrollStrategy: ScrollStrategy = this._overlay.scrollStrategies.reposition();
+    overlayScrollStrategy: ScrollStrategy
     @Output() periodChanged = new EventEmitter<NgxMatTimepickerPeriods>();
     @Input() selectedHour: number | string;
     @Input() selectedPeriod: NgxMatTimepickerPeriods;
     timePeriod = NgxMatTimepickerPeriods;
 
-    constructor(protected _overlay: Overlay) {
+    protected _overlay: Overlay = inject(Overlay);
+
+    constructor() {
+        this.overlayScrollStrategy = this._overlay.scrollStrategies.reposition();
     }
 
     animationDone(): void {

@@ -9,7 +9,6 @@ import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-fac
 			 [format]="format"></div>`,
     imports: [NgxMatTimepickerHoursFaceDirective]
 })
-// tslint:disable-next-line:naming-convention
 class TestHostComponent {
 
     @ViewChild(NgxMatTimepickerHoursFaceDirective) directive: NgxMatTimepickerHoursFaceDirective;

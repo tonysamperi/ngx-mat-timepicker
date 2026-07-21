@@ -1,23 +1,19 @@
 button.ngx-mat-timepicker-toggle {
-	background-color: transparent;
-	text-align: center;
-	user-select: none;
-	cursor: pointer;
-	box-shadow: none;
+  background-color: transparent;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: none;
 }
 
 .mat-form-field .ngx-mat-timepicker-toggle-default-icon,
 .mat-form-field .ngx-mat-timepicker-toggle-default-icon {
-	margin: auto;
+  margin: auto;
 }
 
 .mat-form-field .ngx-mat-timepicker-toggle-default-icon,
 .mat-form-field .ngx-mat-timepicker-toggle-default-icon {
-	display: block;
-	width: 1.5em;
-	height: 1.5em;
-}
-
-body .ngx-mat-timepicker-toggle {
-	color: rgba(0, 0, 0, 0.54);
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
 }

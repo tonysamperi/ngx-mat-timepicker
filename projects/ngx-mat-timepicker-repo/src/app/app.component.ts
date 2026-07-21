@@ -1,13 +1,17 @@
 import {Component} from "@angular/core";
 //
 import {NGX_MAT_TIMEPICKER_ENVIRONMENT} from "../environments/environment";
+import {NgxMatTimepickerDemoComponent} from "./components/demo/demo.component";
+import {NgxMatTimepickerTestComponent} from "./components/test/test.component";
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: "app-root",
+    selector: "ngx-mat-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
-    standalone: false
+    imports: [
+        NgxMatTimepickerDemoComponent,
+        NgxMatTimepickerTestComponent
+    ]
 })
 export class NgxMatTimepickerAppComponent {
 

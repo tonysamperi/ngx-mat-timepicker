@@ -28,6 +28,10 @@ Material: `primary`, `accent`, `warn`.
 Also a few components were unnecessary and not in material style, so I got rid of them and integrated Material
 components, such as `mat-select` and others.
 
+### Migrate to v22
+* Dropped the color attribute, since the M2 theme support was dropped
+* 
+
 **Other general improvements**
 
 * Improved clock hand alignments
@@ -38,10 +42,13 @@ components, such as `mat-select` and others.
 * Added leading zero for the hours in the dialog header (as in Android timepicker)
 * More consistent naming
 * Removed useless exports from NgxMatTimepickerModule
+* \[new in **v22**\] drop support of Material 2 themes
+* \[new in **v22**\] full support of Material 3 themes
+* \[new in **v22**\] each dialog gets own instance of the picker service, solving a long-standing issue where the picker doesn't show the default time
 
 ### Compatibility
 
-* v9 < Angular/Material < v17
+* v9 < Angular/Material < v23
 
 **IMPORTANT**  
 Remember to include a Material Theme in your project, example:

@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from "@angular/core";
+import {Pipe, PipeTransform, inject} from "@angular/core";
 //
 import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerUnits} from "../models/ngx-mat-timepicker-units.enum";
@@ -15,8 +15,7 @@ export class NgxMatTimepickerTimeLocalizerPipe implements PipeTransform {
         return this._timepickerLocaleSrv.locale;
     }
 
-    constructor(private _timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
-    }
+    private _timepickerLocaleSrv = inject(NgxMatTimepickerLocaleService);
 
     transform(time: number | string, timeUnit: NgxMatTimepickerUnits, isKeyboardEnabled = false): string {
         if (time == null || time === "") {

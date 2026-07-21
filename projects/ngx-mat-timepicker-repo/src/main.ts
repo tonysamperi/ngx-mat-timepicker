@@ -1,9 +1,12 @@
-import { provideZoneChangeDetection } from "@angular/core";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import {provideZoneChangeDetection} from "@angular/core";
+import {bootstrapApplication} from "@angular/platform-browser";
+//
+import {ngxMatTimepickerAppConfig} from "./app/app.config";
+import {NgxMatTimepickerAppComponent} from "./app/app.component";
 
-import { NgxMatTimepickerAppModule } from "./app/app.module";
-
-
-platformBrowserDynamic()
-    .bootstrapModule(NgxMatTimepickerAppModule, { applicationProviders: [provideZoneChangeDetection()], })
-    .catch(err => console.error(err));
+bootstrapApplication(NgxMatTimepickerAppComponent, {
+    providers: [
+        provideZoneChangeDetection(),
+        ...ngxMatTimepickerAppConfig.providers
+    ]
+}).catch(err => console.error(err));

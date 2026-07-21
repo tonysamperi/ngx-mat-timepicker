@@ -1,7 +1,7 @@
 import {
-    ChangeDetectionStrategy,
     Component,
     EventEmitter,
+    inject,
     Input,
     OnDestroy,
     OnInit,
@@ -9,10 +9,10 @@ import {
     TemplateRef,
     ViewEncapsulation
 } from "@angular/core";
-import { NgClass, NgTemplateOutlet } from "@angular/common";
+import {NgClass, NgTemplateOutlet} from "@angular/common";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule} from "@angular/forms";
 import {MatSelectChange, MatSelectModule} from "@angular/material/select";
-import {ThemePalette, MatOptionModule} from "@angular/material/core";
+import {MatOptionModule} from "@angular/material/core";
 import {FloatLabelType, MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 //
@@ -35,8 +35,8 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
 
 @Component({
     selector: "ngx-mat-timepicker-field",
-    templateUrl: "./ngx-mat-timepicker-field.component.html",
-    styleUrls: ["./ngx-mat-timepicker-field.component.scss"],
+    templateUrl: "ngx-mat-timepicker-field.component.html",
+    styleUrls: ["ngx-mat-timepicker-field.component.scss"],
     providers: [
         NgxMatTimepickerService,
         {
@@ -45,36 +45,22 @@ import {distinctUntilChanged, map, takeUntil, tap} from "rxjs/operators";
             multi: true
         }
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     imports: [
-    NgClass,
-    NgxMatTimepickerControlComponent,
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    MatOptionModule,
-    NgxMatTimepickerToggleComponent,
-    NgxMatTimepickerToggleIconDirective,
-    NgTemplateOutlet,
-    NgxMatTimepickerComponent,
-    MatIconModule
-]
+        NgClass,
+        NgxMatTimepickerControlComponent,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        MatOptionModule,
+        NgxMatTimepickerToggleComponent,
+        NgxMatTimepickerToggleIconDirective,
+        NgTemplateOutlet,
+        NgxMatTimepickerComponent,
+        MatIconModule
+    ]
 })
 export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, ControlValueAccessor {
-
-    get color(): ThemePalette {
-        return this._color;
-    }
-
-    @Input()
-    set color(newValue: ThemePalette) {
-        this._color = newValue;
-    }
-
-    get defaultTime(): string {
-        return this._defaultTime;
-    }
 
     @Input()
     set defaultTime(val: string) {
@@ -82,8 +68,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._isDefaultTime = !!val;
     }
 
-    get floatLabel(): FloatLabelType {
-        return this._floatLabel;
+    get defaultTime(): string {
+        return this._defaultTime;
     }
 
     @Input()
@@ -91,8 +77,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._floatLabel = newValue;
     }
 
-    get format(): NgxMatTimepickerFormatType {
-        return this._format;
+    get floatLabel(): FloatLabelType {
+        return this._floatLabel;
     }
 
     @Input()
@@ -116,8 +102,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._previousFormat = this._format;
     }
 
-    get max(): DateTime {
-        return this._max;
+    get format(): NgxMatTimepickerFormatType {
+        return this._format;
     }
 
     @Input()
@@ -130,8 +116,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this._max = value;
     }
 
-    get min(): DateTime {
-        return this._min;
+    get max(): DateTime {
+        return this._max;
     }
 
     @Input()
@@ -142,6 +128,10 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
             return;
         }
         this._min = value;
+    }
+
+    get min(): DateTime {
+        return this._min;
     }
 
     private get _locale(): string {
@@ -170,14 +160,11 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         NgxMatTimepickerPeriods.AM,
         NgxMatTimepickerPeriods.PM
     ];
-
     @Output() timeChanged = new EventEmitter<string>();
-    timepickerTime: string;
-
     timeUnit = NgxMatTimepickerUnits;
+    timepickerTime: string;
     @Input() toggleIcon: TemplateRef<HTMLObjectElement>;
 
-    private _color: ThemePalette = "primary";
     private _defaultTime: string;
     private _floatLabel: FloatLabelType = "auto";
     private _format: NgxMatTimepickerFormatType = 12;
@@ -188,10 +175,8 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     private _previousFormat: number;
     private _selectedHour: number;
     private _subsCtrl$: Subject<void> = new Subject<void>();
-
-    constructor(private _timepickerService: NgxMatTimepickerService,
-                private _timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
-    }
+    private _timepickerLocaleSrv: NgxMatTimepickerLocaleService = inject(NgxMatTimepickerLocaleService);
+    private _timepickerService: NgxMatTimepickerService = inject(NgxMatTimepickerService);
 
     changeHour(hour: number): void {
         this._timepickerService.hour = this.hoursList.find(h => h.time === hour);
@@ -221,17 +206,17 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         this.isTimeRangeSet = !!(this.min || this.max);
 
         this._timepickerService.selectedHour.pipe(
-                tap((clockTime: NgxMatTimepickerClockFace) => this._selectedHour = clockTime?.time),
-                map(this._changeDefaultTimeValue.bind(this)),
-                tap(() => this.isTimeRangeSet && this._updateAvailableMinutes())
-            )
+            tap((clockTime: NgxMatTimepickerClockFace) => this._selectedHour = clockTime?.time),
+            map(this._changeDefaultTimeValue.bind(this)),
+            tap(() => this.isTimeRangeSet && this._updateAvailableMinutes())
+        )
             .subscribe({
                 next: (v: NgxMatTimepickerClockFace) => this.hour$.next(v)
             });
         this._timepickerService.selectedMinute.pipe(
-                map(this._changeDefaultTimeValue.bind(this)),
-                tap(() => this._isFirstTimeChange = false)
-            )
+            map(this._changeDefaultTimeValue.bind(this)),
+            tap(() => this._isFirstTimeChange = false)
+        )
             .subscribe({
                 next: (v: NgxMatTimepickerClockFace) => this.minute$.next(v)
             });
@@ -247,6 +232,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
         }
         else {
             // But we still need to run this once :) see #108
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             this.isTimeRangeSet && this._updateAvailableTime();
         }
 

@@ -2,7 +2,6 @@ import {
     Directive,
     ElementRef,
     HostListener,
-    HostBinding,
     Input,
     OnChanges,
     OnDestroy,
@@ -10,7 +9,7 @@ import {
     inject
 } from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {CdkOverlayOrigin} from "@angular/cdk/overlay";
+import {CdkOverlayOrigin, FlexibleConnectedPositionStrategyOrigin} from "@angular/cdk/overlay";
 import {MatFormField} from "@angular/material/form-field";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
@@ -137,7 +136,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
         return this._timepickerLocaleSrv.locale;
     }
 
-    @HostBinding("attr.cdkOverlayOrigin") cdkOverlayOrigin: CdkOverlayOrigin;
+    cdkOverlayOrigin: CdkOverlayOrigin | FlexibleConnectedPositionStrategyOrigin;
     @Input() disableClick: boolean;
     @Input() disabled: boolean;
 
@@ -153,7 +152,9 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     private _value: string = "";
 
     constructor() {
-        this.cdkOverlayOrigin = new CdkOverlayOrigin(this._matFormField ? this._matFormField.getConnectedOverlayOrigin() : this._elementRef);
+        this.cdkOverlayOrigin = this._matFormField
+            ? this._matFormField.getConnectedOverlayOrigin()
+            : this._elementRef;
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -238,4 +239,3 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
 }
-

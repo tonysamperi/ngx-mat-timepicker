@@ -1,4 +1,4 @@
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, inject} from "@angular/core";
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
@@ -12,13 +12,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {
     NgxMatTimepickerComponent,
     NgxMatTimepickerDirective,
-    NgxMatTimepickerLocaleService,
     NgxMatTimepickerFieldComponent
 } from "ngx-mat-timepicker";
 //
 import {NgxMatTimepickerDemoComponent} from "../demo/demo.component";
 
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: "app-dialog",
     template: `
 		<div mat-dialog-title>Dialog Title</div>
@@ -57,6 +57,7 @@ export class NgxMatTimepickerTestDialogComponent {
 }
 
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: "app-test",
     templateUrl: "test.component.html",
     styleUrls: ["test.component.scss"],
@@ -70,24 +71,22 @@ export class NgxMatTimepickerTestDialogComponent {
     MatToolbarModule,
     NgxMatTimepickerFieldComponent,
     ReactiveFormsModule
-]
+    ]
 })
 export class NgxMatTimepickerTestComponent extends NgxMatTimepickerDemoComponent {
 
     formControlItem: FormControl = new FormControl("", [Validators.pattern(/([0-9]|[1-2]\d):[0-5]\d/)]);
     time: string = "00:00";
-    @ViewChild("timepicker")
-    private _timepicker: NgxMatTimepickerComponent;
 
-    constructor(private _matDialog: MatDialog, localeOverrideSrv: NgxMatTimepickerLocaleService) {
-        super(localeOverrideSrv);
-    }
+    private _matDialog = inject(MatDialog);
+    @ViewChild("timepicker") private _timepicker: NgxMatTimepickerComponent;
 
     onClear() {
         this.formControlItem.setValue(null);
     }
 
     onFieldBlur(): void {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this.formControlItem.valid && this.pickerFreeInput.updateTime(this.formControlItem.value);
     }
 

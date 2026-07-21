@@ -1,3 +1,6 @@
+# 22.0.0
+* Update for Angular 22! 🎉
+
 # 21.0.1
 * MatFormField is now optional again (closes [#141](https://github.com/tonysamperi/ngx-mat-timepicker/issues/141))
 
