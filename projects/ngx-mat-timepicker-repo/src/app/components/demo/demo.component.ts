@@ -170,7 +170,7 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.messages().forEach(({text, opts = {}}, i: number) => {
-                        const tw = new TypeWriter(`[pop-messages] li:nth-child(${i + 1})`, {
+                        const tw = new TypeWriter(`[mtp-messages] li:nth-child(${i + 1})`, {
                             // eslint-disable-next-line no-extra-boolean-cast
                             strings: !!opts.loop ? [text] : void 0,
                             autoStart: !!opts.loop,

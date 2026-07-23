@@ -22,7 +22,6 @@ export class CodeViewerComponent implements OnInit {
         if (!$code) {
             return;
         }
-        console.info("GOT CODE", $code);
         highlightElement($code);
     }
 
