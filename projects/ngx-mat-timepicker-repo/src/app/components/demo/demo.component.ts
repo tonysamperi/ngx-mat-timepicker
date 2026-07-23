@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, inject, signal} from "@angular/core";
+import {Component, OnInit, ViewChild, inject, signal} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
@@ -7,7 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {catchError, map, of} from "rxjs";
+import {catchError, map, of, switchMap, timer} from "rxjs";
 import {ajax, AjaxResponse} from "rxjs/ajax";
 import {DateTime} from "ts-luxon";
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -103,7 +103,6 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     year: number = new Date().getFullYear();
 
     private _localeOverrideSrv = inject(NgxMatTimepickerLocaleService);
-    @ViewChild("mtpMessages", {read: ElementRef}) private _mtpMessages: ElementRef<HTMLElement>;
     private _nextLocale: number = 0;
 
     debug(): void {
@@ -159,42 +158,31 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
     //
 
     private _getMessages(): void {
-        ajax.get<{ messages: any[] }>(`/assets/messages.json`)
+        ajax.get(`./assets/messages.json`)
             .pipe(
-                catchError((err) => {
-                    console.warn("Failed to retrieve messages!!!", err);
+                switchMap((resp: AjaxResponse<any>) => {
+                    this.messages.set(resp.response.messages);
 
-                    return of({
-                        response: {
-                            messages: []
+                    return timer(150);
+                }),
+                catchError(() => of([]))
+            )
+            .subscribe({
+                next: () => {
+                    this.messages().forEach(({text, opts = {}}, i: number) => {
+                        const tw = new TypeWriter(`[pop-messages] li:nth-child(${i + 1})`, {
+                            // eslint-disable-next-line no-extra-boolean-cast
+                            strings: !!opts.loop ? [text] : void 0,
+                            autoStart: !!opts.loop,
+                            loop: !!opts.loop,
+                            delay: opts.delay || "natural"
+                        });
+                        if (!opts.loop) {
+                            tw.typeString(text).stop().start();
                         }
                     });
-                })
-            )
-            .subscribe((resp) => {
-                console.info("GOT MESSAGES", resp.response.messages);
-                this.messages.set(resp.response.messages);
-                setTimeout(() => {
-                    this._initTypewriter();
-                }, 500);
+                }
             });
-    }
-
-    private _initTypewriter(): void {
-        const items = this._mtpMessages?.nativeElement.querySelectorAll("li");
-
-        items?.forEach((item, i: number) => {
-            const {text, opts = {}} = this.messages()[i];
-            const tw = new TypeWriter(item, {
-                strings: opts.loop ? [text] : void 0,
-                autoStart: !!opts.loop,
-                loop: !!opts.loop,
-                delay: opts.delay || "natural"
-            });
-            if (!opts.loop) {
-                tw.typeString(text).stop().start();
-            }
-        });
     }
 
 }
