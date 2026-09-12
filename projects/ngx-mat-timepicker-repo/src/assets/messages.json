@@ -1,6 +1,13 @@
 {
   "messages": [
     {
+      "text": "📰 12/09/2026: published v22.0.0!",
+      "opts": {
+        "loop": true,
+        "delay": 80
+      }
+    },
+    {
       "text": "⭐ 23/07/2026: published v22.0.0-next.0!",
       "opts": {
         "loop": true,
