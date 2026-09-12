@@ -1,6 +1,8 @@
-ngx-mat-timepicker-standalone {
+ngx-mat-timepicker-standalone.mat-app-background {
   display: block;
-  border-radius: 4px;
+  border-radius: 28px;
+  background: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-on-surface);
   box-shadow: 0 0 5px 2px rgb(0 0 0 / 25%);
   overflow: hidden;
 
@@ -11,6 +13,10 @@ ngx-mat-timepicker-standalone {
       display: flex;
       justify-content: center;
       align-items: center;
+      height: auto;
+      padding: 24px 16px 8px;
+      background: transparent;
+      color: inherit;
 
       &.is-editable {
         height: auto;
@@ -25,12 +31,8 @@ ngx-mat-timepicker-standalone {
   .ngx-mat-timepicker-standalone-actions {
     display: flex;
     flex-direction: row;
+    gap: 8px;
     justify-content: flex-end;
     padding: 0 16px 16px 16px;
   }
 }
-
-
-
-
-

@@ -15,7 +15,7 @@ const angularRules = {
         "error",
         {
             type: "element",
-            prefix: "app",
+            prefix: "ngx-mat",
             style: "kebab-case"
         }
     ]
@@ -175,6 +175,7 @@ const namingConventionRules = {
 };
 
 module.exports = tseslint.config({
+        files: ['**/*.ts'],
         ignores: [
             "node_modules/**/*",
             "test/**/*",

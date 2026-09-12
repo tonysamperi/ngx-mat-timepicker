@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 //
 import {
     NgxMatTimepickerHoursFaceDirective
@@ -10,7 +10,6 @@ import {NgxMatTimepickerFaceComponent} from "../ngx-mat-timepicker-face/ngx-mat-
 @Component({
     selector: "ngx-mat-timepicker-12-hours-face",
     templateUrl: "ngx-mat-timepicker-12-hours-face.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NgxMatTimepickerFaceComponent]
 })
 export class NgxMatTimepicker12HoursFaceComponent extends NgxMatTimepickerHoursFaceDirective implements OnChanges {
@@ -23,7 +22,6 @@ export class NgxMatTimepicker12HoursFaceComponent extends NgxMatTimepickerHoursF
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        // tslint:disable-next-line:no-string-literal
         if (changes["period"] && changes["period"].currentValue) {
             this.hoursList = NgxMatTimepickerUtils.disableHours(this.hoursList, {
                 min: this.minTime,

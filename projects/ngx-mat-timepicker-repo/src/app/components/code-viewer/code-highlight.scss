@@ -1,4 +1,6 @@
-@mixin code-highlight($scrollbar-color: lighten(#281e36, 15)) {
+@use "sass:color" as color;
+
+@mixin code-highlight($scrollbar-color: color.adjust(#281e36, $lightness: 15%)) {
   code[class*=language-], pre[class*=language-] {
     font-family: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
     direction: ltr;
@@ -43,7 +45,7 @@
       background-color: $scrollbar-color;
       -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
       &:hover {
-        background-color: lighten($scrollbar-color, 15);
+        background-color: color.adjust($scrollbar-color, $lightness: 15%);
       }
     }
   }

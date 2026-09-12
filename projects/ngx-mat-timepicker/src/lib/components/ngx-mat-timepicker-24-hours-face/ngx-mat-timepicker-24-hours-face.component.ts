@@ -1,4 +1,4 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component} from "@angular/core";
+import {AfterContentInit, Component} from "@angular/core";
 //
 import {
     NgxMatTimepickerHoursFaceDirective
@@ -9,7 +9,6 @@ import {NgxMatTimepickerFaceComponent} from "../ngx-mat-timepicker-face/ngx-mat-
 @Component({
     selector: "ngx-mat-timepicker-24-hours-face",
     templateUrl: "ngx-mat-timepicker-24-hours-face.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NgxMatTimepickerFaceComponent]
 })
 export class NgxMatTimepicker24HoursFaceComponent extends NgxMatTimepickerHoursFaceDirective implements AfterContentInit {

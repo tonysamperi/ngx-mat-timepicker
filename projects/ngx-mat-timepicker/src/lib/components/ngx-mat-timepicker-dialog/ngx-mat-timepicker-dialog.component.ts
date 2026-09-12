@@ -1,5 +1,6 @@
-import {Component, Inject, ViewEncapsulation} from "@angular/core";
+import {Component, ViewEncapsulation, inject} from "@angular/core";
 import {NgClass, NgTemplateOutlet, AsyncPipe} from "@angular/common";
+import {A11yModule} from "@angular/cdk/a11y";
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -7,28 +8,22 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {NgxMatTimepickerBaseDirective} from "../../directives/ngx-mat-timepicker-base.directive";
 import {NgxMatTimepickerConfig} from "../../models/ngx-mat-timepicker-config.interface";
 import {NgxMatTimepickerLocaleService} from "../../services/ngx-mat-timepicker-locale.service";
-import {NgxMatTimepickerService} from "../../services/ngx-mat-timepicker.service";
 import {NgxMatTimepickerEventService} from "../../services/ngx-mat-timepicker-event.service";
-import {
-    NgxMatTimepickerMinutesFaceComponent
-} from "../ngx-mat-timepicker-minutes-face/ngx-mat-timepicker-minutes-face.component";
-import {
-    NgxMatTimepicker12HoursFaceComponent
-} from "../ngx-mat-timepicker-12-hours-face/ngx-mat-timepicker-12-hours-face.component";
-import {
-    NgxMatTimepicker24HoursFaceComponent
-} from "../ngx-mat-timepicker-24-hours-face/ngx-mat-timepicker-24-hours-face.component";
+import {NgxMatTimepickerMinutesFaceComponent} from "../ngx-mat-timepicker-minutes-face/ngx-mat-timepicker-minutes-face.component";
+import {NgxMatTimepicker12HoursFaceComponent} from "../ngx-mat-timepicker-12-hours-face/ngx-mat-timepicker-12-hours-face.component";
+import {NgxMatTimepicker24HoursFaceComponent} from "../ngx-mat-timepicker-24-hours-face/ngx-mat-timepicker-24-hours-face.component";
 import {NgxMatTimepickerDialComponent} from "../ngx-mat-timepicker-dial/ngx-mat-timepicker-dial.component";
 import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ngx-mat-timepicker-content.component";
 
 @Component({
     selector: "ngx-mat-timepicker-dialog",
-    styleUrls: ["./ngx-mat-timepicker-dialog.component.scss"],
-    templateUrl: "./ngx-mat-timepicker-dialog.component.html",
+    styleUrls: ["ngx-mat-timepicker-dialog.component.scss"],
+    templateUrl: "ngx-mat-timepicker-dialog.component.html",
     encapsulation: ViewEncapsulation.None,
     imports: [
         AsyncPipe,
         // Common
+        A11yModule,
         NgClass,
         NgTemplateOutlet,
         // Material
@@ -45,14 +40,11 @@ import {NgxMatTimepickerContentComponent} from "../ngx-mat-timepicker-content/ng
 })
 export class NgxMatTimepickerDialogComponent extends NgxMatTimepickerBaseDirective {
 
-    constructor(@Inject(MAT_DIALOG_DATA) public override data: NgxMatTimepickerConfig,
-                protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent>,
-                timepickerSrv: NgxMatTimepickerService,
-                eventSrv: NgxMatTimepickerEventService,
-                timepickerLocaleSrv: NgxMatTimepickerLocaleService) {
+    override data: NgxMatTimepickerConfig = inject(MAT_DIALOG_DATA);
+    eventSrv: NgxMatTimepickerEventService = inject(NgxMatTimepickerEventService);
+    timepickerLocaleSrv: NgxMatTimepickerLocaleService = inject(NgxMatTimepickerLocaleService);
 
-        super(timepickerSrv, eventSrv, timepickerLocaleSrv, data);
-    }
+    protected _dialogRef: MatDialogRef<NgxMatTimepickerDialogComponent> = inject(MatDialogRef<NgxMatTimepickerDialogComponent>);
 
     override close(): void {
         this._dialogRef.close();

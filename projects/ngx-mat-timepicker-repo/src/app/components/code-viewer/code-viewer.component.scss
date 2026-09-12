@@ -1,9 +1,9 @@
-@import "code-highlight";
+@use "code-highlight" as ch;
 
 code-viewer {
   display: block;
   width: 100%;
-  max-height: 300px;
+
   overflow: hidden;
   box-sizing: border-box;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
@@ -15,7 +15,7 @@ code-viewer {
   // The mat-card
   .code-viewer {
     //background-color: #F0F0F0;
-    max-height: 100%;
+
     padding: 0 16px 16px;
 
     .code-viewer-header {
@@ -37,7 +37,9 @@ code-viewer {
     }
   }
 
-  @include code-highlight();
+  @include ch.code-highlight();
 }
 
 
+
+code-viewer pre { max-height: 300px; overflow: auto; }

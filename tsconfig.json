@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "esModuleInterop": true,
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
@@ -31,7 +30,7 @@
     ],
     "paths": {
       "ngx-mat-timepicker": [
-        "projects/ngx-mat-timepicker/src/public-api"
+        "./projects/ngx-mat-timepicker/src/public-api"
       ]
     },
     "useDefineForClassFields": false,

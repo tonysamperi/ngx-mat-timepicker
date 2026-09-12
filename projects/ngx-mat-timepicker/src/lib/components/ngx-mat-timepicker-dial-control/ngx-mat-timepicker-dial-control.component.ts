@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, Input, Output, ElementRef, AfterViewInit} from "@angular/core";
+import {Component, EventEmitter, OnDestroy, Input, Output, ElementRef, AfterViewInit, inject} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
 //
@@ -29,38 +29,31 @@ function retainSelection(this: HTMLInputElement) {
 export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDestroy {
 
     private get _selectedTime(): NgxMatTimepickerClockFace | undefined {
+        // eslint-disable-next-line no-extra-boolean-cast
         if (!!this.time) {
             return this.timeList.find(t => t.time === +this.time);
         }
 
-        return undefined;
+        return void 0;
     }
 
     @Input() disabled: boolean;
-
     @Output() focused = new EventEmitter<void>();
-
     @Input() isActive: boolean;
-
     @Input() isEditable: boolean;
-
     @Input() minutesGap: number;
-
     previousTime: number | string;
-
     @Input() time: string;
-
     @Output() timeChanged = new EventEmitter<NgxMatTimepickerClockFace>();
-
     @Input() timeList: NgxMatTimepickerClockFace[];
-
     @Input() timeUnit: NgxMatTimepickerUnits;
-
     @Output() timeUnitChanged = new EventEmitter<NgxMatTimepickerUnits>();
-
     @Output() unfocused = new EventEmitter<void>();
 
-    constructor(private _elRef: ElementRef, private _timeParserPipe: NgxMatTimepickerParserPipe) {
+    private _elRef: ElementRef = inject(ElementRef);
+    private _timeParserPipe: NgxMatTimepickerParserPipe = inject(NgxMatTimepickerParserPipe);
+
+    constructor() {
     }
 
     changeTimeByKeyboard(e: any): void {

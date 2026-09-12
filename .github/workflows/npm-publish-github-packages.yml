@@ -4,27 +4,30 @@
 name: Publish on NPM
 
 on:
-    release:
-        types: [ created ]
+  release:
+    types: [ created ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            -   uses: actions/checkout@v3
-            -   uses: actions/setup-node@v3
-                with:
-                    node-version: 22.16.0
-                    registry-url: https://registry.npmjs.org/
-            -   run: corepack enable
-            -   run: yarn install
-            -   run: npm run build
-            -   run: |
-                    pkgversion=$(node -p -e "require('./package.json').version")
-                    if [[ $pkgversion == *"beta"*  || $pkgversion =~ -rc\.[0-9]+$ ]]; then
-                        npm run release:beta
-                    else
-                        npm run release
-                    fi
-                env:
-                    NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  build:
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 24.18.0
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+      - run: yarn install
+      - run: npm run build
+      - run: |
+          pkgversion=$(node -p -e "require('./package.json').version")
+          if [[ $pkgversion == *"beta"* ]]; then
+              npm run release:beta
+          elif [[ $pkgversion == *"next"* ]]; then
+            npm run release:next
+          else
+              npm run release
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

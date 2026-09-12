@@ -1,15 +1,13 @@
 import {TemplateRef} from "@angular/core";
-import {ThemePalette} from "@angular/material/core";
+import {DateTime} from "ts-luxon";
 //
 import {NgxMatTimepickerFormatType} from "./ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerRef} from "./ngx-mat-timepicker-ref.interface";
-//
-import {DateTime} from "ts-luxon";
+import {NgxMatTimepickerService} from "../services/ngx-mat-timepicker.service";
 
 export interface NgxMatTimepickerConfig {
     appendToInput: boolean;
     cancelBtnTmpl: TemplateRef<Node>;
-    color: ThemePalette;
     confirmBtnTmpl: TemplateRef<Node>;
     defaultTime: string;
     disableAnimation: boolean;
@@ -26,5 +24,6 @@ export interface NgxMatTimepickerConfig {
     preventOverlayClick: boolean;
     time: string;
     timepickerBaseRef: NgxMatTimepickerRef;
+    timepickerState: NgxMatTimepickerService;
     timepickerClass: string;
 }

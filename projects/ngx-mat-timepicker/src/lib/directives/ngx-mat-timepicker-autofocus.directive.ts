@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Inject, Input, OnChanges, OnDestroy, Optional, DOCUMENT} from "@angular/core";
-
+import {DOCUMENT} from "@angular/common";
+import {Directive, ElementRef, Input, OnChanges, OnDestroy, inject} from "@angular/core";
 
 @Directive({
     selector: "[ngxMatTimepickerAutofocus]"
@@ -8,10 +8,12 @@ export class NgxMatTimepickerAutofocusDirective implements OnChanges, OnDestroy 
 
     @Input("ngxMatTimepickerAutofocus") isFocusActive: boolean;
 
-    private _activeElement: HTMLElement;
+    private _activeElement
+    private _document = inject(DOCUMENT, {optional: !0});
+    private _element = inject(ElementRef);
 
-    constructor(private _element: ElementRef, @Optional() @Inject(DOCUMENT) private _document: any) {
-        this._activeElement = this._document.activeElement;
+    constructor() {
+        this._activeElement = this._document?.activeElement as HTMLElement;
     }
 
     ngOnChanges() {

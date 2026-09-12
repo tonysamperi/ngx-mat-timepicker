@@ -1,8 +1,11 @@
+@use "@angular/material" as mat;
+
 div.ngx-mat-timepicker-dialog {
+  @include mat.dialog-overrides((container-color: var(--mat-sys-surface-container-high)));
   > mat-dialog-container {
     padding-top: 0;
 
-    [mat-dialog-content] {
+    [matdialogcontent] {
       padding: 0;
       max-height: 85vh;
 
@@ -10,6 +13,10 @@ div.ngx-mat-timepicker-dialog {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: auto;
+        padding: 24px 16px 8px;
+        background: transparent;
+        color: var(--mat-sys-on-surface);
 
         &.is-editable {
           height: auto;
@@ -21,12 +28,10 @@ div.ngx-mat-timepicker-dialog {
       }
     }
 
-    div[mat-dialog-actions] {
+    div[matdialogactions] {
       justify-content: flex-end;
       display: flex;
+      gap: 16px;
     }
   }
 }
-
-
-

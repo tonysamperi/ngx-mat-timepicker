@@ -1,6 +1,5 @@
 import {
     AfterViewInit,
-    ChangeDetectionStrategy,
     Component,
     ElementRef,
     EventEmitter,
@@ -14,9 +13,8 @@ import {
     ViewEncapsulation
 } from "@angular/core";
 import {NgStyle, NgTemplateOutlet, NgClass, SlicePipe} from "@angular/common";
-import {ThemePalette} from "@angular/material/core";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule, MatMiniFabButton} from "@angular/material/button";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
@@ -32,39 +30,42 @@ function roundAngle(angle: number, step: number): number {
 }
 
 function countAngleByCords(x0: number, y0: number, x: number, y: number, currentAngle: number): number {
-    if (y > y0 && x >= x0) {// II quarter
+    // II quarter
+    if (y > y0 && x >= x0) {
         return 180 - currentAngle;
     }
-    else if (y > y0 && x < x0) {// III quarter
+    // III quarter
+    else if (y > y0 && x < x0) {
         return 180 + currentAngle;
     }
-    else if (y < y0 && x < x0) {// IV quarter
+    // IV quarter
+    else if (y < y0 && x < x0) {
         return 360 - currentAngle;
     }
-    else {// I quarter
+    // I quarter
+    else {
         return currentAngle;
     }
 }
 
-const CLOCK_HAND_STYLES = {
+const clockHandStyles = {
     small: {
-        height: "75px",
-        top: "calc(50% - 75px)"
+        height: "calc(50% - 80px)",
+        top: "80px"
     },
     large: {
-        height: "103px",
-        top: "calc(50% - 103px)"
+        height: "calc(50% - 40px)",
+        top: "40px"
     }
 };
 
 @Component({
     selector: "ngx-mat-timepicker-face",
-    templateUrl: "./ngx-mat-timepicker-face.component.html",
-    styleUrls: ["./ngx-mat-timepicker-face.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: "ngx-mat-timepicker-face.component.html",
+    styleUrls: ["ngx-mat-timepicker-face.component.scss"],
     encapsulation: ViewEncapsulation.None,
     imports: [
-        MatButtonModule,
+        MatMiniFabButton,
         NgStyle,
         NgTemplateOutlet,
         MatToolbarModule,
@@ -80,8 +81,6 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
     @ViewChild("clockFace", {static: true}) clockFace: ElementRef;
     @ViewChild("clockHand", {static: true, read: ElementRef}) clockHand: ElementRef;
-
-    @Input() color: ThemePalette = "primary";
     @Input() dottedMinutesInGap: boolean;
     @Input() faceTime: NgxMatTimepickerClockFace[];
     @Input() format: NgxMatTimepickerFormatType;
@@ -104,9 +103,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        // tslint:disable-next-line:no-string-literal
         const faceTimeChanges = changes["faceTime"];
-        // tslint:disable-next-line:no-string-literal
         const selectedTimeChanges = changes["selectedTime"];
 
         if ((faceTimeChanges && faceTimeChanges.currentValue)
@@ -190,18 +187,18 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     }
 
     private _decreaseClockHand(): void {
-        this.clockHand.nativeElement.style.height = CLOCK_HAND_STYLES.small.height;
-        this.clockHand.nativeElement.style.top = CLOCK_HAND_STYLES.small.top;
+        this.clockHand.nativeElement.style.height = clockHandStyles.small.height;
+        this.clockHand.nativeElement.style.top = clockHandStyles.small.top;
     }
 
     private _increaseClockHand(): void {
-        this.clockHand.nativeElement.style.height = CLOCK_HAND_STYLES.large.height;
-        this.clockHand.nativeElement.style.top = CLOCK_HAND_STYLES.large.top;
+        this.clockHand.nativeElement.style.height = clockHandStyles.large.height;
+        this.clockHand.nativeElement.style.top = clockHandStyles.large.top;
     }
 
     private _isInnerClockFace(x0: number, y0: number, x: number, y: number): boolean {
         /* Detect whether time from the inner clock face or not (24 format only) */
-        return Math.sqrt(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) < this.innerClockFaceSize;
+        return Math.sqrt(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) < this.clockFace.nativeElement.getBoundingClientRect().width / 2 - 60;
     }
 
     private _removeTouchEvents(): void {

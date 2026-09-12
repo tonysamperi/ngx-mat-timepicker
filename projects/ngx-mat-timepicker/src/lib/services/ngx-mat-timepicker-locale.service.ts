@@ -1,24 +1,20 @@
-import {Inject, Injectable} from "@angular/core";
+import {inject, Service} from "@angular/core";
 //
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../tokens/ngx-mat-timepicker-time-locale.token";
 
-@Injectable({
-    providedIn: "root"
-})
+@Service()
 export class NgxMatTimepickerLocaleService {
 
     get locale(): string {
         return this._locale;
     }
 
-    protected _initialLocale: string;
-    protected _locale;
+    protected _locale = inject(NGX_MAT_TIMEPICKER_LOCALE);
 
-    constructor(@Inject(NGX_MAT_TIMEPICKER_LOCALE) initialLocale: string) {
-        this._locale = initialLocale;
+    constructor() {
     }
 
     updateLocale(newValue: string): void {
-        this._locale = newValue || this._initialLocale;
+        this._locale = newValue;
     }
 }

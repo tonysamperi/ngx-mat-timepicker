@@ -1,5 +1,4 @@
 import {Component, ContentChild, Input, ViewEncapsulation} from "@angular/core";
-
 import { MatButtonModule } from "@angular/material/button";
 //
 import {NgxMatTimepickerToggleIconDirective} from "../../directives/ngx-mat-timepicker-toggle-icon.directive";
@@ -14,19 +13,18 @@ import {NgxMatTimepickerComponent} from "../ngx-mat-timepicker/ngx-mat-timepicke
 })
 
 export class NgxMatTimepickerToggleComponent {
+    set disabled(value: boolean) {
+        this._disabled = value;
+    }
 
     @Input()
     get disabled(): boolean {
         return this._disabled === void 0 ? this.timepicker?.disabled : this._disabled;
     }
 
-    set disabled(value: boolean) {
-        this._disabled = value;
-    }
-
     @ContentChild(NgxMatTimepickerToggleIconDirective, {static: true}) customIcon: NgxMatTimepickerToggleIconDirective;
 
-    // tslint:disable-next-line:no-input-rename
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input("for") timepicker: NgxMatTimepickerComponent;
 
     private _disabled: boolean;

@@ -3,30 +3,42 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	height: var(--ngx-mat-timepicker-dial-height, 64px);
 
 	&__btn {
-		opacity: 0.5;
-		padding: 1px 3px;
-		border: 0;
+		opacity: 1;
+		padding: 0 12px;
+		flex: 1;
+		min-height: 0;
+		box-sizing: border-box;
+		line-height: 1;
+		border: 1px solid var(--mat-sys-outline);
 		background-color: transparent;
-		font-size: 18px;
+		font-size: 14px;
 		font-weight: 500;
 		user-select: none;
 		outline: none;
-		border-radius: 3px;
+		border-radius: 0;
 		transition: background-color 0.5s;
-		color: inherit; // force color inheritance to bypass user agent style
+		color: var(--mat-sys-on-surface); // force color inheritance to bypass user agent style
+
+		&:first-child { border-radius: 8px 8px 0 0; }
+		&:last-of-type { border-radius: 0 0 8px 8px; border-top: 0; }
 
 		&.active {
-			opacity: 1;
+			background-color: var(--mat-sys-secondary-container);
+			color: var(--mat-sys-on-secondary-container);
 		}
 
 		&:focus {
-			background-color: rgba(0, 0, 0, 0.07);
+			outline: 2px solid var(--mat-sys-primary);
+			outline-offset: -2px;
 		}
 	}
 
 	&__warning {
+		animation: timepicker-period-warning 3.5s linear;
+
 		padding: 5px 10px;
 		border-radius: 3px;
 		background-color: rgba(0, 0, 0, .55);
@@ -35,6 +47,10 @@
 		left: -20px;
 		top: 40px;
 
+		&--static {
+			animation-name: timepicker-period-warning-static;
+		}
+
 		& > p {
 			margin: 0;
 			font-size: 12px;
@@ -42,4 +58,17 @@
 			color: #FFF;
 		}
 	}
+}
+
+@keyframes timepicker-period-warning {
+    0% { transform: scale(0); opacity: 1; }
+    5.714% { transform: scale(1); opacity: 1; }
+    91.429% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+// Keep the warning visible for the same duration without visual motion.
+@keyframes timepicker-period-warning-static {
+    from { opacity: 1; }
+    to { opacity: 1; }
 }

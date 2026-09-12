@@ -61,7 +61,7 @@ import {
 // PIPES + SERVICES + TOKENS
 import {NgxMatTimepickerLocaleService} from "./services/ngx-mat-timepicker-locale.service";
 import {NgxMatTimepickerTimeLocalizerPipe} from "./pipes/ngx-mat-timepicker-time-localizer.pipe";
-import {NGX_MAT_TIMEPICKER_CONFIG} from "./tokens/ngx-mat-timepicker-config.token";
+import {provideNgxMatTimepickerConfig} from "./tokens/ngx-mat-timepicker-config.token";
 import {NGX_MAT_TIMEPICKER_LOCALE} from "./tokens/ngx-mat-timepicker-time-locale.token";
 import {NgxMatTimepickerParserPipe} from "./pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerActiveHourPipe} from "./pipes/ngx-mat-timepicker-active-hour.pipe";
@@ -130,7 +130,7 @@ export class NgxMatTimepickerModule {
             ngModule: NgxMatTimepickerModule,
             providers: [
                 {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: locale},
-                {provide: NGX_MAT_TIMEPICKER_CONFIG, useValue: undefined},
+                provideNgxMatTimepickerConfig(),
                 NgxMatTimepickerLocaleService
             ]
         };

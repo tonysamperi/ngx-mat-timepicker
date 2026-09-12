@@ -1,12 +1,11 @@
 import {Component, DebugElement, SimpleChanges} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
+import {DateTime} from "ts-luxon";
 //
 import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerModule} from "../ngx-mat-timepicker.module";
-//
-import {DateTime} from "ts-luxon";
 
 @Component({
     template: `
@@ -15,7 +14,6 @@ import {DateTime} from "ts-luxon";
     `,
     imports: [NgxMatTimepickerModule]
 })
-// tslint:disable-next-line:naming-convention
 class TestComponent {
 
 }

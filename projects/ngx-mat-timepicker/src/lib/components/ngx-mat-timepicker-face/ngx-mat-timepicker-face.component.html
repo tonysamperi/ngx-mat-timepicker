@@ -1,77 +1,67 @@
 <!-- DEFAULT TEMPLATES - START -->
 <ng-template #hourButton
-  let-time>
-  <button mat-mini-fab
-    disableRipple
-    class="mat-elevation-z0"
-    [color]="(time.time | activeHour: selectedTime?.time : isClockFaceDisabled) ? color : undefined"
-    [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
-    [disabled]="time.disabled">
-    {{time.time | timeLocalizer: timeUnit.HOUR}}
-  </button>
+             let-time>
+	<button matMiniFab
+	        disableRipple
+	        class="mat-elevation-z0"
+	        [class.mat-unthemed]="!(time.time | activeHour: selectedTime?.time : isClockFaceDisabled)"
+	        [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+	        [disabled]="time.disabled">
+		{{ time.time | timeLocalizer: timeUnit.HOUR }}
+	</button>
 </ng-template>
 <!-- DEFAULT TEMPLATES - END -->
 <div class="clock-face"
-  #clockFace>
-  @if (unit !== timeUnit.MINUTE) {
-    <div
-      class="clock-face__container">
-      @for (time of faceTime | slice: 0 : 12; track trackByTime($index, time)) {
-        <div class="clock-face__number clock-face__number--outer"
-          [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
-          >
-          <ng-content *ngTemplateOutlet="hourButton; context: {$implicit: time}"></ng-content>
-        </div>
-      }
-      @if (faceTime.length > 12) {
-        <div class="clock-face__inner"
-          >
-          @for (time of faceTime | slice: 12 : 24; track trackByTime($index, time)) {
-            <div class="clock-face__number clock-face__number--inner"
-              [style.top]="'calc(50% - ' + innerClockFaceSize + 'px)'"
-              [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
-              [style.height.px]="innerClockFaceSize"
-              >
-              <ng-content *ngTemplateOutlet="hourButton; context: {$implicit: time}"></ng-content>
-            </div>
-          }
-        </div>
-      }
-    </div>
-  } @else {
-    <div class="clock-face__container">
-      @for (time of faceTime; track trackByTime($index, time)) {
-        <div class="clock-face__number clock-face__number--outer"
-          [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}"
-          >
-          <input #current
-            type="hidden"
-            [value]="time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE" />
-            <button mat-mini-fab
-              disableRipple
-              class="mat-elevation-z0"
-              [class.dot]="dottedMinutesInGap && current.value === '' && !(time.time | activeMinute: selectedTime?.time:1:isClockFaceDisabled)"
-              [color]="(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled) ? color : undefined"
-              [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
-              [disabled]="time.disabled">
-              {{current.value}}
-            </button>
-          </div>
-        }
-      </div>
-    }
-    <mat-toolbar class="clock-face__clock-hand"
-      [color]="color"
-      [ngClass]="{'clock-face__clock-hand_minute': unit === timeUnit.MINUTE}"
-      #clockHand
-      [hidden]="isClockFaceDisabled">
-      @if (unit === timeUnit.MINUTE) {
-        <button mat-mini-fab
-          [color]="color">
-          <span class="clock-face__clock-hand_minute_dot"></span>
-        </button>
-      }
-    </mat-toolbar>
-    <mat-toolbar class="clock-face__center"
-    [color]="color"></mat-toolbar>
-  </div>
+     #clockFace>
+	@if (unit !== timeUnit.MINUTE) {
+		<div class="clock-face__container">
+			@for (time of faceTime | slice: 0 : 12; track trackByTime($index, time)) {
+				<div class="clock-face__number clock-face__number--outer"
+				     [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}">
+					<ng-content *ngTemplateOutlet="hourButton; context: {$implicit: time}"></ng-content>
+				</div>
+			}
+			@if (faceTime.length > 12) {
+				<div class="clock-face__inner">
+					@for (time of faceTime | slice: 12 : 24; track trackByTime($index, time)) {
+						<div class="clock-face__number clock-face__number--inner"
+						     [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}">
+							<ng-content *ngTemplateOutlet="hourButton; context: {$implicit: time}"></ng-content>
+						</div>
+					}
+				</div>
+			}
+		</div>
+	} @else {
+		<div class="clock-face__container">
+			@for (time of faceTime; track trackByTime($index, time)) {
+				<div class="clock-face__number clock-face__number--outer"
+				     [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}">
+					<input #current
+					       type="hidden"
+					       [value]="time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE" />
+					<button matMiniFab
+					        disableRipple
+					        class="mat-elevation-z0"
+					        [class.mat-unthemed]="!(time.time | activeMinute: selectedTime?.time:minutesGap:isClockFaceDisabled)"
+					        [class.dot]="dottedMinutesInGap && current.value === '' && !(time.time | activeMinute: selectedTime?.time:1:isClockFaceDisabled)"
+					        [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
+					        [disabled]="time.disabled">
+						{{ current.value }}
+					</button>
+				</div>
+			}
+		</div>
+	}
+	<mat-toolbar class="clock-face__clock-hand"
+	             [ngClass]="{'clock-face__clock-hand_minute': unit === timeUnit.MINUTE}"
+                 #clockHand
+	             [hidden]="isClockFaceDisabled">
+		@if (unit === timeUnit.MINUTE) {
+			<button matMiniFab>
+				<span class="clock-face__clock-hand_minute_dot"></span>
+			</button>
+		}
+	</mat-toolbar>
+	<mat-toolbar class="clock-face__center"></mat-toolbar>
+</div>

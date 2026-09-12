@@ -58,8 +58,8 @@ describe("NgxMatTimepickerFaceComponent", () => {
         component.format = 24;
         component.ngAfterViewInit();
 
-        expect(getStyle(component.clockHand)("height")).toBe("75px");
-        expect(getStyle(component.clockHand)("top")).toBe("calc(50% - 75px)");
+        expect(getStyle(component.clockHand)("height")).toBe("calc(50% - 80px)");
+        expect(getStyle(component.clockHand)("top")).toBe("80px");
     });
 
     it("should decrease clock hand with format 24 and time is '00' ", () => {
@@ -67,8 +67,8 @@ describe("NgxMatTimepickerFaceComponent", () => {
         component.format = 24;
         component.ngAfterViewInit();
 
-        expect(getStyle(component.clockHand)("height")).toBe("75px");
-        expect(getStyle(component.clockHand)("top")).toBe("calc(50% - 75px)");
+        expect(getStyle(component.clockHand)("height")).toBe("calc(50% - 80px)");
+        expect(getStyle(component.clockHand)("top")).toBe("80px");
     });
 
     it("should increase clock hand with format 24 and time less or equal 12", () => {
@@ -76,8 +76,8 @@ describe("NgxMatTimepickerFaceComponent", () => {
         component.format = 24;
         component.ngAfterViewInit();
 
-        expect(getStyle(component.clockHand)("height")).toBe("103px");
-        expect(getStyle(component.clockHand)("top")).toBe("calc(50% - 103px)");
+        expect(getStyle(component.clockHand)("height")).toBe("calc(50% - 40px)");
+        expect(getStyle(component.clockHand)("top")).toBe("40px");
     });
 
 
@@ -310,5 +310,3 @@ describe("NgxMatTimepickerFaceComponent", () => {
 function getStyle(element: ElementRef): (prop: string) => string {
     return (prop: string) => element.nativeElement.style[prop];
 }
-
-
