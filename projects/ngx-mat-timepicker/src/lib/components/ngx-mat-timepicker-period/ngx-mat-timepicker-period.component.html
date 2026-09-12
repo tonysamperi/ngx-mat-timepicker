@@ -19,8 +19,8 @@
   [cdkConnectedOverlayOpen]="!isPeriodAvailable">
   @if (!isPeriodAvailable) {
     <div class="timepicker-period__warning"
-      [@scaleInOut]
-      (@scaleInOut.done)="animationDone()">
+      [class.timepicker-period__warning--static]="disableAnimation"
+      (animationend)="animationDone()">
       <p>Current time would be invalid in this period.</p>
     </div>
   }

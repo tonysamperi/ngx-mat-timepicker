@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output, inject} from "@angular/core";
-import {animate, sequence, style, transition, trigger} from "@angular/animations";
 import { NgClass } from "@angular/common";
 import { FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy, CdkOverlayOrigin, CdkConnectedOverlay } from "@angular/cdk/overlay";
 //
@@ -15,23 +14,12 @@ import {DateTime} from "ts-luxon";
     selector: "ngx-mat-timepicker-period",
     templateUrl: "ngx-mat-timepicker-period.component.html",
     styleUrls: ["ngx-mat-timepicker-period.component.scss"],
-    animations: [
-        trigger("scaleInOut", [
-            transition(":enter", [
-                style({ transform: "scale(0)" }),
-                animate(".2s", style({ transform: "scale(1)" })),
-                sequence([
-                    animate("3s", style({ opacity: 1 })),
-                    animate(".3s", style({ opacity: 0 }))
-                ])
-            ])
-        ])
-    ],
     imports: [CdkOverlayOrigin, NgClass, CdkConnectedOverlay]
 })
 export class NgxMatTimepickerPeriodComponent {
 
     @Input() activeTimeUnit: NgxMatTimepickerUnits;
+    @Input() disableAnimation = !1;
     @Input() format: NgxMatTimepickerFormatType;
     @Input() hours: NgxMatTimepickerClockFace[];
     isPeriodAvailable = true;

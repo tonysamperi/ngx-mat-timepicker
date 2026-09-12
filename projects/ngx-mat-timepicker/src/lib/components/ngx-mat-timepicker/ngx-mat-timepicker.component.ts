@@ -222,6 +222,7 @@ export class NgxMatTimepickerComponent implements NgxMatTimepickerRef {
                 providers: provideNgxMatTimepickerConfig(config)
             });
             this._dialogRef = this._dialog.open(NgxMatTimepickerDialogComponent, {
+                ...this.disableAnimation && {enterAnimationDuration: 0, exitAnimationDuration: 0},
                 panelClass: "ngx-mat-timepicker-dialog",
                 injector: dialogInjector,
                 data: {

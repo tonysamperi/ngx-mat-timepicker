@@ -1,6 +1,5 @@
 import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DateTime} from "ts-luxon";
 import {NgxMatTimepickerControlComponent} from "./ngx-mat-timepicker-control.component";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
@@ -16,7 +15,6 @@ describe("NgxMatTimepickerControlComponent", () => {
         TestBed.configureTestingModule({
             imports: [
                 NgxMatTimepickerModule.setLocale("ar-AE"),
-                NoopAnimationsModule
             ],
             providers: [
                 NgxMatTimepickerParserPipe,
@@ -157,7 +155,7 @@ describe("NgxMatTimepickerControlComponent", () => {
             component.max = 59;
             component.timeChanged.subscribe(time => expect(time).toBe(expectedTime));
 
-            component.changeTime(event);
+            component.changeTime(event as unknown as InputEvent);
             expect(component.time).toBe(expectedTime);
         }));
 
@@ -167,7 +165,7 @@ describe("NgxMatTimepickerControlComponent", () => {
             component.min = 1;
             component.max = 23;
 
-            component.changeTime(event);
+            component.changeTime(event as unknown as InputEvent);
 
             expect(component.time).toBe(4);
         });
@@ -178,7 +176,7 @@ describe("NgxMatTimepickerControlComponent", () => {
             component.min = 22;
             component.max = 23;
 
-            component.changeTime(event as KeyboardEvent);
+            component.changeTime(event as unknown as InputEvent);
             expect(component.time).toBe(22);
         });
 
@@ -188,7 +186,7 @@ describe("NgxMatTimepickerControlComponent", () => {
             component.min = 1;
             component.max = 23;
 
-            component.changeTime(event);
+            component.changeTime(event as unknown as InputEvent);
             expect(component.time).toBe(1);
         });
     });

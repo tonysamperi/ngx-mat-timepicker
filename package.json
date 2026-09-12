@@ -42,7 +42,6 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "@angular/animations": "^22.0.7",
     "@angular/cdk": "^22.0.5",
     "@angular/common": "^22.0.7",
     "@angular/compiler": "^22.0.7",

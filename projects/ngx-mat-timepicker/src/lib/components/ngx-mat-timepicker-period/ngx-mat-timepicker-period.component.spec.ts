@@ -1,4 +1,4 @@
-import {OverlayModule} from "@angular/cdk/overlay";
+import {OverlayContainer, OverlayModule} from "@angular/cdk/overlay";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 //
@@ -21,6 +21,26 @@ describe("NgxMatTimepickerPeriodComponent", () => {
         }).createComponent(NgxMatTimepickerPeriodComponent);
 
         component = fixture.componentInstance;
+    });
+
+    [!0, !1].forEach(disableAnimation => {
+        it(`should show and dismiss the warning without animation providers (disabled: ${disableAnimation})`, () => {
+            component.disableAnimation = disableAnimation;
+            component.meridiems = ["AM", "PM"];
+            component.isPeriodAvailable = !1;
+            fixture.detectChanges();
+
+            const container = TestBed.inject(OverlayContainer).getContainerElement();
+            const warning = container.querySelector<HTMLElement>(".timepicker-period__warning");
+            expect(warning).not.toBeNull();
+            expect(warning?.classList.contains("timepicker-period__warning--static")).toBe(disableAnimation);
+
+            warning?.dispatchEvent(new Event("animationend"));
+            fixture.detectChanges();
+
+            expect(component.isPeriodAvailable).toBeTruthy();
+            expect(container.querySelector(".timepicker-period__warning")).toBeNull();
+        });
     });
 
     it("should change period for hour unit", () => {

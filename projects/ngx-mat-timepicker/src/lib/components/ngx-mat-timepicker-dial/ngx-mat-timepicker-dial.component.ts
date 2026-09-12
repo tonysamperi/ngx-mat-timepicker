@@ -47,6 +47,7 @@ export class NgxMatTimepickerDialComponent implements OnChanges {
     }
 
     @Input() activeTimeUnit: NgxMatTimepickerUnits;
+    @Input() disableAnimation = !1;
     @Input() editableHintTmpl: TemplateRef<Node>;
     @Input() format: NgxMatTimepickerFormatType;
     @Input() hour: number | string;

@@ -22,15 +22,16 @@ So an extra config was necessary to have a nice integration in your app.
 This project **automatically adapts** to your Material theme, even if a custom one (so, for example, if you have a dark
 theme, you'll have a dark dialog!).  
 By default it will use the primary color.  
-You can choose the color scheme among the three **ThemePalette** items, natively provided by
-Material: `primary`, `accent`, `warn`.
+You can choose the color scheme among the three **ThemePalette** items, natively provided by Material: `primary`,
+`accent`, `warn`.
 
 Also a few components were unnecessary and not in material style, so I got rid of them and integrated Material
 components, such as `mat-select` and others.
 
 ### Migrate to v22
+
 * Dropped the color attribute, since the M2 theme support was dropped
-* 
+* Dropped the old animations now using CSS. Use disableAnimation to disable.
 
 **Other general improvements**
 
@@ -44,7 +45,8 @@ components, such as `mat-select` and others.
 * Removed useless exports from NgxMatTimepickerModule
 * \[new in **v22**\] drop support of Material 2 themes
 * \[new in **v22**\] full support of Material 3 themes
-* \[new in **v22**\] each dialog gets own instance of the picker service, solving a long-standing issue where the picker doesn't show the default time
+* \[new in **v22**\] each dialog gets own instance of the picker service, solving a long-standing issue where the picker
+  doesn't show the default time
 
 ### Compatibility
 
@@ -66,10 +68,9 @@ or
 ```  
 
 **IMPORTANT ABOUT MATERIAL V15**
-This library uses the new set of Material components, so it doesn't support the **legacy** theming.
-Support for legacy components has been considered, but won't be developed.
-If you still need the legacy version you can contact me and we'll see what can be done, but a real effort will be put
-through only for a huge amount of requests.
+This library uses the new set of Material components, so it doesn't support the **legacy** theming. Support for legacy
+components has been considered, but won't be developed. If you still need the legacy version you can contact me and
+we'll see what can be done, but a real effort will be put through only for a huge amount of requests.
 
 Refer to the [Angular Material](https://material.angular.io) website for theming options.
 
@@ -179,24 +180,24 @@ Selector: `ngx-mat-timepicker`
 
 **Properties**
 
-| Name                | Type                   | Description                                                                                                                                |  
-|---------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|  
-| cancelBtnTmpl       | TemplateRef<Node>      | Set if you want to change cancel button to your custom one.                                                                                | | @Input()  
-| confirmBtnTmpl      | TemplateRef<Node>      | Set if you want to change confirm button to your custom one.                                                                               |  
-| defaultTime         | string                 | Set default time for a timepicker. `12:00 AM` by default                                                                                   |  
-| disableAnimation    | boolean                | Set `true` to prevent opening and closing timepicker animation. Uses `false` by default                                                    |  
-| editableHintTmpl    | TemplateRef<Node>      | Set if you want to change dial hint to your custom one. Works only if `enableKeyboardInput = true`                                         |  
-| enableKeyboardInput | boolean                | To disable or enable changing time through a keyboard on the timepicker dial without interaction with a clock face. Set `false` by default |  
-| hoursOnly           | boolean                | Set `true` to prevent switching to minutes automatically once hour is selected. Uses `false` by default                                    |  
-| isEsc               | boolean                | Disable or enable closing timepicker by ESC.                                                                                               |  
-| minutesGap          | number                 | To define a gap between minutes. Set `1` by default                                                                                        |  
-| preventOverlayClick | boolean                | Set `true` to prevent closing the timepicker by overlay click. Uses `false` by default                                                     |  
-| timepickerClass     | string                 | To provide a custom css class for the timepicker                                                                                           |  
-| timeSet:            | EventEmitter\<string\> | Emits time when that was set.                                                                                                              |  
-| opened:             | EventEmitter\<null\>   | Emits after timepicker was opened.                                                                                                         |  
-| closed              | EventEmitter\<null\>   | Emits after timepicker was closed.                                                                                                         |  
-| hourSelected        | EventEmitter\<number\> | Emits after hour was selected.                                                                                                             |  
-| timeChanged         | EventEmitter\<string\> | Emits once time was changed.                                                                                                               |  
+| Name                | Type                   | Description                                                                                                                                         |  
+|---------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|  
+| cancelBtnTmpl       | TemplateRef<Node>      | Set if you want to change cancel button to your custom one.                                                                                         | 
+| confirmBtnTmpl      | TemplateRef<Node>      | Set if you want to change confirm button to your custom one.                                                                                        |  
+| defaultTime         | string                 | Set default time for a timepicker. `12:00 AM` by default                                                                                            |  
+| disableAnimation    | boolean                | Set `true` to disable dialog and period-warning animations. Uses `false` by default. `@angular/animations` and animation providers are not required |
+| editableHintTmpl    | TemplateRef<Node>      | Set if you want to change dial hint to your custom one. Works only if `enableKeyboardInput = true`                                                  |  
+| enableKeyboardInput | boolean                | To disable or enable changing time through a keyboard on the timepicker dial without interaction with a clock face. Set `false` by default          |  
+| hoursOnly           | boolean                | Set `true` to prevent switching to minutes automatically once hour is selected. Uses `false` by default                                             |  
+| isEsc               | boolean                | Disable or enable closing timepicker by ESC.                                                                                                        |  
+| minutesGap          | number                 | To define a gap between minutes. Set `1` by default                                                                                                 |  
+| preventOverlayClick | boolean                | Set `true` to prevent closing the timepicker by overlay click. Uses `false` by default                                                              |  
+| timepickerClass     | string                 | To provide a custom css class for the timepicker                                                                                                    |  
+| timeSet:            | EventEmitter\<string\> | Emits time when that was set.                                                                                                                       |  
+| opened:             | EventEmitter\<null\>   | Emits after timepicker was opened.                                                                                                                  |  
+| closed              | EventEmitter\<null\>   | Emits after timepicker was closed.                                                                                                                  |  
+| hourSelected        | EventEmitter\<number\> | Emits after hour was selected.                                                                                                                      |  
+| timeChanged         | EventEmitter\<string\> | Emits once time was changed.                                                                                                                        |  
 
 #### NgxMatTimepickerFieldComponent
 

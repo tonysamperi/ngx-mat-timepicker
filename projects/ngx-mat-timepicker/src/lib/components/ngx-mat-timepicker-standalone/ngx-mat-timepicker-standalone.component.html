@@ -14,7 +14,7 @@
              [ngClass]="data.timepickerClass">
             <mat-toolbar [class.is-editable]="data.enableKeyboardInput"
                          class="timepicker-header">
-                <ngx-mat-timepicker-dial [format]="data.format"
+                <ngx-mat-timepicker-dial [disableAnimation]="data.disableAnimation" [format]="data.format"
                                          [hour]="(selectedHour | async)?.time"
                                          [minute]="(selectedMinute | async)?.time"
                                          [period]="selectedPeriod | async"
