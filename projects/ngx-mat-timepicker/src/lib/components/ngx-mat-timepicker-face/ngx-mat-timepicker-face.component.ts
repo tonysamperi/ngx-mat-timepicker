@@ -50,12 +50,12 @@ function countAngleByCords(x0: number, y0: number, x: number, y: number, current
 
 const clockHandStyles = {
     small: {
-        height: "75px",
-        top: "calc(50% - 75px)"
+        height: "calc(50% - 80px)",
+        top: "80px"
     },
     large: {
-        height: "103px",
-        top: "calc(50% - 103px)"
+        height: "calc(50% - 40px)",
+        top: "40px"
     }
 };
 
@@ -198,7 +198,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
     private _isInnerClockFace(x0: number, y0: number, x: number, y: number): boolean {
         /* Detect whether time from the inner clock face or not (24 format only) */
-        return Math.sqrt(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) < this.innerClockFaceSize;
+        return Math.sqrt(Math.pow(x - x0, 2) + Math.pow(y - y0, 2)) < this.clockFace.nativeElement.getBoundingClientRect().width / 2 - 60;
     }
 
     private _removeTouchEvents(): void {

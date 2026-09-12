@@ -42,6 +42,8 @@ export class NgxMatTimepickerProvider {
                 cdkConnectedOverlay
                 [cdkConnectedOverlayPositions]="overlayPositions"
                 [cdkConnectedOverlayHasBackdrop]="!0"
+                [cdkConnectedOverlayPush]="!0"
+                [cdkConnectedOverlayViewportMargin]="8"
                 cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
                 (backdropClick)="close()"
                 [cdkConnectedOverlayOrigin]="overlayOrigin"

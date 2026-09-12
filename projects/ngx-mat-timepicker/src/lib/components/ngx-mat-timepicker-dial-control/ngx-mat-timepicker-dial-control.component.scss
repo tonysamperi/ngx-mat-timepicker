@@ -1,20 +1,27 @@
 
 .timepicker-dial__control {
-  border: none;
-  background-color: transparent;
+  border: 2px solid transparent;
+  background-color: var(--mat-sys-surface-container-highest);
   font-size: 50px;
-  width: 60px;
+  width: 76px;
+  height: var(--ngx-mat-timepicker-dial-height, 64px);
+  box-sizing: border-box;
   padding: 0;
-  border-radius: 3px;
+  border-radius: 8px;
   text-align: center;
-  color: inherit; // Forces color inheritance because input may have user agent style
+  color: var(--mat-sys-on-surface); // Forces color inheritance because input may have user agent style
 
   &:focus {
+    border-color: var(--mat-sys-primary);
     outline: none;
-    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &:disabled {
     cursor: default;
   }
+}
+
+.timepicker-dial__control.active {
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
 }

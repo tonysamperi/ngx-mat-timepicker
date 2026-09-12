@@ -1,6 +1,7 @@
 
 .timepicker-dial {
     text-align: center;
+    --ngx-mat-timepicker-dial-height: 64px;
 
     &__container {
         display: flex;
@@ -11,14 +12,15 @@
 
     &__time {
         display: flex;
-        align-items: baseline;
+        align-items: center;
+        gap: 6px;
         line-height: normal;
         font-size: 50px;
     }
 
     &__period {
         display: block;
-        margin-left: 10px;
+        margin-left: 16px;
     }
 
     &__hint-container {
