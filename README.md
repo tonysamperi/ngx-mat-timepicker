@@ -15,6 +15,11 @@ you can't get Angular 1745646456 the day it gets released.
 **ISSUES NOT RESPECTING THIS WILL BE DELETED IMMEDIATELY WITHOUT ANY RESPONSE**.  
 Thank you.
 
+### Migrate to v22
+
+* Dropped the color attribute, since the M2 theme support was dropped
+* Dropped the old animations now using CSS. Use disableAnimation to disable.
+
 ### Why this project?
 
 The original was nice, but for some reason it didn't adapt to your Material theme.  
@@ -27,11 +32,6 @@ You can choose the color scheme among the three **ThemePalette** items, natively
 
 Also a few components were unnecessary and not in material style, so I got rid of them and integrated Material
 components, such as `mat-select` and others.
-
-### Migrate to v22
-
-* Dropped the color attribute, since the M2 theme support was dropped
-* Dropped the old animations now using CSS. Use disableAnimation to disable.
 
 **Other general improvements**
 
