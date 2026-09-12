@@ -150,9 +150,9 @@ export class NgxMatTimepickerDemoComponent implements OnInit {
         document.documentElement.classList.toggle("dark-theme", !!theme.value);
     }
 
-    updateTime($event: string, targetProp: string): void {
+    updateTime($event: string, targetProp: keyof typeof this.selectedTimes): void {
         console.info("TIME SET", $event);
-        (this as any)[targetProp] = $event;
+        this.selectedTimes[targetProp] = $event;
     }
 
     //

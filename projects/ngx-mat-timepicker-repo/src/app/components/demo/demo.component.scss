@@ -3,7 +3,7 @@
 
 :host {
 	display: block;
-	padding-top: 56px;
+	padding-top: var(--mat-toolbar-standard-height, 64px);
 }
 
 .ngx-mtp-header {
@@ -223,3 +223,5 @@ footer {
 	padding: 0;
 	margin: 0;
 }
+
+@media (max-width: 599px) { :host { padding-top: var(--mat-toolbar-mobile-height, 56px); } }

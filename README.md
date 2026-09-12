@@ -27,8 +27,8 @@ So an extra config was necessary to have a nice integration in your app.
 This project **automatically adapts** to your Material theme, even if a custom one (so, for example, if you have a dark
 theme, you'll have a dark dialog!).  
 By default it will use the primary color.  
-You can choose the color scheme among the three **ThemePalette** items, natively provided by Material: `primary`,
-`accent`, `warn`.
+The picker follows the Material 3 system tokens emitted by `mat.theme`.
+
 
 Also a few components were unnecessary and not in material style, so I got rid of them and integrated Material
 components, such as `mat-select` and others.
@@ -56,7 +56,7 @@ components, such as `mat-select` and others.
 Remember to include a Material Theme in your project, example:
 
 ```scss  
-@use "@angular/material/prebuilt-themes/indigo-pink.css";  
+@use "@angular/material/prebuilt-themes/azure-blue.css";
 ```  
 
 or
@@ -64,7 +64,10 @@ or
 ```scss  
 @use "@angular/material" as mat;
 
-@include mat.all-component-themes($my-theme);  
+html {
+  @include mat.theme((color: mat.$violet-palette, typography: Roboto, density: 0));
+  color-scheme: light dark;
+}
 ```  
 
 **IMPORTANT ABOUT MATERIAL V15**
@@ -106,7 +109,7 @@ import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
     imports: [NgxMatTimepickerModule]
 })
 export class MyModule {
-}  
+}
 ```  
 
 Finally connect the timepicker to an input via a template property:
@@ -132,7 +135,7 @@ import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
     imports: [NgxMatTimepickerModule.setLocale('en-GB')]
 })
 export class MyModule {
-}  
+}
 ```  
 
 ## Documentation
@@ -155,7 +158,6 @@ Selector: `ngxMatTimepicker`
 |--------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|  
 |                    |                           |                                                                                                                                                                     |
 | ngxMatTimepicker   | NgxMatTimepickerComponent | The timepicker that this input is associated with.                                                                                                                  |  
-| color              | ThemePalette              | The material palette to use.                                                                                                                                        | 
 | disabled           | boolean                   | Weather the timepicker popup should be disabled.                                                                                                                    |  
 | value              | string                    | Set a default value and time for a timepicker. The format of the time is in 12 hours notation `11:00 PM` or in 24 hours notation `23:00`. A Date string won't work. |  
 | format             | number                    | `12` or `24` . 12h/24h view for hour selection clock . `12` (AM/PM) format by default.                                                                              |  

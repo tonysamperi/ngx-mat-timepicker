@@ -1,23 +1,19 @@
 @use "@angular/material" as mat;
 
-$light-theme: mat.define-theme((
+$light-theme: (
 	color: (
 		theme-type: light,
 		primary: mat.$violet-palette,
 		tertiary: mat.$cyan-palette
 	),
-	density: (
-		scale: 0
-	)
-));
+	typography: Roboto, density: 0
+);
 
-$dark-theme: mat.define-theme((
+$dark-theme: (
 	color: (
 		theme-type: dark,
 		primary: mat.$rose-palette,
 		tertiary: mat.$azure-palette
 	),
-	density: (
-		scale: 0
-	)
-));
+	typography: Roboto, density: 0
+);
