@@ -14,7 +14,7 @@ import {
 } from "@angular/core";
 import {NgStyle, NgTemplateOutlet, NgClass, SlicePipe} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule, MatMiniFabButton} from "@angular/material/button";
+import {MatMiniFabButton} from "@angular/material/button";
 //
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NgxMatTimepickerFormatType} from "../../models/ngx-mat-timepicker-format.type";
@@ -86,6 +86,7 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
     @Input() format: NgxMatTimepickerFormatType;
     innerClockFaceSize = 85;
     isClockFaceDisabled: boolean;
+    isTimeHole = !1;
     @Input() minutesGap: number;
     @Input() selectedTime: NgxMatTimepickerClockFace;
     @Output() timeChange = new EventEmitter<NgxMatTimepickerClockFace>();
@@ -163,6 +164,12 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
 
         const selectedTime = this.faceTime.find(val => val.angle === angle);
 
+        if (selectedTime?.wasHole) {
+            this.isTimeHole = !0;
+
+            return;
+        }
+
         if (selectedTime && !selectedTime.disabled) {
             this.timeChange.next(selectedTime);
 
@@ -172,6 +179,10 @@ export class NgxMatTimepickerFaceComponent implements AfterViewInit, OnChanges, 
             }
         }
 
+    }
+
+    timeHoleWarningAnimationDone(): void {
+        this.isTimeHole = !1;
     }
 
     trackByTime(_item_: any, time: NgxMatTimepickerClockFace): string | number {

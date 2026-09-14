@@ -7,7 +7,7 @@
 	        [class.mat-unthemed]="!(time.time | activeHour: selectedTime?.time : isClockFaceDisabled)"
 	        [ngStyle]="{'transform': 'rotateZ(-'+ time.angle +'deg)'}"
 	        [disabled]="time.disabled">
-		{{ time.time | timeLocalizer: timeUnit.HOUR }}
+		{{ (time.holeTime?.hour ?? time.time) | timeLocalizer: timeUnit.HOUR : false : !!time.holeTime }}
 	</button>
 </ng-template>
 <!-- DEFAULT TEMPLATES - END -->
@@ -39,7 +39,7 @@
 				     [ngStyle]="{'transform': 'rotateZ('+ time.angle +'deg)'}">
 					<input #current
 					       type="hidden"
-					       [value]="time.time | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE" />
+					       [value]="(time.holeTime?.minute ?? time.time) | minutesFormatter: minutesGap | timeLocalizer: timeUnit.MINUTE : false : !!time.holeTime" />
 					<button matMiniFab
 					        disableRipple
 					        class="mat-elevation-z0"
@@ -64,4 +64,9 @@
 		}
 	</mat-toolbar>
 	<mat-toolbar class="clock-face__center"></mat-toolbar>
+	@if (isTimeHole) {
+		<div class="clock-face__warning" (animationend)="timeHoleWarningAnimationDone()">
+			<p>This time does not exist because clocks move forward.</p>
+		</div>
+	}
 </div>

@@ -2,7 +2,7 @@ import {NgxMatTimepickerPeriods} from "../models/ngx-mat-timepicker-periods.enum
 import {NgxMatTimepickerUtils} from "./ngx-mat-timepicker.utils";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 //
-import {DateTime} from "ts-luxon";
+import {DateTime, Settings} from "ts-luxon";
 
 describe("TimepickerTime", () => {
     describe("Hour", () => {
@@ -205,6 +205,59 @@ describe("TimepickerTime", () => {
             }).filter(h => h.disabled);
 
             expect(disabledHours.length).toBe(0);
+        });
+    });
+
+    describe("Daylight saving time", () => {
+        const defaultNow = Settings.now;
+        const defaultZone = Settings.defaultZone;
+
+        beforeEach(() => {
+            Settings.defaultZoneLike = "Europe/Rome";
+            Settings.now = () => Date.UTC(2026, 2, 29, 12);
+        });
+
+        afterEach(() => {
+            Settings.defaultZone = defaultZone;
+            Settings.now = defaultNow;
+        });
+
+        it("should disable a missing hour", () => {
+            const hours = NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(24), {
+                format: 24,
+                min: undefined,
+                max: undefined
+            });
+            const missingHour = hours.find(hour => hour.time === 2);
+
+            expect(missingHour?.disabled).toBeTruthy();
+            expect(missingHour?.holeTime).toEqual({hour: 2, minute: 0, second: 0, millisecond: 0});
+            expect(missingHour?.wasHole).toBeTruthy();
+        });
+
+        it("should disable a missing hour in the AM period", () => {
+            const hours = NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(12), {
+                format: 12,
+                min: undefined,
+                max: undefined,
+                period: NgxMatTimepickerPeriods.AM
+            });
+            const missingHour = hours.find(hour => hour.time === 2);
+
+            expect(missingHour?.disabled).toBeTruthy();
+            expect(missingHour?.holeTime).toEqual({hour: 2, minute: 0, second: 0, millisecond: 0});
+            expect(missingHour?.wasHole).toBeTruthy();
+        });
+
+        it("should disable every minute in a missing hour", () => {
+            const minutes = NgxMatTimepickerUtils.disableMinutes(NgxMatTimepickerUtils.getMinutes(15), 2, {
+                format: 24,
+                min: undefined,
+                max: undefined
+            });
+
+            expect(minutes.every(minute => minute.disabled && minute.wasHole)).toBeTruthy();
+            expect(minutes.map(minute => minute.holeTime?.minute)).toEqual([0, 15, 30, 45]);
         });
     });
 
