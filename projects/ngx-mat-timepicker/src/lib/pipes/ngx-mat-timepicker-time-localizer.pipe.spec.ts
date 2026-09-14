@@ -42,6 +42,10 @@ describe('NgxMatTimepickerTimeLocalizerPipe', () => {
         expect(pipe.transform(hour, NgxMatTimepickerUnits.HOUR, true)).toBe(expected);
     });
 
+    it('should preserve a hole hour when localizing it', () => {
+        expect(pipe.transform(2, NgxMatTimepickerUnits.HOUR, false, true)).toBe('2');
+    });
+
 
     it('should return minute in 2-digit format', () => {
         const minutes = Array(59).fill(0).map((v, i) => v + i);

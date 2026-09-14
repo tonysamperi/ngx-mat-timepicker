@@ -17,9 +17,15 @@ export class NgxMatTimepickerTimeLocalizerPipe implements PipeTransform {
 
     private _timepickerLocaleSrv = inject(NgxMatTimepickerLocaleService);
 
-    transform(time: number | string, timeUnit: NgxMatTimepickerUnits, isKeyboardEnabled = false): string {
+    transform(time: number | string, timeUnit: NgxMatTimepickerUnits, isKeyboardEnabled = false, isHole = !1): string {
         if (time == null || time === "") {
             return "";
+        }
+
+        if (isHole) {
+            const format = (time === 0 || isKeyboardEnabled || timeUnit === NgxMatTimepickerUnits.MINUTE) ? "HH" : "H";
+
+            return this._formatHoleTime(time, format.length);
         }
 
         switch (timeUnit) {
@@ -42,5 +48,12 @@ export class NgxMatTimepickerTimeLocalizerPipe implements PipeTransform {
         catch {
             throw new Error(`Cannot format provided time - ${time} to locale - ${this._locale}`);
         }
+    }
+
+    private _formatHoleTime(time: string | number, minimumIntegerDigits: number): string {
+        return new Intl.NumberFormat(this._locale, {
+            minimumIntegerDigits,
+            useGrouping: !1
+        }).format(+time);
     }
 }
