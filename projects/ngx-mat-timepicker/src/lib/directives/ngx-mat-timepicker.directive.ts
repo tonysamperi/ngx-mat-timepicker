@@ -12,14 +12,13 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {MatFormField} from "@angular/material/form-field";
+import {Subject, takeUntil} from "rxjs";
+import {DateTime} from "ts-luxon";
 //
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
 import {NgxMatTimepickerFormatType} from "../models/ngx-mat-timepicker-format.type";
 import {NgxMatTimepickerAdapter} from "../services/ngx-mat-timepicker-adapter";
 import {NgxMatTimepickerLocaleService} from "../services/ngx-mat-timepicker-locale.service";
-//
-import {Subject, takeUntil} from "rxjs";
-import {DateTime} from "ts-luxon";
 
 @Directive({
     selector: "[ngxMatTimepicker]",
@@ -31,7 +30,7 @@ import {DateTime} from "ts-luxon";
         }
     ],
     host: {
-        "[attr.disabled]": "disabled",
+        "[attr.disabled]": "!!disabled || null",
         "(blur)": "onTouched()"
     }
 })
@@ -238,4 +237,3 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
 }
-

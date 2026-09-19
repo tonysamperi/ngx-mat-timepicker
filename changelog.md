@@ -1,4 +1,7 @@
 # 21.0.1
+* Fix disabled binding (closes [#144](https://github.com/tonysamperi/ngx-mat-timepicker/issues/144))
+
+# 21.0.1
 * MatFormField is now optional again (closes [#141](https://github.com/tonysamperi/ngx-mat-timepicker/issues/141))
 
 # 21.0.0
