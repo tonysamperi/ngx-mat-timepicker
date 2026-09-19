@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Service} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
 import {DateTime} from "ts-luxon";
 //
@@ -16,11 +16,8 @@ const defaultMinute: NgxMatTimepickerClockFace = {
     angle: 360
 };
 
-@Injectable({
-    providedIn: "root"
-})
+@Service()
 export class NgxMatTimepickerService {
-
 
     set hour(hour: NgxMatTimepickerClockFace) {
         this._hour$.next(hour);
