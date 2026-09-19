@@ -1,3 +1,6 @@
+# 22.0.1
+* Fix concatenation causing issues with keyboard
+
 # 22.0.0
 * Update for Angular 22! 🎉
 
