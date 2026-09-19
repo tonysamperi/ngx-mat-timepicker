@@ -12,7 +12,7 @@ import {NgxMatTimepickerTimeLocalizerPipe} from "../../pipes/ngx-mat-timepicker-
 
 function concatTime(currentTime: string, nextTime: string): number | undefined {
     if (/\d/.test(nextTime)) {
-        return +currentTime + +nextTime;
+        return +(currentTime + nextTime);
     }
     return void 0;
 }
