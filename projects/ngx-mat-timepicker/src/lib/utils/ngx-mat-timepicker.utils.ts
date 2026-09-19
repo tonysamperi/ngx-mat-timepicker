@@ -8,49 +8,45 @@ import {DateTime} from "ts-luxon";
 // @dynamic
 export class NgxMatTimepickerUtils {
 
+    // eslint-disable-next-line @typescript-eslint/class-literal-property-style
     static get DEFAULT_MINUTES_GAP(): number {
         return 5;
     }
 
     static disableHours(hours: NgxMatTimepickerClockFace[], config: NgxMatTimepickerDisabledConfig): NgxMatTimepickerClockFace[] {
-        if (config.min || config.max) {
+        return hours.map(value => {
+            const hour = NgxMatTimepickerAdapter.isTwentyFour(config.format)
+                ? value.time
+                : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
+            const currentTime = DateTime.fromObject({hour});
 
-            return hours.map(value => {
-                const hour = NgxMatTimepickerAdapter.isTwentyFour(config.format)
-                    ? value.time
-                    : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
-                const currentTime = DateTime.fromObject({hour}).toFormat(NgxMatTimepickerFormat.TWELVE);
-
-                return {
-                    ...value,
-                    disabled: !NgxMatTimepickerAdapter.isTimeAvailable(currentTime, config.min, config.max, "hours")
-                };
-            });
-        }
-
-        return hours;
+            return {
+                ...value,
+                holeTime: currentTime.holeTime || void 0,
+                wasHole: currentTime.wasHole,
+                disabled: currentTime.wasHole || !NgxMatTimepickerAdapter.isTimeAvailable(
+                    currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "hours")
+            };
+        });
     }
 
     static disableMinutes(minutes: NgxMatTimepickerClockFace[], selectedHour: number, config: NgxMatTimepickerDisabledConfig) {
-        if (config.min || config.max) {
+        const hour = NgxMatTimepickerAdapter.formatHour(selectedHour, config.format, config.period);
 
-            const hour = NgxMatTimepickerAdapter.formatHour(selectedHour, config.format, config.period);
-            let currentTime = DateTime.fromObject({
+        return minutes.map(value => {
+            const currentTime = DateTime.fromObject({
                 hour,
-                minute: 0
+                minute: value.time
             });
 
-            return minutes.map(value => {
-                currentTime = currentTime.set({minute: value.time});
-
-                return {
-                    ...value,
-                    disabled: !NgxMatTimepickerAdapter.isTimeAvailable(currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "minutes")
-                };
-            });
-        }
-
-        return minutes;
+            return {
+                ...value,
+                holeTime: currentTime.holeTime || void 0,
+                wasHole: currentTime.wasHole,
+                disabled: currentTime.wasHole || !NgxMatTimepickerAdapter.isTimeAvailable(
+                    currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "minutes")
+            };
+        });
     }
 
     static getHours(format: number): NgxMatTimepickerClockFace[] {
