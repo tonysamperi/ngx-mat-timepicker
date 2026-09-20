@@ -69,7 +69,7 @@ export class NgxMatTimepickerDialControlComponent implements AfterViewInit, OnDe
     }
 
     ngOnDestroy(): void {
-        this._elRef.nativeElement.querySelector("input").removeEventListener("select", retainSelection);
+        this._elRef.nativeElement.querySelector("input")?.removeEventListener("select", retainSelection);
     }
 
     onKeydown(e: any): void {

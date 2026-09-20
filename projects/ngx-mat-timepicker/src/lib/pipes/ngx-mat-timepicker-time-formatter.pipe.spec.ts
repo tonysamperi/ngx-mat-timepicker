@@ -23,6 +23,7 @@ describe('NgxMatTimepickerTimeFormatterPipe', () => {
     });
 
     it('should throw error if unknown NgxMatTimepickerUnits', () => {
-        expect(() => pipe.transform(20, 2)).toThrowError('no such time unit');
+        // @ts-expect-error we're triggering an error
+        expect(() => pipe.transform(20, 2)).toThrowError("no such time unit");
     });
 });

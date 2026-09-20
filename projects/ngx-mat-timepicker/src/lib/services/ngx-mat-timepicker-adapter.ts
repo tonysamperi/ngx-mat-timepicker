@@ -35,13 +35,13 @@ export class NgxMatTimepickerAdapter {
         if (!time) {
             return "Invalid Time";
         }
-        const parsedTime = this.parseTime(time, opts).setLocale(this.defaultLocale);
+        const parsedTime = this.parseTime(time, opts);
         if (!parsedTime.isValid) {
             return "Invalid time";
         }
         const isTwelve = !this.isTwentyFour(opts.format as NgxMatTimepickerFormatType);
         if (isTwelve) {
-            return parsedTime.toLocaleString({
+            return parsedTime.setLocale(this.defaultLocale).toLocaleString({
                 ...DateTime.TIME_SIMPLE,
                 hour12: isTwelve
             }).replace(/\u200E/g, "");
@@ -98,7 +98,7 @@ export class NgxMatTimepickerAdapter {
         const minutes = convertedTime.minute;
 
         if (minutesGap && minutes === minutes && minutes % minutesGap !== 0) {
-            throw new Error(`Your minutes - ${minutes} doesn\'t match your minutesGap - ${minutesGap}`);
+            throw new Error(`Your minutes - ${minutes} doesn't match your minutesGap - ${minutesGap}`);
         }
         const isAfter = (min && !max)
             && this.isSameOrAfter(convertedTime, min, granularity);
@@ -148,7 +148,12 @@ export class NgxMatTimepickerAdapter {
             timeMask = NgxMatTimepickerFormat.TWENTY_FOUR_SHORT;
         }
 
-        return DateTime.fromFormat(time, timeMask, {zone: "utc"}).reconfigure({
+        const parsedTime = DateTime.fromFormat(time, timeMask, {zone: "utc"});
+        if (!parsedTime.isValid) {
+            return "Invalid DateTime";
+        }
+
+        return parsedTime.reconfigure({
             locale,
             numberingSystem: opts.numberingSystem,
             defaultToEN: opts.defaultToEN,

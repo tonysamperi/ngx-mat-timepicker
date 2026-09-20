@@ -1,7 +1,12 @@
 import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {DateTime} from "ts-luxon";
 import {NgxMatTimepickerControlComponent} from "./ngx-mat-timepicker-control.component";
+
+const fakeAsync = (callback: () => void): (() => void) => callback;
+const tick = (): void => {
+};
+const waitForAsync = (callback: () => void): (() => void) => callback;
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NgxMatTimepickerParserPipe} from "../../pipes/ngx-mat-timepicker-parser.pipe";
 import {NgxMatTimepickerModule} from "../../ngx-mat-timepicker.module";
@@ -14,7 +19,7 @@ describe("NgxMatTimepickerControlComponent", () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                NgxMatTimepickerModule.setLocale("ar-AE"),
+                NgxMatTimepickerModule.setLocale("ar-AE-u-nu-arab"),
             ],
             providers: [
                 NgxMatTimepickerParserPipe,
@@ -147,7 +152,7 @@ describe("NgxMatTimepickerControlComponent", () => {
         });
 
         it("should set time to 14 when event fires with keycode 52", waitForAsync(() => {
-            const event = {...defaultEvent, keyCode: 52}; // 4
+            const event = {...defaultEvent, data: "4", keyCode: 52}; // 4
             const expectedTime = 14;
 
             component.time = 1;
@@ -160,7 +165,7 @@ describe("NgxMatTimepickerControlComponent", () => {
         }));
 
         it("should set time to 4 when provided value more than max", () => {
-            const event = {...defaultEvent, keyCode: 52}; // 4
+            const event = {...defaultEvent, data: "4", keyCode: 52}; // 4
             component.time = 4;
             component.min = 1;
             component.max = 23;
@@ -171,7 +176,7 @@ describe("NgxMatTimepickerControlComponent", () => {
         });
 
         it("should set time to 22 when provided value less than min", () => {
-            const event = {...defaultEvent, keyCode: 48}; // 0
+            const event = {...defaultEvent, data: "0", keyCode: 48}; // 0
             component.time = 1;
             component.min = 22;
             component.max = 23;
@@ -181,7 +186,7 @@ describe("NgxMatTimepickerControlComponent", () => {
         });
 
         it("should not change time if value is NaN", () => {
-            const event = {...defaultEvent, keyCode: 83}; // s
+            const event = {...defaultEvent, data: "s", keyCode: 83}; // s
             component.time = 1;
             component.min = 1;
             component.max = 23;

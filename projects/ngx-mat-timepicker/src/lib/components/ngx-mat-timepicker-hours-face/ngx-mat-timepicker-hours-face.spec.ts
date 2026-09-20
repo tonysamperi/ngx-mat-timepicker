@@ -1,4 +1,4 @@
-import {TestBed, waitForAsync} from "@angular/core/testing";
+import {TestBed} from "@angular/core/testing";
 import {Component, Input, ViewChild} from "@angular/core";
 import {Subscription} from "rxjs";
 import {NgxMatTimepickerHoursFaceDirective} from "./ngx-mat-timepicker-hours-face.directive";
@@ -55,19 +55,19 @@ describe("NgxMatTimepickerHoursFace", () => {
         expect(directive.hoursList.length).toBe(24);
     });
 
-    it("should emit selected hour (12hr format)", waitForAsync(() => {
+    it("should emit selected hour (12hr format)", () => {
         const {directive} = setup({format: 12});
         const time = 10;
 
         subscription.add(directive.hourSelected.subscribe(hour => expect(hour).toBe(time)));
         directive.onTimeSelected(time);
-    }));
+    });
 
-    it("should emit selected hour (24hr format)", waitForAsync(() => {
+    it("should emit selected hour (24hr format)", () => {
         const {directive} = setup({format: 24});
         const time = 15;
 
         subscription.add(directive.hourSelected.subscribe(hour => expect(hour).toBe(time)));
         directive.onTimeSelected(time);
-    }));
+    });
 });

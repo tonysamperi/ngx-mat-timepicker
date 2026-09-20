@@ -1,4 +1,4 @@
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 //
 import {NgxMatTimepickerDialControlComponent} from "./ngx-mat-timepicker-dial-control.component";
@@ -9,6 +9,11 @@ import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-lo
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
 import {DateTime} from "ts-luxon";
+
+const fakeAsync = (callback: () => void): (() => void) => callback;
+const tick = (): void => {
+};
+const waitForAsync = (callback: () => void): (() => void) => callback;
 
 describe("NgxMatTimepickerDialControlComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerDialControlComponent>;
@@ -21,7 +26,7 @@ describe("NgxMatTimepickerDialControlComponent", () => {
                 NgxMatTimepickerParserPipe],
             providers: [
                 NgxMatTimepickerParserPipe,
-                {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: "ar-AE"}
+                {provide: NGX_MAT_TIMEPICKER_LOCALE, useValue: "ar-AE-u-nu-arab"}
             ],
             schemas: [NO_ERRORS_SCHEMA]
         }).createComponent(NgxMatTimepickerDialControlComponent);

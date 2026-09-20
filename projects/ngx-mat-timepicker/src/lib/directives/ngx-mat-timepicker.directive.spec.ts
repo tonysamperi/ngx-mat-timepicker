@@ -2,6 +2,7 @@ import {Component, DebugElement, SimpleChanges} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 import {DateTime} from "ts-luxon";
+import {vi} from "vitest";
 //
 import {NgxMatTimepickerDirective} from "./ngx-mat-timepicker.directive";
 import {NgxMatTimepickerComponent} from "../components/ngx-mat-timepicker/ngx-mat-timepicker.component";
@@ -34,14 +35,18 @@ describe("NgxMatTimepickerDirective", () => {
         timepickerComponent = TestBed.createComponent(NgxMatTimepickerComponent).componentInstance;
     });
 
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
     it("should register NgxMatTimepickerComponent", () => {
-        const spy = spyOnProperty(directive, "timepicker", "set").and.callThrough();
+        const spy = vi.spyOn(directive, "timepicker", "set");
         directive.timepicker = timepickerComponent;
         expect(spy).toHaveBeenCalledWith(timepickerComponent);
     });
 
     it("should throw Error if NgxMatTimepickerComponent is not defined", () => {
-        spyOnProperty(directive, "timepicker", "set").and.callThrough();
+        vi.spyOn(directive, "timepicker", "set");
         expect((): any => directive.timepicker = null).toThrowError("NgxMatTimepickerComponent is not defined." +
             " Please make sure you passed the timepicker to ngxMatTimepicker directive");
     });
@@ -59,12 +64,12 @@ describe("NgxMatTimepickerDirective", () => {
         });
 
         it("should set value and call updateTime  when format changes dynamically", () => {
-            const spy = spyOn(timepickerComponent, "updateTime");
+            const spy = vi.spyOn(timepickerComponent, "updateTime");
             directive.timepicker = timepickerComponent;
             directive.value = "11:11 pm";
             directive.format = 12;
 
-            expect(directive.value.toLowerCase()).toBe("11:11 pm");
+            expect(directive.value).toMatch(/^11:11\spm$/i);
             expect(spy).toHaveBeenCalledTimes(0);
 
             directive.format = 24;
@@ -74,7 +79,7 @@ describe("NgxMatTimepickerDirective", () => {
         });
 
         it("should not call updateTime when format the same as before", () => {
-            const spy = spyOn(timepickerComponent, "updateTime");
+            const spy = vi.spyOn(timepickerComponent, "updateTime");
             directive.timepicker = timepickerComponent;
             directive.format = 12;
 
@@ -123,12 +128,12 @@ describe("NgxMatTimepickerDirective", () => {
     it("should return formatted time", () => {
         directive.timepicker = timepickerComponent;
         directive.value = "11:00";
-        expect(directive.value).toBe("11:00 AM");
+        expect(directive.value).toMatch(/^11:00\sAM$/);
     });
 
     it("should call console.warn if time is not between min and max(inclusively) value", () => {
         directive.timepicker = timepickerComponent;
-        const spy = spyOn(console, "warn");
+        const spy = vi.spyOn(console, "warn").mockImplementation(() => void 0);
         directive.min = "11:00 am";
         directive.value = "10:00 am";
         expect(spy).toHaveBeenCalledWith(consoleWarnValue);
@@ -144,21 +149,15 @@ describe("NgxMatTimepickerDirective", () => {
         const time = "12:12 PM";
         directive.timepicker = timepickerComponent;
         timepickerComponent.timeSet.next(time);
-        expect(directive.value).toBe(time);
-        expect(timepickerComponent.defaultTime).toBe(time);
+        expect(directive.value).toMatch(/^12:12\sPM$/);
+        expect(timepickerComponent.defaultTime).toMatch(/^12:12\sPM$/);
     });
 
     it("should change time onChange", () => {
         directive.timepicker = timepickerComponent;
-        const updateEvent = new CustomEvent<any>("change", {
-            composed: !1,
-            detail: {
-                target: directive.element,
-                data: "11:12",
-            }
-        });
+        const updateEvent = {target: {value: "11:12"}} as unknown as Event;
         directive.updateValue(updateEvent);
-        expect(directive.value).toBe("11:12 AM");
+        expect(directive.value).toMatch(/^11:12\sAM$/);
     });
 
     it("should set invalid datetime if time is in inappropriate format", () => {
@@ -179,7 +178,7 @@ describe("NgxMatTimepickerDirective", () => {
 
         directive.timepicker = timepickerComponent;
         directive.ngOnChanges(changes);
-        expect(timepickerComponent.defaultTime).toBe("10:00 AM");
+        expect(timepickerComponent.defaultTime).toMatch(/^10:00\sAM$/);
     });
 
     it("should not set default time if binding value does not change ", () => {
@@ -198,7 +197,7 @@ describe("NgxMatTimepickerDirective", () => {
     });
 
     it("should open timepicker on click", () => {
-        const spy = spyOn(timepickerComponent, "open");
+        const spy = vi.spyOn(timepickerComponent, "open");
         directive.timepicker = timepickerComponent;
 
         directive.onClick({stopPropagation: () => null} as MouseEvent);
@@ -206,7 +205,7 @@ describe("NgxMatTimepickerDirective", () => {
     });
 
     it("should not open timepicker on click if disableClick is true", () => {
-        const spy = spyOn(timepickerComponent, "open");
+        const spy = vi.spyOn(timepickerComponent, "open");
         directive.timepicker = timepickerComponent;
         directive.disableClick = true;
 
@@ -219,8 +218,8 @@ describe("NgxMatTimepickerDirective", () => {
         directive.timepicker = timepickerComponent;
 
         directive.writeValue(time);
-        expect(directive.value).toBe(time);
-        expect(timepickerComponent.defaultTime).toBe(time);
+        expect(directive.value).toMatch(/^11:11\sAM$/);
+        expect(timepickerComponent.defaultTime).toMatch(/^11:11\sAM$/);
     });
 
     it("should not change default time when writeValue called with undefined", () => {
@@ -233,23 +232,17 @@ describe("NgxMatTimepickerDirective", () => {
 
     it("should set onChange function on registerOnChange", () => {
         directive.timepicker = timepickerComponent;
-        const spy = spyOn(console, "log");
+        const spy = vi.spyOn(console, "log").mockImplementation(() => void 0);
         directive.registerOnChange(console.log);
         const time = "11:12 am";
-        const updateEvent = new CustomEvent<any>("change", {
-            composed: !1,
-            detail: {
-                target: directive.element,
-                data: time,
-            }
-        });
+        const updateEvent = {target: {value: time}} as unknown as Event;
         directive.updateValue(updateEvent);
 
-        expect(spy).toHaveBeenCalledWith(time);
+        expect(spy).toHaveBeenCalledWith(expect.stringMatching(/^11:12\sAM$/));
     });
 
     it("should set onTouch function on registerOnTouched", () => {
-        const spy = spyOn(console, "log");
+        const spy = vi.spyOn(console, "log").mockImplementation(() => void 0);
 
         directive.registerOnTouched(console.log);
         directive.onTouched();

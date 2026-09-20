@@ -1,8 +1,13 @@
 import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {MatSelectChange} from "@angular/material/select";
 //
 import {NgxMatTimepickerFieldComponent} from "./ngx-mat-timepicker-field.component";
+
+const fakeAsync = (callback: () => void): (() => void) => callback;
+const tick = (): void => {
+};
+const waitForAsync = (callback: () => void): (() => void) => callback;
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerClockFace} from "../../models/ngx-mat-timepicker-clock-face.interface";
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
@@ -10,6 +15,10 @@ import {NgxMatTimepickerAdapter} from "../../services/ngx-mat-timepicker-adapter
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 //
 import {DateTime} from "ts-luxon";
+
+function normalizeTime(time: string): string {
+    return time.replace(/\u202F/g, " ");
+}
 
 describe("NgxMatTimepickerFieldComponent", () => {
     let component: NgxMatTimepickerFieldComponent;
@@ -36,6 +45,10 @@ describe("NgxMatTimepickerFieldComponent", () => {
         fixture.detectChanges();
     });
 
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
     it("should create", () => {
         expect(component).toBeTruthy();
     });
@@ -48,7 +61,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
             component.format = 12;
 
             component.ngOnInit();
-            expect(component.timepickerTime.toLowerCase()).toBe("11:12 am");
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe("11:12 am");
         });
 
         it("should set default time as min value when provided defaultTime is not valid", () => {
@@ -58,11 +71,11 @@ describe("NgxMatTimepickerFieldComponent", () => {
             component.min = DateTime.fromObject({hour: 11, minute: 11});
 
             component.ngOnInit();
-            expect(component.timepickerTime.toLowerCase()).toBe(expectedTime);
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(expectedTime);
 
             component.defaultTime = "10:00 am";
             component.ngOnInit();
-            expect(component.timepickerTime.toLowerCase()).toBe(expectedTime);
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(expectedTime);
         });
 
         it("should set default time as max value when provided defaultTime is not valid and min is not provided", () => {
@@ -72,11 +85,11 @@ describe("NgxMatTimepickerFieldComponent", () => {
             component.max = DateTime.fromObject({hour: 9, minute: 11});
 
             component.ngOnInit();
-            expect(component.timepickerTime.toLowerCase()).toBe(expectedTime);
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(expectedTime);
 
             component.defaultTime = "10:00 am";
             component.ngOnInit();
-            expect(component.timepickerTime.toLowerCase()).toBe(expectedTime);
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(expectedTime);
         });
 
         it("should set isChangePeriodDisabled to true", fakeAsync(() => {
@@ -101,7 +114,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
         }));
 
         it("should call NgxMatTimepickerUtils.disableMinutes when hour changes and min/max are set", fakeAsync(() => {
-            const spy = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+            const spy = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
             const minutes = [{time: 1, angle: 0}];
             const format = 12;
             const min = DateTime.fromObject({hour: 11, minute: 12});
@@ -127,7 +140,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
         }));
 
         it("should not call NgxMatTimepickerUtils.disableMinutes when selectedHour is undefined", fakeAsync(() => {
-            const spy = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+            const spy = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
             const minutes = [{time: 1, angle: 0}];
             const format = 12;
             const min = DateTime.fromObject({hour: 11, minute: 12});
@@ -160,13 +173,13 @@ describe("NgxMatTimepickerFieldComponent", () => {
         });
 
         it("should set 12-hours format", () => {
-            // @ts-expect-error
+            // @ts-expect-error we're wrong on purpose
             component.format = 14;
             expect(component.format).toBe(12);
         });
 
         it("should update defaultTime when change format dynamically", () => {
-            const spy = spyOn(NgxMatTimepickerAdapter, "formatTime");
+            const spy = vi.spyOn(NgxMatTimepickerAdapter, "formatTime");
             component.timepickerTime = "23:00";
             component.format = 24;
 
@@ -192,7 +205,7 @@ describe("NgxMatTimepickerFieldComponent", () => {
             const time = "10:13 pm";
             component.writeValue(time);
 
-            expect(component.timepickerTime.toLowerCase()).toBe(time);
+            expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(time);
 
             tick();
 
@@ -227,12 +240,12 @@ describe("NgxMatTimepickerFieldComponent", () => {
             angle: 30
         };
         const expected = "1:00 AM";
-        component.timeChanged.subscribe(time => expect(time).toBe(expected));
+        component.timeChanged.subscribe(time => expect(normalizeTime(time)).toBe(expected));
         component.changeHour(1);
 
         tick();
         component.hour$.subscribe(selectedHour => expect(selectedHour.time).toBe(hour.time));
-        expect(timer).toBe(expected);
+        expect(normalizeTime(timer)).toBe(expected);
     }));
 
     it("should change minute and emit timeChanged event", fakeAsync(() => {
@@ -241,22 +254,22 @@ describe("NgxMatTimepickerFieldComponent", () => {
             angle: 90
         };
         const expected = "12:15 AM";
-        component.timeChanged.subscribe(time => expect(time).toBe(expected));
+        component.timeChanged.subscribe(time => expect(normalizeTime(time)).toBe(expected));
         component.changeMinute(15);
 
         tick();
         component.minute$.subscribe(selectedMinute => expect(selectedMinute.time).toBe(minute.time));
-        expect(timer).toBe(expected);
+        expect(normalizeTime(timer)).toBe(expected);
     }));
 
     it("should change period end emit timeChanged event", fakeAsync(() => {
         const expected = "12:00 PM";
-        component.timeChanged.subscribe(time => expect(time).toBe(expected));
+        component.timeChanged.subscribe(time => expect(normalizeTime(time)).toBe(expected));
         component.changePeriod({value: NgxMatTimepickerPeriods.PM} as MatSelectChange);
 
         tick();
         expect(component.period).toEqual(NgxMatTimepickerPeriods.PM);
-        expect(timer).toBe(expected);
+        expect(normalizeTime(timer)).toBe(expected);
     }));
 
     it("should call touch method", () => {
@@ -270,13 +283,13 @@ describe("NgxMatTimepickerFieldComponent", () => {
         const timeMock = "2:5 am";
         const expectedTime = "2:05 am";
         const onChange = (val: string) => time = val;
-        component.timeChanged.subscribe(changedTime => expect(changedTime.toLowerCase()).toBe(expectedTime));
+        component.timeChanged.subscribe(changedTime => expect(normalizeTime(changedTime.toLowerCase())).toBe(expectedTime));
         component.registerOnChange(onChange);
 
         component.onTimeSet(timeMock);
 
-        expect(component.timepickerTime.toLowerCase()).toBe(expectedTime);
-        expect(time.toLowerCase()).toBe(expectedTime);
+        expect(normalizeTime(component.timepickerTime.toLowerCase())).toBe(expectedTime);
+        expect(normalizeTime(time.toLowerCase())).toBe(expectedTime);
         component.hour$.subscribe(hour => expect(hour.time).toBe(2));
         component.minute$.subscribe(minute => expect(minute.time).toBe(5));
     }));

@@ -1,11 +1,11 @@
 import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {DateTime} from "ts-luxon";
+import {vi} from "vitest";
 //
 import {NgxMatTimepickerMinutesFaceComponent} from "./ngx-mat-timepicker-minutes-face.component";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
-//
-import {DateTime} from "ts-luxon";
 
 describe("NgxMatTimepickerMinutesFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerMinutesFaceComponent>;
@@ -20,8 +20,12 @@ describe("NgxMatTimepickerMinutesFaceComponent", () => {
         component = fixture.componentInstance;
     });
 
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
     it("should call disableMinutes once period changed", () => {
-        const spy = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+        const spy = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
         const changes: SimpleChanges = {
             period: {
                 currentValue: NgxMatTimepickerPeriods.PM,
@@ -46,7 +50,7 @@ describe("NgxMatTimepickerMinutesFaceComponent", () => {
     });
 
     it("should not call disableMinutes", () => {
-        const spy = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+        const spy = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
         const changes: SimpleChanges = {
             minTime: {
                 currentValue: null,

@@ -1,7 +1,12 @@
-import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
+import {vi} from "vitest";
 //
 import {NgxMatTimepickerDialComponent} from "./ngx-mat-timepicker-dial.component";
+
+const fakeAsync = (callback: () => void): (() => void) => callback;
+const tick = (): void => {
+};
 import {NgxMatTimepickerPeriods} from "../../models/ngx-mat-timepicker-periods.enum";
 import {NgxMatTimepickerUnits} from "../../models/ngx-mat-timepicker-units.enum";
 import {NGX_MAT_TIMEPICKER_LOCALE} from "../../tokens/ngx-mat-timepicker-time-locale.token";
@@ -22,11 +27,18 @@ describe("NgxMatTimepickerDialComponent", () => {
         }).createComponent(NgxMatTimepickerDialComponent);
 
         component = fixture.componentInstance;
+        component.format = 12;
+        component.hour = 12;
+        component.period = NgxMatTimepickerPeriods.AM;
+    });
+
+    afterEach(() => {
+        vi.restoreAllMocks();
     });
 
     it("should call disableHours and disableMinutes on period change", () => {
-        const spyOnFunctionHours = spyOn(NgxMatTimepickerUtils, "disableHours");
-        const spyOnFunctionMinutes = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+        const spyOnFunctionHours = vi.spyOn(NgxMatTimepickerUtils, "disableHours");
+        const spyOnFunctionMinutes = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
         const changes: SimpleChanges = {
             period: {
                 currentValue: NgxMatTimepickerPeriods.AM,
@@ -42,7 +54,7 @@ describe("NgxMatTimepickerDialComponent", () => {
     });
 
     it("should call disableHours on format change", () => {
-        const spyOnFunctionHours = spyOn(NgxMatTimepickerUtils, "disableHours");
+        const spyOnFunctionHours = vi.spyOn(NgxMatTimepickerUtils, "disableHours");
         const changes: SimpleChanges = {
             format: {
                 currentValue: 24,
@@ -57,7 +69,7 @@ describe("NgxMatTimepickerDialComponent", () => {
     });
 
     it("should call disableMinutes on hour change", () => {
-        const spy = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+        const spy = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
         const changes: SimpleChanges = {
             hour: {
                 currentValue: 24,
@@ -72,8 +84,8 @@ describe("NgxMatTimepickerDialComponent", () => {
     });
 
     it("should not call disableHours and disableMinutes", () => {
-        const spyOnFunctionHours = spyOn(NgxMatTimepickerUtils, "disableHours");
-        const spyOnFunctionMinutes = spyOn(NgxMatTimepickerUtils, "disableMinutes");
+        const spyOnFunctionHours = vi.spyOn(NgxMatTimepickerUtils, "disableHours");
+        const spyOnFunctionMinutes = vi.spyOn(NgxMatTimepickerUtils, "disableMinutes");
         const changes: SimpleChanges = {
             minTime: {
                 currentValue: null,

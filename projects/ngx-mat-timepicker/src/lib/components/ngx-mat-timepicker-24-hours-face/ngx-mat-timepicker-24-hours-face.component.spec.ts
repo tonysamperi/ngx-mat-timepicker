@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {DateTime} from "ts-luxon";
+import {vi} from "vitest";
 //
 import {NgxMatTimepicker24HoursFaceComponent} from "./ngx-mat-timepicker-24-hours-face.component";
 import {NgxMatTimepickerUtils} from "../../utils/ngx-mat-timepicker.utils";
-//
-import {DateTime} from "ts-luxon";
 
 describe("NgxMatTimepicker24HoursFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepicker24HoursFaceComponent>;
@@ -20,7 +20,7 @@ describe("NgxMatTimepicker24HoursFaceComponent", () => {
     });
 
     it("should call disableHours", () => {
-        const spy = spyOn(NgxMatTimepickerUtils, "disableHours");
+        const spy = vi.spyOn(NgxMatTimepickerUtils, "disableHours");
         const time = DateTime.fromJSDate(new Date());
         const format = 24;
         const hours = NgxMatTimepickerUtils.getHours(format);

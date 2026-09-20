@@ -33,14 +33,15 @@ export class NgxMatTimepickerParserPipe implements PipeTransform {
         }
 
         if (timeUnit === NgxMatTimepickerUnits.MINUTE) {
-            return this._parseTime(time, "mm", NgxMatTimepickerMeasure.minute).toString();
+            return this._parseTime(time, "m", NgxMatTimepickerMeasure.minute).toString();
         }
 
-        return this._parseTime(time, "HH", NgxMatTimepickerMeasure.hour).toString();
+        return this._parseTime(time, "H", NgxMatTimepickerMeasure.hour).toString();
     }
 
     private _parseTime(time: string | number, format: string, timeMeasure: NgxMatTimepickerMeasure): number {
         const parsedTime = DateTime.fromFormat(String(time), format, {
+            locale: this._locale,
             numberingSystem: this._numberingSystem,
             zone: "utc"
         })[timeMeasure];

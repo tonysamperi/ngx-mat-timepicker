@@ -58,9 +58,9 @@ describe('NgxMatTimepickerAdapter', () => {
         it('should return time in am/pm format', () => {
             const format = 12;
 
-            expect(NgxMatTimepickerAdapter.formatTime('23:00', {format})).toBe('11:00 PM');
-            expect(NgxMatTimepickerAdapter.formatTime('12:20 am', {format})).toBe('12:20 AM');
-            expect(NgxMatTimepickerAdapter.formatTime('12:20 am', {format: 33})).toBe('12:20 AM');
+            expect(NgxMatTimepickerAdapter.formatTime('23:00', {format})).toMatch(/^11:00\sPM$/);
+            expect(NgxMatTimepickerAdapter.formatTime('12:20 am', {format})).toMatch(/^12:20\sAM$/);
+            expect(NgxMatTimepickerAdapter.formatTime('12:20 am', {format: 33})).toMatch(/^12:20\sAM$/);
         });
 
         it('should return Invalid Time message when provide invalid time', () => {
@@ -101,7 +101,7 @@ describe('NgxMatTimepickerAdapter', () => {
             try {
                 NgxMatTimepickerAdapter.isTimeAvailable('11:43 pm', min, max, 'minutes', minutesGap);
             } catch (e: any) {
-                expect(e.message).toBe(`Your minutes - 43 doesn\'t match your minutesGap - ${minutesGap}`);
+                expect(e.message).toBe(`Your minutes - 43 doesn't match your minutesGap - ${minutesGap}`);
             }
         });
 

@@ -1,4 +1,4 @@
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {ElementRef, NO_ERRORS_SCHEMA, SimpleChanges} from "@angular/core";
 //
 import {NgxMatTimepickerFaceComponent} from "./ngx-mat-timepicker-face.component";
@@ -12,7 +12,13 @@ import {NgxMatTimepickerActiveHourPipe} from "../../pipes/ngx-mat-timepicker-act
 import {NgxMatTimepickerActiveMinutePipe} from "../../pipes/ngx-mat-timepicker-active-minute.pipe";
 //
 import {Subscription} from "rxjs";
+import {vi} from "vitest";
 
+const fakeAsync = (callback: () => void): (() => void) => callback;
+const tick = (): void => {
+    vi.runAllTimers();
+};
+const waitForAsync = (callback: () => void): (() => void) => callback;
 
 describe("NgxMatTimepickerFaceComponent", () => {
     let fixture: ComponentFixture<NgxMatTimepickerFaceComponent>;
@@ -20,6 +26,7 @@ describe("NgxMatTimepickerFaceComponent", () => {
     let subscription: Subscription;
 
     beforeEach(() => {
+        vi.useFakeTimers();
         subscription = new Subscription();
         fixture = TestBed.configureTestingModule({
             imports: [NgxMatTimepickerFaceComponent,
@@ -34,10 +41,18 @@ describe("NgxMatTimepickerFaceComponent", () => {
         }).createComponent(NgxMatTimepickerFaceComponent);
 
         component = fixture.componentInstance;
+        vi.spyOn(component.clockFace.nativeElement, "getBoundingClientRect").mockReturnValue({
+            left: 0,
+            top: 0,
+            width: 700,
+            height: 600
+        } as DOMRect);
     });
 
     afterEach(() => {
         subscription.unsubscribe();
+        vi.restoreAllMocks();
+        vi.useRealTimers();
     });
 
     it("trackByTime should return time", () => {
