@@ -73,7 +73,7 @@ export class NgxMatTimepickerAdapter {
             return time.hour >= compareWith.hour;
         }
 
-        return time.hasSame(compareWith, unit) || time.valueOf() > compareWith.valueOf();
+        return this._getMinutesSinceStartOfDay(time) >= this._getMinutesSinceStartOfDay(compareWith);
     }
 
     static isSameOrBefore(time: DateTime, compareWith: DateTime, unit: "hours" | "minutes" = "minutes"): boolean {
@@ -81,7 +81,7 @@ export class NgxMatTimepickerAdapter {
             return time.hour <= compareWith.hour;
         }
 
-        return time.hasSame(compareWith, unit) || time.valueOf() <= compareWith.valueOf();
+        return this._getMinutesSinceStartOfDay(time) <= this._getMinutesSinceStartOfDay(compareWith);
     }
 
     static isTimeAvailable(time: string,
@@ -134,7 +134,8 @@ export class NgxMatTimepickerAdapter {
 
         return DateTime.fromFormat(time.replace(/\s+/g, " "), timeMask, {
             numberingSystem: localeOpts.numberingSystem,
-            locale: localeOpts.locale
+            locale: localeOpts.locale,
+            zone: "utc"
         });
     }
 
@@ -147,7 +148,7 @@ export class NgxMatTimepickerAdapter {
             timeMask = NgxMatTimepickerFormat.TWENTY_FOUR_SHORT;
         }
 
-        return DateTime.fromFormat(time, timeMask).reconfigure({
+        return DateTime.fromFormat(time, timeMask, {zone: "utc"}).reconfigure({
             locale,
             numberingSystem: opts.numberingSystem,
             defaultToEN: opts.defaultToEN,
@@ -165,19 +166,25 @@ export class NgxMatTimepickerAdapter {
      * @private
      */
     private static _getLocaleOptionsByTime(time: string, opts: NgxMatTimepickerOptions): LocaleOptions {
-        const {numberingSystem, locale} = DateTime.now().reconfigure({
+        const {numberingSystem, locale} = DateTime.utc().reconfigure({
             locale: opts.locale,
             numberingSystem: opts.numberingSystem,
             outputCalendar: opts.outputCalendar,
             defaultToEN: opts.defaultToEN
         }).resolvedLocaleOptions();
 
-        return isNaN(parseInt(time, 10)) ? {
-            numberingSystem: numberingSystem as NumberingSystem,
-            locale
-        } : {
-            numberingSystem: this.defaultNumberingSystem,
-            locale: this.defaultLocale
-        };
+        return isNaN(parseInt(time, 10))
+            ? {
+                numberingSystem: numberingSystem as NumberingSystem,
+                locale
+            }
+            : {
+                numberingSystem: this.defaultNumberingSystem,
+                locale: this.defaultLocale
+            };
+    }
+
+    private static _getMinutesSinceStartOfDay(time: DateTime): number {
+        return time.hour * 60 + time.minute;
     }
 }

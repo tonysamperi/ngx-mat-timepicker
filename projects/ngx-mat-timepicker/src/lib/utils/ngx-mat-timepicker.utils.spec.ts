@@ -222,7 +222,7 @@ describe("TimepickerTime", () => {
             Settings.now = defaultNow;
         });
 
-        it("should disable a missing hour", () => {
+        it("should keep every hour available on a DST switch day", () => {
             const hours = NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(24), {
                 format: 24,
                 min: undefined,
@@ -230,12 +230,10 @@ describe("TimepickerTime", () => {
             });
             const missingHour = hours.find(hour => hour.time === 2);
 
-            expect(missingHour?.disabled).toBeTruthy();
-            expect(missingHour?.holeTime).toEqual({hour: 2, minute: 0, second: 0, millisecond: 0});
-            expect(missingHour?.wasHole).toBeTruthy();
+            expect(missingHour?.disabled).toBeFalsy();
         });
 
-        it("should disable a missing hour in the AM period", () => {
+        it("should keep every AM hour available on a DST switch day", () => {
             const hours = NgxMatTimepickerUtils.disableHours(NgxMatTimepickerUtils.getHours(12), {
                 format: 12,
                 min: undefined,
@@ -244,20 +242,17 @@ describe("TimepickerTime", () => {
             });
             const missingHour = hours.find(hour => hour.time === 2);
 
-            expect(missingHour?.disabled).toBeTruthy();
-            expect(missingHour?.holeTime).toEqual({hour: 2, minute: 0, second: 0, millisecond: 0});
-            expect(missingHour?.wasHole).toBeTruthy();
+            expect(missingHour?.disabled).toBeFalsy();
         });
 
-        it("should disable every minute in a missing hour", () => {
+        it("should keep every minute available in a DST-skipped local hour", () => {
             const minutes = NgxMatTimepickerUtils.disableMinutes(NgxMatTimepickerUtils.getMinutes(15), 2, {
                 format: 24,
                 min: undefined,
                 max: undefined
             });
 
-            expect(minutes.every(minute => minute.disabled && minute.wasHole)).toBeTruthy();
-            expect(minutes.map(minute => minute.holeTime?.minute)).toEqual([0, 15, 30, 45]);
+            expect(minutes.every(minute => !minute.disabled)).toBeTruthy();
         });
     });
 

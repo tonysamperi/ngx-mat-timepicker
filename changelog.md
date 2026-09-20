@@ -1,8 +1,13 @@
+# 22.1.1
+
+* Finally address the DST issue by making the timepicker work fully in "Pure time" mode. This removes the previous workaround.
+
 # 22.1.0
 
 * Print non-existent hour due to DST time change, but disabled (requires ts-luxon >= 6.4.0)
 
 # 22.0.1
+
 * Fix concatenation causing issues with keyboard
 
 # 22.0.0

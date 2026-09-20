@@ -15,9 +15,9 @@ export class NgxMatTimepickerTimeFormatterPipe implements PipeTransform {
         }
         switch (timeUnit) {
             case NgxMatTimepickerUnits.HOUR:
-                return DateTime.fromObject({hour: +time}).toFormat("HH");
+                return DateTime.fromObject({hour: +time}, {zone: "utc"}).toFormat("HH");
             case NgxMatTimepickerUnits.MINUTE:
-                return DateTime.fromObject({minute: +time}).toFormat("mm");
+                return DateTime.fromObject({minute: +time}, {zone: "utc"}).toFormat("mm");
             default:
                 throw new Error("no such time unit");
         }

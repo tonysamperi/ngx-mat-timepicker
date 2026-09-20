@@ -29,6 +29,14 @@ describe('NgxMatTimepickerAdapter', () => {
             expect(NgxMatTimepickerAdapter.parseTime('11:00 pm', {locale}).minute).toBe(expectedMinute);
         });
 
+        it('should create a UTC DateTime independently from the browser time zone', () => {
+            const parsedTime = NgxMatTimepickerAdapter.parseTime('02:30', {locale});
+
+            expect(parsedTime.zoneName).toBe('UTC');
+            expect(parsedTime.hour).toBe(2);
+            expect(parsedTime.minute).toBe(30);
+        });
+
         it('should parse time from latn to arab number', () => {
             const arabLocale = 'ar-AE';
             const arabicTime = '١١:١١ ص';
@@ -95,6 +103,13 @@ describe('NgxMatTimepickerAdapter', () => {
             } catch (e: any) {
                 expect(e.message).toBe(`Your minutes - 43 doesn\'t match your minutesGap - ${minutesGap}`);
             }
+        });
+
+        it('should compare the clock time of DateTime limits without their time zone offsets', () => {
+            const min = DateTime.fromObject({hour: 2, minute: 0}, {zone: 'Europe/Rome'});
+            const max = DateTime.fromObject({hour: 3, minute: 0}, {zone: 'Europe/Rome'});
+
+            expect(NgxMatTimepickerAdapter.isTimeAvailable('02:30', min, max, 'minutes', null, 24)).toBeTruthy();
         });
     });
 

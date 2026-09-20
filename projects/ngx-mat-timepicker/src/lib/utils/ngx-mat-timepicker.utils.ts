@@ -18,13 +18,11 @@ export class NgxMatTimepickerUtils {
             const hour = NgxMatTimepickerAdapter.isTwentyFour(config.format)
                 ? value.time
                 : NgxMatTimepickerAdapter.formatHour(value.time, config.format, config.period);
-            const currentTime = DateTime.fromObject({hour});
+            const currentTime = DateTime.fromObject({hour}, {zone: "utc"});
 
             return {
                 ...value,
-                holeTime: currentTime.holeTime || void 0,
-                wasHole: currentTime.wasHole,
-                disabled: currentTime.wasHole || !NgxMatTimepickerAdapter.isTimeAvailable(
+                disabled: !NgxMatTimepickerAdapter.isTimeAvailable(
                     currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "hours")
             };
         });
@@ -37,13 +35,11 @@ export class NgxMatTimepickerUtils {
             const currentTime = DateTime.fromObject({
                 hour,
                 minute: value.time
-            });
+            }, {zone: "utc"});
 
             return {
                 ...value,
-                holeTime: currentTime.holeTime || void 0,
-                wasHole: currentTime.wasHole,
-                disabled: currentTime.wasHole || !NgxMatTimepickerAdapter.isTimeAvailable(
+                disabled: !NgxMatTimepickerAdapter.isTimeAvailable(
                     currentTime.toFormat(NgxMatTimepickerFormat.TWELVE), config.min, config.max, "minutes")
             };
         });

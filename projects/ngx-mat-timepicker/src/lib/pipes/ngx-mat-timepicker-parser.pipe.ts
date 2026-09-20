@@ -20,7 +20,7 @@ export class NgxMatTimepickerParserPipe implements PipeTransform {
 
 
     constructor() {
-        this._numberingSystem = DateTime.local().setLocale(this._locale).resolvedLocaleOptions().numberingSystem as NumberingSystem;
+        this._numberingSystem = DateTime.utc().setLocale(this._locale).resolvedLocaleOptions().numberingSystem as NumberingSystem;
     }
 
     transform(time: string | number, timeUnit = NgxMatTimepickerUnits.HOUR): string {
@@ -40,7 +40,10 @@ export class NgxMatTimepickerParserPipe implements PipeTransform {
     }
 
     private _parseTime(time: string | number, format: string, timeMeasure: NgxMatTimepickerMeasure): number {
-        const parsedTime = DateTime.fromFormat(String(time), format, {numberingSystem: this._numberingSystem})[timeMeasure];
+        const parsedTime = DateTime.fromFormat(String(time), format, {
+            numberingSystem: this._numberingSystem,
+            zone: "utc"
+        })[timeMeasure];
         if (!isNaN(parsedTime)) {
             return parsedTime;
         }
