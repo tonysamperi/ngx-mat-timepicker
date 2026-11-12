@@ -105,7 +105,10 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     setTime(): void {
-        this.data.timepickerBaseRef.timeSet.emit(this._timepickerSrv.getFullTime(this.data.format));
+        const picker = this.data.timepickerBaseRef;
+        if (!picker.disabled) {
+            picker.timeSet.emit(this._timepickerSrv.getFullTime(this.data.format));
+        }
         this.close();
     }
 
@@ -120,6 +123,10 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     protected _onTimeChange(): void {
+        if (this.data.timepickerBaseRef.disabled) {
+            return;
+        }
+
         const time = NgxMatTimepickerAdapter.toLocaleTimeString(this._timepickerSrv.getFullTime(this.data.format), {
             locale: this._locale,
             format: this.data.format
